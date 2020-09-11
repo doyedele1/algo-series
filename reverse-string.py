@@ -1,4 +1,4 @@
-# using recursion method
+# Using recursion method
 def reverse_string(str):
 	if len(str) == 0:
 		return str
@@ -8,7 +8,7 @@ def reverse_string(str):
 
 # print(reverse_string("Demilade"))
 
-# using slicing method
+# Using slicing method
 def reverse_string_slice(str):
 	reversed_str = str[::-1]
 	return reversed_str
