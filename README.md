@@ -3,3 +3,4 @@ In order to challenge myself and prepare for technical interviews, I have decide
 
 * Day 1: Reverse String
 * Day 2: Valid Palindrome
+* Day 3: Vacuum Cleaner Route
