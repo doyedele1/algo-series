@@ -7,6 +7,9 @@ This question is asked by Google. Given a string, reverse all of its characters 
 Example: Given the following strings...
 ```bash
 "Cat", return "taC"
+"The Daily Byte", return "etyB yliaD ehT"
+"civic", return "civic"
 ```
+
 ## Day 2: Valid Palindrome
 ## Day 3: Vacuum Cleaner Route
