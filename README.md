@@ -21,3 +21,4 @@ Example: Given the following strings...
 "A man, a plan, a canal: Panama.", return true
 ```
 ## Day 3: Vacuum Cleaner Route
+This question is asked by Amazon. 
