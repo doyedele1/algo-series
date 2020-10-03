@@ -69,3 +69,14 @@ Example: Given the following strings...
 "(({[]}))", return true
 "{(})", return  false
 ```
+
+## Day 7: Valid Anagram
+This question is asked by Facebook. Given two strings ```s``` and ```t```, return whether or not ```s``` is an anagram of ```t```.
+
+Example: Given the following strings...
+
+```bash
+s = "cat", t = "tac", return true
+s = "listen", t = "silent", return true
+s = "program", t = "function", return false
+```
