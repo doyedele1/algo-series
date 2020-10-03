@@ -84,7 +84,7 @@ s = "program", t = "function", return false
 ## Day 8: Longest Common Prefix
 This question is asked by Microsoft. Given an array of strings, return the longest common prefix that is shared amongst all strings.
 
-_Note: you may assume all strings only contain lowercase alphabetical characters._
+_Note: You may assume all strings only contain lowercase alphabetical characters._
 
 Example: Given the following arrays...
 
