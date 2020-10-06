@@ -94,3 +94,14 @@ Example: Given the following arrays...
 ["spot", "spotty", "spotted"], return "spot"
 ```
 
+## Day 9: Jewels and Stones
+This question is asked by Amazon. Given a string representing your stones and another string representing a list of jewels, return the number of stones that you have that are also jewels.
+
+Example: Given the following jewels and stones...
+
+```bash
+jewels = "abc", stones = "ac", return 2
+jewels = "Af", stones = "AaaddfFf", return 3
+jewels = "AYOPD", stones = "ayopd", return 0
+```
+
