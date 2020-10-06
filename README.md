@@ -105,3 +105,15 @@ jewels = "Af", stones = "AaaddfFf", return 3
 jewels = "AYOPD", stones = "ayopd", return 0
 ```
 
+## Day 10: Valid Palindrome with Removal
+This question is asked by Facebook. Given a string and the ability to delete at most one character, return whether or not it can form a palindrome.
+
+Example: Given the following strings...
+
+```bash
+"abcba", return true
+"foobof", return true (remove the first 'o', the second 'o', or 'b')
+"abccab", return false
+```
+
+
