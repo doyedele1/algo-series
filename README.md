@@ -140,3 +140,13 @@ s = "foobar", t = "barfoot", return 't'
 s = "ide", t = "idea", return 'a'
 s = "coding", t "ingcod", return ''
 ```
+
+## 13. First Unique Character
+This question is asked by Microsoft. Given a string, return the index of its first unique character. If a unique character does not exist, return ```-1```.
+
+Example: Given the following strings...
+```bash
+"abcabd", return 2
+"thedailybyte", return 1
+"developer", return 0
+```
