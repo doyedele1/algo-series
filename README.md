@@ -162,7 +162,7 @@ sentence1 = "copper coffee pot", sentence2 = "hot coffee pot", return ["copper",
 ```
 
 ## 15. Merge Linked Lists
-This question is asked by Apple. Given two sorted linked lists, merge them together in ascending order and return a reference to the merged list
+This question is asked by Apple. Given two sorted linked lists, merge them together in ascending order and return a reference to the merged list.
 
 Example: Given the following lists...
 ```bash
