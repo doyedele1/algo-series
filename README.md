@@ -191,3 +191,12 @@ Example: Given the following linked lists and values...
 7->12->2->9->null, value = 7, return 12->2->9->null
 ```
 
+## 18. Find Middle Element
+This question is asked by Amazon. Given a non-empty linked list, return the middle node of the list. If the linked list contains an even number of elements, return the node closer to the end.
+
+```bash
+1->2->3->null, return 2
+1->2->3->4->null, return 3
+1->null, return 1
+```
+
