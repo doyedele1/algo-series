@@ -1,7 +1,7 @@
 # Data Structures & Algorithms Series
 In order to challenge myself and prepare for technical interviews, I decided to start this drill where I solve data structures & algorithms challenges. Questions are asked by top tech companies in the world
 
-## 1. Reverse String
+## 1. [Reverse String](reverse-string.py)
 This question is asked by Google. Given a string, reverse all of its characters and return the resulting string.
 
 Example: Given the following strings...
