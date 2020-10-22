@@ -12,7 +12,7 @@ Example: Given the following strings...
 "civic", return "civic"
 ```
 
-## 2. Valid Palindrome
+## 2. [Valid Palindrome](palindrome.py)
 This question is asked by Facebook. Given a string, return whether or not it forms a palindrome ignoring case and non-alphabetical characters.
 
 Example: Given the following strings...
