@@ -200,3 +200,14 @@ This question is asked by Amazon. Given a non-empty linked list, return the midd
 1->null, return 1
 ```
 
+## 19. Contains Cycle
+This question is asked by Microsoft. Given a linked list containing unique numbers, return whether or not it has a cycle.
+
+_Note: A cycle is a circular arrangement (i.e. one node points back to a previous node)._
+
+Example: Given the following linked lists...
+```bash
+1->2->3->1 -> true (3 points back to 1)
+1->2->3 -> false
+1->1 true (1 points to itself)
+```
