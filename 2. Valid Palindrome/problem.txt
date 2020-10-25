@@ -1,0 +1,7 @@
+This question is asked by Facebook. Given a string, return whether or not it forms a palindrome ignoring case and non-alphabetical characters.
+
+Example: Given the following strings...
+
+"level", return true
+"algorithm", return false
+"A man, a plan, a canal: Panama.", return true
