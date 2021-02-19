@@ -6,7 +6,7 @@ def reverse_string(str):
 	else:
 		return reverse_string(str[1:]) + str[0]
 
-# print(reverse_string("Demilade"))
+print(reverse_string("Demilade"))
 
 # Using slicing method
 def reverse_string_slice(str):
