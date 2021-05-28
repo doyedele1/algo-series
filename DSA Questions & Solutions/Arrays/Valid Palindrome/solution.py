@@ -1,10 +1,10 @@
 # Simple solution without considering edge cases
 def valid_palindrome1(str):
-  reversed_str = str[::-1]
+    reversed_str = str[::-1]
 
-  if (str == reversed_str):
-      return True
-  return False
+    if (str == reversed_str):
+        return True
+    return False
 
 # print("Simple solution: " +str(valid_palindrome1("Algorithms")))
 
