@@ -1,0 +1,19 @@
+Implement a function called countUniqueValues, which accepts a sorted array, and counts the unique values in the array. There can be negative numbers in the array, but it will always be sorted.
+
+Example: Given the following arrays...
+1. Input = [1,1,1,1,1,2]
+Output = 2
+
+2. Input = [1,2,3,4,4,4,7,7,12,12,13]
+Output = 7 
+
+3. Input = []
+Output = 0
+
+4. Input = [-2,-1,-1,0,1]
+Output = 4
+
+
+Requirements ---> Time Complexity - O(n)
+                  Space Complexity - O(1)
+
