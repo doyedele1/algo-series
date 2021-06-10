@@ -14,7 +14,7 @@ let isAnagram = function(s, t) {
         }
     }
     
-    for(let i = 0; i< t.length; i++) {
+    for(let i = 0; i < t.length; i++) {
         if(!(freqCounter[t[i]])) {
             return false
         }
