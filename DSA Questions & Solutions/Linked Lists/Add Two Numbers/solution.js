@@ -20,7 +20,6 @@ var addTwoNumbers = function(l1, l2) {
     // 465
     while(l1 || l2) {
         sum = (l1?.val ?? 0) + (l2?.val ?? 0) + carry;
-        // sum = val1 + val2 + carry
         
         if(sum > 9) {
             sum -= 10;
