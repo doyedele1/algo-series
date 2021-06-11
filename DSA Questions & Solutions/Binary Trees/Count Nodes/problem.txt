@@ -1,0 +1,22 @@
+Given the root of a complete binary tree, count the total number of nodes the tree contains.
+
+According to Wikipedia, every level, except possibly the last, is completely filled in a complete binary tree, and all nodes in the last level are as far left as possible. It can have between 1 and 2h nodes inclusive at the last level h.
+
+Design an algorithm that runs in less than O(n) time complexity.
+
+Example: Given the following binary tree...
+1. 
+         1
+        / \
+       2   3, return 3.
+       i.e. Input: root = [1,2,3]
+            Output: 3
+
+2. Input: root = []
+Output: 0
+
+3. Input: root = [1]
+Output: 1
+
+4. Input: root = [1,2,3,4,5,6]
+Output: 6
