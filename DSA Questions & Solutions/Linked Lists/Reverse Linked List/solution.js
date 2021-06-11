@@ -10,7 +10,7 @@
  * @return {ListNode}
  */
 
-// Iterative solution
+// Iterative solution - O(n) time, O(1) space
 var reverseList = function(head) {
     var previous = null;
     var current = head;
@@ -27,4 +27,15 @@ var reverseList = function(head) {
     
 };
 
-// Recursive solution
+// Recursive solution - O(n) time, O(n) space
+var reverseList = function(head) {
+    if(head === null || head.next === null) {
+        return head
+    }
+
+    var reversedList = reverseList(head.next)
+    head.next.next = head
+    head.next = null
+    return reversedList
+    
+};
