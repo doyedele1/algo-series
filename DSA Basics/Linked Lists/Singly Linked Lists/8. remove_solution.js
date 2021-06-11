@@ -5,6 +5,8 @@ class Node {
     }
 }
 
+node = new Node()
+
 class SinglyLinkedList {
     constructor() {
         this.head = null
@@ -94,6 +96,8 @@ class SinglyLinkedList {
         this.length--
         return removed
     }
+
+    // 4 --> 5 --> 1 --> 9
 }
 
 var list = new SinglyLinkedList()
