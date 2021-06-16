@@ -12,7 +12,7 @@
  * @return {ListNode}
  */
  var getIntersectionNode = function(headA, headB) {
-    // Using hashmaps
+    // Using hashmaps. TC - O(m + n), SC - 0(n)
     var seen = new Set();
     
     while(headA != null) {
