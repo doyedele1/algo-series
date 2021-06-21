@@ -2,8 +2,15 @@ This question is asked by Facebook. Given a string and the ability to delete at 
 
 Example: Given the following strings...
 
+"aba", return true
+
 "abcba", return true
 
 "foobof", return true (remove the first 'o', the second 'o', or 'b')
 
 "abccab", return false
+
+Constraints:
+
+1 <= s.length <= 105
+s consists of lowercase English letters
