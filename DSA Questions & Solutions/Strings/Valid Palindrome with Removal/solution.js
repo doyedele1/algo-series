@@ -17,6 +17,6 @@ var isPalindrome = function(s, i, j) {
             return false
         }
     }
-     return true
+    return true
         
 };

@@ -12,28 +12,6 @@ class SinglyLinkedList {
         this.length = 0
     }
 
-    push(val) {
-        /*  PSEUDOCODE FOR PUSH
-            - This function accepts a value
-            - Create a new node using the value passed to the function
-            - If there is no head property on the list, set the head and tail to be the newly created node
-            - Otherwise set the next property on the tail to be the new node and set the tail property on the list to be the newly created node
-            - Increment the length by one
-            - Return the linked list
-        */
-        var newNode = new Node(val)
-        if(!this.head) {
-            this.head = newNode
-            this.tail = this.head
-        } 
-        else {
-            this.tail.next = newNode
-            this.tail = newNode
-        }
-        this.length++
-        return this
-    }
-
     pop() {
         /*  PSEUDOCODE FOR POP
             - If there are no nodes in the list, return undefined

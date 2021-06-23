@@ -1,8 +1,9 @@
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+        
 class Solution:
     # TC - O(n), SC - O(n)
     def isPalindrome(self, head: ListNode) -> bool:
@@ -28,7 +29,7 @@ class Solution:
         fast = head
         
         # 2 --> 3 --> 7 --> 3 --> 2
-       
+    
         # find middle element using the slow pointer
         while(fast != None and fast.next != None):
             slow = slow.next

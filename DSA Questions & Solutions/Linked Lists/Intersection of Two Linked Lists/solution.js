@@ -11,7 +11,7 @@
  * @param {ListNode} headB
  * @return {ListNode}
  */
- var getIntersectionNode = function(headA, headB) {
+var getIntersectionNode = function(headA, headB) {
     // Using hashmaps. TC - O(m + n), SC - 0(n)
     var seen = new Set();
     
