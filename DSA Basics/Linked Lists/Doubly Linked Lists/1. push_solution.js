@@ -30,7 +30,7 @@ class DoublyLinkedList {
         */
 
         var newNode = new Node(val)
-        if(this.length === 0) {
+        if(!this.head) {
             this.head = newNode
             this.tail = newNode
         }
