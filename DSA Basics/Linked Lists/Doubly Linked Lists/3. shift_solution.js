@@ -13,7 +13,7 @@ class DoublyLinkedList {
         this.length = 0
     }
 
-    pop() {
+    shift() {
         /* 
             - If there is no head, return undefined
             - Store the current tail in a variable to return it later
