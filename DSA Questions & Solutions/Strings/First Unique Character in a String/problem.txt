@@ -4,4 +4,7 @@ Example: Given the following strings...
 
 "abcabd", return 2
 "thedailybyte", return 1
+"leetcode", return 0
+"loveleetcode", return 2
 "developer", return 0
+"aabb", return -1
