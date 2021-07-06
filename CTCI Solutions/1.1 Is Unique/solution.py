@@ -1,4 +1,4 @@
-# Brute force solution
+# Brute force solution: T(C) - O(n-squared), SC - O(n)
 def is_unique(s):
     s = s.lower()
 
@@ -8,17 +8,34 @@ def is_unique(s):
                 return False
     return True
 
-# Optimal solution
+# Optimal solution: T(C) - O(n), S(C) - O(n)
+def is_unique(s):
+    s = s.lower()
+    seen = set()
+
+    for char in s:
+        if char in seen:
+            return False
+        else:
+            seen.add(char)
+    return True
+
+# Follow up solution: T(C) - O(nlogn), S(C) - O(n)
+def is_unique(s):
+    s = sorted(s.lower())
+
+    for i in range(0, len(s)-1):
+        if s[i] == s[i+1]:
+            return False
+    return True
+
+# Another optimized follow up solution: T(C) - O(n), S(C) - O(1)
 # def is_unique(s):
-#     s = s.lower()
-    
-#     for i1, char1 in enumerate(s):
-#         for i2, char2 in enumerate(s):
-#             print(char1, char2)
-#             if(i1 == i2):
-#                 continue
-#             if(char1 == char2):
-#                 return False
+#     s = sorted(s.lower())
+
+#     for i in range(0, len(s)-1):
+#         if s[i] == s[i+1]:
+#             return False
 #     return True
 
 
