@@ -1,0 +1,9 @@
+Write a function that reverses a string. The input string is given as an array of characters s.
+
+Example: Given the following array of strings...
+
+1: Input: s = ["h","e","l","l","o"]
+Output: ["o","l","l","e","h"]
+
+2: Input: s = ["H","a","n","n","a","h"]
+Output: ["h","a","n","n","a","H"]
