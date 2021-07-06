@@ -30,13 +30,17 @@ def is_unique(s):
     return True
 
 # Another optimized follow up solution: T(C) - O(n), S(C) - O(1)
-# def is_unique(s):
-#     s = sorted(s.lower())
-
-#     for i in range(0, len(s)-1):
-#         if s[i] == s[i+1]:
-#             return False
-#     return True
+def is_unique(s):
+    checker = 0
+    for i in range(len(s)):
+        index = ord(s[i])
+        if 65 <= index <= 90: # check capitalization
+            index += 32
+        value = (checker & ((1 << index)))
+        if value > 0:
+            return False
+        checker =  checker | (1 << index)
+    return True
 
 
 print(is_unique("heLlo")) # print false
