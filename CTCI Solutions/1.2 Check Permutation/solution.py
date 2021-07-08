@@ -25,7 +25,7 @@ def check_permutation(s1, s2):
             dict2[char] = 1
     
     for key in dict1:
-        if key not in dict1:
+        if key not in dict2:
             return False
         if dict1[key] != dict2[key]:
             return False
