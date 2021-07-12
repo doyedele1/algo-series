@@ -1,0 +1,18 @@
+This question is asked by Amazon. Given a string representing your stones and another string representing a list of jewels, 
+return the number of stones that you have that are also jewels.
+
+Example: Given the following jewels and stones...
+1. Input: jewels = "aA", stones = "aAAbbbb"
+Output: 3
+
+2. Input: jewels = "z", stones = "ZZ"
+Output: 0
+
+3. Input: jewels = "abc", stones = "ac"
+Output: 2
+
+4.Input: jewels = "Af", stones = "AaaddfFf"
+Output: 3
+
+5. Input: jewels = "AYOPD", stones = "ayopd"
+Output: 0
