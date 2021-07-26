@@ -32,10 +32,13 @@ function firstDuplicateOptimized(a) {
     return -1
 }
 
-// TC - O(n), SC - O(1)
+// TC - O(n), SC - O(1). Array not mutated
 function firstDuplicateOptimizedAgain(a) {
     let slow = a[0]
     let fast = a[a[0]]
+
+    slow = 1
+    fast = 2
 
     while (fast != slow) {
         slow = a[slow]
@@ -50,6 +53,6 @@ function firstDuplicateOptimizedAgain(a) {
     return slow
 }
 
-console.log(firstDuplicate([1,2,1,2,3,3]))
-console.log(firstDuplicate([2,1,3,5,3,2]))
-console.log(firstDuplicate([1,2,3,4,5,6]))
+// console.log(firstDuplicate([1,2,1,2,3,3]))
+// console.log(firstDuplicate([2,1,3,5,3,2]))
+// console.log(firstDuplicate([1,2,3,4,5,6]))
