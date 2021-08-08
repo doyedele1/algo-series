@@ -13,7 +13,7 @@ class BST {
 
     insert(data) {
 
-        /** PSEUDOCODE FOR INSERT
+        /* PSEUDOCODE FOR INSERT
             - Create a new node
             - Starting at the root
                 - If the root is null, set the root to the new node
@@ -27,7 +27,7 @@ class BST {
                         - If there is, move to that node and repeat these steps
                         - If there isn't, add that node as the left property
             - Return the entire tree
-        **/
+        */
 
         var newNode = new Node(data)
 
@@ -60,7 +60,7 @@ class BST {
 
     search(data) {
 
-        /** PSEUDOCODE FOR SEARCH 
+        /* PSEUDOCODE FOR SEARCH 
             - Starting at the root
                 -Check to see if the root is null
                     - If the root is null, return false
@@ -75,7 +75,7 @@ class BST {
                         - Check to see if there is a node to the left
                             - If there is, move to that node and repeat these steps
                             - If there is not, return false
-         **/
+        */
         if(!this.root) return false
 
         var current = this.root
