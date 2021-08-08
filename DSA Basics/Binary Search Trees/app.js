@@ -30,11 +30,14 @@ class BST {
         **/
 
         var newNode = new Node(data)
+
         if(!this.root) {
             this.root = newNode
             return this
         }
+
         var current = this.root;
+        
         while(true) {
             if(data === current.data) return undefined
 
@@ -44,8 +47,7 @@ class BST {
                     return this
                 }
                 current = current.right
-            }
-            else {
+            } else {
                 if(!current.left) {
                     current.left = newNode
                     return this
@@ -75,14 +77,16 @@ class BST {
                             - If there is not, return false
          **/
         if(!this.root) return false
+
         var current = this.root
+
         while(true) {
             if(data === current.data) return true
+
             if(data > current.data) {
                 if(!current.right) return false
                 current = current.right
-            }
-            else {
+            } else {
                 if(!current.left) return false
                 current = current.left
             }
