@@ -74,9 +74,9 @@ class BST {
         let values = []
         let current = this.root
         function helper(node) {
-            if(node.left) helper(node.left)
+            node.left && helper(node.left)
             values.push(node.data)
-            if(node.right) helper(node.right)
+            node.right && helper(node.right)
         }
         helper(current)
         return values
