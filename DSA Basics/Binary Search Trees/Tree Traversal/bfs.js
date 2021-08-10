@@ -14,7 +14,7 @@ class BST {
     BFS() {
         /* 
             Iterative steps
-            - Create a queue and a variable to store the values of node visited
+            - Create a queue and a variable to store the values of nodes visited
             - Place the root node in the queue
             - Loop as long as there is anything in the queue
                 - Dequeue a node from the queue and push the value of the node into the variable that stores the nodes
