@@ -1,18 +1,17 @@
 let maxSubArray = function(nums) {
     // Naive solution
-    //     let maxSum = 0;
+    // let maxSum = 0;
 
-    //     for(let i = 0; i < nums.length; i++) {
-    //         let sum = 0;
-    //         for(let j = i; j < nums.length; j++) {
-    //             // console.log(nums[i],nums[j]);
-    //             sum += nums[j];
-    //             // console.log(total);
-    //             maxSum = Math.max(maxSum, sum);
-    //         }
+    // for(let i = 0; i < nums.length; i++) {
+    //     let sum = 0;
+    //     for(let j = i; j < nums.length; j++) {
+    //         // console.log(nums[i],nums[j]);
+    //         sum += nums[j];
+    //         maxSum = Math.max(maxSum, sum);
     //     }
-    //     return maxSum;
-    
+    // }
+    // return maxSum;
+
     // Optimal solution - Kadane's algorithm
     let maxSum = maxAtEveryIndex = nums[0];
     
