@@ -17,9 +17,9 @@ class Solution:
         for i in range(len(nums)):
             match = target - nums[i]
             if(nums[i] in complement_dict):
-                return [complement_dict[nums[i]], i]
+                return [complement_dict[match], i]
             else:
-                complement_dict[match] = i
+                complement_dict[nums[i]] = i
 
 # Explanation:
 # [2,7,11,15], target = 9

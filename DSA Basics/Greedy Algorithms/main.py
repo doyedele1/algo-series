@@ -13,10 +13,4 @@
         - Sort the items by the ratio in descending order
         - Take the item with the highest ratio and add them until we can't add the next item as whole
         - At the end, add the next item as much (fraction) as we can
-
-    Algorithm Greedy(a, n):
-    for i = 1 to n do:
-        x = select(a)
-        if feasible(x) then:
-            solution = solution + x
 '''
