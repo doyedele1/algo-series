@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+    def isValidBST(self, root) -> bool:
         def validate(node, minVal, maxVal):
             if not node:
                 return True
@@ -19,4 +19,6 @@ class Solution:
             return (validate(node.left, minVal, node.val) and validate(node.right, node.val, maxVal))
         
         return validate(root, float("-inf"), float("inf"))
-        
+
+    # TC - O(n)
+    # SC - O(n)

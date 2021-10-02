@@ -16,7 +16,6 @@ class Solution:
             right = self.invertTree(root.right)
 
             # swap
-            root.left = right
-            root.right = left
+            root.left, root.right = right, left
 
             return root
