@@ -1,4 +1,4 @@
-This question is asked by Facebook. Given a string s, return whether or not it forms a palindrome considering only alohanumeric characters and ignoring cases.
+This question is asked by Facebook. Given a string s, return whether or not it forms a palindrome considering only alphanumeric characters and ignoring cases.
 
 Example: Given the following strings...
 
