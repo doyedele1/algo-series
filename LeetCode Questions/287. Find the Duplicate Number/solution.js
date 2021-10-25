@@ -5,6 +5,7 @@ function firstDuplicate(a) {
             if(a[i] == a[j]) return a[i]
         }
     }
+    return -1
 }
 
 // TC - O(n), SC - O(n)
