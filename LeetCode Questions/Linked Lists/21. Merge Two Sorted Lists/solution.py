@@ -6,15 +6,19 @@ class ListNode:
         
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
-        
-# Initialize a new node
-# And save your new node in a temporary node
-# Loop through the two lists until both have null values
-    # if li < l2, add l1 to the temp node and move l1 pointer
-    # else add l2 and move l2 pointer
-    # move your temp node pointer 
-# If l2 is not null, add l2 to the temp node
-# If l1 is not null, add l1 to the temp node
+
+        '''
+            Explanation:
+                # Initialize a new node
+                # And save your new node in a temporary node
+                # Loop through the two lists until both have null values
+                    # if l1 < l2, add l1 to the temp node and move l1 pointer
+                    # else add l2 and move l2 pointer
+                    # move your temp node pointer 
+                # If l2 is not null, add l2 to the temp node
+                # If l1 is not null, add l1 to the temp node
+        '''
+    
 
         newNode = ListNode(-1)
         temp = newNode
@@ -28,13 +32,9 @@ class Solution:
                 l2 = l2.next
             temp = temp.next
         
-        
         if(l2 != None):
             temp.next = l2
+
         else: temp.next = l1
-        # print(temp)
         
         return newNode.next
-        
-        
-        
