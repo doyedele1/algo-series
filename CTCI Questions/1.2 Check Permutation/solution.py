@@ -8,7 +8,7 @@ def check_permutation(s1, s2):
 
     return s1 == s2
 
-# Optimal solution: T(C) - O(n), S(C) - O(n)
+# Optimal solution: T(C) - O(n+m), S(C) - O(n+m)
 def check_permutation(s1, s2):
     dict1 = {}
     dict2 = {}
