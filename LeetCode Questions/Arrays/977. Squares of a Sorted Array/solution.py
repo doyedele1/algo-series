@@ -10,8 +10,7 @@ class Solution:
 class Solution:
     def sortedSquares(self, nums):
         left = 0
-        right = len(nums) - 1
-        res_idx = len(nums) - 1
+        right = res_idx = len(nums) - 1
         result = [0 for num in nums]
         # print(result)
 
