@@ -19,9 +19,9 @@ function minSubArrayLen(nums, sum) {
         // if current window adds up to at least the sum given then
         // we can shrink the window 
         else if(total >= sum){
-        minLen = Math.min(minLen, end-start);
-        total -= nums[start];
-        start++;
+            minLen = Math.min(minLen, end-start);
+            total -= nums[start];
+            start++;
         }
         
         // current total less than required total but we reach the end, need this or else we'll be in an infinite loop 
