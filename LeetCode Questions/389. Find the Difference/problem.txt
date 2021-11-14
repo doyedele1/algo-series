@@ -4,6 +4,10 @@ Note: You may assume that at most one additional character can be added to t.
 
 Example: Given the following strings...
 
-s = "foobar", t = "barfoot", return 't'
-s = "ide", t = "idea", return 'a'
-s = "coding", t "ingcod", return ''
+s = "foobar", t = "barfoot", return "t"
+s = "ide", t = "idea", return "a"
+s = "coding", t "ingcod", return ""
+s = "abcd", t = "abcde", return "e"
+s = "", t = "y", return "y"
+s = "a", t = "aa", return "a"
+s = "ae", t = "aea", return "a"

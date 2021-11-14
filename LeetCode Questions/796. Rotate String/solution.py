@@ -6,6 +6,6 @@ class Solution:
             return False
         
         temp = s + s
-        if (temp.count(goal) > 0):
+        if(temp.count(goal) > 0):
             return True
         return False
