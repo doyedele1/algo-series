@@ -1,0 +1,17 @@
+Given the root of a binary tree, return the postorder traversal of its nodes' values.
+
+Examples:
+1. Input: root = [1,null,2,3]
+Output: [3,2,1]
+
+2. Input: root = []
+Output: []
+
+3. Input: root = [1]
+Output: [1]
+
+4. Input: root = [1,2]
+Output: [2,1]
+
+5. Input: root = [1,null,2]
+Output: [2,1]
