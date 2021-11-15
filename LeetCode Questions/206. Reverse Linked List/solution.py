@@ -6,14 +6,14 @@
 class Solution:
     def reverseList(self, head):
         # Iterative Solution
-        previous, current = None, head
-        while current:
-            next = current.next
-            current.next = previous
-            previous = current
-            current = next
+        # previous, current = None, head
+        # while current:
+        #     next = current.next
+        #     current.next = previous
+        #     previous = current
+        #     current = next
             
-        return previous
+        # return previous
 
         # Recursive solution to reverse a linked list
         if head is None or head.next is None:

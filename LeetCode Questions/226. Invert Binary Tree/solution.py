@@ -7,9 +7,10 @@ class TreeNode:
         
 class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:
+        
         if root is None:
             return root
-        
+    
         #traverse
         left = self.invertTree(root.left)
         right = self.invertTree(root.right)
