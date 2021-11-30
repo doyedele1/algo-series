@@ -6,7 +6,9 @@ class Solution:
             if char in dict:
                 dict[char] += 1
             else: dict[char] = 1
-        print(dict)
+        
+        # dict = collections.Counter(s)
+        # print(dict)
                 
         for index, char in enumerate(s):
             if dict[char] == 1:
