@@ -12,3 +12,5 @@ class Solution:
             if dict[char] == 1:
                 return index
         return -1
+
+        # TC - O(n), SC - O(1)

@@ -6,7 +6,7 @@ def dfs(Node start):
     seen = set()
 
     stack.push(start)
-    
+
     while stack:
         curr = stack.pop() # pull a node
 
