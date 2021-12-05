@@ -6,16 +6,16 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root) -> bool:
-        def validate(node, minVal, maxVal):
-            if node == None:
-                return True
-            
-            if node.val <= minVal or node.val >= maxVal:
-                return False
-            
-            return (validate(node.left, minVal, node.val) and validate(node.right, node.val, maxVal))
+        return self.validate(root, float("-inf"), float("inf"))
         
-        return validate(root, float("-inf"), float("inf"))
+    def validate(self, node, min_value, max_value):
+        if node == None:
+            return True
+
+        if (min_value != None and node.val <= min_value) or (max_value != None and node.val >= max_value):
+            return False
+
+        return self.validate(node.left, min_value, node.val) and self.validate(node.right, node.val, max_value)
 
     # TC - O(n)
     # SC - O(n)

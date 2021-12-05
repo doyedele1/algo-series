@@ -1,4 +1,4 @@
-let isAnagram = function(s, t) {
+let validAnagram = function(s, t) {
     if(s.length !== t.length) {
         return false
     }
@@ -27,7 +27,7 @@ let isAnagram = function(s, t) {
 };
     
 
-isAnagram("anagram","nagaram") // return true
-isAnagram("cat", "tac") // return true
-isAnagram("listen", "silent") // return true
-isAnagram("program", "function") // return false
+validAnagram("anagram","nagaram") // return true
+validAnagram("cat", "tac") // return true
+validAnagram("listen", "silent") // return true
+validAnagram("program", "function") // return false
