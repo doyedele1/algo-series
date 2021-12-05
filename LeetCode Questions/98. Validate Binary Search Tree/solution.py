@@ -4,6 +4,8 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+# Recursive Traversal with Valid Range
 class Solution:
     def isValidBST(self, root) -> bool:
         return self.validate(root, float("-inf"), float("inf"))
@@ -19,3 +21,17 @@ class Solution:
 
     # TC - O(n)
     # SC - O(n)
+
+# Recursive Inorder Traversal
+class Solution:
+    def isValidBST(self, root) -> bool:
+    
+        def inorder(root):
+            if root == None: return True
+            if not inorder(root.left): return False
+            if root.val <= self.prev: return False
+            self.prev = root.val
+            return inorder(root.right)
+    
+        self.prev = float("-inf")
+        return inorder(root)
