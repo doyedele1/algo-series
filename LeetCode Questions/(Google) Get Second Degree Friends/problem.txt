@@ -1,0 +1,11 @@
+Given a graph and a user, obtain the all the 2nd degree friends of that user
+
+Example:
+Graph = {
+   "A": ["B","C"],
+   "B": ["D","E","F"],
+   "C": ["G"],
+   "D": ["H"]
+   “E”: []
+}, User: "A"
+Output: ["D","E","F","G"]
