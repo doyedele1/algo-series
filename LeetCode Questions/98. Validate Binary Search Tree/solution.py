@@ -14,7 +14,7 @@ class Solution:
         if node == None:
             return True
 
-        if (min_value != None and node.val <= min_value) or (max_value != None and node.val >= max_value):
+        if node.val <= min_value or node.val >= max_value:
             return False
 
         return self.validate(node.left, min_value, node.val) and self.validate(node.right, node.val, max_value)
