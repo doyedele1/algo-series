@@ -18,15 +18,14 @@ class Solution:
         
         while q:
             curr = q.popleft()
-            print(curr)
             
-            if curr.val >= low and curr.val <= high:
+            if low <= curr.val <= high:
                 sum += curr.val
                 
-            if curr.left != None and curr.val > low:
+            if curr.left and low <= curr.val:
                 q.append(curr.left)
                 
-            if curr.right != None and curr.val < high:
+            if curr.right and high >= curr.val:
                 q.append(curr.right)
-        
+                
         return sum
