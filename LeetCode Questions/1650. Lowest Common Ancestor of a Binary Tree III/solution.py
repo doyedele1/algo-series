@@ -6,6 +6,13 @@ class Node:
         self.right = None
         self.parent = None
 
+'''
+    Follow up questions to ask the interviewer --> 
+    1. Are all Node values unique?
+    2. Can Node p be not equal to Node q?
+    3. Can both Nodes p and q not exist in the tree?
+'''
+
 class Solution:
     def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
         current_p = p
