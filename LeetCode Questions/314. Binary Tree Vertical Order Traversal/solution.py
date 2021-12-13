@@ -8,9 +8,9 @@ class TreeNode:
         self.right = right
         
 class Solution:
-    def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         res = []
-        if root == None: return res
+        if root == None: return []
         cache = {}
         self.min_col = 0
         self.max_col = 0
@@ -27,7 +27,7 @@ class Solution:
         dfs(root, 0, 0)
             
         for c in range(self.min_col, self.max_col + 1):
-            col = sorted(cache[c], key = lambda i: (i[0], i[1]))
+            col = sorted(cache[c], key = lambda i: (i[0]))
             col_sorted = []
             for p in col:
                 col_sorted.append(p[1])
