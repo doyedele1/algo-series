@@ -24,10 +24,12 @@ class Solution:
         return search(root, p, q)
 
     '''
-    Explanation:
-    - Perform a postorder traversal on the tree and assign true and false boolean variables to current node that doesn't have the p and q
-    - If after our traversal, any of the nodes have at least two true variables, then it means the current node is the lowest common ancestor we are looking for.
-    - Remember, a node can be a lca of itself
+        Explanation:
+        - Perform a postorder traversal on the tree and assign true and false boolean variables to current node that doesn't have the p and q
+        - If after our traversal, any of the nodes have at least two true variables, then it means the current node is the lowest common ancestor we are looking for.
+        - Remember, a node can be a lca of itself
+        
+        
         T(C) - O(n)
         S(C) - O(n)
     '''
