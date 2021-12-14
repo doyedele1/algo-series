@@ -26,6 +26,5 @@ class Solution {
 //  x = 12 // 10 = 1
 //  result = 32
 //  prev = 32
-        
     }
 }
