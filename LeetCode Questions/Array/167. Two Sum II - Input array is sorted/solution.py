@@ -1,14 +1,17 @@
+from typing import List
+
 class Solution:
-    def twoSum(self, numbers, target):
-        i = 0
-        j = len(numbers) - 1
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        left = 0
+        right = len(numbers) - 1
         
-        while(i <= j):
-            sum = numbers[i] + numbers[j]
+        while left < right:
+            sum = numbers[left] + numbers[right]
             
-            if(sum > target):
-                j -= 1
-            elif(sum < target):
-                i += 1
-            else:
-                return [i+1, j+1]
+            if sum == target:
+                return [left + 1, right + 1]
+            elif sum > target:
+                right -= 1
+            else: left += 1
+                
+        
