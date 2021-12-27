@@ -1,0 +1,1 @@
+In a sorted array, find sum of two numbers closest to k
