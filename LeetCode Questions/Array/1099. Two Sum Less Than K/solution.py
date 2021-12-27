@@ -11,6 +11,7 @@ class Solution:
         
         while left < right:
             sum = nums[left] + nums[right]
+            
             if sum < k:
                 res = max(sum, res)
                 left += 1
