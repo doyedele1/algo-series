@@ -1,11 +1,16 @@
 This question is asked by Microsoft. Given an array of strings, return the longest common prefix that is shared amongst all strings.
+If there is no common prefix, return an empty string "".
 
 Note: You may assume all strings only contain lowercase alphabetical characters.
 
-Example: Given the following arrays...
+Examples:
 
-["colorado", "color", "cold"], return "col"
+1. ["colorado", "color", "cold"], return "col"
 
-["a", "b", "c"], return ""
+2. ["a", "b", "c"], return ""
 
-["spot", "spotty", "spotted"], return "spot"
+3. ["spot", "spotty", "spotted"], return "spot"
+
+4. ["flower","flow","flight"], return "fl"
+
+5. ["dog","racecar","car"], return ""
