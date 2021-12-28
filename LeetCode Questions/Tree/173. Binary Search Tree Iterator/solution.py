@@ -1,6 +1,20 @@
 # Definition for a binary tree node.
 from typing import Optional
 
+''' FIRST SOLUTION
+        Explanation:
+            Time Complexity: 
+                For initializing the new object of the class- O(n) where n is the number of nodes in the BST
+                For calling the function next() - O(1)
+                For calling the function hasNext() - O(1)
+
+            Space Complexity:
+                For initializing the new object of the class- O(n) since we created a new array to store all the nodes in the BST
+                For calling the function next() - O(n) since the new array is used
+                For calling the function hasNext() - O(n) since the new array is used
+                If the BST is balanced, the space complexity is O(h) where h is the height of the BST and the height of a balanced BST is log(n)
+'''
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -34,23 +48,31 @@ class BSTIterator:
     def hasNext(self) -> bool:
         return self.index + 1 < len(self.arr)
         
+    
+# MOST OPTIMAL SOLUTION
+class BSTIterator:
+    def __init__(self, root: Optional[TreeNode]):
+        self.stack = []
+        self.partialInorder(root)
         
-    '''
-        Explanation:
-            Time Complexity: 
-                For initializing the new object of the class- O(n) where n is the number of nodes in the BST
-                For calling the function next() - O(1)
-                For calling the function hasNext() - O(1)
+    def partialInorder(self, root):
+        while root != None:
+            self.stack.append(root)
+            root = root.left
+        
+    def next(self) -> int:
+        top = self.stack.pop()
+        self.partialInorder(top.right)
+        return top.val
+        
 
-            Space Complexity:
-                For initializing the new object of the class- O(n) since we created a new array to store all the nodes in the BST
-                For calling the function next() - O(n) since the new array is used
-                For calling the function hasNext() - O(n) since the new array is used
-                If the BST is balanced, the space complexity is O(h) where h is the height of the BST and the height of a balanced BST is log(n)
+    def hasNext(self) -> bool:
+        return len(self.stack) > 0
+    
     '''
-    
-    
-
+        TC - O(1) for both next and hasNext methods
+        SC - O(h) where h is the height of the BST
+    '''
 
 # Your BSTIterator object will be instantiated and called as such:
 # obj = BSTIterator(root)
