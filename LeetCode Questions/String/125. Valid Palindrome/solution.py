@@ -1,5 +1,5 @@
-# TC - O(2n), SC - O(n)
-def valid_palindrome1(s):
+# Naive solution: TC - O(2n), SC - O(n)
+def isPalindrome1(s):
     s = s.lower()
     new_str = ''
     for i in s:
@@ -12,7 +12,7 @@ def valid_palindrome1(s):
     return False
 
 # Another solution
-def valid_palindrome(s):
+def isPalindrome(s):
     s = s.lower()
     new_str = ''
     for i in s:
@@ -30,29 +30,34 @@ def valid_palindrome(s):
 
     return True
 
-
-def check_alphanumeric(self, c):
-    if (ord(c) >= 97 and ord(c) <= 122) or (ord(c) >= 65 and ord(c) <= 90) or (ord(c) >= 48 and ord(c) <= 57):
-        return True
-    return False
-
-def isPalindrome(self, s: str) -> bool:
-    i = 0
-    j = len(s) - 1
-
-    while (i < j):
-        while not self.check_alphanumeric(s[i]) and i < j:
-            i += 1
-        while not self.check_alphanumeric(s[j]) and i < j:
-            j -= 1
-        if s[i] == s[j] or s[i].lower() == s[j].lower():
-            i += 1
-            j -= 1
-        else:
-            return False
-    return True
+# Another solution
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        i = 0
+        j = len(s) - 1
         
-
+        while i < j:
+            while not self.checkAlphanumeric(s[i]) and i < j:
+                i += 1
+            while not self.checkAlphanumeric(s[j]) and i < j:
+                j -= 1
+            if s[i] == s[j] or s[i].lower() == s[j].lower():
+                i += 1
+                j -= 1
+            else: return False
+        return True
+        
+        
+    def checkAlphanumeric(self, char):
+        if (ord(char) >= 97 and ord(char) <= 122) or (ord(char) >= 65 and ord(char) <= 90) or (ord(char) >= 48 and ord(char) <= 57):
+            return True
+        return False
+    
+    
+    '''
+        TC - O(n) where n is the length of the string
+        SC - O(1)
+    '''
 
 # print(valid_palindrome("level"))
 # print(valid_palindrome("algorithm"))
