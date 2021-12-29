@@ -1,22 +1,26 @@
+import collections
+
 class Solution:
     def isValid(self, s: str) -> bool:
+        stack = collections.deque()
         valid = True
-        stack = []
         
         for char in s:
             if char == "(" or char == "[" or char == "{":
                 stack.append(char)
             elif char == ")":
-                if not stack or stack.pop() != "(":
+                if len(stack) == 0 or stack.pop() != "(":
                     valid = False
                 else: valid
             elif char == "]":
-                if not stack or stack.pop() != "[":
+                if len(stack) == 0 or stack.pop() != "[":
                     valid = False
                 else: valid
             elif char == "}":
-                if not stack or stack.pop() != "{":
+                if len(stack) == 0 or stack.pop() != "{":
                     valid = False
                 else: valid
-        if valid and not stack: return True
-        else: return False
+                    
+        if valid and len(stack) == 0:
+            return True
+        return False
