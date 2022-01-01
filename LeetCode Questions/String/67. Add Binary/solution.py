@@ -9,7 +9,7 @@ def add_two_binary_numbers(num1, num2):
 # print(add_two_binary_numbers("1", "0"))
 
 def addBinary(self, a: str, b: str) -> str:
-	result = ''
+	res = ''
 	if len(a) > len(b):
 		length = len(a)
 	elif len(b) > len(a):
@@ -28,13 +28,13 @@ def addBinary(self, a: str, b: str) -> str:
 			carry = 0
 
 		if sum == 0:
-			result += '0'
+			res += '0'
 		elif sum == 1:
-			result += '1'
+			res += '1'
 		elif sum == 2:
-			result += '0'
+			res += '0'
 			carry = 1
 		elif sum == 3:
-			result += '1'
+			res += '1'
 			carry = 1
-	return str(int(result[::-1]))
+	return str(int(res[::-1]))
