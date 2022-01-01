@@ -4,24 +4,23 @@ class Solution:
         return str(int(num1) + int(num2))
     
         # Another solution - TC - O(max(n,m)), SC - O(max(n,m))
-        n, m = len(num1), len(num2)
-        a, b = n-1, m-1
+        m, n = len(num1) - 1, len(num2) - 1
         carry = 0
         res = ""
         
-        while a >=0 or b >= 0:
-            i,j = 0, 0
-            if a >= 0:
-                i = ord(nums1[a])-48
-                a -= 1
-            if b >= 0:
-                j = ord(num2[b])-48
-                b-=1
-            temp = i+j+carry
+        while m >=0 or n >= 0:
+            i, j = 0, 0
+            if m >= 0:
+                i = ord(nums1[m]) - ord('0')
+                m -= 1
+            if n >= 0:
+                j = ord(num2[n]) - ord('0')
+                n -= 1
+            temp = (i + j + carry) % 10
             if temp > 9:
                 carry = 1
             else: carry = 0
-            res = str(temp[-1]) + res
+            res += str(temp)
         
-        if carry: res = "1" + res
+        if carry == 1: res += "1"
         return res
