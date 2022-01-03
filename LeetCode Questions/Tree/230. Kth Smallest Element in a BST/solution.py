@@ -4,7 +4,7 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
-        
+
 from typing import Optional
 
 
@@ -26,3 +26,9 @@ class Solution:
         helper(root)
         
         return self.k_smallest
+
+
+        '''
+            TC - O(n)
+            SC - memeory used by the recursion stack- O(n) for a skewed tree, O(log n) for a complete balanced tree
+        '''
