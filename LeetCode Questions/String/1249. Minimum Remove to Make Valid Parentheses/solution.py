@@ -1,41 +1,48 @@
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
+        # Solution with the stack
+        stack = []
         s = list(s)
-        open_ = 0
         
+        for i, char in enumerate(s):
+            if char == "(":
+                stack.append(i)
+            elif char == ")":
+                if stack:
+                    stack.pop()
+                else:
+                    s[i] = ""
+        
+        while stack:
+            s[stack.pop()] = ""
+        
+        return "".join(s)
+    
+    
+    
+    
+    
+        # Non-stack solution
+        '''
+        s = list(s)
+        
+        open_ = 0
         for i in range(len(s)):
             if s[i] == "(":
-                open += 1
+                open_ += 1
             elif s[i] == ")":
-                if open:
-                    open -= 1
+                if open_:
+                    open_ -= 1
                 else: s[i] = ""
         
         close = 0
         for i in reversed(range(len(s))):
             if s[i] == ")":
                 close += 1
-            elif s
-                
-#         stack = []
-#         str_arr = []
+            elif s[i] == "(":
+                if close:
+                    close -= 1
+                else: s[i] = ""
         
-#         for i, char in enumerate(s):
-#             if char == "(":
-#                 stack.append(char)
-#             elif char == ")":
-#                 if len(stack) != 0:
-#                     stack.pop()
-#                 else:
-#                     s[i] = ""
-        
-#         for ind in stack:
-#             str_arr[ind] == ""
-        
-#         return "".join(str_arr)
-
-    
-    
-            
-                
-        
+        return "".join(s)
+        '''
