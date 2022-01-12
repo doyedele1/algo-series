@@ -52,7 +52,7 @@ class Solution:
             
             
             - TC - O(n + p) where n is the number of nodes in the graph and p is the number of prerequisites
-            
+            - SC - O(|E| + |V|) for the graph we built. The pre_map and visited_set consume 2 |V| space. The recursive call stack in the worst case would pile up |V| times. Hence the SC - O(|E| + 4|V|) = O(|E| + |V|)
             
             - Detecting a loop
                 - We will use a set that will contain the list of courses we visit along our DFS
