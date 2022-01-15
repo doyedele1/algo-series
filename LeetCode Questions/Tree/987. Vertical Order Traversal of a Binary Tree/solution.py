@@ -40,8 +40,11 @@ class Solution:
             Explanation:
                 - We will use a dfs preorder traversal to traverse the tree
                     - dfs(node, row, col)
-                - We will initialize an empty cache that stores the column of the node as key and the row and value of the node as value. Key-value pair
-                    - If the column is not in the cache, we will add it to the cache
-                    - If the column is in the cache, we will append the row and value of the node to the cache of specific key (or column)
-                - After the dfs helper function terminates, we will need to get the min_column and max_column from the cache that was created
+                    - Start traversal from the root
+                    - We will initialize an empty cache that stores the column of the node as key and the row and value of the node as value. Key-value pair
+                        - If the column is not in the cache, we will add it to the cache
+                        - If the column is in the cache, we will append the row and value of the node to the cache of specific key (or column)
+                    - We will keep track of the smallest and largest columns in the traversal
+                - After the dfs helper function terminates, we will loop through from the min_column and max_column, we get the elements corresponding to each column in the cache
+                - Since we have more than one value of column in the cache, we need to sort the values in the cache by row and then by value
         '''
