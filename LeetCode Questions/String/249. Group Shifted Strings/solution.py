@@ -1,8 +1,17 @@
+from collections import defaultdict
 from typing import List
 
 class Solution:
     def groupStrings(self, strings: List[str]) -> List[List[str]]:
         
+        result = defaultdict(list)
+        
+        for string in strings:
+            key = ""
+            for ch in range(1, len(string)):
+                key += str(((ord(string[ch]) - ord(string[ch-1])) + ord('a')) % 26)
+            result[key].append(string)
+        return result.values()
         
         
         '''
@@ -18,4 +27,8 @@ class Solution:
                     - Concept of rotation (abc), c + 2
                         - (Length of string + index of c + how much are we moving) % length of string
                         - (3 + 2 + 2) % 3 = 1. Index 1 which is b
+
+
+                TC - O(n * k) where n is the length of the input strings and k is the maximum length of a string in strings
+                SC - O(n * k). Maximum number of strings stored in the dictionary and each string takes at most O(k) space
         '''
