@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
         pre_map = { c: [] for c in range(numCourses) }
@@ -19,14 +21,14 @@ class Solution:
             
             cycle.add(course)
             for pre in pre_map[course]:
-                if dfs(pre) == False: return False
-                cycle.remove(course)
-                visit.add(course)
-                res.append(course)
-                return True
+                if not dfs(pre): return False
+            cycle.remove(course)
+            visit.add(course)
+            res.append(course)
+            return True
             
         for course in range(numCourses):
-            if dfs(course) == False: return []
+            if not dfs(course): return []
         return res
         
 '''
