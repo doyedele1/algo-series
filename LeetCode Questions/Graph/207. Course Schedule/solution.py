@@ -6,8 +6,7 @@ class Solution:
         pre_map = { i: [] for i in range(numCourses) }
         for course, pre in prerequisites:
             pre_map[course].append(pre)
-            
-            
+    
         # visit_set that includes all courses along the curr DFS path
         visit_set = set()
         def dfs(course):
