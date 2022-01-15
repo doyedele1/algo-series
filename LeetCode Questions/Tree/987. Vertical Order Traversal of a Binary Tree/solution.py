@@ -10,13 +10,14 @@ class TreeNode:
 class Solution:
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
         res = []
-        if root == None: return res
         cache = {}
         self.min_col = 0
         self.max_col = 0
+
+        if root == None: return res
         
         def dfs(node, row, col):
-            if node == None: return None
+            if node == None: return
             if col in cache: cache[col].append([row, node.val])
             else: cache[col] = [[row, node.val]]
             self.min_col = min(self.min_col, col)
@@ -27,7 +28,7 @@ class Solution:
         dfs(root, 0, 0)
             
         for c in range(self.min_col, self.max_col + 1):
-            col = sorted(cache[c], key = lambda i: (i[0], i[1]))
+            col = sorted(cache[c], key = lambda i: (i[0], i[1])) # sort by row and by values if row numbers are the same
             col_sorted = []
             for p in col:
                 col_sorted.append(p[1])
