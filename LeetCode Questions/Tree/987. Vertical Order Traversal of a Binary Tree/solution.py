@@ -48,4 +48,12 @@ class Solution:
                     - We will keep track of the smallest and largest columns in the traversal
                 - After the dfs helper function terminates, we will loop through from the min_column and max_column, we get the elements corresponding to each column in the cache
                 - Since we have more than one value of column in the cache, we need to sort the values in the cache by row and then by value
+
+                TC - O(n logn).
+                    - Traverse the input tree using dfs takes O(n) time
+                    - Sorting the cache takes O(n logn) time
+
+                SC - O(n)
+                    - We have a cache that contains coordinates of each node. The size of the cache is O(n)
+                    - The DFS approach takes O(n) space in the recursion stack
         '''
