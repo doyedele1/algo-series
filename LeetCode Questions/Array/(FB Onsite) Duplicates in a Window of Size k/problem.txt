@@ -1,0 +1,8 @@
+Given an array and a window size k, return true or false if there are any duplicates within the window.
+
+Examples: 
+1. arr = [3, 4, 1, 4, 5, 7, 2], k = 3
+Return True
+
+2. arr = [3, 4, 1, 9, 5, 7, 2], k = 3
+Return False
