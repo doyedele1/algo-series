@@ -33,6 +33,15 @@ class Solution:
 
 '''
     Explanation:
+        # Brute-force solution:
+            - Find out all possible permutations formed by the numbers in the given array
+            - Find out which is larger than the given one
+
+            - TC - O(n!) for total possible permutations
+            - SC - O(n) since an array is used to store the permutations
+
+
+        # Most optimal approach - Single Pass Approach
         Pattern to look for
                 - If we have input [1,1,5,4,6], res = [1,1,5,6,4]
                 - If we have input array [1,1,5,4,1], res = [1,4,1,1,5]
@@ -44,6 +53,6 @@ class Solution:
         3. Rearrange the numbers to make the remaining part minimum. We could sort or reverse the remaining part
         4. We then get the next permutation
 
-        T(C) - O(n)
-        S(C) - O(1)
+        TC - O(n)
+        SC - O(1)
 '''
