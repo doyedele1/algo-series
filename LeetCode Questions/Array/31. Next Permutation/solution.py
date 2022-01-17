@@ -52,8 +52,8 @@ class Solution:
         3. Rearrange the numbers to make the remaining part minimum. We could sort or reverse the remaining part
         4. We then get the next permutation
 
-        TC - O(n)
-        SC - O(1)
+        TC - O(n) where n is the size of the array
+        SC - O(1) as we are not using any extra space
 
         1 1 5 4 6 --> 1 1 5 6 4
         1 1 5 4 1 --> 1 4 1 1 5
