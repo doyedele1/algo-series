@@ -19,13 +19,11 @@ class Solution:
             
         self.reverse(nums, i+1)
             
-            
     def swap(self, nums, i, j):
         nums[i], nums[j] = nums[j], nums[i]
 
     def reverse(self, nums, start):
         end = len(nums) - 1
-
         while start < end:
             self.swap(nums, start, end)
             start += 1
@@ -43,16 +41,19 @@ class Solution:
 
         # Most optimal approach - Single Pass Approach
         Pattern to look for
-                - If we have input [1,1,5,4,6], res = [1,1,5,6,4]
-                - If we have input array [1,1,5,4,1], res = [1,4,1,1,5]
-                - Here, we can observe that, looking at the array from behind, anytime our number in array decreses is where we can get the next permutation
-        Hence, the following steps will be taken to get our output
-        1. Find the point of change
-        2. Find the number for substitution, which is going to be the next highest number in the remaining array
-            - Then, swap the numbers. Point of change and next highest number in the remaining array
+            - If we have input [1,1,5,4,6], res = [1,1,5,6,4]
+            - If we have input array [1,1,5,4,1], res = [1,4,1,1,5]
+            - Here, we can observe that, looking at the array from behind, anytime our number in array decreases is where we can get the next permutation
+        Hence, the following steps will be taken to get our output for input array [1,1,5,4,1]
+        1. Find the point of change = 1
+        2. Find the number for substitution to the right, which is going to be the next highest number after the point of change number in the remaining array = 4
+            - Then, swap the numbers - Point of change and next highest number in the remaining array --> [1,4,5,1,1]
         3. Rearrange the numbers to make the remaining part minimum. We could sort or reverse the remaining part
         4. We then get the next permutation
 
         TC - O(n)
         SC - O(1)
+
+        1 1 5 4 6 --> 1 1 5 6 4
+        1 1 5 4 1 --> 1 4 1 1 5
 '''
