@@ -7,6 +7,8 @@ class TreeNode:
         
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        self.ans = None
+        
         def search(node, p, q):
             if node == None:
                 return None
@@ -20,16 +22,10 @@ class Solution:
                 return self.ans
             return leftSearch or rightSearch or current
         
-        self.ans = None
         return search(root, p, q)
-
-    '''
-        Explanation:
-        - Perform a postorder traversal on the tree and assign true and false boolean variables to current node that doesn't have the p and q
-        - If after our traversal, any of the nodes have at least two true variables, then it means the current node is the lowest common ancestor we are looking for.
-        - Remember, a node can be a lca of itself
-        
-        
-        T(C) - O(n)
-        S(C) - O(n)
-    '''
+    
+    
+        '''
+            TC - O(n) where n is the number of nodes in the binary tree
+            SC - O(n) because the maximum amount of space utilized by the recursion stack would be n where n could be the height of a skewed binary tree
+        '''
