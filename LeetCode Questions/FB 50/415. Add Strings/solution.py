@@ -11,7 +11,7 @@ class Solution:
         while m >=0 or n >= 0:
             i, j = 0, 0
             if m >= 0:
-                i = ord(nums1[m]) - ord('0')
+                i = ord(nums1[m]) - ord('0') # 0 --> 48
                 m -= 1
             if n >= 0:
                 j = ord(num2[n]) - ord('0')
