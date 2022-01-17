@@ -1,16 +1,17 @@
 from typing import List
 
-
 class Solution:
     def nextPermutation(self, nums: List[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
         """
         
+        # start from the end and compare the two numbers there to find the decreasing sequence
         i = len(nums) - 2
         while i >= 0 and nums[i] >= nums[i+1]:
             i -= 1
-            
+        
+        # we have found the decreasing number. We need to swap the numbers. j >= 0 so as not to go out of the bounds
         if i >= 0:
             j = len(nums) - 1
             while j >= 0 and nums[j] <= nums[i]: 
