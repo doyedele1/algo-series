@@ -46,7 +46,6 @@ from typing import List
 
 class Solution:
     def depthSum(self, nestedList: List[NestedInteger]) -> int:
-        output = []
         sum = 0
         depth = 1
         q = collections.deque(nestedList)
