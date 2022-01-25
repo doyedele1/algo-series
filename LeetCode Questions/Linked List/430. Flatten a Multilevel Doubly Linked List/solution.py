@@ -1,12 +1,13 @@
-# Definition for a Node.
 from typing import Optional
 
+# Definition for a Node
 class Node:
     def __init__(self, val, prev, next, child):
         self.val = val
         self.prev = prev
         self.next = next
         self.child = child
+
 
 class Solution:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
@@ -34,7 +35,8 @@ class Solution:
             else:
                 curr = next
             if curr != None: tail = curr
-
+                
+        # return the tail of the flatten list
         return tail
         
         '''
@@ -53,6 +55,6 @@ class Solution:
                     - curr = tail
                     - return tail
                     
-                TC - O(n)
-                SC - O(1), except the recursion stack which can be of the order of n - O(n)
+                TC - O(n) where n is the number of nodes in the list
+                SC - O(1), except the recursion call stack which can be of the order of n - O(n). In the worst case, the binary tree might be unbalanced. i.e. nodes are chained with each other only with the child pointers. In this case, the recursive calls would pile up and take n space in the function call stack
         '''
