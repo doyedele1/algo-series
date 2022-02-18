@@ -14,17 +14,15 @@ class RandomizedSet:
     def remove(self, val: int) -> bool:
         if val not in self.hash_map: return False
         
-        # extract the index of the value to be removed from the hash_map
         index = self.hash_map[val]
+        last_element = self.array_list[-1]
         
         # get the last element in the array list and copy the last element to the index
-        self.array_list[index], self.array_list[-1] = self.array_list[-1], self.array_list[index]
-        
-        # update the last element index in the hash_map
-        self.hash_map[self.array_list[index]] = index
+        self.array_list[index], self.hash_map[last_element] = last_element, index
         
         # remove the last element in the array_list and remove the entry containing the key equal to the value to be removed in the hash_map
-        del self.hash_map[self.array_list.pop()]
+        self.array_list.pop()
+        del self.hash_map[val]
         
         return True
 
