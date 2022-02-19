@@ -1,26 +1,40 @@
+'''
+    Explanation:
+        - history:   [leetcode, youtube, facebook, google]
+        - urlPointer:               i
+        visit: pop out all urls after the urlPointer, append the url to visit and move the urlPointer
+        
+        - history:   [leetcode, youtube, facebook, google], steps = 2
+        - urlPointer:               i
+        back and forward --> you don't want to go out of bound because of the steps
+        
+        TC - O(n) for all functions
+        SC - O(n) for all functions --> to store the browserHistory
+'''
+
 class BrowserHistory:
 
     def __init__(self, homepage: str):
-        self.history = [homepage]
-        self.pointer = 0
+        self.browserHistory = [homepage]
+        self.urlPointer = 0
 
     def visit(self, url: str) -> None:
-        while len(self.history) - 1 > self.pointer:
-            self.history.pop()
-        self.history.append(url)
-        self.pointer += 1
+        while len(self.browserHistory) - 1 > self.urlPointer:
+            self.browserHistory.pop()
+        self.browserHistory.append(url)
+        self.urlPointer += 1
 
     def back(self, steps: int) -> str:
-        while self.pointer > 0 and steps > 0:
-            self.pointer -= 1
+        while self.urlPointer > 0 and steps > 0:
+            self.urlPointer -= 1
             steps -= 1
-        return self.history[self.pointer]
+        return self.browserHistory[self.urlPointer]
 
     def forward(self, steps: int) -> str:
-        while self.pointer < len(self.history) - 1 and steps > 0:
-            self.pointer += 1
+        while self.urlPointer < len(self.browserHistory) - 1 and steps > 0:
+            self.urlPointer += 1
             steps -= 1
-        return self.history[self.pointer]
+        return self.browserHistory[self.urlPointer]
         
 
 
