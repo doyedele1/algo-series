@@ -9,6 +9,14 @@
         stack = ""
         
         Since len(stack) == 0, return True
+
+        "(())"
+
+
+        "([{}])"
+
+        TC - O(n) where n is the length of the input string
+        SC - O(n) for the extra data structure. Worst case is when we have all opening brackets, then we need to keep track of all the opening brackets in the stack
 '''
 
 import collections
