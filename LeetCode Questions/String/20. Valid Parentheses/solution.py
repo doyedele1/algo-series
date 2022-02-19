@@ -1,26 +1,39 @@
+'''
+    Explanation: 
+        "()[]{}"
+        stack = "("
+        stack = ""
+        stack = "["
+        stack = ""
+        stack = "{"
+        stack = ""
+        
+        Since len(stack) == 0, return True
+'''
+
 import collections
 
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = collections.deque()
-        valid = True
         
         for char in s:
             if char == "(" or char == "[" or char == "{":
-                stack.append(char)
+                stack.appendleft(char)
             elif char == ")":
-                if len(stack) == 0 or stack.pop() != "(":
-                    valid = False
-                else: valid
+                if len(stack) < 1 or stack[0] != "(":
+                    return False
+                else: stack.popleft()
             elif char == "]":
-                if len(stack) == 0 or stack.pop() != "[":
-                    valid = False
-                else: valid
+                if len(stack) < 1 or stack[0] != "[":
+                    return False
+                else: stack.popleft()
             elif char == "}":
-                if len(stack) == 0 or stack.pop() != "{":
-                    valid = False
-                else: valid
+                if len(stack) < 1 or stack[0] != "{":
+                    return False
+                else: stack.popleft()
                     
-        if valid and len(stack) == 0:
+        if len(stack) > 0:
+            return False
+        else:
             return True
-        return False
