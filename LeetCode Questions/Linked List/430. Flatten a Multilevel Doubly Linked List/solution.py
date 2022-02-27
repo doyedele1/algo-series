@@ -19,12 +19,9 @@
         - return tail
 
 
-
         TC - O(n) where n is the number of nodes in the list, we visit each node once from beginning to end
         SC - O(n), the recursion call stack which can be of the order of n - O(n). In the worst case, the nodes are chained with each other only with the child pointers. In this case, the recursive calls would pile up and take n space in the function call stack
 '''
-
-
 
 # Definition for a Node.
 class Node:
@@ -37,10 +34,9 @@ class Node:
 
 from typing import Optional
 
-
 class Solution:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        if head != None: # if head is there, i.e. the linked list is not empty
+        if head: # if head is there, i.e. the linked list is not empty
             self.flatten_helper(head)
         return head
     
