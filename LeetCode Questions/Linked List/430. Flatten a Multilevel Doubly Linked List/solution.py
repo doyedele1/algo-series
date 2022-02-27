@@ -57,7 +57,7 @@ class Solution:
                 
                 curr.child = None
                 
-                curr = tail   
+                curr = child_tail
             
             else: # if there is no child
                 curr = next
