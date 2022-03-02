@@ -17,7 +17,6 @@
         getAverageTime(A,B) --> 12 / 2 = 6
         
         
-        
         TC - O(1) for all functions
         SC - O(n + m) where n is the number of arrivals and m is the number of travels. n grows larger when we have customers that check in but don't check out - we remove those entries from the arrivals map in the checkout function. m increases the more times the customers check out at various stations.
 '''
