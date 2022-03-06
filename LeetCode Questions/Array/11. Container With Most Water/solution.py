@@ -9,15 +9,15 @@
 
 '''
 
-
-
-class Solution:
-    def maxArea(self, height: List[int]) -> int:
-        max_amount = 0
+from typing import List
+# Naive Solution
+# class Solution:
+#     def maxArea(self, height: List[int]) -> int:
+#         max_amount = 0
         
-        for i in range(len(height)):
-            for j in range(i + 1, len(height)):
-                area_of_rectangle = (j - i) * (min(height[i], height[j]))
-                max_amount = max(max_amount, area_of_rectangle)
+#         for i in range(len(height)):
+#             for j in range(i + 1, len(height)):
+#                 area_of_rectangle = (j - i) * (min(height[i], height[j]))
+#                 max_amount = max(max_amount, area_of_rectangle)
                 
-        return max_amount
+#         return max_amount
