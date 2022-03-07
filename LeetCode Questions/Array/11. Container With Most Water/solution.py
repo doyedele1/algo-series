@@ -7,12 +7,10 @@
         
         
         Optimal Solution
-            - Can we reduce the number of times we found the possible areas for every pair of the heights which is caused by the minimum height in each pair?
+            - Can we reduce the number of times we find the possible areas for every pair of the heights which is caused by the minimum height in each pair?
             - Yes, we can. We can have two pointers at both endpoints and perform the area of the ractangle. When the height is minimum for a left pointer, we can move to the pointer to the right and when the height is minimum for a right pointer, we move the pointer to the left to the right. This is done to look for the next possible maximum height. 
             - TC: O(n), SC: O(1)
 '''
-
-from typing import List
 
 # Naive Solution
 # class Solution:
