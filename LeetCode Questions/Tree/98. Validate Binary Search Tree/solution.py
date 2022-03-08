@@ -1,5 +1,5 @@
 '''
-    Explanation:
+    Explanation: Recursive Traversal with Valid Range
         - On the root node, we can have range of (-infinity, +infinity)
         - On the left subtree, we can have a range of (-infinity, root.val)
         - On the right subtree, we can have a range of (root.val, +infinity)
@@ -7,7 +7,12 @@
         - We call the function recursively on (roor.left, lower, root.val) and (root.right, root.val, upper)
 
         # TC - O(n)
-        # SC - O(n)
+        # SC - O(n) - for the recursive call stack to save the root node, lower and upper bounds
+
+    Explanation: Recursive Inorder Traversal
+
+    TC - O(n) in the worst case when the tree is a BST or the "bad" element is a rightmost leaf
+    SC - O(n) for the space on the runtime stack
 '''
 
 
