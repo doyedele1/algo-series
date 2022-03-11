@@ -21,7 +21,6 @@
         Get [3] from the cache --> 3
         Get [4] from the cache --> 4
         
-            
         TC - O(1) for both get and put operations
         SC - O(capacity) for the hashmap and doubly linked list which contain at most capacity + 1 elements
 '''
