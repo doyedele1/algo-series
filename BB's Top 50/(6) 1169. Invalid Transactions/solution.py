@@ -67,7 +67,8 @@ class Solution:
             if int(amount) > 1000:
                 res.append(trans)
                 continue
-
+            
+            # check within 60 minutes
             for invalid_time in range(time-60, time+61):
                 if invalid_time not in transaction:
                     continue
