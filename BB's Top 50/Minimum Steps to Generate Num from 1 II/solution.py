@@ -9,7 +9,7 @@ def solution1(n):
     else:
         return 1 + min(solution1(n + 1), solution1(n - 1))
 
-print(solution1(15))
+# print(solution1(15))
 
 '''
     Initialize steps = 0
@@ -31,7 +31,7 @@ def solution2(n):
     while n > 1:
         if n % 2 == 0:
             n //= 2
-        # n==3(special edge case), decrement by 1
+        # n == 3 --> special case where we decrement by 1
         elif n % 4 == 1 or n == 3:
             n -= 1
         else:
@@ -39,5 +39,5 @@ def solution2(n):
         steps += 1
 
     return steps
-print(solution2(7))
+# print(solution2(7))
 
