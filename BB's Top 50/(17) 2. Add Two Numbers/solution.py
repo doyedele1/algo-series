@@ -1,3 +1,8 @@
+'''
+    TC - O(max(m,n)) where m is the length of l1 and n is the length of l2
+    SC - O(max(m,n)) --> the length of the new linked list is at most max(m,n) + 1
+'''
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
