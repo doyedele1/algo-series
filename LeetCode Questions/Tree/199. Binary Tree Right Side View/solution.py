@@ -1,3 +1,24 @@
+'''
+        Explanation:
+            - Edge case: Some nodes on the left/right subtree might not be blocked by nodes. In this case, we add those nodes into the result array
+            - For each level of the tree, we want the rightmost node
+
+            # Add the root node to the next_level queue
+            # Loop through the next_level queue while it’s not empty
+            # Copy the content of the next_level to the curr_level
+            # Empty the next_level
+            # Loop through the curr_level while it’s not empty
+            # Pop the first node in the curr_level queue
+            # Add the children of the first node found to the empty next_level queue
+            # When the curr_level is empty, the last popped node is the rightmost element.
+            # We can append that node to the result array
+
+
+            TC - O(n) where n is the number of nodes visited
+            SC - O(d) where d is the diameter of the tree. The last level could take up to n/2 tree nodes in the case of a complete binary tree
+'''
+
+
 import collections
 from typing import Optional, List
 
@@ -8,7 +29,7 @@ class TreeNode:
         self.left = left
         self.right = right
 
-class Solution:
+class Solution1:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         # BFS with Two Queues Approach
         res = []
@@ -32,8 +53,9 @@ class Solution:
             res.append(node.val)
         return res
     
-    
-        # Another Optimal Solution
+class Solution2:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        # Another Optimal Solution with One Queue
         res = []
         q = collections.deque([root])
         
@@ -51,26 +73,3 @@ class Solution:
                 res.append(right_side.val)
         
         return res
-        
-    
-    '''
-        Explanation:
-            - Edge case: Some nodes on the left/right subtree might not be blocked by nodes. In this case, we add those nodes into the result array
-            - For each level of the tree, we want the rightmost node
-            
-            
-
-            # Add the root node to the next_level queue
-            # Loop through the next_level queue while it’s not empty
-            # Copy the content of the next_level to the curr_level
-            # Empty the next_level
-            # Loop through the curr_level while it’s not empty
-            # Pop the first node in the curr_level queue
-            # Add the children of the first node found to the empty next_level queue
-            # When the curr_level is empty, the last popped node is the rightmost element.
-            # We can append that node to the result array
-
-
-            TC - O(n) where n is the number of nodes visited
-            SC - O(d) where d is the diameter of the tree. The last level could take up to n/2 tree nodes in the case of a complete binary tree
-    '''
