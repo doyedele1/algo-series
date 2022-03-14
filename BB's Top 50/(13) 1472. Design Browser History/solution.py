@@ -36,8 +36,6 @@ class BrowserHistory:
             self.urlPosition += 1
             steps -= 1
         return self.browserHistory[self.urlPosition]
-        
-
 
 # Your BrowserHistory object will be instantiated and called as such:
 # obj = BrowserHistory(homepage)
