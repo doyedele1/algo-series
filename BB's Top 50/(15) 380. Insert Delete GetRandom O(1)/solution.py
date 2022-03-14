@@ -1,3 +1,13 @@
+'''
+    Explanation:
+        - We can have two data structures. An array and a hashmap
+        - With the array, we can easily choose a random number from it
+        - With the hashmap, we can achieve an insert and removal of O(1)
+
+        hashmap --> key = value, value = index
+        array --> contains only the value
+'''
+
 import random
 
 class RandomizedSet:
@@ -28,7 +38,6 @@ class RandomizedSet:
 
     def getRandom(self) -> int:
         return random.choice(self.array_list)
-
 
 # Your RandomizedSet object will be instantiated and called as such:
 # obj = RandomizedSet()
