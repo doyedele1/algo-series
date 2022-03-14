@@ -10,6 +10,16 @@
 
         TC - GetRandom function = O(1). Insert and Delete functions = O(1) on average and O(N) in the worst-case scenario when the operation exceeds the capacity of currently allocated array/hashmap and invokes space reallocation.
         SC - O(n) to store the items
+
+        Insert operation
+            - Append value to the end of the array
+            - Add value-index pair to the hashmap
+
+        Delete operation
+            - Get index of item to be deleted from the hashmap
+            - Get the last item in the array
+            - Move the last item in the hashmap to where the item to be deleted is
+            - Remove the last item
 '''
 
 import random
@@ -29,12 +39,12 @@ class RandomizedSet:
         if val not in self.hash_map: return False
         
         index = self.hash_map[val]
-        last_element = self.array_list[-1]
+        last_item = self.array_list[-1]
         
-        # get the last element in the array list and copy the last element to the index
-        self.array_list[index], self.hash_map[last_element] = last_element, index
+        # get the last item in the array list and copy the last item to the index
+        self.array_list[index], self.hash_map[last_item] = last_item, index
         
-        # remove the last element in the array_list and remove the entry containing the key equal to the value to be removed in the hash_map
+        # remove the last item in the array_list and remove the entry containing the key equal to the value to be removed in the hash_map
         self.array_list.pop()
         del self.hash_map[val]
         
