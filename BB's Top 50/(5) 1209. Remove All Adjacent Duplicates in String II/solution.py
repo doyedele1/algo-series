@@ -1,3 +1,10 @@
+'''
+    Explanation:
+    - deeedbbcccbdaa
+    [[d,1], [e,3]]
+    [[d,2]]
+'''
+
 class Solution:
     def removeDuplicates(self, s: str, k: int) -> str:
         # create  a stack with [character, count]
@@ -15,10 +22,3 @@ class Solution:
                 
         # char * num prints the char in num times
         return "".join([char * num for char, num in stack])
-        
-        '''
-            Explanation:
-            - deeedbbcccbdaa
-            [[d,1], [e,3]]
-            [[d,2]]
-        '''
