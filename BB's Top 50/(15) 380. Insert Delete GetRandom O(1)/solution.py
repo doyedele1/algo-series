@@ -7,10 +7,6 @@
         hashmap --> key = value, value = index
         array --> contains only the value
 
-
-        TC - GetRandom function = O(1). Insert and Delete functions = O(1) on average and O(N) in the worst-case scenario when the operation exceeds the capacity of currently allocated array/hashmap and invokes space reallocation.
-        SC - O(n) to store the items
-
         Insert operation
             - Append value to the end of the array
             - Add value-index pair to the hashmap
@@ -20,6 +16,9 @@
             - Get the last item in the array
             - Move the last item in the hashmap to where the item to be deleted is
             - Remove the last item
+
+        TC - GetRandom function = O(1). Insert and Delete functions = O(1) on average and O(n) in the worst-case scenario when the operation exceeds the capacity of currently allocated array/hashmap and invokes space reallocation.
+        SC - O(n) to store the items
 '''
 
 import random
