@@ -1,3 +1,23 @@
+'''
+    Explanation:
+        - We have to pick equal number of A and B
+        Initially,
+        - Can we see if we can send all candidates to city A?
+        - Now, which of the candidates can we send to B? We will pick the candidate for which we gained the maximum (the most negative number)
+        
+        10      +  30   +   400   +  30
+        +10     +170        -350     -10
+        
+        --> (A-B) = cost saved on flying a particular candidate to city B instead of city A = money saved by sending candidate to B instead of A
+        -10, -170, 350, 10
+        Sorting returns (-170, -10, 10, 350)
+        
+            
+        TC - O(nlogn) because of sorting the input array
+        SC - O(1) since it's a constant space solution
+'''
+
+
 from typing import List
 
 class Solution:
@@ -18,23 +38,3 @@ class Solution:
             cost += c[1]
             
         return cost
-
-        '''
-            Explanation:
-                - We have to pick equal number of A and B
-                Initially,
-                - Can we see if we can send all candidates to city A?
-                - Now, which of the candidates can we send to B? We will pick the candidate for which we gained the maximum (the most negative number)
-                
-                10      +  30   +   400   +  30
-                +10     +170        -350     -10
-                
-                --> (A-B) = cost saved on flying a particular candidate to city B instead of city A = money saved by sending candidate to B instead of A
-                -10, -170, 350, 10
-                Sorting returns (-170, -10, 10, 350)
-                
-                
-                
-                TC - O(nlogn) because of sorting the input array
-                SC - O(1) since it's a constant space solution
-        '''
