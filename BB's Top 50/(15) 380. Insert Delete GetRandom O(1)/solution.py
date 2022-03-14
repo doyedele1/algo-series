@@ -6,6 +6,10 @@
 
         hashmap --> key = value, value = index
         array --> contains only the value
+
+
+        TC - GetRandom function = O(1). Insert and Delete functions = O(1) on average and O(N) in the worst-case scenario when the operation exceeds the capacity of currently allocated array/hashmap and invokes space reallocation.
+        SC - O(n) to store the items
 '''
 
 import random
