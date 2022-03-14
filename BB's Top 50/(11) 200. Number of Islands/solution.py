@@ -7,7 +7,9 @@
                 [1,1,1,1],
                 [1,1,1,1]
             ]
-            Space Complexity: O(m*n), recursive call stack calls all the 1s
+            
+            Time Complexity: O(rows*cols)
+            Space Complexity: O(rows*cols), recursive call stack calls all the 1s
 '''
 
 class Solution:
@@ -101,7 +103,8 @@ class Solution:
 
             neighbors = [(2,1), (3,0), (1,2), (0,3)]
             
-            Space Complexity: O(min(nr, nc))
+            Time Complexity: O(rows*cols)
+            Space Complexity: O(min(rows, cols))
 '''
 import collections
 from typing import List
