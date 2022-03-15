@@ -40,12 +40,12 @@ class Solution1:
 
 '''
     Explanation II:
-        - When we establish the next pointers between the nodes, the nodes represent a linked list
-        - So can we have access to the leftmost node at each level? Yes, we can. The leftmost node at each level will be our starting point
-        - current = used to traverse all the nodes on the current level
-        - previous = points to the node on the next level (left and/or right children)
+        - When we already establish the next pointers of the nodes at the next level when we are currently on the current level, we can traverse the nodes as a linked list
+        - So can we have access to the leftmost node at each level? Yes, we can. The leftmost node at each level will be our starting point. At node 1 level 0, the leftmost node is 1. The current node is 1, and the previous node is 2
+        - current = used to traverse all the nodes on the current level starting from the leftmost node
+        - previous = points to the leftmost node on the next level (no child, left and/or right children)
         - Processing the leftmost node, when we have set the previous pointer the first time, we can then set the leftmost node to the previous node.
-        
+            
         TC - O(n)
         SC - O(1)
 '''
@@ -54,39 +54,33 @@ class Solution2:
         if root == None:
             return root
         
-        # the zeroth level --> the root node is the leftmost node
         leftmostNode = root
         
-        while leftmostNode: # we need to process the next level
-            current = leftmostNode # tracks the latest node on the current level
-            previous = None # tracks the latest node on the next level
+        # to process the next level
+        while leftmostNode:
+            current = leftmostNode
+            previous = None
             leftmostNode = None # to clear the leftmostNode so the while loop doesn't keep running
             
-            # process the current level
             while current:
                 if current.left:
-                    # We can set the leftmostNode pointer to the left child node since the left child node is the first node we encountered on the next level
                     if not leftmostNode:
                         leftmostNode = current.left
                     
-                    # if we have a previous pointer or found one node on the next level, we can set the previous next pointer to the left child node
                     if previous:
                         previous.next = current.left
                         
                     previous = current.left
-                        
+                
                 if current.right:
-                    # We can set the leftmostNode pointer to the right child node since the right child node is the first node we encountered on the next level
                     if not leftmostNode:
                         leftmostNode = current.right
                     
-                    # if we have a previous pointer or found one node on the next level, we can set the previous next pointer to the right child node
                     if previous:
                         previous.next = current.right
                         
                     previous = current.right
                 
-                # traverse to the next node
                 current = current.next
 
         return root
