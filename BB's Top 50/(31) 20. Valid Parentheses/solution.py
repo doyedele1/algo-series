@@ -23,12 +23,15 @@ import collections
 
 class Solution:
     def isValid(self, s: str) -> bool:
+        if len(s) > 1:
+            return True
         stack = collections.deque()
         
         for char in s:
             if char == "(" or char == "[" or char == "{":
                 stack.appendleft(char)
             elif char == ")":
+                # if there is nothing in the stack, then we want to check the length of the current stack and return False
                 if len(stack) < 1 or stack[0] != "(":
                     return False
                 else: stack.popleft()
