@@ -1,3 +1,8 @@
+'''        
+        TC - O(n)
+        SC - O(n)
+'''
+
 from typing import List
 
 class Solution:
@@ -7,7 +12,7 @@ class Solution:
                 return
             
             image[i][j] = newColor
-            
+
             dfs(i, j-1, newColor, starting_point) # bottom
             dfs(i, j+1, newColor, starting_point) # top
             dfs(i-1, j, newColor, starting_point) # left
@@ -16,11 +21,6 @@ class Solution:
         if not image: 
             return None
         
-        starting_point = image[sr][sc]
+        starting_point = image[sr][sc]        
         dfs(sr, sc, newColor, starting_point)
         return image
-    
-    '''
-        TC - O(n)
-        SC - O(n)
-    '''
