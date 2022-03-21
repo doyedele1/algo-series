@@ -17,8 +17,8 @@ class Solution:
         if not grid:
             return 0
         
-        def dfs(grid, x, y, r, c):
-            if x < 0 or x >= r or y < 0 or y >= c or grid[x][y] != "1":
+        def dfs(grid, x, y):
+            if x < 0 or x >= len(grid) or y < 0 or y >= len(grid[0]) or grid[x][y] != "1":
                 return
             
             grid[x][y] = "2"
@@ -34,7 +34,7 @@ class Solution:
         for r in range(rows):
             for c in range(cols):
                 if grid[r][c] == "1":
-                    dfs(grid, r, c, rows, cols)
+                    dfs(grid, r, c)
                     islands += 1
         return islands
 
@@ -115,7 +115,7 @@ class Solution:
 
         rows = len(grid)
         cols = len(grid[0])
-        
+
         islands = 0
         
         for r in range(rows):
