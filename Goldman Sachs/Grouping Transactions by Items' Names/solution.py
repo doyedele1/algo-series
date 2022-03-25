@@ -1,5 +1,6 @@
 '''
-    TC: O(n) 
+    TC: O(n) where n is the number of transactions
+    SC: O(n) to keep track of the frequencies of each item
 '''
 
 def solution(transactions):
