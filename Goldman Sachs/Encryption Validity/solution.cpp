@@ -11,4 +11,17 @@ vector<int> encryptionValidity(int instructionCount, int validityPeriod, vector<
         if (mdd < dd) {
             mdd = dd;
         }
+    }
+    long long int se = mdd * 100000;
+    unsigned long long int tk = instructionCount * validityPeriod;
+    vector<int> res;
+    // count<<se<<" "<<tk;
+    if (se <= tk) {
+        res.push_back(1);
+        res.push_back(se);
+    } else {
+        res.push_back(0);
+        res.push_back(se);
+    }
+    return res;
 }
