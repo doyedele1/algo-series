@@ -1,22 +1,20 @@
 import heapq
 
-def minimumTime(n, ability, processes):
+def minimumTime(ability, processes):
 
-    max_heap = []
-    for ab in ability:
-        heapq.heappush(max_heap, -ab)
+    maxHeap = []
+    for i in ability:
+        heapq.heappush(maxHeap, -i)
 
-    time = 0
-
+    step = 0
     while processes > 0:
-        max_ab = -heapq.heappop(max_heap)
+        maxAbility = -heapq.heappop(maxHeap)
 
-        processes -= max_ab
+        processes -= maxAbility
 
-        max_ab //= 2
+        maxAbility //= 2
 
-        heapq.heappush(max_heap, -max_ab)
+        heapq.heappush(maxHeap, -maxAbility)
 
-        time += 1
-
-    return time
+        step += 1
+    return step
