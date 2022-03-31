@@ -1,6 +1,6 @@
 import heapq
 
-def minimumTime(ability, processes):
+def solution(ability, processes):
 
     maxHeap = []
     for i in ability:
