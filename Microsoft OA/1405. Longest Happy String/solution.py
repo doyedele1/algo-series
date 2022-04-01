@@ -2,14 +2,14 @@
 # print("this is a debug message")
 import heapq
 
-def solution(A, B, C):
+def solution(a, b, c):
     # write your code in Python 3.6
     chars = "abc"
     maxHeap = []
 
-    if A: heapq.heappush(maxHeap, (-A, 0))
-    if B: heapq.heappush(maxHeap, (-B, 1))
-    if C: heapq.heappush(maxHeap, (-C, 2))
+    if a: heapq.heappush(maxHeap, (-a, 0))
+    if b: heapq.heappush(maxHeap, (-b, 1))
+    if c: heapq.heappush(maxHeap, (-c, 2))
 
     previous, i = heapq.heappop(maxHeap)
     diverse = chars[i] * (1 + (previous != -1))
