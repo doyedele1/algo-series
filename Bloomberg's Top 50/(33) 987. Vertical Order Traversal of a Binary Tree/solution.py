@@ -1,3 +1,29 @@
+'''           
+    Explanation I:
+        - We will use a dfs preorder traversal to traverse the tree
+            - dfs(node, row, col)
+            - Start traversal from the root
+            - We will initialize an empty cache that stores the column of the node as key and the row and value of the node as value. Key-value pair
+                - If the column is not in the cache, we will add it to the cache
+                - If the column is in the cache, we will append the row and value of the node to the cache of specific key (or column)
+            - We will keep track of the smallest and largest columns in the traversal
+        - After the dfs helper function terminates, we will loop through from the min_column and max_column, we get the elements corresponding to each column in the cache
+        - Since we have more than one value of column in the cache, we need to sort the values in the cache by row and then by value
+
+        TC - O(n logn).
+            - Traverse the input tree using dfs takes O(n) time
+            - Sorting the cache takes O(n logn) time
+
+        SC - O(n)
+            - We have a cache that contains coordinates of each node. The size of the cache is O(n)
+            - The DFS approach takes O(n) space in the recursion stack
+
+    Explanation II: Efficient DFS
+    Explanation III: Efficient BFS
+'''
+
+
+from collections import defaultdict, deque
 from typing import List, Optional
 
 # Definition for a binary tree node.
@@ -7,7 +33,7 @@ class TreeNode:
         self.left = left
         self.right = right
         
-class Solution:
+class Solution1:
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
         res = []
         cache = {}
@@ -35,25 +61,68 @@ class Solution:
             res.append(col_sorted)
         
         return res
-        
-        
-        '''
-            Explanation:
-                - We will use a dfs preorder traversal to traverse the tree
-                    - dfs(node, row, col)
-                    - Start traversal from the root
-                    - We will initialize an empty cache that stores the column of the node as key and the row and value of the node as value. Key-value pair
-                        - If the column is not in the cache, we will add it to the cache
-                        - If the column is in the cache, we will append the row and value of the node to the cache of specific key (or column)
-                    - We will keep track of the smallest and largest columns in the traversal
-                - After the dfs helper function terminates, we will loop through from the min_column and max_column, we get the elements corresponding to each column in the cache
-                - Since we have more than one value of column in the cache, we need to sort the values in the cache by row and then by value
 
-                TC - O(n logn).
-                    - Traverse the input tree using dfs takes O(n) time
-                    - Sorting the cache takes O(n logn) time
 
-                SC - O(n)
-                    - We have a cache that contains coordinates of each node. The size of the cache is O(n)
-                    - The DFS approach takes O(n) space in the recursion stack
-        '''
+class Solution2:
+    def verticalTraversal(self, root: TreeNode) -> List[List[int]]:
+        if root is None:
+            return []
+
+        columnTable = defaultdict(list)
+        min_column = max_column = 0
+
+        def DFS(node, row, column):
+            if node is not None:
+                nonlocal min_column, max_column
+                columnTable[column].append((row, node.val))
+                min_column = min(min_column, column)
+                max_column = max(max_column, column)
+
+                # preorder DFS
+                DFS(node.left, row + 1, column - 1)
+                DFS(node.right, row + 1, column + 1)
+
+        # step 1). DFS traversal
+        DFS(root, 0, 0)
+
+        # step 2). extract the values from the columnTable
+        ret = []
+        for col in range(min_column, max_column + 1):
+            # sort first by 'row', then by 'value', in ascending order
+            ret.append([val for row, val in sorted(columnTable[col])])
+
+        return ret
+
+class Solution3:
+    def verticalTraversal(self, root: TreeNode) -> List[List[int]]:
+        if root is None:
+            return []
+
+        columnTable = defaultdict(list)
+        min_column = max_column = 0
+
+        def BFS(root):
+            nonlocal min_column, max_column
+            queue = deque([(root, 0, 0)])
+
+            while queue:
+                node, row, column = queue.popleft()
+
+                if node is not None:
+                    columnTable[column].append((row, node.val))
+                    min_column = min(min_column, column)
+                    max_column = max(max_column, column)
+
+                    queue.append((node.left, row + 1, column - 1))
+                    queue.append((node.right, row + 1, column + 1))
+
+        # step 1). BFS traversal
+        BFS(root)
+
+        # step 2). extract the values from the columnTable
+        ret = []
+        for col in range(min_column, max_column + 1):
+            # sort first by 'row', then by 'value', in ascending order
+            ret.append([val for row, val in sorted(columnTable[col])])
+
+        return ret
