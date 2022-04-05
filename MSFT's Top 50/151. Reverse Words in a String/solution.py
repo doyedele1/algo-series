@@ -103,6 +103,7 @@ class Solution3:
             elif s[i] != " ":
                 word.append(s[i])
             i += 1
+        # to append the last word
         q.appendleft("".join(word))
         
         return " ".join(q)
