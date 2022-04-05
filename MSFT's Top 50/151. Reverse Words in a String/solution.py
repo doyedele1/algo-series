@@ -16,10 +16,26 @@
             "fun is leetcode"
         - Join the array to a string
         
-
+        - TC: O(n)
+        - SC: O(n)
+        
+    Explanation III: "  leetcode is  fun "
+        - Trim the leading and trailing spaces
+            "leetcode is  fun"
+        - Push word by word in front of the queue
+            "fun is leetcode"
+        - Join the items in the queue
+            "fun is leetcode"
+            
+        - TC: O(n)
+        - SC: O(n)
 '''
 
+import collections
 
+class Solution1:
+    def reverseWords(self, s: str) -> str:
+        return " ".join(reversed(s.split()))
 
 class Solution2:
     def reverseWords(self, s: str) -> str:
@@ -64,3 +80,29 @@ class Solution2:
         reverseArr(l, 0, len(l) - 1)
         reverseEachWord(l)
         return "".join(l)
+
+class Solution3:
+    def reverseWords(self, s: str) -> str:
+        i, j = 0, len(s) - 1
+        
+        # remove leading spaces
+        while i <= j and s[i] == " ":
+            i += 1
+        
+        # remove trailing spaces
+        while i <= j and s[j] == " ":
+            j -= 1
+            
+        q = collections.deque()
+        word = []
+        # push word by word in front of the queue
+        while i <= j:
+            if s[i] == " " and word:
+                q.appendleft("".join(word))
+                word = []
+            elif s[i] != " ":
+                word.append(s[i])
+            i += 1
+        q.appendleft("".join(word))
+        
+        return " ".join(q)
