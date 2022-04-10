@@ -11,13 +11,12 @@
         
         - TC: O(m*n). where m = number of rows and n = number of columns
         - SC: O(1)
-        
-    Explanation II: 
 '''
+
 
 from typing import List
 
-class Solution:
+class Solution1:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         m, n = len(matrix), len(matrix[0])
         up, left = 0, 0
@@ -28,7 +27,7 @@ class Solution:
             # left --> right
             for col in range(left, right + 1):
                 res.append(matrix[up][col])
-
+            
             # up --> down
             for row in range(up + 1, down + 1):
                 res.append(matrix[row][right])
