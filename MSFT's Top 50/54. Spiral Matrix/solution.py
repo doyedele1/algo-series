@@ -10,36 +10,45 @@
         - Return result
         
         - TC: O(m*n). where m = number of rows and n = number of columns
+        - SC: O(1)
         
 '''
+
+
+from typing import List
 
 
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         m, n = len(matrix), len(matrix[0])
-        up, left = 0
-        right, down = n - 1, m - 1
+        up, left = 0, 0
+        down, right = m - 1, n - 1
         res = []
         
         while len(res) < m * n:
             # left --> right
             for col in range(left, right + 1):
                 res.append(matrix[up][col])
+                print(left, right, res)
+                
             
             # up --> down
-            for row in range(up, down + 1):
+            for row in range(up + 1, down + 1):
+                # print(up, down)
                 res.append(matrix[row][right])
             
             # to ensure we are not on a row we've visited or we are now on a different row
             if up != down:
                 # right --> left
                 for col in range(right - 1, left - 1, -1):
+                    # print(right, left)
                     res.append(matrix[down][col])
             
             # to ensure we are not on a column we've visited or we are now on a different column
             if left != right:
                 # down --> up
                 for row in range(down - 1, up, -1):
+                    # print(down, up)
                     res.append(matrix[row][left])
             
             # update boundaries
@@ -49,4 +58,3 @@ class Solution:
             down -= 1
         
         return res
-                
