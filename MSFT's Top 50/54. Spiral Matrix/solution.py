@@ -12,6 +12,7 @@
         - TC: O(m*n). where m = number of rows and n = number of columns
         - SC: O(1)
         
+    Explanation II: 
 '''
 
 from typing import List
@@ -27,26 +28,21 @@ class Solution:
             # left --> right
             for col in range(left, right + 1):
                 res.append(matrix[up][col])
-                print(left, right, res)
-                
-            
+
             # up --> down
             for row in range(up + 1, down + 1):
-                # print(up, down)
                 res.append(matrix[row][right])
             
             # to ensure we are not on a row we've visited or we are now on a different row
             if up != down:
                 # right --> left
                 for col in range(right - 1, left - 1, -1):
-                    # print(right, left)
                     res.append(matrix[down][col])
             
             # to ensure we are not on a column we've visited or we are now on a different column
             if left != right:
                 # down --> up
                 for row in range(down - 1, up, -1):
-                    # print(down, up)
                     res.append(matrix[row][left])
             
             # update boundaries
