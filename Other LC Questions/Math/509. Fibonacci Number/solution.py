@@ -38,7 +38,24 @@
         - SC: O(n), size of the recursive stack and the cache map
         
     Explanation IV: Iterative bottom-up
-'''  
+        - Instead of evaluating the results of fib(n-1) and fib(n-2) to get fib(n), we can only store the value of the two previous numbers and update them as we iterate to n
+        
+        - If n <=1, return n
+        - We need three variables:
+            - current = 0
+            - previous1 = 1 for fib(n-1)
+            - previous2 = 0 for fib(n-2)
+            
+        - Loop from 2 up to n, 
+            - Set the current to previous1 + previous2
+            - Set the previous2 to previous1
+            - Set the previous1 to current
+            
+        - Return the current
+        
+        - TC: O(n)
+        - SC: O(1)
+'''
 
 class Solution1:
     def fib(self, n: int) -> int:
@@ -64,4 +81,18 @@ class Solution3:
     def fib(self, n: int) -> int:
         if n in self.cache: return self.cache[n]
         else: self.cache[n] = self.fib(n - 1) + self.fib(n - 2)
-        return self.cache[n]  
+        return self.cache[n]
+
+class Solution4:
+    def fib(self, n: int) -> int:
+        if n <= 1: return n
+        
+        current = 0
+        previous1 = 1
+        previous2 = 0
+        
+        for i in range(2, n + 1):
+            current = previous1 + previous2
+            previous2 = previous1
+            previous1 = current
+        return current        
