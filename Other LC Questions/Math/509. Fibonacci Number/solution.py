@@ -23,12 +23,22 @@
         - Once we've reached the last number, return its Fibonacci number
         
         - TC: O(n), we loop from 2 up to n and access in O(1)
-        - SC: O(n), where n is the size of the cache array to store the Fibonacci numbers
+        - SC: O(n), size of the cache array to store the Fibonacci numbers
         
     Explanation III: Top-down using memoization
         - We can use memoization to store the pre-computed answers, then return the answer for n
-    
-'''     
+        - We won't repeat calculating for the existing values
+        
+        - Create a map with 0-->0 and 1-->1
+        - Recursively call fib(n) function
+            - At every recursive call, if n exists in the map, return the cached value for n
+            - Else, set the key n in map to the value of fib(n-1) + fib(n-2) and return the result
+            
+        - TC: O(n), we loop from 2 up to n and access in O(1)
+        - SC: O(n), size of the recursive stack and the cache map
+        
+    Explanation IV: Iterative bottom-up
+'''  
 
 class Solution1:
     def fib(self, n: int) -> int:
@@ -47,3 +57,11 @@ class Solution2:
             cache[i] = cache[i-1] + cache[i-2]
         
         return cache[n]
+
+class Solution3:
+    cache = {0: 0, 1: 1}
+    
+    def fib(self, n: int) -> int:
+        if n in self.cache: return self.cache[n]
+        else: self.cache[n] = self.fib(n - 1) + self.fib(n - 2)
+        return self.cache[n]  
