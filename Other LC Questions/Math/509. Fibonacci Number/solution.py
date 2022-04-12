@@ -12,6 +12,7 @@
         - Do until all numbers have been computed, return the result
         
         - TC: O(2^n), the amount of operations needed for each level of recursion grows exponentially as the depth approached to n
+        - SC: O(n) to account for the maximum size of the stack. Potential StackOverflow error might occur if the solution recurses too deeply
         
     Explanation II: Bottom-up using tabulation
         - We can iteratively compute and store the values, only returning once we reach the result
@@ -21,13 +22,28 @@
         - Use the array as a reference to the 2 previous numbers to calculate the current Fibonacci number
         - Once we've reached the last number, return its Fibonacci number
         
-        - TC: O(n)
-        - SC: O(n), where n is the size of the cache array
+        - TC: O(n), we loop from 2 up to n and access in O(1)
+        - SC: O(n), where n is the size of the cache array to store the Fibonacci numbers
+        
+    Explanation III: Top-down using memoization
+        - We can use memoization to store the pre-computed answers, then return the answer for n
     
-'''
-
+'''     
 
 class Solution1:
     def fib(self, n: int) -> int:
         if n <= 1: return n
         else: return self.fib(n-1) + self.fib(n-2)
+
+
+class Solution2:
+    def fib(self, n: int) -> int:
+        if n <= 1: return n
+        
+        cache = [0] * (n + 1)
+        cache[1] = 1
+        
+        for i in range(2, n + 1):
+            cache[i] = cache[i-1] + cache[i-2]
+        
+        return cache[n]
