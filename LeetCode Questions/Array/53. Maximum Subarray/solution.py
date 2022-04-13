@@ -2,10 +2,16 @@
     Explanation I: Brute-force solution
         - We sum every subarray elements and find the maximum sum
         - TC: O(n^2), SC: O(n)
-
-    Explanation II: Kadane's algorithm
-        - We keep track of the maximum sum at every index
+    
+    Explanation II: Kadane's algorithm - we keep track of the maximum sum at every index
+        - Initialize the maxSum and maxAtEveryIndex variables to be nums[0]
+        - Loop from the 2nd number to the end of the list
+            - maxAtEveryIndex is the maximum of nums[i] and maxAtEveryIndex + nums[i]
+            - maxSum is the maximum of maxSum and maxAtEveryIndex
+        - Return maxSum
+        
         - TC: O(n), SC: O(1)
+
     [-2,1,-3,4,-1,2,1,-5,4]
     maxSum = -2, maxAtEveryIndex = -2
     maxSum = 1, maxAtEveryIndex = 1
@@ -38,6 +44,6 @@ def maxSubArray2(nums):
     return maxSum
 
 
-print(maxSubArray2([-2,1,-3,4,-1,2,1,-5,4]))
+# print(maxSubArray2([-2,1,-3,4,-1,2,1,-5,4]))
 # print(maxSubArray2([1]))
 # print(maxSubArray2([5,4,-1,7,8]))
