@@ -1,3 +1,8 @@
+'''
+    TC - O(n) where n is the number of nodes in the binary tree
+    SC - O(n) because the maximum amount of space utilized by the recursion stack would be n where n could be the height of a skewed binary tree
+'''
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, x):
@@ -23,9 +28,3 @@ class Solution:
             return leftSearch or rightSearch or current
         
         return search(root, p, q)
-    
-    
-        '''
-            TC - O(n) where n is the number of nodes in the binary tree
-            SC - O(n) because the maximum amount of space utilized by the recursion stack would be n where n could be the height of a skewed binary tree
-        '''
