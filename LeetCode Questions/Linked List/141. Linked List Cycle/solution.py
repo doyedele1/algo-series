@@ -14,14 +14,12 @@
         case where linked list has a cycle.
             - The slow pointer is about to enter the cycle , O(n)
             - Both pointers are in the cycle, it takes distance between the two runners/speed difference loops for the fast runner to catch up with the slow runner again. O(m)
-            worst case: O(n+m), where n = total # of nodes, m = # of nodes in cycle
+            worst case: O(n + m), where n = total # of nodes, m = # of nodes in cycle which is still O(n) if n = m
     - SC: O(1)
 '''
 
-
 # Definition for singly-linked list.
 from typing import Optional
-
 
 class ListNode:
     def __init__(self, x):
