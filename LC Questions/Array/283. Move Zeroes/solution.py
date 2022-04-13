@@ -4,19 +4,23 @@
         First Iteration --> [0, 1, 0, 3, 12]
                             i
                             j
-        Second Iteration --> [1, 1, 0, 3, 12]
+        Second Iteration -->[1, 1, 0, 3, 12]
                                 i
-                                j
+                            j
         Third Iteration --> [1, 1, 0, 3, 12]
                                     i
                                 j
         Fourth Iteration --> [1, 3, 0, 3, 12]
                                         i
-                                    j
+                                j
         Fifth Iteration --> [1, 3, 12, 3, 12]
                                             i
-                                        j
-                                    
+                                    j
+
+        Another loop:
+        [1, 3, 12, 3, 12]
+                    j
+                    i               
         Result ==> [1, 3, 12, 0, 0]
 '''
 
