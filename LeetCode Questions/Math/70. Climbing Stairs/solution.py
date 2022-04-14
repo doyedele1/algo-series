@@ -13,7 +13,15 @@
         - Instead, we store the result at each step in memo array and return it when the function is called
         - This way, we are reducing the size of recursion tree up to n
         - TC: O(n), SC: O(n)
+        
+    Explanation IV: Fibonacci Number
+        - fib(n) = fib(n-1) + fib(n-2)
+        - fib(1) = 1, fib(2) = 2
+        
+        - So we can use the three pointers (first, second, third) to solve the problem
+        - TC: O(n), SC: O(1)
 '''
+
 class Solution1:
     def climbStairs(self, n: int) -> int:
         def helper(i, n):
@@ -34,3 +42,16 @@ class Solution2:
         
         memo = [0] * (n + 1)
         return helper(0, n, memo)
+
+class Solution3:
+    def climbStairs(self, n: int) -> int:
+        if n == 1: return 1
+        
+        first = 1
+        second = 2
+        
+        for i in range(3, n + 1):
+            third = first + second
+            first = second
+            second = third
+        return second   

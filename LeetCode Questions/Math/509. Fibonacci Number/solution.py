@@ -86,12 +86,12 @@ class Solution4:
     def fib(self, n: int) -> int:
         if n <= 1: return n
         
-        current = 0
-        previous1 = 1
-        previous2 = 0
+        third = 0
+        second = 1
+        first = 0
         
         for i in range(2, n + 1):
-            current = previous1 + previous2
-            previous2 = previous1
-            previous1 = current
-        return current        
+            third = first + second
+            first = second
+            second = third
+        return third     
