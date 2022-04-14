@@ -54,4 +54,4 @@ class Solution3:
             third = first + second
             first = second
             second = third
-        return second   
+        return second

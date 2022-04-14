@@ -41,16 +41,16 @@
         
         - If n <=1, return n
         - We need three variables:
-            - current = 0
-            - previous1 = 1 for fib(n-1)
-            - previous2 = 0 for fib(n-2)
+            - third = 0
+            - second = 1 for fib(n-1)
+            - first = 0 for fib(n-2)
             
         - Loop from 2 up to n, 
-            - Set the current to previous1 + previous2
-            - Set the previous2 to previous1
-            - Set the previous1 to current
+            - Set the thirs to first + second
+            - Set the first to second
+            - Set the second to third
             
-        - Return the current
+        - Return the third
         
         - TC: O(n)
         - SC: O(1)
