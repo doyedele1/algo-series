@@ -18,9 +18,8 @@
         - We can iteratively compute and store the values, only returning once we reach the result
         
         - If n <= 1, return n
-        - Loop through n, store each computed answer in an array
-        - Use the array as a reference to the 2 previous numbers to calculate the current Fibonacci number
-        - Once we've reached the last number, return its Fibonacci number
+        - Loop from 2 through n, store each computed answer in an array
+        - Use the array as a reference to the 2 previous numbers to calculate the current Fibonacci number and once we've reached the last number, return its Fibonacci number
         
         - TC: O(n), we loop from 2 up to n and access in O(1)
         - SC: O(n), size of the cache array to store the Fibonacci numbers
