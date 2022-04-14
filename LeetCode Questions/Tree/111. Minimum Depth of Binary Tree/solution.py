@@ -11,8 +11,15 @@
         - Iterate through the stack, pop the current node and push the child nodes to the stack
         - The min_depth is updated at each leaf node
     
+        - TC: O(n), SC: O(n)
+    
+    Explanation III: Iterative BFS
+        - Traverse level by level, the first leaf we encounter gives us the minimum depth
+        - We do not need to iterate all through the nodes to find all the depths
+        - TC: worst case, in a balanced tree, we visit the nodes level by level excluding the bottom level. We visit n/2 nodes. O(n/2) = O(n)
 '''
 
+import collections
 from typing import Optional
 
 # Definition for a binary tree node.
@@ -22,7 +29,7 @@ class TreeNode:
         self.left = left
         self.right = right
         
-class Solution:
+class Solution1:
     def minDepth(self, root: Optional[TreeNode]) -> int:
         if not root: return 0
         
@@ -34,3 +41,37 @@ class Solution:
             if child:
                 min_depth = min(min_depth, self.minDepth(child))
         return min_depth + 1
+
+class Solution2:
+    def minDepth(self, root: Optional[TreeNode]) -> int:
+        if not root: return 0
+        
+        else:
+            stack = [(1, root)]
+            min_depth = float("inf")
+            
+        while stack:
+            depth, root = stack.pop()
+            children = [root.left, root.right]
+            
+            if not any(children): min_depth = min(depth, min_depth)
+            for child in children:
+                if child: stack.append((depth + 1, child))
+        
+        return min_depth
+
+
+class Solution3:
+    def minDepth(self, root: Optional[TreeNode]) -> int:
+        if not root: return 0
+        
+        else:
+            q = collections.deque([(1, root),])
+            
+        while q:
+            depth, root = q.popleft()
+            children = [root.left, root.right]
+            
+            if not any(children): return depth
+            for child in children:
+                if child: q.append((depth + 1, child))
