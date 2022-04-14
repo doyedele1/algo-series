@@ -1,24 +1,29 @@
-# first solution
-# def robot_original_position(moves):
-	# angle = 0
-	# for move in moves:
-	# 	if(move == "L"):
-	# 		angle -= 180
-	# 	elif(move == "R"):
-	# 		angle += 180
-	# 	elif(move == "U"):
-	# 		angle += 90
-	# 	elif(move == "D"):
-	# 		angle -= 90
+'''
+    Explanation I:
+        - Initially the robot is at (0,0)
+        - If the robot goes up, y -= 1, etc
+        - If x = y = 0, return True
+        - TC: O(n), SC: O(1)
 
-	# if(angle == 0):
-	# 	return True
-	# else:
-	# 	return False
+	Explanation II:
+		- If count of L and R is the same, and count of U and D is the same, return true
+		- Else return False
+		- TC: O(n), SC: O(1)
+'''
 
-# second solution - best solution
-def robot_original_position2(moves):
-	if(moves.count("L") == moves.count("R") and moves.count("U") == moves.count("D")):
-		return True
-	else:
-		return False
+class Solution:
+    def judgeCircle(self, moves: str) -> bool:
+        x = y = 0
+        
+        for move in moves:
+            if move == "L": x -= 1
+            elif move == "R": x += 1
+            elif move == "U": y -= 1
+            elif move == "D": y += 1
+        return x == y == 0
+
+
+class Solution2:
+    def judgeCircle(self, moves: str) -> bool:
+        if (moves.count("L") == moves.count("R") and moves.count("U") == moves.count("D")): return True
+        else: return False
