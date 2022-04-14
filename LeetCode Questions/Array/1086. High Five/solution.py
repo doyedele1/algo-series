@@ -6,7 +6,7 @@
         - Now, create a res array and append the item for which we are calculating the average on the the id of the students
         - Return the Final array as sorted.
         
-    - TC: O(nlogn), SC: O(n) for the nested solution output
+    - TC: O(nlogn), SC: O(n) for the nested output
     
     Explanation II: Max heap
     - Maintain a max heap of all the scores for every id
@@ -19,11 +19,13 @@
         iterating over the map - O(n)
         extracting the top 5 elements - O(1)
         Overall = O(nlog n)
-    - SC: O(n) used by allScores map and max heap
+    - SC: O(n) used by hashmap map and max heap
 '''
 
 
-class Solution:
+from typing import List
+
+class Solution1:
     def highFive(self, items: List[List[int]]) -> List[List[int]]:
         dic = {}
         for item in items:
@@ -41,3 +43,35 @@ class Solution:
             res.append([item, sort_avg(dic[item])])
 
         return sorted(res)
+
+from heapq import heappop, heappush, heapify
+
+class Solution2:
+    def highFive(self, items: List[List[int]]) -> List[List[int]]:
+        hashmap = {}
+        
+        for item in items:
+            studentId, score = item
+            
+            if studentId in hashmap:
+                heap = hashmap[studentId]
+                #print heap
+                
+                if len(heap) < 5:
+                    heappush(heap, score)
+                else:
+                    if score > heap[0]:
+                        heappop(heap)
+                        heappush(heap, score)
+            else:
+                heap = [score]
+                heapify(heap) # Heapifies the array in place
+                
+                hashmap[studentId] = heap
+                #print hashmap[studentId]
+        
+        for item in hashmap.items():
+            studentId, heap = item
+            hashmap[studentId] = sum(list(heap)) // len(heap)
+        
+        return sorted(hashmap.items())
