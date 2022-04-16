@@ -21,22 +21,22 @@ class Solution:
     # match = 2
     # nums[i] is in complement, then return the indices
     
-class Solution:
-    def twoSum(self, nums, target):
-        complement = {}
+# class Solution:
+#     def twoSum(self, nums, target):
+#         complement = {}
         
-        for i in range(len(nums)):
-            match = target - nums[i]
-            if nums[i] in complement:
-                return [complement[nums[i]], i]
-            else:
-                complement[match] = i
+#         for i in range(len(nums)):
+#             match = target - nums[i]
+#             if nums[i] in complement:
+#                 return [complement[nums[i]], i]
+#             else:
+#                 complement[match] = i
 
-# Optimal solution - TC - O(n), SC - O(1)
-class Solution:
-    def twoSum(self, nums, target):
-        for i in range(0,len(nums)):
-            diff = target - nums[i]
+# # Optimal solution - TC - O(n), SC - O(1)
+# class Solution:
+#     def twoSum(self, nums, target):
+#         for i in range(0,len(nums)):
+#             diff = target - nums[i]
                 
-            if diff in nums and nums.index(diff) != i:
-                return [i,nums.index(diff)]
+#             if diff in nums and nums.index(diff) != i:
+#                 return [i,nums.index(diff)]
