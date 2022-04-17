@@ -9,6 +9,8 @@
         SC: O(n) where n is the number of asteroids left in the stack
 '''
 
+from typing import List
+
 class Solution:
     def asteroidCollision(self, asteroids: List[int]) -> List[int]:
         stack = []
