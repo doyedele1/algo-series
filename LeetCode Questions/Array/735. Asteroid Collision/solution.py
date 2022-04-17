@@ -15,7 +15,7 @@ class Solution:
             if asteroids[i] > 0:
                 stack.append(asteroids[i])
             else:
-                while len(stack) and stack[-1] > 0 and stack[-1] < abs(asteroids[i]):
+                while len(stack) != 0 and 0 < stack[-1] < abs(asteroids[i]):
                     stack.pop()
                 if len(stack) == 0 or stack[-1] < 0:
                     stack.append(asteroids[i])
@@ -24,3 +24,17 @@ class Solution:
             i += 1
         
         return stack
+
+#         stack = []
+        
+#         for asteroid in asteroids:
+#             while stack and asteroid < 0 < stack[-1]:
+#                 if stack[-1] < -asteroid:
+#                     stack.pop()
+#                     continue
+#                 elif stack[-1] == -asteroid:
+#                     stack.pop()
+#                 break
+#             else:
+#                 stack.append(asteroid)
+#         return stack
