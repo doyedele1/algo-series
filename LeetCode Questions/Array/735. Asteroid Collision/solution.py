@@ -9,32 +9,16 @@ from typing import List
 class Solution:
     def asteroidCollision(self, asteroids: List[int]) -> List[int]:
         stack = []
-        i = 0
         
-        while i < len(asteroids):
-            if asteroids[i] > 0:
-                stack.append(asteroids[i])
-            else:
-                while len(stack) != 0 and 0 < stack[-1] < abs(asteroids[i]):
+        for asteroid in asteroids:
+            while stack and asteroid < 0 and stack[-1] > 0:
+                diff = asteroid + stack[-1]
+                if diff < 0: stack.pop()
+                elif diff > 0: asteroid = 0
+                else:
+                    asteroid = 0
                     stack.pop()
-                if len(stack) == 0 or stack[-1] < 0:
-                    stack.append(asteroids[i])
-                elif stack[-1] == abs(asteroids[i]):
-                    stack.pop()
-            i += 1
+            if asteroid:
+                stack.append(asteroid)
         
         return stack
-
-#         stack = []
-        
-#         for asteroid in asteroids:
-#             while stack and asteroid < 0 < stack[-1]:
-#                 if stack[-1] < -asteroid:
-#                     stack.pop()
-#                     continue
-#                 elif stack[-1] == -asteroid:
-#                     stack.pop()
-#                 break
-#             else:
-#                 stack.append(asteroid)
-#         return stack
