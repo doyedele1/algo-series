@@ -24,4 +24,4 @@ def minimumGroups(arr, k):
             start = i
     return count
 
-print(minimumGroups([1,13,6,8,9,3,5], 4))
+print(minimumGroups([1, 13, 6, 8, 9, 3, 5], 4))
