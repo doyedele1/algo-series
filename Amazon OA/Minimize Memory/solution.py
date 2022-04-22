@@ -1,4 +1,4 @@
-def solution(processes, m):
+def minimizeMemory(processes, m):
     windowStart = prefSum = maxSum = 0
     totalSum = sum(processes)
 
@@ -12,3 +12,5 @@ def solution(processes, m):
 
     res = totalSum - maxSum
     return res
+
+print(minimizeMemory([10,4,8,13,20], 2))
