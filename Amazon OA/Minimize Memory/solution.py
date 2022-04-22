@@ -13,4 +13,4 @@ def minimizeMemory(processes, m):
     res = totalSum - maxSum
     return res
 
-print(minimizeMemory([10,4,8,13,20], 2))
+print(minimizeMemory([10, 4, 8, 13, 20], 2))
