@@ -1,8 +1,6 @@
 def solution(processes, m):
-    windowStart = 0
+    windowStart = prefSum = maxSum = 0
     totalSum = sum(processes)
-    prefSum = 0
-    maxSum = 0
 
     for i in range(len(processes)):
         windowSize = (i - windowStart) + 1
