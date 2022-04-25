@@ -1,9 +1,15 @@
 '''
     Explanation: 
-        TC - O(s + t) where s and t are the lengths of the strings s and t
+        TC - solutions 2 to 4 --> O(s + t) where s and t are the lengths of the strings s and t
 '''
 
+from collections import Counter
+
 class Solution1:
+    def isAnagram(self, s: str, t: str) -> bool:
+        return sorted(s) == sorted(t)
+
+class Solution2:
     def isAnagram(self, s: str, t: str) -> bool:
         if len(s) != len(t): return False
         
@@ -18,7 +24,7 @@ class Solution1:
                 return False
         return True
 
-class Solution2:
+class Solution3:
     def isAnagram(self, s: str, t: str) -> bool:
         if len(s) != len(t): return False
             
@@ -35,6 +41,10 @@ class Solution2:
         for c in dictS:
             if dictS[c] != 0: return False
         return True
+
+class Solution4:
+    def isAnagram(self, s: str, t: str) -> bool:
+        return Counter(s) == Counter(t)
 
 # print(isAnagram("cat", "tac")) # return True
 # print(isAnagram("listen", "silent")) # return True
