@@ -3,29 +3,40 @@
         TC - O(s + t) where s and t are the lengths of the strings s and t
 '''
 
+class Solution1:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t): return False
+        
+        dictS, dictT = {}, {}
+        
+        for i in range(len(s)):
+            dictS[s[i]] = 1 + dictS.get(s[i], 0) # if s[i] doesn't exist, we return value to be 0
+            dictT[t[i]] = 1 + dictT.get(t[i], 0) # if s[i] doesn't exist, we return value to be 0
+        
+        for char in dictS:
+            if dictS[char] != dictT.get(char, 0):
+                return False
+        return True
 
-def valid_anagram(s, t):
-    if len(s) != len(t):
-            return False
-        
-    dict_s = {}
-    
-    for i in s:
-        if i in dict_s:
-            dict_s[i] += 1
-        else: 
-            dict_s[i] = 1
+class Solution2:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t): return False
             
-    for x in t:
-        if x in dict_s:
-            dict_s[x] -= 1
-        else: 
-            return False
+        dictS = {}
         
-    for c in dict_s:
-        if dict_s[c] != 0:
-            return False
-    return True
+        for i in s:
+            if i in dictS: dictS[i] += 1
+            else: dictS[i] = 1
+                
+        for x in t:
+            if x in dictS: dictS[x] -= 1
+            else: 
+                return False
+            
+        for c in dict_s:
+            if dict_s[c] != 0:
+                return False
+        return True
 
 # print(valid_anagram("cat", "tac")) # return True
 # print(valid_anagram("listen", "silent")) # return True
