@@ -30,14 +30,12 @@ class Solution2:
                 
         for x in t:
             if x in dictS: dictS[x] -= 1
-            else: 
-                return False
+            else: return False
             
-        for c in dict_s:
-            if dict_s[c] != 0:
-                return False
+        for c in dictS:
+            if dictS[c] != 0: return False
         return True
 
-# print(valid_anagram("cat", "tac")) # return True
-# print(valid_anagram("listen", "silent")) # return True
-# print(valid_anagram("program", "function")) # return False
+# print(isAnagram("cat", "tac")) # return True
+# print(isAnagram("listen", "silent")) # return True
+# print(isAnagram("program", "function")) # return False
