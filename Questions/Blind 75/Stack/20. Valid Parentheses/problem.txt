@@ -1,10 +1,10 @@
 This question is asked by Google. Given a string only containing the following characters (, ), {, }, [ and ], return whether or not the opening and closing characters are in a valid order.
 
-Example: Given the following strings...
+Examples: Given the following strings...
 
-"(){}[]", return true
-"(({[]}))", return true
-"{(})", return  false
-"()", return true
-"()[]{}", return true
-"(]", return false
+1. "(){}[]", return true
+2. "(({[]}))", return true
+3. "{(})", return  false
+4. "()", return true
+5. "()[]{}", return true
+6. "(]", return false
