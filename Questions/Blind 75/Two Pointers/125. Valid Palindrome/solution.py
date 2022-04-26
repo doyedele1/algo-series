@@ -1,11 +1,16 @@
 # alphanumeric characters - A to Z, a to z, 0 to 9
 
+def checkAlphanumeric(self, char):
+    if (ord(char) >= 97 and ord(char) <= 122) or (ord(char) >= 65 and ord(char) <= 90) or (ord(char) >= 48 and ord(char) <= 57):
+        return True
+    return False
+
 # Naive solution: TC - O(2n), SC - O(n)
 def isPalindrome1(s):
     s = s.lower()
     newStr = ""
     for i in s:
-        if i.isalnum():
+        if checkAlphanumeric(i):
             newStr += i
     return newStr == newStr[::-1]
 
@@ -44,12 +49,6 @@ class Solution3:
                 j -= 1
             else: return False
         return True
-        
-        
-    def checkAlphanumeric(self, char):
-        if (ord(char) >= 97 and ord(char) <= 122) or (ord(char) >= 65 and ord(char) <= 90) or (ord(char) >= 48 and ord(char) <= 57):
-            return True
-        return False
 
 # print(valid_palindrome("level"))
 # print(valid_palindrome("algorithm"))
