@@ -3,13 +3,13 @@
 # Naive solution: TC - O(2n), SC - O(n)
 def isPalindrome1(s):
     s = s.lower()
-    new_str = ''
+    newStr = ""
     for i in s:
         if i.isalnum():
-            new_str += i
-    reversed_str = new_str[::-1]
+            newStr += i
+    reversed_str = newStr[::-1]
 
-    if (new_str == reversed_str):
+    if (newStr == reversed_str):
         return True
     return False
 
