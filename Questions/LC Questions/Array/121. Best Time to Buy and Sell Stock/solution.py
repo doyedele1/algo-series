@@ -30,13 +30,13 @@ class Solution1:
 
 class Solution2:
     def maxProfit(self, prices: List[int]) -> int:
-        max_profit = 0
-        min_price = float("inf")
+        maxProfit = 0
+        minPrice = float("inf")
         
         for i in range(len(prices)):
             price = prices[i]
-            if price < min_price:
-                min_price = price
-            elif price - min_price > max_profit:
-                max_profit = price - min_price
-        return max_profit
+            if price < minPrice:
+                minPrice = price
+            elif price - minPrice > maxProfit:
+                maxProfit = price - minPrice
+        return maxProfit
