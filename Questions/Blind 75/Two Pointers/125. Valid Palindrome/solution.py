@@ -7,11 +7,7 @@ def isPalindrome1(s):
     for i in s:
         if i.isalnum():
             newStr += i
-    reversed_str = newStr[::-1]
-
-    if (newStr == reversed_str):
-        return True
-    return False
+    return newStr == newStr[::-1]
 
 # Another solution
 def isPalindrome(s):
