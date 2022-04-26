@@ -1,18 +1,18 @@
 # alphanumeric characters - A to Z, a to z, 0 to 9
 
-def checkAlphanumeric(self, char):
-    if (ord(char) >= 97 and ord(char) <= 122) or (ord(char) >= 65 and ord(char) <= 90) or (ord(char) >= 48 and ord(char) <= 57):
-        return True
-    return False
-
-# Naive solution: TC - O(2n), SC - O(n)
-def isPalindrome1(s):
-    s = s.lower()
-    newStr = ""
-    for i in s:
-        if checkAlphanumeric(i):
-            newStr += i
-    return newStr == newStr[::-1]
+# TC - O(n), SC - O(n) [newStr and the reveresed newStr space]
+class Solution:
+    def checkAlphanumeric(self, char):
+        if (ord(char) >= 97 and ord(char) <= 122) or (ord(char) >= 65 and ord(char) <= 90) or (ord(char) >= 48 and ord(char) <= 57): return True
+        return False
+    
+    def isPalindrome(self, s: str) -> bool:
+        s = s.lower()
+        newStr = ""
+        for i in s:
+            if self.checkAlphanumeric(i):
+                newStr += i
+        return newStr == newStr[::-1]
 
 # Another solution
 def isPalindrome(s):
