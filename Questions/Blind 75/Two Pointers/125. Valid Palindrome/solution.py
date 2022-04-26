@@ -1,3 +1,5 @@
+# alphanumeric characters - A to Z, a to z, 0 to 9
+
 # Naive solution: TC - O(2n), SC - O(n)
 def isPalindrome1(s):
     s = s.lower()
@@ -30,7 +32,7 @@ def isPalindrome(s):
 
     return True
 
-# Another solution
+# Another solution - TC: O(n) where n is the length of the string, SC - O(1)
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         i = 0
@@ -52,12 +54,6 @@ class Solution:
         if (ord(char) >= 97 and ord(char) <= 122) or (ord(char) >= 65 and ord(char) <= 90) or (ord(char) >= 48 and ord(char) <= 57):
             return True
         return False
-    
-    
-    '''
-        TC - O(n) where n is the length of the string
-        SC - O(1)
-    '''
 
 # print(valid_palindrome("level"))
 # print(valid_palindrome("algorithm"))
