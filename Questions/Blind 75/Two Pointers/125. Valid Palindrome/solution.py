@@ -32,8 +32,8 @@ def isPalindrome(s):
 
     return True
 
-# Another solution - TC: O(n) where n is the length of the string, SC - O(1)
-class Solution:
+# TC: O(n) where n is the length of the string, SC - O(1)
+class Solution3:
     def isPalindrome(self, s: str) -> bool:
         i = 0
         j = len(s) - 1
