@@ -1,4 +1,9 @@
-This question is asked by Google. Given a string only containing the following characters (, ), {, }, [ and ], return whether or not the opening and closing characters are in a valid order.
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
 
 Examples: Given the following strings...
 
