@@ -21,8 +21,9 @@
 
 import collections
 
-class Solution:
+class Solution1:
     def isValid(self, s: str) -> bool:
+            
         stack = collections.deque()
         
         for char in s:
@@ -42,7 +43,4 @@ class Solution:
                     return False
                 else: stack.popleft()
                     
-        if len(stack) > 0:
-            return False
-        else:
-            return True
+        return not stack
