@@ -1,5 +1,5 @@
 '''
-    Explanation: 
+    Explanation I: 
         "()[]{}"
         stack = "("
         stack = ""
@@ -22,25 +22,32 @@
 import collections
 
 class Solution1:
-    def isValid(self, s: str) -> bool:
-            
+    def isValid(self, s: str) -> bool:  
         stack = collections.deque()
         
         for char in s:
-            if char == "(" or char == "[" or char == "{":
-                stack.appendleft(char)
+            if char == "(" or char == "[" or char == "{": stack.appendleft(char)
             elif char == ")":
                 # if there is nothing in the stack, then we want to check the length of the current stack and return False
-                if len(stack) < 1 or stack[0] != "(":
-                    return False
+                if len(stack) < 1 or stack[0] != "(": return False
                 else: stack.popleft()
             elif char == "]":
-                if len(stack) < 1 or stack[0] != "[":
-                    return False
+                if len(stack) < 1 or stack[0] != "[": return False
                 else: stack.popleft()
             elif char == "}":
-                if len(stack) < 1 or stack[0] != "{":
-                    return False
-                else: stack.popleft()
-                    
+                if len(stack) < 1 or stack[0] != "{": return False
+                else: stack.popleft()           
+        return not stack
+
+class Solution2:
+    def isValid(self, s: str) -> bool:  
+        stack = collections.deque()
+        mapping = { ")": "(", "}": "{", "]": "["}
+        
+        for char in s:
+            if char in mapping: # checking for closing parentheses
+                if stack and stack[0] == mapping[char]:
+                    stack.popleft()
+                else: return False
+            else: stack.appendleft(char) # append all opening parentheses
         return not stack
