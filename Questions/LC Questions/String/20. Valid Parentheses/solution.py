@@ -41,13 +41,13 @@ class Solution1:
 
 class Solution2:
     def isValid(self, s: str) -> bool:  
-        stack = collections.deque()
+        stack = [] # we could also use collections.deque()
         mapping = { ")": "(", "}": "{", "]": "["}
         
         for char in s:
             if char in mapping: # checking for closing parentheses
-                if stack and stack[0] == mapping[char]:
-                    stack.popleft()
+                if stack and stack[-1] == mapping[char]:
+                    stack.pop()
                 else: return False
-            else: stack.appendleft(char) # append all opening parentheses
+            else: stack.append(char) # append all opening parentheses
         return not stack
