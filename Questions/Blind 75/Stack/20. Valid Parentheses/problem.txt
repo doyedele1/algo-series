@@ -13,3 +13,4 @@ Examples: Given the following strings...
 4. "()", return true
 5. "()[]{}", return true
 6. "(]", return false
+7. "([)]", return false

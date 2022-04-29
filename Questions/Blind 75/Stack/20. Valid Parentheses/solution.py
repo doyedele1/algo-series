@@ -23,8 +23,6 @@ import collections
 
 class Solution:
     def isValid(self, s: str) -> bool:
-        if len(s) > 1:
-            return True
         stack = collections.deque()
         
         for char in s:
