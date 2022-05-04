@@ -1,5 +1,5 @@
 '''
-    Explanation I: Iterative solution
+    Explanation I: Iterative Solution
         - 1 -> 2 -> 3 -> 4 -> 5
         - Use two pointers: current that is set to head and previous that is set to null
         - Reverse the node by making current.next to be the previous node
@@ -8,8 +8,19 @@
         - We stop the iteration when current is null
         
         - TC: O(n), SC: O(1)
+        
+    Explanation II: Recursive Solution
+        - 1 -> 2 -> 3 -> 4 -> 5
+        - Call function on 2,3,4 and 5, we get the sublist reversed.
+        - We can then add the sublist to head of 1 to get 5 -> 4 -> 3 -> 2 <- 1
+        - We need to change the next pointer of head (1). 
+            - head.next.next = head. i.e. 2.next = 1 where 2 was head.next
+            - head.next = null. i.e. 1.next = null
+        - Base case:
+            - If we call reverseList(null) when the list is of length 0, it should return null or the head
+            - If we call reverseList(head) when the list is of length 1, it should also return head since it has no sublist
+        - TC: O(n), SC: O(n)
 '''
-
 
 # Definition for singly-linked list.
 from typing import Optional
@@ -42,6 +53,7 @@ class Solution2:
         
         return reversedSublist
 
+# recursive solution similar to the iterative solution
 class Solution3:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         def helper(previous, current):
