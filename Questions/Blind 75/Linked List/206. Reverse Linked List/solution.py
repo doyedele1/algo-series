@@ -33,11 +33,21 @@ class Solution1:
 
 class Solution2:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if head is None or head.next is None:
-            return head
+        if not head or not head.next: return head
         
         reversed_head = self.reverseList(head.next)
         head.next.next = head
         head.next = None
 
         return reversed_head
+
+class Solution3:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        def helper(previous, current):
+            if current == None: return previous
+
+            temp = current.next
+            current.next = previous
+            return helper(current, temp)
+        
+        return helper(None, head)
