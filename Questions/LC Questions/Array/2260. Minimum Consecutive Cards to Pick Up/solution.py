@@ -1,5 +1,6 @@
 '''
     Explanation:
+        [3,4,2,3,4,7]
         - Use a hashmap
             key - the card value
             value - 
