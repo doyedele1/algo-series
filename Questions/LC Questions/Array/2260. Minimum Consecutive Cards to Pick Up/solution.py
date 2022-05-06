@@ -39,5 +39,5 @@ class Solution:
                 ans = min(ans, currentIndex - hashMap[card] + 1)
                 hashMap[card] = currentIndex
                 
-        if ans == float('inf'): return -1
+        if ans == float('inf'): return -1 # we've not found matching cards
         else: return ans
