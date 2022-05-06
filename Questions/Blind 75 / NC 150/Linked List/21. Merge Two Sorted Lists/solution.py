@@ -1,13 +1,16 @@
 '''
     Explanation:
-        # Initialize a dummy new node
-        # And save your new node in a temporary node
-        # Loop through the two lists until both have null values
-            # if l1 < l2, add l1 to the temp node and move l1 pointer
-            # else add l2 and move l2 pointer
-            # move your temp node pointer 
-        # If l2 is not null, add l2 to the temp node
-        # If l1 is not null, add l1 to the temp node
+        - Initialize a dummy new node
+        - And save your new node in a temporary node
+        - Loop through the two lists until both have null values
+            - If l1 < l2, add l1 to the temp node and move l1 pointer
+            - Else add l2 and move l2 pointer
+            - Move your temp node pointer 
+        - If l2 is not null, add l2 to the temp node
+        - If l1 is not null, add l1 to the temp node
+
+        - TC: O(n + m) where n + m is the sum of the lengths of the two lists
+        - SC: O(1). The iterative approach only allocates a few pointers, so it has a constant overall memory footprint. newNode output is returning the head, not the entire list
 '''
 
 # Definition for singly-linked list.
