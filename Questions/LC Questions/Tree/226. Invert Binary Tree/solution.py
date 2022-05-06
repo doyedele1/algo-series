@@ -1,4 +1,18 @@
+'''
+    Explanation: Pre-Order Traversal
+    - Visit every node in the binary tree
+    - When we visit a parent node, swap the children
+    - Recursively run the invert function on the left subtree and right subtree
+
+    - TC: O(n)
+    - SC: O(h) where h is the height of the tree. Still equates to O(n)
+'''
+
+
 # Definition for a binary tree node.
+from typing import Optional
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -6,16 +20,17 @@ class TreeNode:
         self.right = right
         
 class Solution:
-    def invertTree(self, root: TreeNode) -> TreeNode:
-        
-        if root is None:
-            return root
-    
-        #traverse
-        left = self.invertTree(root.left)
-        right = self.invertTree(root.right)
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return None
 
-        # swap
-        root.left, root.right = right, left
+        # swap the nodes
+        temp = root.left
+        root.left = root.right
+        root.right = temp
+
+        # recursively invert the left and right subtrees
+        self.invertTree(root.left)
+        self.invertTree(root.right)
 
         return root
