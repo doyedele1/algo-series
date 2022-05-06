@@ -30,14 +30,14 @@ from typing import List
 class Solution:
     def minimumCardPickup(self, cards: List[int]) -> int:
         hashMap  = {}
-        ans = float("inf")
+        res = float("inf")
         
         for currentIndex, card in enumerate(cards):
             if card not in hashMap: 
                 hashMap[card] = currentIndex
             else:
-                ans = min(ans, currentIndex - hashMap[card] + 1)
+                res = min(res, currentIndex - hashMap[card] + 1)
                 hashMap[card] = currentIndex
                 
-        if ans == float('inf'): return -1 # we've not found matching cards
-        else: return ans
+        if res == float('inf'): return -1 # we've not found matching cards
+        else: return res
