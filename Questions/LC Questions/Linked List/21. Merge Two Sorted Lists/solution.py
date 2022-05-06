@@ -22,7 +22,7 @@ class Solution:
         temp = newNode
         
         while l1 and l2: # while both l1 and l2 are not null
-            if(l1.val < l2.val):
+            if l1.val < l2.val:
                 temp.next = l1
                 l1 = l1.next
             else: 
@@ -30,7 +30,7 @@ class Solution:
                 l2 = l2.next
             temp = temp.next
         
-        if(l2 != None): temp.next = l2
+        if l2: temp.next = l2
         else: temp.next = l1
         
         return newNode.next
