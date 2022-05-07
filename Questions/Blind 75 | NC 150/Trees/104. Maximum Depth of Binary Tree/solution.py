@@ -1,14 +1,18 @@
 '''
-    Explanation I: Recursive Pre-Order Traversal
+    Explanation I: Recursive DFS (Pre-Order) Traversal
         - If the tree only contains the root node, the max depth is 1
         - If the tree contains either a left child and right child or both, the max depth is 1 + max(max depth of left child and right child)
         - So, with this, we can recursively call maxDepth on either subtree and find the maximum and add to 1
     
     TC: O(n)
     SC: O(n) worst case is when each node has only left or right child node. O(log n) best case is when the tree is completely balanced
+    
+    Explanation II: Iterative BFS Traversal
+        - With BFS, the levels of the tree is the maximum depth of the tree
 
-'''     
+'''
 
+import collections
 from typing import Optional
 
 # Definition for a binary tree node.
@@ -24,3 +28,19 @@ class Solution1:
 
         return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
 
+class Solution2:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if not root: return 0
+        
+        res = 0
+        q = collections.deque([root])
+        
+        while q:
+            for i in range(len(q)):
+                node = q.popleft()
+                
+                if node.left: q.append(node.left)
+                if node.right: q.append(node.right)
+            
+            res += 1
+        return res
