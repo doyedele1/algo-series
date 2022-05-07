@@ -7,19 +7,20 @@
     
         - TC: O(n)
         - SC: O(n) worst case is when each node has only left or right child node. O(log n) best case is when the tree is completely balanced
-    
-    Explanation II: Iterative BFS Traversal
-        - With BFS, the levels of the tree is the maximum depth of the tree
-        - TC: O(n)
-        - SC: O(n) worst case is when the tree is balanced. O(1) best case is when the tree is completely unbalanced. i.e each node has only left and right child node.
         
-    Explanation III: Iterative DFS (Pre-Order) Traversal
+    Explanation II: Iterative DFS (Pre-Order) Traversal
         - With DFS, we can keep track of the nodes and the depth in a stack
         - Pop the current node and push the child nodes to the stack. Update the depth
         - The maximum depth is the maximum of the depths in the stack
         
         - TC: O(n)
         - SC: O(n) worst case is when the tree is completely unbalanced. i.e each node has only left and right child node. O(log n) best case is when the tree is balanced
+
+    Explanation III: Iterative BFS Traversal
+        - With BFS, the levels of the tree is the maximum depth of the tree
+        
+        - TC: O(n)
+        - SC: O(n) worst case is when the tree is balanced. O(1) best case is when the tree is completely unbalanced. i.e each node has only left and right child node.
 '''
 
 import collections
@@ -39,6 +40,19 @@ class Solution1:
 
 class Solution2:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
+        res = 0
+        stack = [[root, 1]]
+        
+        while stack:
+            node, depth = stack.pop()
+            if node:
+                res = max(res, depth)
+                stack.append([node.left, depth + 1])
+                stack.append([node.right, depth + 1])
+        return res
+
+class Solution3:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
         if not root: return 0
         
         res = 0
@@ -52,17 +66,4 @@ class Solution2:
                 if node.right: q.append(node.right)
             
             res += 1
-        return res
-
-class Solution3:
-    def maxDepth(self, root: Optional[TreeNode]) -> int:
-        res = 0
-        stack = [[root, 1]]
-        
-        while stack:
-            node, depth = stack.pop()
-            if node:
-                res = max(res, depth)
-                stack.append([node.left, depth + 1])
-                stack.append([node.right, depth + 1])
-        return res
+        return res        
