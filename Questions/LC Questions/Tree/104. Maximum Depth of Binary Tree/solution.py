@@ -1,5 +1,5 @@
 '''
-    Explanation I: Recursive DFS (Pre-Order) Traversal
+    Explanation I: Recursive DFS (Pre-Order) Solution
         - If the tree is empty, the max depth is 0
         - If the tree contains only the root node, the max depth is 1
         - If the tree contains either a left child and right child or both, the max depth is 1 + max(max depth of left child and right child)
@@ -8,7 +8,7 @@
         - TC: O(n)
         - SC: O(n) worst case is when each node has only left or right child node. O(log n) best case is when the tree is completely balanced
         
-    Explanation II: Iterative DFS (Pre-Order) Traversal
+    Explanation II: Iterative DFS (Pre-Order) Solution
         - With DFS, we can keep track of the nodes and the depth in a stack
         - Pop the current node and push the child nodes to the stack. Update the depth
         - The maximum depth is the maximum of the depths in the stack
@@ -16,9 +16,9 @@
         - TC: O(n)
         - SC: O(n) worst case is when the tree is completely unbalanced. i.e each node has only left and right child node. O(log n) best case is when the tree is balanced
 
-    Explanation III: Iterative BFS Traversal
+    Explanation III: Iterative BFS Solution
         - With BFS, the levels of the tree is the maximum depth of the tree
-        
+
         - TC: O(n)
         - SC: O(n) worst case is when the tree is balanced. O(1) best case is when the tree is completely unbalanced. i.e each node has only left and right child node.
 '''
