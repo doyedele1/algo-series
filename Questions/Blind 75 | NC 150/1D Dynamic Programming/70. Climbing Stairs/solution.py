@@ -14,7 +14,7 @@
         - This way, we are reducing the size of recursion tree up to n
         - TC: O(n), SC: O(n)
         
-    Explanation IV: Fibonacci Number
+    Explanation III: Fibonacci Number
         - fib(n) = fib(n-1) + fib(n-2)
         - fib(1) = 1, fib(2) = 2
         
@@ -46,12 +46,23 @@ class Solution2:
 class Solution3:
     def climbStairs(self, n: int) -> int:
         if n == 1: return 1
-        
-        first = 1
-        second = 2
+
+        first, second = 1, 2
         
         for i in range(3, n + 1):
             third = first + second
             first = second
             second = third
+
         return second
+
+class Solution4:
+    def climbStairs(self, n: int) -> int:
+        one, two = 1, 1
+        
+        for i in range(n - 1):
+            temp = one
+            one += two
+            two = temp
+            
+        return one
