@@ -1,23 +1,23 @@
-def roman_to_int(s:str):
-    rom_to_int_map = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
-    sub_map = {'IV': 4, 'IX':9, 'XL': 40, 'XC': 90, 'CD':400, 'CM': 900}
-    summation = 0
-    idx = 0
+def romanToInt(s):
+    res = 0
+    dict = { "I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000 }
 
-    while idx < len(s):
-        if s[idx:idx+2] in sub_map:
-            summation += sub_map.get(s[idx:idx+2])
-            idx += 2
+    for i in range(len(s)):
+        if i + 1 < len(s) and dict[s[i+1]] > dict[s[i]]:
+            res -= dict[s[i]]
+        
         else:
-            summation += rom_to_int_map.get(s[idx])
-            idx += 1
-    return summation
+            res += dict[s[i]]
+            
+    return res
     
 def sort_roman(names):
-    name_array = []
+    res = []
     for name in names:
         n, num = name.split()
-        num = roman_to_int(num)
-        name_array.append((n, num, name))
-    name_array.sort(key=lambda x: [x[0], x[1]])
-    return list(map(lambda x:x[2], name_array))
+        num = romanToInt(num)
+        res.append((n, num, name))
+    res.sort(key = lambda x: [x[0], x[1]]) # res here is the array of tuples of name, number and name + roman
+    return list(map(lambda x: x[2], res))
+
+# print(sort_roman(["Steven XL", "Steven XVI", "David IX", "Mary XV", "Mary XIII", "Mary XX"]))
