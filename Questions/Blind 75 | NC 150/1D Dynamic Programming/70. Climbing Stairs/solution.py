@@ -20,6 +20,12 @@
         
         - So we can use the three pointers (first, second, third) to solve the problem
         - TC: O(n), SC: O(1)
+    
+    Explanation IV: Fibonacci Number Idea (Bottom-Up DP Approach)
+                            0
+                1                       2
+        2               3           3           4
+    3       4       4       5   4       5   5       6
 '''
 
 class Solution1:
