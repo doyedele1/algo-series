@@ -13,5 +13,3 @@ class Solution:
             elif sum > target:
                 right -= 1
             else: left += 1
-                
-        
