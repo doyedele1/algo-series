@@ -1,7 +1,7 @@
 '''
 Explanation:
     - When the lower roman numeral comes before the higher one, we subtract the lower equivalent integer from the higher equivalent integer to get the result. 
-    - While, when the higher roman numeral comes before the lower one, we can add the quivalent integer of the higher roman numeral to the result.
+    - While, when the higher roman numeral comes before the lower one, we can add the equivalent integer of the higher roman numeral to the result.
     
     Example:
     MCMXCIV
