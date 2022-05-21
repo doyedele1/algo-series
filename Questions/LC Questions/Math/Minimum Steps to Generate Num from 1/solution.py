@@ -49,9 +49,9 @@ import collections
 
 def solution1(n):
     head = 1
+    steps = 0
     q = collections.deque([head])
     visited = set()
-    steps = 0
     
     while q:
         for i in range(len(q)):
@@ -71,7 +71,7 @@ def solution1(n):
     
         steps += 1
 
-print("solution1", solution1(10))
+# print("solution1", solution1(10))
 
 
 # IGNORE --> not an efficient solution, doesn't even evaluate the minimum number of steps
