@@ -18,6 +18,6 @@ def pairClosestToK(nums, k):
     return nums[res_left] + nums[res_right]
 
 
-print(pairClosestToK([4,16,28,37,42,56,63,89,124,245], 101)) # 100
-print(pairClosestToK([10, 22, 28, 29, 30, 40], 54)) # 52
-print(pairClosestToK([1, 3, 4, 7, 10], 15)) # 14
+# print(pairClosestToK([4,16,28,37,42,56,63,89,124,245], 101)) # returns 100
+# print(pairClosestToK([10, 22, 28, 29, 30, 40], 54)) # returns 52
+# print(pairClosestToK([1, 3, 4, 7, 10], 15)) # returns 14
