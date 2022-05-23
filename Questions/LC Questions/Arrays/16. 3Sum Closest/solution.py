@@ -1,15 +1,16 @@
+'''
+    Explanation:
+        [-1,2,1,-4], 1
+        diff = 6
+        
+        TC - O(n-squared)
+        SC - O(log n) or O(n) for the sorting algorithm
+'''
+
 from typing import List
 
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
-        '''
-            [-1,2,1,-4], 1
-            diff = 6
-            
-            TC - O(n-squared)
-            SC - O(log n) or O(n) for the sorting algorithm
-        '''
-        
         nums.sort()
         left = 0
         right = len(nums) - 1

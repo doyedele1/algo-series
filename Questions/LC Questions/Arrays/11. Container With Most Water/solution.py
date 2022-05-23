@@ -26,7 +26,6 @@ class Solution1:
                 
         return ans
 
-
 # Optimal Solution
 class Solution2:
     def maxArea(self, height: List[int]) -> int:
@@ -38,8 +37,7 @@ class Solution2:
             area_of_rectangle = (j - i) * (min(height[i], height[j]))
             ans = max(ans, area_of_rectangle)
             
-            if height[i] < height[j]:
-                i += 1
+            if height[i] < height[j]: i += 1
             else: j -= 1
                 
         return ans
