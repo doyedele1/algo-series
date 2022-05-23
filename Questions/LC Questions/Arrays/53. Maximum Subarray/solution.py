@@ -44,7 +44,6 @@ class Solution2:
             maxSum = max(maxSum, maxAtEveryIndex)
         return maxSum
 
-
 # print(maxSubArray2([-2,1,-3,4,-1,2,1,-5,4]))
 # print(maxSubArray2([1]))
 # print(maxSubArray2([5,4,-1,7,8]))
