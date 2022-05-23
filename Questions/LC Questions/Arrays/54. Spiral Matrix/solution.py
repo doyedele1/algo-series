@@ -69,7 +69,7 @@ class Solution1:
 
 class Solution2:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-        # The four possible directions. right, down, left, up
+        # The four possible directions - right, down, left, up
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         m, n = len(matrix), len(matrix[0])
         row = col = 0
@@ -83,22 +83,22 @@ class Solution2:
                 nextRow = row + directions[currentDirection][0]
                 nextCol = col + directions[currentDirection][1]
                 
-                # edge case - if the next step is out of bounds
+                # Edge case - if the next step is out of bounds
                 if not (0 <= nextRow < m and 0 <= nextCol < n): break
                 
-                # if the next step is on a visited cell
+                # If the next step is on a visited cell
                 if matrix[nextRow][nextCol] == visited: break
                 
-                # reset changeDirection to 0
+                # Reset changeDirection to 0
                 changeDirection = 0
                 row, col = nextRow, nextCol
                 res.append(matrix[row][col])
                 matrix[row][col] = visited
             
-            # change direction
+            # Change direction
             currentDirection = (currentDirection + 1) % 4
             
-            # increment changeDirection
+            # Increment changeDirection
             changeDirection += 1
         
         return res
