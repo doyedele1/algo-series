@@ -12,22 +12,23 @@
             - TC: O(n), SC: O(1)
 '''
 
-# Naive Solution
-# class Solution:
-#     def maxArea(self, height: List[int]) -> int:
-#         ans = 0
-        
-#         for i in range(len(height)):
-#             for j in range(i + 1, len(height)):
-#                 area_of_rectangle = (j - i) * (min(height[i], height[j]))
-#                 ans = max(ans, area_of_rectangle)
-                
-#         return ans
-
-# Optimal Solution
 from typing import List
 
-class Solution:
+# Naive Solution
+class Solution1:
+    def maxArea(self, height: List[int]) -> int:
+        ans = 0
+        
+        for i in range(len(height)):
+            for j in range(i + 1, len(height)):
+                area_of_rectangle = (j - i) * (min(height[i], height[j]))
+                ans = max(ans, area_of_rectangle)
+                
+        return ans
+
+
+# Optimal Solution
+class Solution2:
     def maxArea(self, height: List[int]) -> int:
         ans = 0
         i = 0
