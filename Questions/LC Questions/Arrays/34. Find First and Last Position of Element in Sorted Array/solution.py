@@ -34,4 +34,3 @@ class Solution:
                 idx = middle
                 
         return idx
-    
