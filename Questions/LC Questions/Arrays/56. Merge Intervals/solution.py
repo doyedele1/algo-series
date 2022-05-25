@@ -18,18 +18,18 @@ class Solution:
         # Sorting by the start value in Python is straightforward. i stands for the interval
         intervals.sort(key = lambda i : i[0])
         
-        # Declaring an output to append the merged intervals and initializing with the first interval to cover some edge case
-        output = [intervals[0]]
+        # Declaring res to append the merged intervals and initializing with the first interval to cover some edge case
+        res = [intervals[0]]
         
         for start, end in intervals[1:]:
             # Get the end value of the most recently added interval
-            last_end = output[-1][1]
+            last_end = res[-1][1]
             
             # This means they are overlapping
             if start <= last_end:
-                # Get the end of the merged interval and merge - add to the output tuple
-                output[-1][1] = max(last_end, end)
+                # Get the end of the merged interval and merge - add to the res tuple
+                res[-1][1] = max(last_end, end)
             else:
-                output.append([start, end])
+                res.append([start, end])
                 
-        return output
+        return res
