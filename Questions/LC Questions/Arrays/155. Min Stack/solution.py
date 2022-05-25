@@ -1,8 +1,8 @@
 '''
     Explanation:
-        - Use two stacks: stack and minStack. minStack stores the minimum of each value in the stack
-        - pop, top and getMin must not be called on empty stacks
-        - TC: O(1) for all operations, SC: O(n)
+        Use two stacks: stack and minStack. minStack stores the minimum of each value in the stack
+        Pop, top and getMin must not be called on empty stacks
+        TC: O(1) for all operations, SC: O(n)
 '''
 
 class MinStack:
