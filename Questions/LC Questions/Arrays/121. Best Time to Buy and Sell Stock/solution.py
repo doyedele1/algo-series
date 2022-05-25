@@ -1,5 +1,5 @@
 '''
-    Buy Low, Sell High
+    Note: Buy Low, Sell High
 
     Explanation I: TC: O(n), SC: O(1)
         - Use two pointers. Left starts from index 0, right starts from index 1. Left represents buy, right represents sell
