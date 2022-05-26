@@ -43,7 +43,7 @@ function firstDuplicateOptimizedAgain(a) {
         fast = a[a[fast]]
     }
 
-    let slow = a[0]
+    slow = a[0]
     while (slow != fast) {
         slow = a[slow]
         fast = a[fast]
