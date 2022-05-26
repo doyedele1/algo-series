@@ -11,21 +11,21 @@
             Step 3: Dropping -  we can go column by column bottom-up. The move zeros algorithm can apply here. Whenever we see a non-negative number, we want to swap with the corresponding value of the current index of a negative number and turn the rest to 0
             
             
-            TC - O(m*n)-squared. m is the number of rows and n is the number of columns in a board. We need O(m*n) to scan the board and we might crush only 3 candies repeatedly
-            SC - O(1). The board is modified in place
+        TC - O(m*n)-squared. m is the number of rows and n is the number of columns in a board. We need O(m*n) to scan the board and we might crush only 3 candies repeatedly
+        SC - O(1). The board is modified in place
 '''
 
 from typing import List
 
 class Solution:
     def candyCrush(self, board: List[List[int]]) -> List[List[int]]:
-        # to check for potential errors
+        # To check for potential errors
         if not board: board
         
-        # to assume the board is good
+        # To assume the board is good
         done = True
         
-        # to check for rows
+        # To check for rows
         for r in range(len(board)):
             for c in range(len(board[r]) - 2):
                 first_num = abs(board[r][c])
@@ -37,8 +37,7 @@ class Solution:
                     board[r][c+2] = -third_num
                     done = False
         
-        
-        # to check for columns
+        # To check for columns
         for r in range(len(board) - 2):
             for c in range(len(board[0])):
                 first_num = abs(board[r][c])
@@ -50,18 +49,17 @@ class Solution:
                     board[r+2][c] = -third_num    
                     done = False
         
-        
-        # to drop candies that match
+        # To drop candies that match
         if not done:
             for c in range(len(board[0])):
-                # move all non-negative numbers down
+                # Move all non-negative numbers down
                 j = len(board) - 1
                 for r in range(len(board) - 1, -1, -1):
                     if board[r][c] > 0:
                         board[j][c] = board[r][c]
                         j -= 1
 
-                # replace the rest to 0s
+                # Replace the rest to 0s
                 for r in range(j, -1, -1):
                     board[r][c] = 0
 
