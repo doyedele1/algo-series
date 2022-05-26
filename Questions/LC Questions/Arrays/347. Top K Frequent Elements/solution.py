@@ -76,5 +76,4 @@ class Solution3:
         for i in range(len(bucket) - 1, 0, -1):
             for num in bucket[i]:
                 res.append(num)
-                if len(res) == k:
-                    return res
+                if len(res) == k: return res
