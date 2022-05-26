@@ -3,8 +3,8 @@
         - Create a hashmap to store the indices of any given number that appears in the array
             - Number as the key --> indices as the value
         
-        - For the constructor method, TC - O(n), SC - O(n)
-        - For the pick method, TC - O(1), SC - O(n)
+        For the constructor method, TC - O(n), SC - O(n)
+        For the pick method, TC - O(1), SC - O(n)
         
     Explanation II:
         - First time we see a target number, we want to keep it. One over one probability of keeping that index number as the return value. Probability = 1

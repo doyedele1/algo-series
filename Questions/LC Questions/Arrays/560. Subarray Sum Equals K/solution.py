@@ -1,27 +1,9 @@
-from typing import List
-
-class Solution:
-    def subarraySum(self, nums: List[int], k: int) -> int:
-        res = 0
-        curr_sum = 0
-        prefix_sum = { 0: 1 }
-        
-        for n in nums:
-            curr_sum += n
-            diff = curr_sum - k
-
-            res += prefix_sum.get(diff, 0) # 0 is the custom default value if the key diff is not found
-            prefix_sum[curr_sum] = prefix_sum.get(curr_sum, 0) + 1
-
-        return res
-    
-    '''
-        Explanation
-        Brute-force solution:
+'''
+        Explanation I: Brute-force Solution
             - We have n-squared different subarrays inside of the array
             - We are doing a ton of repeated work by getting the sum of all the single subarrays
 
-        More optimal solution:
+        Explanation II: Optimal Solution
             - We will use a hashmap where the key is the prefix_sum and the value is the count of how many times that prefix_sum occurs
             - Can we chop off a prefix to get the required k target number. i.e. for the contiguous array of 4 for [1,1,1,1,1,1], 
                 - sum = 4, sum - k = 1. 1 is present in the array
@@ -55,6 +37,23 @@ class Solution:
             - We do have the prefix of 1
             - Count = 2, add to res. Res = 4
 
-        TC - O(n)
-        SC - O(n). We use the hashmap that can contain n distinct inputs in the worst case
-    '''
+            TC - O(n)
+            SC - O(n). We use the hashmap that can contain n distinct inputs in the worst case
+'''
+
+from typing import List
+
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        res = 0
+        curr_sum = 0
+        prefix_sum = { 0: 1 }
+        
+        for n in nums:
+            curr_sum += n
+            diff = curr_sum - k
+
+            res += prefix_sum.get(diff, 0) # 0 is the custom default value if the key diff is not found
+            prefix_sum[curr_sum] = prefix_sum.get(curr_sum, 0) + 1
+
+        return res
