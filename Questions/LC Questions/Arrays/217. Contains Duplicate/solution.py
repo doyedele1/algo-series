@@ -1,7 +1,9 @@
 '''
-    Solution1: Nested loops - TC: O(n-squared), SC: O(1)
-    Solution2: Sort, then check for adjacent values - TC: O(n logn), SC: O(1)
-    Solution3: Use hashset and check if a certain value exists
+    Solution 1: Nested loops - TC: O(n-squared), SC: O(1)
+
+    Solution 2: Sort, then check for adjacent values - TC: O(n logn), SC: O(1)
+    
+    Solution 3: Use hashset and check if a certain value exists
         [1, 2, 3, 1]
         Is the first 1 in our hashset, then we add to the hashset. Hashset: {1}
         Is 2 in our hashset? Hashset = {1, 2}
