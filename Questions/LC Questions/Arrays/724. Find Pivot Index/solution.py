@@ -4,8 +4,8 @@
         - At index i, we can get the rightSum if we know the leftSum. rightSum = sum - leftSum - num
         - leftSum = leftSum + num
         
-        - TC: O(n) where n is the length of nums
-        - SC: O(1)
+        TC: O(n) where n is the length of nums
+        SC: O(1)
 '''
 
 from typing import List

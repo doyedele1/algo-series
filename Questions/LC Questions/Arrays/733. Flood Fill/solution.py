@@ -18,8 +18,7 @@ class Solution:
             dfs(i-1, j, newColor, starting_point) # left
             dfs(i+1, j, newColor, starting_point) # right
     
-        if not image: 
-            return None
+        if not image: return None
         
         starting_point = image[sr][sc]        
         dfs(sr, sc, newColor, starting_point)
