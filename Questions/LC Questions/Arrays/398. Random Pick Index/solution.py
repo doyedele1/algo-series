@@ -1,33 +1,3 @@
-import random
-from typing import List
-# import collections
-
-class Solution:
-
-    def __init__(self, nums: List[int]):
-        # Naive solution
-        # self.nums = collections.defaultdict(list)
-        # for index, num in enumerate(nums):
-        #     self.nums[num].append(index)
-            
-        # Most optimal solution
-        self.nums = nums
-
-    def pick(self, target: int) -> int:
-        # Naive solution
-        # return random.choice(self.nums[target])
-    
-        # Most optimal solution
-        res = None
-        count = 0
-        
-        for index, num in enumerate(self.nums):
-            if num == target:
-                if random.randint(0, count) == count:
-                    res = index
-                count += 1
-        return res
-
 '''
     Explanation I:
         - Create a hashmap to store the indices of any given number that appears in the array
@@ -45,6 +15,34 @@ class Solution:
         - For the constructor method, TC - O(1), SC - O(1)
         - For the pick method, TC - O(n), SC - O(1)
 '''
+
+import random
+from typing import List
+import collections
+
+class Solution1:
+    def __init__(self, nums: List[int]):
+        self.nums = collections.defaultdict(list)
+        for index, num in enumerate(nums):
+            self.nums[num].append(index)
+    
+    def pick(self, target: int) -> int:
+        return random.choice(self.nums[target])
+        
+class Solution2:
+    def __init__(self, nums: List[int]):
+        self.nums = nums
+
+    def pick(self, target: int) -> int:
+        res = None
+        count = 0
+        
+        for index, num in enumerate(self.nums):
+            if num == target:
+                if random.randint(0, count) == count:
+                    res = index
+                count += 1
+        return res
 
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(nums)
