@@ -40,10 +40,10 @@ class RandomizedSet:
         index = self.hash_map[val]
         last_item = self.array_list[-1]
         
-        # get the last item in the array list and copy the last item to the index
+        # Get the last item in the array list and copy the last item to the index
         self.array_list[index], self.hash_map[last_item] = last_item, index
         
-        # remove the last item in the array_list and remove the entry containing the key equal to the value to be removed in the hash_map
+        # Remove the last item in the array_list and remove the entry containing the key equal to the value to be removed in the hash_map
         self.array_list.pop()
         del self.hash_map[val]
         
