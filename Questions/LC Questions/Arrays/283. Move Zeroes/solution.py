@@ -22,6 +22,9 @@
                     j
                     i               
         Result ==> [1, 3, 12, 0, 0]
+
+        - TC - O(n)
+        - SC - O(1)
 '''
 
 from typing import List
@@ -36,9 +39,6 @@ class Solution:
         
         for i in range(j, len(nums)):
             nums[i] = 0
-
-        # TC - O(n)
-        # SC - O(1)
 
         # One-line solution
         # nums[:] = [x for x in nums if x != 0] + [0]*nums.count(0)

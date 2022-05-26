@@ -1,12 +1,13 @@
 '''
     Explanation I:
-        - [1, 2, 3, 4]
+        [1, 2, 3, 4]
         - We could use left and right arrays
             - left rep the product of elem to the left and right represents the product of elem to the right
             - left = [], right = []
             - After all iterations: left = [1, 1, 2, 6]
             - After all iterations: right = [24, 12, 4, 1]
             - res = left[i] * right[i] = [24, 12, 8, 6]
+        
         - TC: O(n)
         - SC: O(n), space occupied by the left and right arrays
         
@@ -17,6 +18,7 @@
             - left = [1, 1, 2, 6] which is res after the left operation
             - right = 24, 12, 4, 1 gotten from the input array
             - res = [1, 1, 2, 6] and res after the right operation = [1 * 24, 1 * 12, 2 * 4, 6 * 1] = [24, 12, 8, 6]
+        
         - TC: O(n)
         - SC: O(1) since the res doesn't count as extra space
 '''
