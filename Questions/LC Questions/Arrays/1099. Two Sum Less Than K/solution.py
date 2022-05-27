@@ -1,7 +1,13 @@
+'''
+    Solution 1:
+        TC - O(nlogn)
+        SC - O(n) or O(log n)
+'''
+
 from typing import List
 
 # Naive solution
-class Solution:
+class Solution1:
     def twoSumLessThanK(self, nums: List[int], k: int) -> int:
         nums.sort()
         # [1,8,23,24,33,34,54,75]
@@ -18,11 +24,6 @@ class Solution:
             else:
                 right -= 1
         return res
-    
-    '''
-        TC - O(nlogn)
-        SC - O(n) or O(log n)
-    '''
 
 
 # Optimal solution
