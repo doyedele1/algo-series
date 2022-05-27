@@ -1,33 +1,33 @@
 let flipAndInvertImage = function(image) {
     
-    for(img of image) {
-        flipImage(img)
-        invertImage(img)
+    for (img of image) {
+        flipImage(img);
+        invertImage(img);
     }
     
-    return image
+    return image;
     
 };
 
 let flipImage = function(arr) {
-    let start = 0
-    let end = arr.length - 1
+    let start = 0;
+    let end = arr.length - 1;
 
-    while(start < end) {
-        temp = arr[start]
-        arr[start] = arr[end]
-        arr[end] = temp
+    while (start < end) {
+        temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
 
-        start++
-        end--
+        start++;
+        end--;
     }
 };
 
 
 let invertImage = function(arr) {
-    for(let i = 0; i < arr.length; i++) {
-        arr[i] ^= 1
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] ^= 1;
     }
 };
 
-flipAndInvertImage([[1,1,0],[1,0,1],[0,0,0]])
+// flipAndInvertImage([[1,1,0],[1,0,1],[0,0,0]])
