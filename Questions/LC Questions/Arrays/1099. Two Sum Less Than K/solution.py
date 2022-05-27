@@ -2,6 +2,13 @@
     Solution 1:
         TC - O(nlogn)
         SC - O(n) or O(log n)
+
+    Solution 2:
+        [34,23,1,24,75,33,54,8]
+        60
+        
+        TC - O(m + n) where m is the range of values in the nums array while n is the size of the nums array
+        SC - O(m) where m helps to count each value in the nums array
 '''
 
 from typing import List
@@ -27,18 +34,9 @@ class Solution1:
 
 
 # Optimal solution
-class Solution:
+class Solution2:
     def twoSumLessThanK(self, nums: List[int], k: int) -> int:
-        
-        '''
-            [34,23,1,24,75,33,54,8]
-            60
-            
-            TC - O(m + n) where m is the range of values in the nums array while n is the size of the nums array
-            SC - O(m) where m helps to count each value in the nums array
-        '''
-        
-        ans = -1
+        res = -1
         low = 1
         high = 1000
         count_freq = [0] * 1001
@@ -50,6 +48,6 @@ class Solution:
                 high -= 1
             else:
                 if count_freq[low] > (0 if low < high else 1):
-                    ans = max(ans, low + high)
+                    res = max(res, low + high)
                 low += 1
-        return ans
+        return res
