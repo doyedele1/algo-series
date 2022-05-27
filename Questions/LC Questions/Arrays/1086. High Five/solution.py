@@ -6,20 +6,21 @@
         - Now, create a res array and append the item for which we are calculating the average on the the id of the students
         - Return the Final array as sorted.
         
-    - TC: O(nlogn), SC: O(n) for the nested output
+        TC: O(nlogn), SC: O(n) for the nested output
     
     Explanation II: Max heap
-    - Maintain a max heap of all the scores for every id
-    - Top 5 scores ==> first 5 elements from the mex heap
-    - Create an ordered map. key = student_id, value = scores. Scores for the same if are clubbed together in the same max heap
-    - We are using an ordered map since we want the final scores to be in sorted order which can be obtained directly by iterating over the keys of the map
-    - TC: 
-        finding a key in the map - O(log n)
-        pushing item into the max heap - O(log n)
-        iterating over the map - O(n)
-        extracting the top 5 elements - O(1)
-        Overall = O(nlog n)
-    - SC: O(n) used by hashmap map and max heap
+        - Maintain a max heap of all the scores for every id
+        - Top 5 scores ==> first 5 elements from the mex heap
+        - Create an ordered map. key = student_id, value = scores. Scores for the same if are clubbed together in the same max heap
+        - We are using an ordered map since we want the final scores to be in sorted order which can be obtained directly by iterating over the keys of the map
+        
+        TC: 
+            finding a key in the map - O(log n)
+            pushing item into the max heap - O(log n)
+            iterating over the map - O(n)
+            extracting the top 5 elements - O(1)
+            Overall = O(nlog n)
+        SC: O(n) used by hashmap map and max heap
 '''
 
 
@@ -55,7 +56,7 @@ class Solution2:
             
             if studentId in hashmap:
                 heap = hashmap[studentId]
-                #print heap
+                # print(heap)
                 
                 if len(heap) < 5:
                     heappush(heap, score)
@@ -68,7 +69,7 @@ class Solution2:
                 heapify(heap) # Heapifies the array in place
                 
                 hashmap[studentId] = heap
-                #print hashmap[studentId]
+                # print(hashmap[studentId])
         
         for item in hashmap.items():
             studentId, heap = item
