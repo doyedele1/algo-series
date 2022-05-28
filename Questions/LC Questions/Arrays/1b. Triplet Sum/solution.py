@@ -22,17 +22,19 @@
     
     Explanation III: Hashing Method
         - Start pointer i from 0 to len(nums) - 2
-        - Create an empty hash map
+        - Create an empty hashset
         - Traverse from j = i + 1 to len(nums) - 1
         - Declare sum = arr[i] + arr[j]
-            - If target - sum is present in the hash map,
+            - If target - sum is present in the hashset,
                 - Return arr[i], arr[j] and target - sum as the combination
-            - Else, insert arr[j] in the hash map and proceed
+            - Else, insert arr[j] in the hashset and proceed
         
         [12, 3, 4, 1, 6, 9]
         i    j
-        hashmap = {0: 3, 1: 4, 2: 1, 3: 6, 4: 9, 5: 12}
+        hashset = {3, 4, 1}
 
+        TC: O(n^2)
+        SC: O(n)
 '''
 
 from typing import List
@@ -40,7 +42,7 @@ from typing import List
 class Solution1:
     def tripletSum(nums, target) -> List[int]:
         res = []
-        for i in range(0, len(nums) - 2):
+        for i in range(len(nums) - 2):
             for j in range(i + 1, len(nums) - 1):
                 for k in range(j + 1, len(nums)):
                     if nums[i] + nums[j] + nums[k] == target:
@@ -54,7 +56,7 @@ class Solution2:
         res = []
         nums.sort()
 
-        for i in range(0, len(nums) - 2):
+        for i in range(len(nums) - 2):
             j = i + 1
             k = len(nums) - 1
             while j < k:
@@ -65,4 +67,20 @@ class Solution2:
                 else: k -= 1
         return False
 
-print(Solution2.tripletSum([0, -1, 2, -3, 1], -2))
+# print(Solution2.tripletSum([0, -1, 2, -3, 1], -2))
+
+class Solution3:
+    def tripletSum(nums, target) -> List[int]:
+        res = []
+        hashSet = set()
+
+        for i in range(len(nums) - 2):
+            for j in range(i + 1, len(nums) - 1):
+                sum = nums[i] + nums[j]
+                if target - sum in hashSet:
+                    res.append((nums[i], nums[j], target - sum))
+                else:
+                    hashSet.add(nums[j])
+        return res
+
+# print(Solution3.tripletSum([0, -1, 2, -3, 1], -2))
