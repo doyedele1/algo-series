@@ -1,18 +1,17 @@
 '''
-    Explanation:
-        DFS
-            [
-                [1,1,1,1],
-                [1,1,1,1],
-                [1,1,1,1],
-                [1,1,1,1]
-            ]
-            
-            Time Complexity: O(rows*cols)
-            Space Complexity: O(rows*cols), recursive call stack calls all the 1s
+    Explanation I: DFS
+        [
+            [1,1,1,1],
+            [1,1,1,1],
+            [1,1,1,1],
+            [1,1,1,1]
+        ]
+        
+        TC: O(rows*cols)
+        SC: O(rows*cols), recursive call stack calls all the 1s
 '''
 
-class Solution:
+class Solution1:
     def numIslands(self, grid):
         if not grid:
             return 0
@@ -39,77 +38,77 @@ class Solution:
         return islands
 
 '''
-        BFS
-            [
-                [1,1,1,1],
-                [1,1,1,1],
-                [1,1,1,1],
-                [1,1,1,1]
-            ]
+    Explanation II: BFS
+        [
+            [1,1,1,1],
+            [1,1,1,1],
+            [1,1,1,1],
+            [1,1,1,1]
+        ]
 
-            neighbors = [(0,0)]
-            
-            [
-                [0,0,1,1],
-                [0,1,1,1],
-                [1,1,1,1],
-                [1,1,1,1]
-            ]
+        neighbors = [(0,0)]
+        
+        [
+            [0,0,1,1],
+            [0,1,1,1],
+            [1,1,1,1],
+            [1,1,1,1]
+        ]
 
-            neighbors = [(1,0), (0,1)]
-            
-            [
-                [0,0,1,1],
-                [0,0,1,1],
-                [0,1,1,1],
-                [1,1,1,1]
-            ]
+        neighbors = [(1,0), (0,1)]
+        
+        [
+            [0,0,1,1],
+            [0,0,1,1],
+            [0,1,1,1],
+            [1,1,1,1]
+        ]
 
-            neighbors = [(0,1), (2,0), (1,1)]
-            
-            [
-                [0,0,0,1],
-                [0,0,1,1],
-                [0,1,1,1],
-                [1,1,1,1]
-            ]
+        neighbors = [(0,1), (2,0), (1,1)]
+        
+        [
+            [0,0,0,1],
+            [0,0,1,1],
+            [0,1,1,1],
+            [1,1,1,1]
+        ]
 
-            neighbors = [(2,0), (1,1), (0,2)]
-            
-            [
-                [0,0,0,1],
-                [0,0,1,1],
-                [0,0,1,1],
-                [0,1,1,1]
-            ]
+        neighbors = [(2,0), (1,1), (0,2)]
+        
+        [
+            [0,0,0,1],
+            [0,0,1,1],
+            [0,0,1,1],
+            [0,1,1,1]
+        ]
 
-            neighbors = [(1,1), (0,2), (2,1), (3,0)]
-            
-            [
-                [0,0,0,1],
-                [0,0,0,1],
-                [0,0,1,1],
-                [0,1,1,1]
-            ]
+        neighbors = [(1,1), (0,2), (2,1), (3,0)]
+        
+        [
+            [0,0,0,1],
+            [0,0,0,1],
+            [0,0,1,1],
+            [0,1,1,1]
+        ]
 
-            neighbors = [(0,2), (2,1), (3,0), (1,2)]
-            
-            [
-                [0,0,0,0],
-                [0,0,0,1],
-                [0,0,1,1],
-                [0,1,1,1]
-            ]
+        neighbors = [(0,2), (2,1), (3,0), (1,2)]
+        
+        [
+            [0,0,0,0],
+            [0,0,0,1],
+            [0,0,1,1],
+            [0,1,1,1]
+        ]
 
-            neighbors = [(2,1), (3,0), (1,2), (0,3)]
-            
-            Time Complexity: O(rows*cols)
-            Space Complexity: O(min(rows, cols))
+        neighbors = [(2,1), (3,0), (1,2), (0,3)]
+        
+        TC: O(rows * cols)
+        SC: O(min(rows, cols))
 '''
 import collections
 from typing import List
 
-class Solution:
+class Solution2:
     def numIslands(self, grid: List[List[str]]) -> int:
         if not grid: return 0
 

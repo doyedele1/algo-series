@@ -21,7 +21,7 @@
 
         hashmap = {3: 3, 4: 4, 2: 2, 7: 5}
             
-        - TC: O(n), SC: O(n)
+        TC: O(n), SC: O(n)
 '''
 
 
@@ -39,5 +39,5 @@ class Solution:
                 res = min(res, currentIndex - hashMap[card] + 1)
                 hashMap[card] = currentIndex
                 
-        if res == float('inf'): return -1 # we've not found matching cards
+        if res == float('inf'): return -1 # We've not found matching cards
         else: return res
