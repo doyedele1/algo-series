@@ -1,11 +1,11 @@
 '''
     Explanation:
-    - deeedbbcccbdaa
-    [[d,1], [e,3]]
-    [[d,2]]
+        - deeedbbcccbdaa
+        [[d,1], [e,3]]
+        [[d,2]]
 
-    TC - O(2n) = O(n) where n is the size of the input string
-    SC - O(n)
+        TC - O(2n) = O(n) where n is the size of the input string
+        SC - O(n)
 '''
 
 class Solution:

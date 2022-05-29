@@ -100,11 +100,12 @@ class Solution1:
             [0,1,1,1]
         ]
 
-        neighbors = [(2,1), (3,0), (1,2), (0,3)]
+        neighbors = [(2,1), (3,0), (1,2), (0,3)] - this still continues
         
         TC: O(rows * cols)
         SC: O(min(rows, cols))
 '''
+
 import collections
 from typing import List
 
