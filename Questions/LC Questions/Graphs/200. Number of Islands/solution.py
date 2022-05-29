@@ -164,7 +164,7 @@ class Solution4:
                         if col - 1 >= 0 and grid[row][col-1] == "1" and (row, col - 1) not in visited:
                             neighbors.append((row, col - 1))
                             visited.add((row, col - 1))
-                        if col + 1 < cols and grid[row][col+1] == "1"and (row, col + 1) not in visited:
+                        if col + 1 < cols and grid[row][col+1] == "1" and (row, col + 1) not in visited:
                             neighbors.append((row, col + 1))
                             visited.add((row, col + 1))
                     islands += 1
