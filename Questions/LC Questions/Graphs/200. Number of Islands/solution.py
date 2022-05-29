@@ -143,3 +143,37 @@ class Solution2:
                         
         return islands
 
+# Using hash set to keep track of visited nodes and neighbors
+class Solution3:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        if not grid: return 0
+
+        rows = len(grid)
+        cols = len(grid[0])
+
+        islands = 0
+        visited = set()
+        
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == "1" and (r, c) not in visited:
+                    neighbors = collections.deque([(r,c)])
+                    visited.add((r, c))
+                    
+                    while neighbors:
+                        row, col = neighbors.popleft()
+                        if row - 1 >= 0 and grid[row-1][col] == "1" and (row - 1, col) not in visited:
+                            neighbors.append((row - 1, col))
+                            visited.add((row - 1, col))
+                        if row + 1 < rows and grid[row+1][col] == "1" and (row + 1, col) not in visited:
+                            neighbors.append((row + 1, col))
+                            visited.add((row + 1, col))
+                        if col - 1 >= 0 and grid[row][col-1] == "1" and (row, col - 1) not in visited:
+                            neighbors.append((row, col - 1))
+                            visited.add((row, col - 1))
+                        if col + 1 < cols and grid[row][col+1] == "1"and (row, col + 1) not in visited:
+                            neighbors.append((row, col + 1))
+                            visited.add((row, col + 1))
+                    islands += 1
+                        
+        return islands
