@@ -1,3 +1,14 @@
+'''
+    Explanation:
+        Brute-force:
+            - Check every single possible substring inside the string
+            TC - O(n-cube)
+        
+        More optimal
+            - Rather than having two pointers, what if we start from the middle
+            TC: O(n-squared), SC: O(1)
+'''
+
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         def helper(left, right):
@@ -15,13 +26,3 @@ class Solution:
             if len(test) > len(res):
                 res = test
         return res
-    
-        '''
-            Explanation:
-                Brute-force:
-                    - Check every single possible substring inside the string
-                    - TC - O(n-cube)
-                More optimal
-                    - Rather than having two pointers, what if we start from the middle
-                    - TC: O(n-squared), SC: O(1)
-        '''
