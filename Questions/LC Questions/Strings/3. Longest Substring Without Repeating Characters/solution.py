@@ -1,16 +1,17 @@
 '''
     Explanation I: Naive Solution
-        Enumerate the string and check all the substrings. Check the longest substring that have no repeating characters
-        Update the result to the count of the longest substring with no repeating characters
-        abcabcbb
-        - From a, we check the substring starting from a
-        - From b, we check the substring starting from b
+        - Enumerate the string and check all the substrings. Check the longest substring that have no repeating characters
+        - Update the result to the count of the longest substring with no repeating characters
+            abcabcbb
+            - From a, we check the substring starting from a
+            - From b, we check the substring starting from b
+        
+            abcabcbb
+            abca --> has repeating characters. We do not need to check the next substring, which is abcab because we already have duplicates from the previous iteration. 
+            We can just move to the next character b and enumerate to get its substrings. Also here bc has already been checked, so we can check bca instead.
         
         TC - O(n-cube) where n is the size of the input string
         SC - O(m) where m is the size of the direct access table to check the substrings. m is 128, which is the possible problem's character set (digits, special characters, lowercases)
-        
-        abcabcbb
-        abca --> has repeating characters. We do not need to check the next substring, which is abcab because we already have duplicates from the previous iteration. We can just move to the next character b and enumerate to get its substrings. Also here bc has already been checked, so we can check bca instead.
 '''
 
 '''
@@ -54,59 +55,59 @@
     Explanation III: Previous Sliding Window Solution slightly improved
         pwwkew
          * At the second w, when contracting, if we can record the index of previous w, the left pointer can directly jump the first w to the second w
+        
         TC - O(n)
         SC - O(m) for the direct access table OR O(min(m,n))
 '''
 
 '''
     Explanation IV: Using hashmap to map the characters to its index
-    abcdeafbdgcbb
-    res = 1, i = 0, j = 0
-    seen = {a: 1}
-    
-    res = 2, i = 0, j = 1
-    seen = {a: 1, b: 2}
-    
-    res = 3, i = 0, j = 2
-    seen = {a: 1, b: 2, c: 3}
-    
-    res = 4, i = 0, j = 3
-    seen = {a: 1, b: 2, c: 3, d: 4}
-    
-    res = 5, i = 0, j = 4
-    seen = {a: 1, b: 2, c: 3, d: 4, e: 5}
-    
-    res = 5, i = 1, j = 5
-    seen = {a: 6, b: 2, c: 3, d: 4, e: 5}
-    
-    res = 6, i = 1, j = 6
-    seen = {a: 6, b: 2, c: 3, d: 4, e: 5, f: 7}
-    
-    res = 6, i = 2, j = 7
-    seen = {a: 6, b: 8, c: 3, d: 4, e: 5, f: 7}
-    
-    res = 6, i = 4, j = 8
-    seen = {a: 6, b: 8, c: 3, d: 9, e: 5, f: 7}
-    
-    res = 6, i = 4, j = 9
-    seen = {a: 6, b: 8, c: 3, d: 9, e: 5, f: 7, g: 10}
-    
-    res = 7, i = 4, j = 10
-    seen = {a: 6, b: 8, c: 11, d: 9, e: 5, f: 7, g: 10}
-    
-    res = 7, i = 8, j = 11
-    seen = {a: 6, b: 12, c: 11, d: 9, e: 5, f: 7, g: 10}
-    
-    res = 7, i = 12, j = 12
-    seen = {a: 6, b: 13, c: 11, d: 9, e: 5, f: 7, g: 10}
-    
-    TC - O(n). index j will iterate n times
-    SC - O(min(m,n)) for the hashmap and O(m) for the table where m is the size of the charset
+        abcdeafbdgcbb
+            res = 1, i = 0, j = 0
+            seen = {a: 1}
+            
+            res = 2, i = 0, j = 1
+            seen = {a: 1, b: 2}
+            
+            res = 3, i = 0, j = 2
+            seen = {a: 1, b: 2, c: 3}
+            
+            res = 4, i = 0, j = 3
+            seen = {a: 1, b: 2, c: 3, d: 4}
+            
+            res = 5, i = 0, j = 4
+            seen = {a: 1, b: 2, c: 3, d: 4, e: 5}
+            
+            res = 5, i = 1, j = 5
+            seen = {a: 6, b: 2, c: 3, d: 4, e: 5}
+            
+            res = 6, i = 1, j = 6
+            seen = {a: 6, b: 2, c: 3, d: 4, e: 5, f: 7}
+            
+            res = 6, i = 2, j = 7
+            seen = {a: 6, b: 8, c: 3, d: 4, e: 5, f: 7}
+            
+            res = 6, i = 4, j = 8
+            seen = {a: 6, b: 8, c: 3, d: 9, e: 5, f: 7}
+            
+            res = 6, i = 4, j = 9
+            seen = {a: 6, b: 8, c: 3, d: 9, e: 5, f: 7, g: 10}
+            
+            res = 7, i = 4, j = 10
+            seen = {a: 6, b: 8, c: 11, d: 9, e: 5, f: 7, g: 10}
+            
+            res = 7, i = 8, j = 11
+            seen = {a: 6, b: 12, c: 11, d: 9, e: 5, f: 7, g: 10}
+            
+            res = 7, i = 12, j = 12
+            seen = {a: 6, b: 13, c: 11, d: 9, e: 5, f: 7, g: 10}
+        
+        TC - O(n). index j will iterate n times
+        SC - O(min(m,n)) for the hashmap and O(m) for the table where m is the size of the charset
 '''
 
-class Solution:
+class Solution2:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        # SOLUTION II
         chars = [0] * 128
         
         leftPointer = 0
@@ -126,8 +127,9 @@ class Solution:
             rightPointer += 1
         
         return res
-    
-        # SOLUTION III
+
+class Solution3:
+    def lengthOfLongestSubstring(self, s: str) -> int:
         chars = [0] * 128
         
         leftPointer = 0
@@ -138,7 +140,7 @@ class Solution:
             rightChar = s[rightPointer]
             index = chars[ord(rightChar)]
             
-            if index != None and index >= left and index < right:
+            if index != None and index >= leftPointer and index < rightPointer:
                 leftPointer = index + 1
                 
             res = max(res, rightPointer - leftPointer + 1)
@@ -147,7 +149,8 @@ class Solution:
         
         return res
         
-        # SOLUTION IV
+class Solution3:
+    def lengthOfLongestSubstring(self, s: str) -> int:
         seen = dict() # to store the current index of a character
         res = i = 0
         
@@ -157,4 +160,5 @@ class Solution:
                 
             res = max(res, j - i + 1)
             seen[s[j]] = j + 1
+        
         return res
