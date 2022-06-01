@@ -1,15 +1,15 @@
+'''
+    flower      flow        flight
+    i
+    str
+'''
+
 from typing import List
 
 
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         res = ""
-        
-        '''
-            flower      flow        flight
-            i
-            str
-        '''
         
         for i in range(len(strs[0])):
             for str in strs:
