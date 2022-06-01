@@ -18,7 +18,7 @@
                 - We stop the loop since x < 123. We can then ignore the middle digit "3", by doing 123 // 10 = 12 and it's equal to x = 12
         - When the length of the number is even, we can always get x == res
         
-        TC: O(log n) since we divide the input number by 10 for every iteration
+        TC: O(log n) since we divide the input number x by 10 for every iteration
         SC: O(1)
 '''
 
