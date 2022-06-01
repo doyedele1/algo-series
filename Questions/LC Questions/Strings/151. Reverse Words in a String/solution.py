@@ -3,10 +3,11 @@
         - It is an in-space algorithm in Python
         - Linear space complexity
         
-        - TC: O(n) where n is the number of characters in the string
-        - SC: O(n), to store the result of split by spaces
+        TC: O(n) where n is the number of characters in the string
+        SC: O(n), to store the result of split by spaces
         
-    Explanation II: "  leetcode is  fun "
+    Explanation II: 
+        "  leetcode is  fun "
         - Trim the spaces
             "leetcode is fun"
         - Convert string to array
@@ -16,10 +17,11 @@
             "fun is leetcode"
         - Join the array to a string
         
-        - TC: O(n)
-        - SC: O(n)
+        TC: O(n)
+        SC: O(n)
         
-    Explanation III: "  leetcode is  fun "
+    Explanation III: 
+        "  leetcode is  fun "
         - Trim the leading and trailing spaces
             "leetcode is  fun"
         - Push word by word in front of the queue
@@ -27,8 +29,8 @@
         - Join the items in the queue
             "fun is leetcode"
             
-        - TC: O(n)
-        - SC: O(n)
+        TC: O(n)
+        SC: O(n)
 '''
 
 import collections
@@ -41,15 +43,15 @@ class Solution2:
     def reverseWords(self, s: str) -> str:
         def trimSpaces(s):
             i, j = 0, len(s) - 1
-            # remove leading spaces
+            # Remove leading spaces
             while i <= j and s[i] == " ":
                 i += 1
             
-            # remove trailing spaces
+            # Remove trailing spaces
             while i <= j and s[j] == " ":
                 j -= 1
                 
-            # reduce multiple spaces to a single space
+            # Reduce multiple spaces to a single space
             res = []
             while i <= j:
                 if s[i] != " ": res.append(s[i])
@@ -67,12 +69,12 @@ class Solution2:
             i = j = 0
             
             while i < len(s):
-                # go to the end of the word
+                # Go to the end of the word
                 while j < len(s) and s[j] != " ":
                     j += 1
-                # reverse the word
+                # Reverse the word
                 reverseArr(s, i, j - 1)
-                # move to the next word
+                # Move to the next word
                 i = j + 1
                 j += 1
         
@@ -85,17 +87,17 @@ class Solution3:
     def reverseWords(self, s: str) -> str:
         i, j = 0, len(s) - 1
         
-        # remove leading spaces
+        # Remove leading spaces
         while i <= j and s[i] == " ":
             i += 1
         
-        # remove trailing spaces
+        # Remove trailing spaces
         while i <= j and s[j] == " ":
             j -= 1
             
         q = collections.deque()
         word = []
-        # push word by word in front of the queue
+        # Push word by word in front of the queue
         while i <= j:
             if s[i] == " " and word:
                 q.appendleft("".join(word))
