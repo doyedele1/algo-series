@@ -3,15 +3,15 @@
         - Initially the robot is at (0,0)
         - If the robot goes up, y -= 1, etc
         - If x = y = 0, return True
-        - TC: O(n), SC: O(1)
+        TC: O(n), SC: O(1)
 
 	Explanation II:
 		- If count of L and R is the same, and count of U and D is the same, return true
 		- Else return False
-		- TC: O(n), SC: O(1)
+		TC: O(n), SC: O(1)
 '''
 
-class Solution:
+class Solution1:
     def judgeCircle(self, moves: str) -> bool:
         x = y = 0
         

@@ -1,12 +1,20 @@
+'''
+    Explanation:
+    - Invalid can occur when ) is more than ( + *
+    - Invalid can also occur when looping from right to left and we do not have any extra ( i.e. when ( is more than ) + *
+
+
+    Here we know we have never been unbalanced parsing from left to right e.g. ')('
+        We've also already substituted '*' either by '(' or by ')'
+        So we only have 3 possible scenarios here:
+            1. We had the same amount of '(' and ')'
+            2. We had more '(' then ')' but enough '*' to substitute
+            3. We had more ')' then '(' but enough '*' to substitute
+        return True
+'''
+
 class Solution:
     def checkValidString(self, s: str) -> bool:
-        '''
-            Explanation:
-            - Invalid can occur when ) is more than ( + *
-            - Invalid can also occur when looping from right to left and we do not have any extra ( i.e.
-                - when ( is more than ) + *
-        '''
-        
         if len(s) == 0:
             return True
         
@@ -16,10 +24,10 @@ class Solution:
                 balance -= 1
             else: 
                 balance += 1
-            if balance < 0: # here, we have unbalanced parentheses
+            if balance < 0: # Here, we have unbalanced parentheses
                 return False
         
-        # check if parentheses are valid
+        # Check if parentheses are valid
         if balance == 0:
             return True
         
@@ -29,15 +37,5 @@ class Solution:
                 balance -= 1
             else: 
                 balance += 1
-            if balance < 0: # here, we have unbalanced parentheses
+            if balance < 0: # Here, we have unbalanced parentheses
                 return False
-
-    '''
-        Here we know we have never been unbalanced parsing from left to right e.g. ')('
-        We've also already substituted '*' either by '(' or by ')'
-        So we only have 3 possible scenarios here:
-            1. We had the same amount of '(' and ')'
-            2. We had more '(' then ')' but enough '*' to substitute
-            3. We had more ')' then '(' but enough '*' to substitute
-        return True
-    '''
