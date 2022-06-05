@@ -22,7 +22,6 @@
         SC: O(1)
 '''
 
-
 class Solution1:
     def isPalindrome(self, x: int) -> bool:
         s = str(x)

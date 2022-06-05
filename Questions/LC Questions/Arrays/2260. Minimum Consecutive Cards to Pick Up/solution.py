@@ -24,9 +24,6 @@
         TC: O(n), SC: O(n)
 '''
 
-
-from typing import List
-
 class Solution:
     def minimumCardPickup(self, cards: List[int]) -> int:
         hashMap  = {}

@@ -37,8 +37,6 @@
         SC: O(n)
 '''
 
-from typing import List
-
 class Solution1:
     def tripletSum(nums, target) -> List[int]:
         res = []
