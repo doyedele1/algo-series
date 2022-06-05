@@ -6,7 +6,7 @@
 
 # Modifying input to a value of 0 for parent nodes and neighbors
 class Solution1:
-    def numIslands(self, grid):
+    def numIslands(self, grid: List[List[str]]) -> int:
         def dfs(grid, row, col):            
             grid[row][col] = "0"
             
@@ -29,7 +29,7 @@ class Solution1:
 
 # Using hash set to keep track of parent nodes and neighbors
 class Solution2:
-    def numIslands(self, grid):
+    def numIslands(self, grid: List[List[str]]) -> int:
         visited = set()
         
         def dfs(grid, row, col):
@@ -130,7 +130,6 @@ class Solution2:
 '''
 
 import collections
-from typing import List
 
 # Modifying input to a value of 0 for parent nodes and neighbors
 class Solution3:

@@ -16,8 +16,6 @@
         TC - O(|E| + |V|) = O(p) + O(n)
 '''
 
-from typing import List
-
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
         pre_map = { c: [] for c in range(numCourses) }
