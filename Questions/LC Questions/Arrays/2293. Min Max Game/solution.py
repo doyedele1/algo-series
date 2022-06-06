@@ -26,10 +26,12 @@
         SC: O(log n)
 '''
 
+
 class Solution:
     def minMaxGame(self, nums: List[int]) -> int:
         n = len(nums)
         
+        # Recursive base case
         if n == 1: return nums[0]
         
         newNums = []
