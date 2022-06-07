@@ -5,10 +5,11 @@ def reductionCost(num):
 
     minTotalCost = 0
     while len(num) > 1:
-        first = heapq.heappop(num)
-        second = heapq.heappop(num)
-        minTotalCost += first + second
-        heapq.heappush(num, first + second)
+        i = heapq.heappop(num)
+        j = heapq.heappop(num)
+        minTotalCost += i + j
+        heapq.heappush(num, i + j)
+
     return minTotalCost
 
 print(reductionCost([1,2,3])) # return 9
