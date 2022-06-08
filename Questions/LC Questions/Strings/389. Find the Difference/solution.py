@@ -1,3 +1,10 @@
+'''
+    Explanation:
+        - TC: O(n)
+        - SC: O(1)
+
+'''
+
 class Solution:
     def findTheDifference(s, t):
         xor = 0
