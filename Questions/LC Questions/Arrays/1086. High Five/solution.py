@@ -23,9 +23,6 @@
         SC: O(n) used by hashmap map and max heap
 '''
 
-
-from typing import List
-
 class Solution1:
     def highFive(self, items: List[List[int]]) -> List[List[int]]:
         dic = {}
