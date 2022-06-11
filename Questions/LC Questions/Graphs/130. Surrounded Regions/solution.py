@@ -2,7 +2,13 @@
     Explanation I: 
         - To capture the surrounded regions, can we capture everything except the unsurrounded regions?
             - To know unsurrounded regions, we know the region is connected to the border
-
+            - We can run recursive dfs on every unsurrounded region and mark the visited regions to U
+            
+        - After we are done with the board, we iterate over the board again
+            - If we encounter a U which is for unsurrounded regions, we change it to an O
+            - If we encounter a O which is for the surrounded regions only, we capture it by flipping it to X
+        
+        - TC: O(m*n)
 '''
 
 
