@@ -11,8 +11,28 @@
         - TC: O(n) where n is the number of cells in the board
         - SC: O(n), we would use space in the recursive call stack
 
-    Explanation II:
-        - 
+    Explanation II: Simpler Approach, but not More Optimized
+        - Use a variable seen to know if any cell is connected to a border of O
+        - Iterate over the elements not on the border
+
+        X   X   X   O   X   X
+        X   O   X   O   O   X
+        X   X   O   X   X   O
+        X   O   O   X   X   X
+        X   X   X   X   X   X
+
+        seen = False
+        - At row 1, col 1,
+            - The region isn't connected to a border of O on all four directions, so seen = False
+            - Call a marked function to mark the O to X
+        - At row 1, col 3,
+            - The region is connected to a border of O on all four directions, so seen = True
+            - Row 1, col 4 has already been visited and is an O, so we need a visited array to keep track of visited nodes
+        - At row 2, col 2, the region calls another O at row 3, col 2 and that also calls another O at row 3 col 1, seen = False
+            - Call a marked function to mark the O to X
+
+        - TC: O(m * n)
+        - SC: O(m * n)
 '''
 
 class Solution1:
