@@ -1,3 +1,9 @@
+'''
+    Explanation I: 
+
+'''
+
+
 class Solution:
     def solve(self, board: List[List[str]]) -> None:
         """
@@ -23,8 +29,8 @@ class Solution:
         
         for row in range(rows):
             for col in range(cols):
-                if board[row][col] == 'E':
+                if board[row][col] == 'O':
                     board[row][col] = 'X'
                     
-                if board[row][col] == 'O':
+                if board[row][col] == 'E':
                     board[row][col] = 'O'
