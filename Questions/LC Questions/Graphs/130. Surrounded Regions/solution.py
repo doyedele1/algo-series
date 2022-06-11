@@ -8,10 +8,14 @@
             - If we encounter a U which is for unsurrounded regions, we change it to an O
             - If we encounter a O which is for the surrounded regions only, we capture it by flipping it to X
         
-        - TC: O(m * n)
+        - TC: O(n) where n is the number of cells in the board
+        - SC: O(n), we would use space in the recursive call stack
+
+    Explanation II:
+        - 
 '''
 
-class Solution:
+class Solution1:
     def solve(self, board: List[List[str]]) -> None:
         # Do not return anything, modify board in-place instead.
         rows = len(board)
@@ -19,7 +23,7 @@ class Solution:
         
         def dfs(r, c):
             # if we go out of bounds and we are only capturing an O
-            if r < 0 or c < 0 or r == rows or c == cols or board[r][c] != 'O':
+            if r < 0 or c < 0 or r >= rows or c >= cols or board[r][c] != 'O':
                 return
             
             board[r][c] = 'U'
