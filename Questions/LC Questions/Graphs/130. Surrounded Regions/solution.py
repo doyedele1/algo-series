@@ -8,19 +8,17 @@
             - If we encounter a U which is for unsurrounded regions, we change it to an O
             - If we encounter a O which is for the surrounded regions only, we capture it by flipping it to X
         
-        - TC: O(m*n)
+        - TC: O(m * n)
 '''
-
 
 class Solution:
     def solve(self, board: List[List[str]]) -> None:
-        """
-        Do not return anything, modify board in-place instead.
-        """
+        # Do not return anything, modify board in-place instead.
         rows = len(board)
         cols = len(board[0])
         
         def dfs(r, c):
+            # if we go out of bounds and we are only capturing an O
             if r < 0 or c < 0 or r == rows or c == cols or board[r][c] != 'O':
                 return
             
