@@ -65,3 +65,47 @@ class Solution1:
                     
                 if board[row][col] == 'U':
                     board[row][col] = 'O'
+
+class Solution2:
+    def solve(self, board: List[List[str]]) -> None:
+        rows = len(board)
+        cols = len(board[0])
+        
+        if rows <= 1 or cols <= 1:
+            return
+        
+        visited = set()
+
+        def dfs(r, c):
+            if r < 0 or r > rows -  1 or c < 0 or c > cols - 1 or board[r][c] != 'O' or (r, c) in visited:
+                return
+
+            if r <= 0 or r >= rows - 1 or c <= 0 or c >= cols - 1:
+                seen = True
+
+            visited.add((r, c))
+            dfs(r + 1, c)
+            dfs(r - 1, c)
+            dfs(r, c + 1)
+            dfs(r, c - 1)
+
+        def markedDfs(r, c):
+            if r < 0 or r > rows -  1 or c < 0 or c > cols - 1 or board[r][c] != 'O':
+                return
+            
+            board[r][c] = 'X'
+            markedDfs(r + 1, c)
+            markedDfs(r - 1, c)
+            markedDfs(r, c + 1)
+            markedDfs(r, c - 1)
+
+        for row in range(1, rows):
+            for col in range(1, cols):
+                if board[row][col] == 'O' and (row, col) not in visited:
+                    seen = False
+                    dfs(row, col)
+
+                    if seen == False:
+                        markedDfs(row, col)
+                    
+                    seen = True
