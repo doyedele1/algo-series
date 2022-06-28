@@ -9,7 +9,7 @@ from typing import List
         
         
     
-    Explanation II: Dynamic Programming 1
+    Explanation II: Dynamic Programming
         - Let's look at these patterns:
             - [1, 2, 3] all positive numbers --> our product will keep increasing
             - [-1, -2, -3] all negative numbers --> the sign will keep alternating. i.e. -1, 2, -6. However, we know that (-2, -3) subarray is our solution which gives 6.
@@ -23,17 +23,13 @@ from typing import List
             - Edge case: If we have a zero number in the array. -6 * 0 = 0, 6 * 0
                 - Every time we get a zero value, we can reset the max and min to 1
                 
-        - TC: O(n), SC: O(1)
-                        
-                
-    
-    Explanation III: Dynamic Programming 2
-        [2,3,-2,4], maxProduct = 2, maxAtEveryIndex = 2, minAtEveryIndex = 2
-        temp = 2, maxAtEveryIndex = 6, minAtEveryIndex = 3, maxProduct = 6
-        temp = 6, maxAtEveryIndex = -2, minAtEveryIndex = -12, maxProduct = 6
-        temp = -2, maxAtEveryIndex = 4, minAtEveryIndex = -48, maxProduct = 6
+        - Another example:
+            [2,3,-2,4], maxProduct = 2, maxAtEveryIndex = 2, minAtEveryIndex = 2
+            temp = 2, maxAtEveryIndex = 6, minAtEveryIndex = 3, maxProduct = 6
+            temp = 6, maxAtEveryIndex = -2, minAtEveryIndex = -12, maxProduct = 6
+            temp = -2, maxAtEveryIndex = 4, minAtEveryIndex = -48, maxProduct = 6
         
-        TC: O(n), SC: O(1)
+        - TC: O(n), SC: O(1)
 '''
 
 class Solution1:
@@ -66,22 +62,6 @@ class Solution2:
             
             maxProduct = max(maxProduct, maxAtEveryIndex)
             
-        return maxProduct
-
-
-class Solution3:
-    def maxProduct(self, nums: List[int]) -> int:
-        maxProduct = maxAtEveryIndex = minAtEveryIndex = nums[0]
-
-        for i in range(1, len(nums)): 
-            temp = maxAtEveryIndex
-
-            maxAtEveryIndex = max(nums[i], max(maxAtEveryIndex * nums[i], minAtEveryIndex * nums[i]))
-
-            minAtEveryIndex = min(nums[i], min(temp * nums[i], minAtEveryIndex * nums[i]))
-
-            maxProduct = max(maxProduct, maxAtEveryIndex)
-
         return maxProduct
 
 # print(maxProduct([2,3,-2,4]))
