@@ -1,7 +1,8 @@
 '''
-    Explanation I: Convert the number to a string. Reverse the string and compare the original string to the reversed string
+    Explanation I: Convert the number to a string. Reverse the string and compare the original string to the reversed string. TC: O(n), SC: O(n)
 
-    Explanation II: Write a helper function that reverses integers
+    Explanation II: Write a helper function that reverses integers. Compare the original number to the reversed number. TC: O(n), SC: O(1)
+
     Explanation III:
         1221
         - Reverse the last half of the input number. i.e. from 21 to 12
@@ -9,7 +10,7 @@
                 res = 0, res = 1, x = 122
             - Second iteration:
                 res = 1, res = 12, x = 12
-        - We reverse the half and stop the loop when the original number x is less than or equal to reversed number res
+        - We reverse the half and stop the loop when the original number x (12) is less than or equal to reversed number res (12)
         - When the length of the number is odd, we get rid of the middle digit by doing res // 10
             12321
                 - First iteration:
