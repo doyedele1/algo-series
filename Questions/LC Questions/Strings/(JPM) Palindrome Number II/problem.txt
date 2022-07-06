@@ -1,0 +1,13 @@
+Write a program that takes number and gives the resulting palindrome (if one exists). 
+
+If it took more than 1,000 iterations (additions) or yield a palindrome that is greater than 4,294,967,295, assume that no palindrome exist for the given number.
+
+Examples:
+1. Input: num = 195
+Output: 9339
+
+Input: num = 265
+Output: 45254
+
+3. Input: num = 196
+Output: -1
