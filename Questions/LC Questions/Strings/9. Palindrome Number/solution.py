@@ -1,4 +1,7 @@
 '''
+    Explanation I: Convert the number to a string. Reverse the string and compare the original string to the reversed string
+
+    Explanation II: Write a helper function that reverses integers
     Explanation III:
         1221
         - Reverse the last half of the input number. i.e. from 21 to 12
