@@ -26,21 +26,47 @@ class Solution2:
         if b in a + tempA: return max_times + 1
         return -1
 
+'''
+    Valid condition: len(a) >= len(b)
+'''
+
 class Solution3:
-    def repeatedStringMatch(self, a: str, b: str) -> int:
-        def kmp(a, b):
-                for i in range(len(a) - len(b) + 1):
-                    for j in range(len(b)):
-                        if a[i+j] != b[j]: break
-                    if j == len(b): return True
-                return False
-        
+    def repeatedStringMatch(self, a: str, b: str) -> int: 
+        def kmp(string, pattern):
+            prefixsuffix = [0] * len(pattern)
+            left = 0
+            right = 1
+            while right < len(pattern):
+                if pattern[left] == pattern[right]:
+                    prefixsuffix[right] = left + 1
+                    left += 1
+                    right += 1
+                else:
+                    if left == 0: 
+                        prefixsuffix[right] = 0
+                        right += 1
+                    else:
+                        left = prefixsuffix[left-1]
+
+            p = 0
+            s = 0
+            while s < len(string) and p < len(pattern):
+                if string[s] == pattern[p]:
+                    s += 1
+                    p += 1
+                elif p == 0:
+                    s += 1
+                else:
+                    p = prefixsuffix[p-1]
+
+            if p == len(pattern): return True
+            return False
+            
         res = 1
         tempA = a
-        
-        while len(a) < len(b):
-            a += tempA
-            res += 1
+        if len(b) >= len(a):
+            res = ceil(len(b) / len(a))
+            a *= res
             
         if kmp(a, b): return res
         if kmp(a + tempA, b): return res + 1
