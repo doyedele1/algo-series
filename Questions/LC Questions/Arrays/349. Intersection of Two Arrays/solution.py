@@ -1,5 +1,5 @@
 '''
-    Explanation I: Converting arrays to sets
+    Explanation I: Hash Set
         - Clarifying questions to ask: duplicates, negative values, single value lists, 0s, empty lists
         nums1 = [1,2,2,1], nums2 = [2,2]
         
