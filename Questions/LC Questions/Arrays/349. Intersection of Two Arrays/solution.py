@@ -25,8 +25,8 @@
         
         - return set(res)
         
-        - TC: O(n logn)
-        - SC: O(1)
+        - TC: O(m logm + n logn)
+        - SC: O(log m + log n) to O(m + n) depending on the sorting algorithm used
 '''
 
 from typing import List

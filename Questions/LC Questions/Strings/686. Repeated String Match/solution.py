@@ -46,7 +46,7 @@ class Solution3:
                         prefixsuffix[right] = 0
                         right += 1
                     else:
-                        left = prefixsuffix[left-1]
+                        left = prefixsuffix[left - 1]
 
             p = 0
             s = 0
@@ -57,7 +57,7 @@ class Solution3:
                 elif p == 0:
                     s += 1
                 else:
-                    p = prefixsuffix[p-1]
+                    p = prefixsuffix[p - 1]
 
             if p == len(pattern): return True
             return False
