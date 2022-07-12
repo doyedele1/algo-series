@@ -30,6 +30,25 @@
 '''
 
 
+class Solution1:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        if len(nums1) > len(nums2): return self.intersect(nums2, nums1)
+        
+        freqCounter = {}
+        k = 0
+        for num in nums1:
+            if num in freqCounter: freqCounter[num] += 1
+            else: freqCounter[num] = 1
+        
+        for num in nums2:
+            if num in freqCounter and freqCounter[num] > 0:
+                freqCounter[num] -= 1
+                nums1[k] = num
+                k += 1
+        
+        return nums1[:k]
+
+
 from typing import List
 
 class Solution2:
