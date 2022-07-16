@@ -4,6 +4,8 @@
         SC: O(rows * cols), recursive call stack calls all the 1s in the worst case
 '''
 
+from typing import List
+
 # Modifying input to a value of 0 for parent nodes and neighbors
 class Solution1:
     def numIslands(self, grid: List[List[str]]) -> int:
