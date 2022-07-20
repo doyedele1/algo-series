@@ -18,7 +18,7 @@
         - SC: O(log n) for completely balanced tree, O(n) for completely unbalanced tree
 '''
 
-import collections
+from collections import deque
 from typing import Optional
 
 # Definition for a binary tree node.
@@ -40,7 +40,7 @@ class Solution2:
         def helper(root):
             if not root: return 0
             
-            q = collections.deque([root])
+            q = deque([root])
             res = [root.val]
             
             while q:
@@ -65,7 +65,7 @@ class Solution3:
             if (not p or not q) or (p.val != q.val): return False
             return True
             
-        queue = collections.deque([(p, q)])
+        queue = deque([(p, q)])
         while queue:
             nodeP, nodeQ = queue.popleft()
             if not helper(nodeP, nodeQ): return False

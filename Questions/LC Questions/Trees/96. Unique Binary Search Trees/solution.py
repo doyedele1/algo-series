@@ -8,6 +8,7 @@ class Solution:
             return 2
         if n == 3:
             return 5
+            
         numTree = [0] * (n + 1)
         numTree[0] = 1
         numTree[1] = 1

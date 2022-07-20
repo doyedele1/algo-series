@@ -1,14 +1,14 @@
-import collections
+from collections import defaultdict, deque
 
 def get_second_degree_friends(graph, user):
-    new_graph = collections.defaultdict(list)
+    new_graph = defaultdict(list)
 
     for key in graph:
         new_graph[key] = graph[key]
 
     output = []
     done = False
-    q = collections.deque([(user, 0)])
+    q = deque([(user, 0)])
 
     while q:
         if done:
@@ -30,11 +30,9 @@ def get_second_degree_friends(graph, user):
 
     return output
 
-
-
 print(get_second_degree_friends({
-   "A": ["B","C"],
-   "B": ["D","E","F"],
-   "C": ["G"],
-   "D": ["H"]
+    "A": ["B","C"],
+    "B": ["D","E","F"],
+    "C": ["G"],
+    "D": ["H"]
 }, "A"))
