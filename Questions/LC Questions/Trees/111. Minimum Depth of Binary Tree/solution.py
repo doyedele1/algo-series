@@ -19,7 +19,7 @@
         - TC: worst case, in a balanced tree, we visit the nodes level by level excluding the bottom level. We visit n/2 nodes. O(n/2) = O(n)
 '''
 
-import collections
+from collections import deque
 from typing import Optional
 
 # Definition for a binary tree node.
@@ -66,7 +66,7 @@ class Solution3:
         if not root: return 0
         
         else:
-            q = collections.deque([(1, root),])
+            q = deque([(1, root),])
             
         while q:
             depth, root = q.popleft()

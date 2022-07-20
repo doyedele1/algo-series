@@ -23,7 +23,7 @@
         - SC: O(n) worst case is when the tree is balanced. O(1) best case is when the tree is completely unbalanced. i.e each node has only left and right child node.
 '''
 
-import collections
+from collections import deque
 from typing import Optional
 
 # Definition for a binary tree node.
@@ -56,7 +56,7 @@ class Solution3:
         if not root: return 0
         
         res = 0
-        q = collections.deque([root])
+        q = deque([root])
         
         while q:
             for i in range(len(q)):

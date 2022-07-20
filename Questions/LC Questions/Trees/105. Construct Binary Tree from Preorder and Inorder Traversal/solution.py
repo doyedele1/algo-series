@@ -1,4 +1,4 @@
-import collections
+from collections import deque
 from typing import List, Optional
 
 # Definition for a binary tree node.
@@ -10,7 +10,7 @@ class TreeNode:
 
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-        p = collections.deque(preorder)
+        p = deque(preorder)
         n = len(preorder)
         
         # building a hashmap to store value and its index
