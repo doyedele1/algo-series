@@ -1,5 +1,5 @@
 '''
-    Explanation:
+    Explanation I: Using hash set to store seen numbers
         - n = 19 --> 82 --> 68 --> 100 --> 1
         n // 10 = firstDigit
         n % 10 = lastDigit
