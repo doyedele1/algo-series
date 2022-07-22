@@ -20,7 +20,7 @@ class Solution:
             else: 
                 stack.append([char, 1])
                 
-            if stack and stack[-1][1] == k:
+            if stack[-1][1] == k:
                 stack.pop()
                 
         # char * num prints the char in num times
