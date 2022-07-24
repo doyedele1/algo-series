@@ -1,12 +1,10 @@
-def breakPalindrome(palindrome):
-    palindromeLength = len(palindrome)
-    
-    if palindromeLength == 1: return "IMPOSSIBLE"
-    
-    for i in range(0, palindromeLength // 2):
-        if palindrome[i] != 'a':
-            palindrome[i] = 'a'
-            return palindrome
-    
-    palindrome[palindromeLength - 1] = 'b'
-    return palindrome
+class Solution:
+    def breakPalindrome(self, palindrome: str) -> str:
+        
+        if len(palindrome) == 1: return ""
+        
+        for i in range(len(palindrome) // 2):
+            if palindrome[i] != 'a':
+                return palindrome[:i] + 'a' + palindrome[i + 1:]
+        
+        return palindrome[:-1] + 'b'
