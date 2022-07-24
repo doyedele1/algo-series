@@ -1,3 +1,16 @@
+'''
+    Explanation:
+        - If the current index is less than the incoming index, the we have to return an empty list
+        - Else , we have to return an sliced list from the incoming index to the first index where there is no insertion till yet.
+        
+        - Initialize a list of size n with None
+        - Maintain the current index with self.ptr
+        - For every insert call, with idKey, value
+            - Assign the list[idKey-1] to the value # Since array is 0-index reduce 1
+            - Check if the current index is less than incoming index(idKey-1) and return []
+            - Else return sliced list from incoming index(idKey-1) till we do not encounter None.
+'''
+
 from typing import List
 
 class OrderedStream:
@@ -22,17 +35,3 @@ class OrderedStream:
 # Your OrderedStream object will be instantiated and called as such:
 # obj = OrderedStream(n)
 # param_1 = obj.insert(idKey,value)
-
-
-'''
-    Explanation:
-    - If the current index is less than the incoming index, the we have to return an empty list
-    - Else , we have to return an sliced list from the incoming index to the first index where there is no insertion till yet.
-    
-    - Initialize a list of size n with None
-    - Maintain the current index with self.ptr
-    - For every insert call, with idKey, value
-        - Assign the list[idKey-1] to the value # Since array is 0-index reduce 1
-        - Check if the current index is less than incoming index(idKey-1) and return []
-        - Else return sliced list from incoming index(idKey-1) till we do not encounter None.
-'''
