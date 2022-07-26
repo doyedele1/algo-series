@@ -7,8 +7,6 @@ from typing import List
         
         - TC: O(n^2), SC: O(1)
         
-        
-    
     Explanation II: Dynamic Programming
         - Let's look at these patterns:
             - [1, 2, 3] all positive numbers --> our product will keep increasing

@@ -6,8 +6,6 @@ from typing import List
         - We need to multiply the current number with the accumulated product to get the product of numbers up to the current number.
         
         - TC: O(n^2), SC: O(1)
-        
-        
     
     Explanation II: Dynamic Programming
         - Let's look at these patterns:
