@@ -1,36 +1,76 @@
 '''
-    Explanation:
-        - If the current index is less than the incoming index, the we have to return an empty list
-        - Else , we have to return an sliced list from the incoming index to the first index where there is no insertion till yet.
+    Explanation I: Using an array of strings
+        * You move your pointer from a filled position to the next empty position
         
-        - Initialize a list of size n with None
-        - Maintain the current index with self.ptr
-        - For every insert call, with idKey, value
-            - Assign the list[idKey-1] to the value # Since array is 0-index reduce 1
-            - Check if the current index is less than incoming index(idKey-1) and return []
-            - Else return sliced list from incoming index(idKey-1) till we do not encounter None.
+        insert, 3, cccc
+            ["", "", "cccc", "", ""]
+            0                      return []
+            
+        insert, 1, aaaa
+            ["aaaa", "", "cccc", "", ""]
+                    1                 return ["aaaa"]
+        
+        insert, 2, bbbb
+            ["aaaa", "bbbb", "cccc", "", ""], return ["bbbb", "cccc"]
+                                    4
+        
+        insert, 5, eeee
+            ["aaaa", "bbbb", "cccc", "", "eeee"], return [""]
+                                    4
+                                    
+        insert, 4, dddd
+            ["aaaa", "bbbb", "cccc", "dddd", "eeee"], return ["dddd", "eeee"]
+                                                    outside
+        
+        TC: O(n)
+        SC: O(n) for the list array
+
+    Explanation II: Using a hashmap
+        pointer = 1, seen = {}
+    
+        seen = {3: "cccc"}, res = []
+        seen = {1: "aaaa", 3: "cccc"}, res = ["aaaa"], seen = {3: "cccc"}
+        seen = {2: "bbbb", 3: "cccc"}, res = ["bbbb", "cccc"], seen = {}
+        seen = {5: "eeee"}, res = []
+        seen = {4: "dddd", 5: "eeee"}, res = ["dddd", "eeee"], seen = {}
+        
+        TC: O(1)
+        SC: O(n) for seen hashmap
 '''
 
 from typing import List
 
-class OrderedStream:
-
+class OrderedStream1:
     def __init__(self, n: int):
-        self.list = [None] * n
         self.pointer = 0
+        self.list = [None] * n
 
     def insert(self, idKey: int, value: str) -> List[str]:
-        idKey -= 1
-        self.list[idKey] = value
-        
-        if self.pointer < idKey:
-            return []
-        
-        else:
-            while self.pointer < len(self.list) and self.list[self.pointer] is not None:
-                self.pointer += 1
-            return self.list[idKey:self.pointer]
+        pointer, list = self.pointer, self.list
 
+        idKey -= 1
+        list[idKey] = value
+        
+        while pointer < len(list) and list[pointer] != None:
+            pointer += 1
+        return list[idKey:pointer]
+
+class OrderedStream2:
+    def __init__(self, n: int):
+        self.pointer = 1
+        self.seen = {}
+
+    def insert(self, idKey: int, value: str) -> List[str]:
+        self.seen[idKey] = value
+        
+        res = []
+        
+        while self.pointer in self.seen:
+            res.append(self.seen[self.pointer])
+            del self.seen[self.pointer]
+            self.pointer += 1
+        
+        return res        
 
 # Your OrderedStream object will be instantiated and called as such:
 # obj = OrderedStream(n)

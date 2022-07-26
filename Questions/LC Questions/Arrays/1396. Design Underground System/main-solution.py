@@ -68,7 +68,7 @@ class UndergroundSystem:
         station, start_time = self.arrivals[id]
         del self.arrivals[id]
         travel = station + "," + stationName
-        if travel not in self.travels: self.travels[travel] = [0,0]
+        # if travel not in self.travels: self.travels[travel] = [0,0]
         trip = self.travels[travel]
         trip[0] += 1
         trip[1] += t - start_time # Computing the  difference between start and end times
