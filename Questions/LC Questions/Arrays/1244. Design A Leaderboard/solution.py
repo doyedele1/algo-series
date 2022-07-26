@@ -9,9 +9,10 @@
     Explanation II: Using a heap
 '''
 
-from collections import Counter
+from collections import Counter, defaultdict
+import heapq
 
-class Leaderboard:
+class Leaderboard1:
     def __init__(self):
         self.counter = Counter()
         
@@ -23,6 +24,20 @@ class Leaderboard:
         
     def reset(self, playerId: int) -> None:
         self.counter[playerId] = 0
+
+class Leaderboard2:
+    def __init__(self):
+        # map: key: playerId, value: score
+        self.playersToScores = defaultdict(int)
+        
+    def addScore(self, playerId: int, score: int) -> None:
+        self.playersToScores[playerId] += score
+
+    def top(self, K: int) -> int:
+        return sum(heapq.nlargest(K, self.playersToScores.values()))
+        
+    def reset(self, playerId: int) -> None:
+        del self.playersToScores[playerId]        
         
 # Your Leaderboard object will be instantiated and called as such:
 # obj = Leaderboard()
