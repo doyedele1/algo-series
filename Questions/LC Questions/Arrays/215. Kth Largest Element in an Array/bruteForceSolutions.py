@@ -9,7 +9,7 @@
 
     Explanation I: Sorting
         - We need to sort the nums array - O(n logn). # quick sort, merge sort, O(n-squared) bubble sort, selection sort, insertion sort, radix
-            - sorted() sorts list in descending order by default --> [1, 2, 3, 4, 5, 6], k = 2
+            - .sort() sorts list in ascending order by default --> [1, 2, 3, 4, 5, 6], k = 2
             - 2nd largest element? --> return nums[-k]
             - TC: O(n logn), SC: O(1)
             
@@ -29,7 +29,8 @@ import heapq
 
 class Solution1:
     def findKthLargest(self, nums, k):
-        return sorted(nums)[-k]
+        nums.sort()
+        return nums[-k]
 
 class Solution2:
     def findKthLargest(self, nums, k):
