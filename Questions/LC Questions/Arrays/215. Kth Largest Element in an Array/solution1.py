@@ -16,7 +16,7 @@
             - 2nd largest element? --> return nums[k-1]
             - TC: O(n logn), SC: O(1)
             
-    Explanation II: Using a heap
+    Explanation II & III: Using a heap
         Using heaps - min heap (stores large numbers) and max heap (stores small numbers)
         [3,2,1,5,6,4]
         heap = [
@@ -30,6 +30,10 @@
 
 import heapq
 
+class Solution1:
+    def findKthLargest(self, nums, k):
+        return sorted(nums)[-k]
+
 class Solution2:
     def findKthLargest(self, nums, k):
         heap = [] # returns list of numbers in ascending order
@@ -39,3 +43,8 @@ class Solution2:
             if len(heap) > k:
                 heapq.heappop(heap)
         return heap[0]
+
+# One-line solution
+class Solution3:
+    def findKthLargest(self, nums, k):
+        return heapq.nlargest(k, nums)[-1] # nlargest(k, nums) returns the largest k elements
