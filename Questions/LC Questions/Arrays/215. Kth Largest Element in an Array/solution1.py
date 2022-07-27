@@ -24,6 +24,18 @@
                     5
         ], maximum size of heap where k = 2
 
-        TC: O(k) + O(n logk) = O(n logk)
+        TC: O(n logk) - log k for addition and removal to the heap. We do this n times
         SC: O(k) - space required by the heap
 '''
+
+import heapq
+
+class Solution2:
+    def findKthLargest(self, nums, k):
+        heap = [] # returns list of numbers in ascending order
+        
+        for num in nums:
+            heapq.heappush(heap, num)
+            if len(heap) > k:
+                heapq.heappop(heap)
+        return heap[0]
