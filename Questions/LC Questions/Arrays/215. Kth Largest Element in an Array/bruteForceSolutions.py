@@ -1,6 +1,4 @@
 '''
-    k = 1, 1st largest element --> largest element, k = 2, 2nd largest element
-
     [3,2,1,5,6,4], k = 2 --> ans = 5, [3,2,1,5,6,4], k = 4 --> ans = 3
 
     [3,2,3,1,2,4,5,5,6], k = 4 --> ans = 4
@@ -11,9 +9,8 @@
 
     Explanation I: Sorting
         - We need to sort the nums array - O(n logn). # quick sort, merge sort, O(n-squared) bubble sort, selection sort, insertion sort, radix
-            - ascending order or descending order?
-            - descending order --> [6, 5, 4, 3, 2, 1], k = 2
-            - 2nd largest element? --> return nums[k-1]
+            - sorted() sorts list in descending order by default --> [1, 2, 3, 4, 5, 6], k = 2
+            - 2nd largest element? --> return nums[-k]
             - TC: O(n logn), SC: O(1)
             
     Explanation II & III: Using a heap
