@@ -5,4 +5,4 @@ def minStart(arr):
         total += num
         res = min(res, total)
 
-    return -res + 1
+    return 1 - res
