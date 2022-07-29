@@ -14,9 +14,10 @@ from typing import List
 
 class Solution:
     def minStartValue(self, nums: List[int]) -> int:
-        sumNums, res = 0, 0
+        res, total = 0, 0
+        
         for num in nums:
-            sumNums += num
-            res = min(res, sumNums)
+            total += num
+            res = min(res, total)
             
         return 1 - res
