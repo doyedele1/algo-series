@@ -21,7 +21,7 @@
         SC - O(n) to store the items
 '''
 
-import random
+from random import randint
 
 class RandomizedSet:
     def __init__(self):
@@ -50,7 +50,8 @@ class RandomizedSet:
         return True
 
     def getRandom(self) -> int:
-        return random.choice(self.array_list)
+        randomIndex = randint(0, len(self.array_list) - 1)
+        return self.array_list[randomIndex]
 
 # Your RandomizedSet object will be instantiated and called as such:
 # obj = RandomizedSet()
