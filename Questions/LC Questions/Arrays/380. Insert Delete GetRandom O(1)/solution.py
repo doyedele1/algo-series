@@ -12,6 +12,9 @@
             - Add value-index pair to the hashmap
 
         Delete operation
+        [1, 2, 3, 4, 5]. Task: remove 3
+        [1, 2, 5, 4, 5]. Then remove the last element which is the second 5 --> [1, 2, 5, 4]
+
             - Get index of item to be deleted from the hashmap
             - Get the last item in the array
             - Move the last item in the hashmap to where the item to be deleted is
@@ -21,37 +24,39 @@
         SC - O(n) to store the items
 '''
 
-from random import randint
+from random import randint, random
 
 class RandomizedSet:
     def __init__(self):
-        self.hash_map = dict()
-        self.array_list = []
+        self.hashMap = dict()
+        self.arrayList = []
         
     def insert(self, val: int) -> bool:
-        if val in self.hash_map: return False
-        self.array_list.append(val)
-        self.hash_map[val] = len(self.array_list) - 1
+        if val in self.hashMap: return False
+
+        self.arrayList.append(val)
+        self.hashMap[val] = len(self.arrayList) - 1
         return True
 
     def remove(self, val: int) -> bool:
-        if val not in self.hash_map: return False
+        if val not in self.hashMap: return False
         
-        index = self.hash_map[val]
-        last_item = self.array_list[-1]
+        index = self.hashMap[val]
+        last_item = self.arrayList[-1]
         
         # Get the last item in the array list and copy the last item to the index
-        self.array_list[index], self.hash_map[last_item] = last_item, index
+        self.arrayList[index], self.hashMap[last_item] = last_item, index
         
-        # Remove the last item in the array_list and remove the entry containing the key equal to the value to be removed in the hash_map
-        self.array_list.pop()
-        del self.hash_map[val]
+        # Remove the last item in the arrayList and remove the entry containing the key equal to the value to be removed in the hashMap
+        self.arrayList.pop()
+        del self.hashMap[val]
         
         return True
 
     def getRandom(self) -> int:
-        randomIndex = randint(0, len(self.array_list) - 1)
-        return self.array_list[randomIndex]
+        return random.choice(self.arrayList)
+        # randomIndex = randint(0, len(self.arrayList) - 1)
+        # return self.arrayList[randomIndex]
 
 # Your RandomizedSet object will be instantiated and called as such:
 # obj = RandomizedSet()
