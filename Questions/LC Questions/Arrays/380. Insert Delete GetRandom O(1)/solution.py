@@ -24,7 +24,7 @@
         SC - O(n) to store the items
 '''
 
-from random import randint, random
+from random import randint, choice
 
 class RandomizedSet:
     def __init__(self):
@@ -54,7 +54,7 @@ class RandomizedSet:
         return True
 
     def getRandom(self) -> int:
-        return random.choice(self.arrayList)
+        return choice(self.arrayList)
         # randomIndex = randint(0, len(self.arrayList) - 1)
         # return self.arrayList[randomIndex]
 
