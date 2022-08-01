@@ -54,9 +54,9 @@ class RandomizedSet:
         return True
 
     def getRandom(self) -> int:
-        return choice(self.arrayList)
-        # randomIndex = randint(0, len(self.arrayList) - 1)
-        # return self.arrayList[randomIndex]
+        # return choice(self.arrayList)
+        randomIndex = randint(0, len(self.arrayList) - 1)
+        return self.arrayList[randomIndex]
 
 # Your RandomizedSet object will be instantiated and called as such:
 # obj = RandomizedSet()
