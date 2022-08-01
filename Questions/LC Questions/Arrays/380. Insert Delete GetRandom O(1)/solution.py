@@ -42,10 +42,10 @@ class RandomizedSet:
         if val not in self.hashMap: return False
         
         index = self.hashMap[val]
-        last_item = self.arrayList[-1]
+        lastItem = self.arrayList[-1]
         
         # Get the last item in the array list and copy the last item to the index
-        self.arrayList[index], self.hashMap[last_item] = last_item, index
+        self.arrayList[index], self.hashMap[lastItem] = lastItem, index
         
         # Remove the last item in the arrayList and remove the entry containing the key equal to the value to be removed in the hashMap
         self.arrayList.pop()
