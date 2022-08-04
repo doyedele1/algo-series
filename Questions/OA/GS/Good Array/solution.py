@@ -1,6 +1,3 @@
-from itertools import product
-
-
 def getProduct(left, right, arr):
     prodResult = 1
     for i in range(left, right + 1):
