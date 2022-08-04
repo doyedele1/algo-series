@@ -15,3 +15,5 @@ def getPalindromesCount(s):
                 freqFives += freq
     
     return freqFives % MODULO
+
+print(getPalindromesCount("0100110"))
