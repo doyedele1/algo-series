@@ -9,10 +9,8 @@ def getPalindromesCount(s):
     for c in s:
         for item, freq in list(count.items()):
             item += c
-            if len(item) < 5:
-                count[item] += freq
-            elif item == item[::-1]:
-                res += freq
+            if len(item) < 5: count[item] += freq
+            elif item == item[::-1]: res += freq
     
     return res % MODULO
 
