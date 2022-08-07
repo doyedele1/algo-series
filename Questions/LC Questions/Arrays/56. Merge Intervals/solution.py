@@ -16,7 +16,7 @@ from typing import List
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         # Sorting by the start value in Python is straightforward. i stands for the interval
-        intervals.sort(key = lambda i : i[0])
+        intervals.sort(key= lambda i: i[0])
         
         # Declaring res to append the merged intervals and initializing with the first interval to cover some edge case
         res = [intervals[0]]
