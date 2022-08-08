@@ -32,13 +32,14 @@
 
 def solution(operatingHours, transaction):
     operatingHours.sort(key= lambda i: i[0])
+    start, end = float("-inf"), float("-inf")
+
+    for i in range(len(operatingHours)):
+        if operatingHours[i][0] <= end:
+            end = max(end, operatingHours[i][1])
+        else: 
+            start = operatingHours[i][0]
+            end = operatingHours[i][1]
         
-    res = [operatingHours[0]]
-    
-    for start, end in operatingHours[1:]:
-        recentEnd = res[-1][1]
-        if start <= recentEnd:
-            res[-1][1] = max(recentEnd, end)
-        else:
-            res.append([start, end])
-    return res
+        if transaction[0] >= start and transaction[1] <= end: return True
+    return False
