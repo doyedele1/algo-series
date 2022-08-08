@@ -1,16 +1,16 @@
-def solution1(operatingHours, transaction):
-    operatingHours.sort(key= lambda i: i[0])
-    start, end = float("-inf"), float("-inf")
+# def solution1(operatingHours, transaction):
+#     operatingHours.sort(key= lambda i: i[0])
+#     start, end = float("-inf"), float("-inf")
 
-    for i in range(len(operatingHours)):
-        if operatingHours[i][0] <= end:
-            end = max(end, operatingHours[i][1])
-        else: 
-            start = operatingHours[i][0]
-            end = operatingHours[i][1]
+#     for i in range(len(operatingHours)):
+#         if operatingHours[i][0] <= end:
+#             end = max(end, operatingHours[i][1])
+#         else: 
+#             start = operatingHours[i][0]
+#             end = operatingHours[i][1]
         
-        if transaction[0] >= start and transaction[1] <= end: return True
-    return False
+#         if transaction[0] >= start and transaction[1] <= end: return True
+#     return False
 
 # print(solution([[260, 750], [420, 1305], [840, 1050], [750, 840]], [260, 1050]))
 
@@ -24,17 +24,18 @@ def convertToMinutes(time):
     endMinutes = int(time[8 : 10]) * 60 + int(time[11 : 14])
     return startMinutes, endMinutes
 
-bankStartMinutes = [None for x in range(len(operatingHours))]
-bankEndMinutes = [None for x in range(len(operatingHours))]
-#mergeTimes(bankStartMinutes, bankEndMinutes, operatingHours, transaction)
+bankTransactionStartArr = [None for i in range(len(operatingHours))]
+bankTransactionEndArr = [None for i in range(len(operatingHours))]
+#mergeTimes(bankTransactionStartArr, bankTransactionEndArr, operatingHours, transaction)
 
-def mergeTimes(bankStartMinutes, bankEndMinutes, operatingHours, transaction):
-    for idx in range(len(operatingHours)):
-        bankStartMinutes[idx], bankEndMinutes[idx] = convertToMinutes(operatingHours[idx]) 
-    validTranStart = min(bankStartMinutes)
-    validTranEnd = max(bankEndMinutes)
-    print(bankStartMinutes)
-    print(bankEndMinutes)
+def mergeTimes(bankTransactionStartArr, bankTransactionEndArr, operatingHours, transaction):
+    for i in range(len(operatingHours)):
+        bankTransactionStartArr[i], bankTransactionEndArr[i] = convertToMinutes(operatingHours[i])
+
+    validTranStart = min(bankTransactionStartArr)
+    validTranEnd = max(bankTransactionEndArr)
+    print(bankTransactionStartArr)
+    print(bankTransactionEndArr)
     return validTransaction(validTranStart, validTranEnd, transaction)
     
 def validTransaction(validTranStart, validTranEnd, transaction):
@@ -43,4 +44,5 @@ def validTransaction(validTranStart, validTranEnd, transaction):
         print(bool(True))
     else:
         print(bool(False))
-mergeTimes(bankStartMinutes, bankEndMinutes, operatingHours, transaction)
+
+mergeTimes(bankTransactionStartArr, bankTransactionEndArr, operatingHours, transaction)
