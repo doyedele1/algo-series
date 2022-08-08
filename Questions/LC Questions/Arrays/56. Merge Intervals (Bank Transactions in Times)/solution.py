@@ -14,6 +14,9 @@ def solution(operatingHours, transaction):
     return False
 # print(solution([[260, 750], [420, 1305], [840, 1050], [750, 840]], [260, 1050]))
 
+
+
+
 # Second Solution - Without Sorting. TC: O(n), SC: O(n)
 operatingHours = ['04:20 - 12:30', '19:00 - 21:45', '14:00 - 17:30', '12:30 - 14:00']
 transaction = '04:20 - 17:30'
