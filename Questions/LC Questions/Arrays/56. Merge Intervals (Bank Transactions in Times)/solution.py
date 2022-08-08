@@ -1,36 +1,4 @@
-'''
-    operatingTimes = ['04:20 - 12:30', '19:00 - 21:45', '14:00 - 17:30', '12:30 - 14:00']
-    transacTime = '04:00 - 17:30'
-
-    # Function to convert dates/times to minutes
-    def convertToMinutes(time):
-        startMinutes = int(time[0 : 2]) * 60 + int(time[3 : 5])
-        endMinutes = int(time[8 : 10]) * 60 + int(time[11 : 14])
-        return startMinutes, endMinutes
-
-    bankStartMinutes = [None for x in range(len(operatingTimes))]
-    bankEndMinutes = [None for x in range(len(operatingTimes))]
-    #valid(bankStartMinutes, bankEndMinutes, operatingTimes, transacTime)
-
-    def valid(bankStartMinutes, bankEndMinutes, operatingTimes, transacTime):
-        for idx in range(len(operatingTimes)):
-            bankStartMinutes[idx], bankEndMinutes[idx] = convertToMinutes(operatingTimes[idx]) 
-        validTranStart = min(bankStartMinutes)
-        validTranEnd = max(bankEndMinutes)
-        print(bankStartMinutes)
-        print(bankEndMinutes)
-        return validTransaction(validTranStart, validTranEnd, transacTime)
-        
-    def validTransaction(validTranStart, validTranEnd, transacTime):
-        startMinutes, endMinutes = convertToMinutes(transacTime)
-        if startMinutes >= validTranStart and endMinutes <= validTranEnd:
-            print(bool(True))
-        else:
-            print(bool(False))
-    valid(bankStartMinutes, bankEndMinutes, operatingTimes, transacTime)
-'''
-
-def solution(operatingHours, transaction):
+def solution1(operatingHours, transaction):
     operatingHours.sort(key= lambda i: i[0])
     start, end = float("-inf"), float("-inf")
 
@@ -44,4 +12,35 @@ def solution(operatingHours, transaction):
         if transaction[0] >= start and transaction[1] <= end: return True
     return False
 
-print(solution([[260, 750], [420, 1305], [840, 1050], [750, 840]], [260, 1050]))
+# print(solution([[260, 750], [420, 1305], [840, 1050], [750, 840]], [260, 1050]))
+
+
+operatingHours = ['04:20 - 12:30', '19:00 - 21:45', '14:00 - 17:30', '12:30 - 14:00']
+transaction = '04:00 - 17:30'
+
+# Function to convert dates/times to minutes
+def convertToMinutes(time):
+    startMinutes = int(time[0 : 2]) * 60 + int(time[3 : 5])
+    endMinutes = int(time[8 : 10]) * 60 + int(time[11 : 14])
+    return startMinutes, endMinutes
+
+bankStartMinutes = [None for x in range(len(operatingHours))]
+bankEndMinutes = [None for x in range(len(operatingHours))]
+#mergeTimes(bankStartMinutes, bankEndMinutes, operatingHours, transaction)
+
+def mergeTimes(bankStartMinutes, bankEndMinutes, operatingHours, transaction):
+    for idx in range(len(operatingHours)):
+        bankStartMinutes[idx], bankEndMinutes[idx] = convertToMinutes(operatingHours[idx]) 
+    validTranStart = min(bankStartMinutes)
+    validTranEnd = max(bankEndMinutes)
+    print(bankStartMinutes)
+    print(bankEndMinutes)
+    return validTransaction(validTranStart, validTranEnd, transaction)
+    
+def validTransaction(validTranStart, validTranEnd, transaction):
+    startMinutes, endMinutes = convertToMinutes(transaction)
+    if startMinutes >= validTranStart and endMinutes <= validTranEnd:
+        print(bool(True))
+    else:
+        print(bool(False))
+mergeTimes(bankStartMinutes, bankEndMinutes, operatingHours, transaction)
