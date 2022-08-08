@@ -43,3 +43,5 @@ def solution(operatingHours, transaction):
         
         if transaction[0] >= start and transaction[1] <= end: return True
     return False
+
+print(solution([[260, 750], [420, 1305], [840, 1050], [750, 840]], [260, 1050]))
