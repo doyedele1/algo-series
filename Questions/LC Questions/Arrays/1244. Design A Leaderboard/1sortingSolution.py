@@ -5,7 +5,7 @@
         - top() - Store the values of the hashmap in a scores array
                 - Sort the scores array
                 - Loop through the scores array and get the first k scores and add the scores to your result
-                - TC: O(n logn)
+                - TC: O(nlogn)
         - reset() - Pop the playerId from the hashmap
             - TC: O(1)
             
@@ -16,7 +16,7 @@
         - most_common() returns the sorted dictionary based on the count specified
 
         - addScore() - TC: O(1)
-        - top() - TC: O(n log K) where n is the number of players
+        - top() - TC: O(nlogK) where n is the number of players
         - reset() - TC: O(1)
         
         - SC: O(n) used by the counter
