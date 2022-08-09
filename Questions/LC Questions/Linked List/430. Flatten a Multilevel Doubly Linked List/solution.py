@@ -82,6 +82,10 @@ class Solution2:
         while stack:
             curr = stack.pop()
             
+            # Establish the links between the prev and curr pointers
+            start.next = curr
+            curr.prev = start
+            
             if curr.next:
                 stack.append(curr.next)
             
@@ -89,10 +93,6 @@ class Solution2:
                 stack.append(curr.child)
                 # Remove all child pointers. i.e. change to None
                 curr.child = None
-            
-            # Establish the links between the prev and curr pointers
-            start.next = curr
-            curr.prev = start
             
             start = curr
             
