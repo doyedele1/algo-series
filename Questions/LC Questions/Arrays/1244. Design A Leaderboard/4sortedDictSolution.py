@@ -1,5 +1,5 @@
 '''
-    Explanation: Using SortedDict - Balanced BST
+    Explanation: Using SortedDict - Balanced BST (Only works on LeetCode's Code Editor because of the sorted containers library)
         NOTE: Since there's no reverse SortedDict in Python, we will negate the scores before adding to the SortedDict so that the inorder traversal would give us the scores in descending order
         - Initialize a hashmap: key - playerId, value - score
         - Initialize a sorted map. key - score, value - number of players that have that score
