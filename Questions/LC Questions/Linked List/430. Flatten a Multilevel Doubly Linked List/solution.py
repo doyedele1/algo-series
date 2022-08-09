@@ -18,11 +18,11 @@
                 - If curr, tail = curr
         - return tail
 
-
         TC - O(n) where n is the number of nodes in the list, we visit each node once from beginning to end
         SC - O(n), the recursion call stack which can be of the order of n - O(n). In the worst case, the nodes are chained with each other only with the child pointers. In this case, the recursive calls would pile up and take n space in the function call stack
 '''
 
+from typing import Optional
 # Definition for a Node.
 class Node:
     def __init__(self, val, prev, next, child):
@@ -30,9 +30,6 @@ class Node:
         self.prev = prev
         self.next = next
         self.child = child
-
-
-from typing import Optional
 
 class Solution:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
@@ -44,13 +41,13 @@ class Solution:
         curr, tail = head, head
         while curr:
             child = curr.child
-            next = curr.next # so that we can return the next of child_tail as the next we stored
+            nxt = curr.next # so that we can return the next of child_tail as the next we stored
             
             if child: # if there is child
                 child_tail = self.flatten_helper(child)
                 
-                child_tail.next = next
-                if next: next.prev = child_tail
+                child_tail.next = nxt
+                if nxt: nxt.prev = child_tail
                     
                 curr.next = child
                 child.prev = curr
@@ -60,7 +57,7 @@ class Solution:
                 curr = child_tail
             
             else: # if there is no child
-                curr = next
+                curr = nxt
                 
             if curr: tail = curr # tail cannot be null because tail will always be there because it is running when we have a child
                 
