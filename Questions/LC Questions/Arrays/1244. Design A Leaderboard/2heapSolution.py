@@ -1,5 +1,5 @@
 '''
-    Explanation I: Min heap
+    Explanation I: Min Heap
         - top() - Store the values of the hashmap in a min heap
                 - Loop over the first k values in the hashmap and add them to the heap
                 - For the rest of n-k values, add a new value to the heap and pop the smallest value from the heap to maintain the heap size to k.
