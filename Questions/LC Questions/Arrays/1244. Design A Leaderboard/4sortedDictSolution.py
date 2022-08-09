@@ -10,16 +10,22 @@
             - Update the dictionary with the new player score
             - Add the updated value to the sorted map as well as incrementing the value by 1. i.e. one more player has this score
             - If player doesn't exist, initialize score to score
+            - TC: O(logn). BST search takes O(logn) and the addition when parent location is known is O(1)
                     
         - top() 
             - Loop over all the keys in the sorted map. Since the sorted map is a BST, then an inorder traversal of the keys would return the scores in a sorted order.
                 - Pick the first k values
                     - For each key, multiply (key * value) and add it to the total sum
                     - Reduce the counter counting down to k by value
+            - TC: O(k). We iterate over the keys of the sorted map and stop once we are done considering k scores
+            
         - reset()
             - Note the old score for the player
             - Update the value of old score in the sorted map. If the value is 0, remove the score entry
             - Delete the entry containing the playerId
+            - TC: O(log n). BST search, update and deletion take O(logn). Case is when every player has a unique score
+            
+        - SC: O(n). Space required by the playersToScores dictionary
 '''
 
 from collections import defaultdict
