@@ -12,11 +12,10 @@
         - SC: O(n) used by the hashmap and the scores array
     
     Explanation II: Using most_common() method in Collections Counter
-        - Counter() returns a dictionary which is unordered
-        - most_common() returns the sorted dictionary based on the count specified
-
         - addScore() - TC: O(1)
-        - top() - TC: O(nlogK) where n is the number of players
+        - top() - Counter() returns a dictionary which is unordered
+                - most_common() returns the sorted dictionary based on the count specified
+                - TC: O(nlogK) where n is the number of players
         - reset() - TC: O(1)
         
         - SC: O(n) used by the counter
