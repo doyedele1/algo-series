@@ -12,14 +12,13 @@ def solution(operatingHours, transaction):
         
         if transaction[0] >= start and transaction[1] <= end: return True
     return False
-# print(solution([[260, 750], [420, 1305], [840, 1050], [750, 840]], [260, 1050]))
+print(solution([[600, 660], [720, 780]], [600, 780]))
 
 
 
-
-# Second Solution - Without Sorting. TC: O(n), SC: O(n)
-operatingHours = ['04:20 - 12:30', '19:00 - 21:45', '14:00 - 17:30', '12:30 - 14:00']
-transaction = '04:20 - 17:30'
+# Doesn't work for some test cases --> Second Solution - Without Sorting. TC: O(n), SC: O(n)
+operatingHours = ['10:00 - 11:00', '12:00 - 13:00']
+transaction = '10:00 - 13:00'
 
 # Function to convert dates/times to minutes
 def convertToMinutes(time):
