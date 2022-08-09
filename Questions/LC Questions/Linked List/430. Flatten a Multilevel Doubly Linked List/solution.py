@@ -1,5 +1,5 @@
 '''
-    Explanation:
+    Explanation I: Recursive Solution
         - We will have a recursive helper (flatten_helper) function that takes in the head pointer (curr = head, tail = head)
         - While curr is not null,
             - Here we can store curr, next and tail on the first node (head)
@@ -20,6 +20,10 @@
 
         TC - O(n) where n is the number of nodes in the list, we visit each node once from beginning to end
         SC - O(n), the recursion call stack which can be of the order of n - O(n). In the worst case, the nodes are chained with each other only with the child pointers. In this case, the recursive calls would pile up and take n space in the function call stack
+
+    Explanation II: Iterative Solution
+        - TC: O(n)
+        - SC: O(n). Space used by the stack data structure
 '''
 
 from typing import Optional
@@ -31,7 +35,7 @@ class Node:
         self.next = next
         self.child = child
 
-class Solution:
+class Solution1:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
         if head: # if head is there, i.e. the linked list is not empty
             self.flatten_helper(head)
@@ -63,3 +67,36 @@ class Solution:
                 
         # return the tail of the flatten list
         return tail
+
+
+class Solution2:
+    def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        if not head:  #Empty List
+            return
+        
+        dummy = Node(0, None, None, None)
+        start = dummy
+        
+        stack = [head]
+        
+        while stack:
+            curr = stack.pop()
+            
+            if curr.next:
+                stack.append(curr.next)
+            
+            if curr.child:
+                stack.append(curr.child)
+                # Remove all child pointers. i.e. change to None
+                curr.child = None
+            
+            # Establish the links between the prev and curr pointers
+            start.next = curr
+            curr.prev = start
+            
+            start = curr
+            
+        # Remove the dummy head node from the result
+        dummy.next.prev = None
+        
+        return dummy.next        
