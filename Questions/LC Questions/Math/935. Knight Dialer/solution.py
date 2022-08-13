@@ -3,7 +3,20 @@
         rows - number of steps n
         columns - 0 to 9 possible digits
         
-        dp[n][1] = dp[n-1][6] + dp[n-1][8]
+        dp[2][0] = dp[1][4] + dp[1][6]
+        Generally, dp[n][1] = dp[n-1][6] + dp[n-1][8]
+        
+        The DP table:
+            0   1   2   3   4   5   6   7   8   9
+        0   0   0   0   0   0   0   0   0   0   0
+        1   1   1   1   1   1   1   1   1   1   1
+        2   2   2   2   2   
+        3
+        .
+        .
+        .
+        n
+        
 
 '''
 
@@ -12,7 +25,7 @@ class Solution:
         MODULO = 10**9 + 7
         dp = [1] * 10
         
-        for i in range(2, n + 1):
+        while n > 1:
             temp = dp.copy()
             
             dp[0] = temp[4] + temp[6]
@@ -25,5 +38,5 @@ class Solution:
             dp[7] = temp[2] + temp[6]
             dp[8] = temp[1] + temp[3]
             dp[9] = temp[2] + temp[4]
-            
+            n -= 1
         return sum(dp) % MODULO
