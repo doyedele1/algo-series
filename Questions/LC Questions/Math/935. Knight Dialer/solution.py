@@ -25,7 +25,7 @@ class Solution:
         MODULO = 10**9 + 7
         dp = [1] * 10
         
-        while n > 1:
+        while n >= 2:
             temp = dp.copy()
             
             dp[0] = temp[4] + temp[6]
@@ -39,4 +39,5 @@ class Solution:
             dp[8] = temp[1] + temp[3]
             dp[9] = temp[2] + temp[4]
             n -= 1
+            
         return sum(dp) % MODULO
