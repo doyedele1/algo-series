@@ -39,7 +39,6 @@ class Solution1:
             current.next = previous
             previous = current
             current = temp
-
         return previous
 
 class Solution2:
