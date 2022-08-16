@@ -8,6 +8,16 @@ class ListNode:
 
 # Reversing the sum linked list
 class Solution1:
+    def reverseList(self, head):
+        previous, current = None, head
+        
+        while current:
+            nxt = current.next
+            current.next = previous
+            previous = current
+            current = nxt
+        return previous
+    
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         num1 = 0
         num2 = 0
@@ -31,15 +41,8 @@ class Solution1:
             temp.next = ListNode(sum % 10)
             temp = temp.next
             sum //= 10
-            
-        previous = None
-        temp = dummy.next
-        while temp:
-            nxt = temp.next
-            temp.next = previous
-            previous = temp
-            temp = nxt
-        return previous
+        
+        return self.reverseList(dummy.next)
 
 class Solution2:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
