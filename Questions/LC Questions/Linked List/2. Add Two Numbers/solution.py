@@ -1,6 +1,6 @@
 '''
-    TC - O(max(m,n)) where m is the length of l1 and n is the length of l2
-    SC - O(max(m,n)) --> the length of the new linked list is at most max(m,n) + 1
+    TC - O(max(m,n)) where m is the length of l1 and n is the length of l2. The solution runs at most max(m,n) times
+    SC - O(max(m,n)). The length of the new linked list (dummy) is at most max(m,n) + 1
 '''
 
 # Definition for singly-linked list.
@@ -38,4 +38,4 @@ class Solution:
         if carry > 0:
             temp.next = ListNode(carry)
         
-        return dummy.next            
+        return dummy.next
