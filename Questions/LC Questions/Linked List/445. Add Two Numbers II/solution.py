@@ -65,6 +65,15 @@ class Solution2:
         if sum == 0: return dummy
         
         while sum > 0:
+            '''
+                print(sum, temp.next)
+                    7807 None
+                    780 ListNode{val: 7, next: None}
+                    78 ListNode{val: 0, next: ListNode{val: 7, next: None}}
+                    7 ListNode{val: 8, next: ListNode{val: 0, next: ListNode{val: 7, next: None}}}
+                    0 ListNode{val: 7, next: ListNode{val: 8, next: ListNode{val: 0, next: ListNode{val: 7, next: None}}}}
+            '''
+            
             temp.next = ListNode(sum % 10, temp.next) 
             sum //= 10
         return dummy.next
