@@ -57,24 +57,18 @@ def solution1(n):
         for i in range(len(q)):
             top = q.popleft()
             
-            if top == n:
-                return steps
+            if top == n: return steps
                 
-            if top not in visited:
-                visited.add(top)
+            if top not in visited: visited.add(top)
         
-            if top*2 not in visited:
-                q.append(top*2)
+            if top * 2 not in visited: q.append(top * 2)
         
-            if top//3 not in visited:
-                q.append(top//3)
-    
+            if top // 3 not in visited: q.append(top // 3)
         steps += 1
 
 # print("solution1", solution1(10))
 
-
-# IGNORE --> not an efficient solution, doesn't even evaluate the minimum number of steps
+# IGNORE --> not an efficient solution, doesn't evaluate the minimum number of steps
 def solution2(n):
     x = 0
     y = 0
