@@ -9,8 +9,9 @@
         
         - Example: n = 10
             choice1 = 0 + getMinDays(5)
-        - TC: 
+        - TC: O(n)
         - SC: O(n) where n is the size of the cache
+
 '''
 
 class Solution:
@@ -25,9 +26,18 @@ class Solution:
             choice1 = remainingOranges % 2 + getMinDays(remainingOranges // 2)
             choice2 = remainingOranges % 3 + getMinDays(remainingOranges // 3)
             # print(choice1, choice2)
+            # print("cache", cache)
+            # 1 2
+            # cache {2: 2}
+            # 3 3
+            # cache {2: 2, 5: 4}
+            # 2 1
+            # cache {2: 2, 5: 4, 3: 2}
+            # 4 3
+            # cache {2: 2, 5: 4, 3: 2, 10: 4}
+
             
             cache[remainingOranges] = 1 + min(choice1, choice2)
-            # print("cache", cache)
             return cache[remainingOranges]
             
         return getMinDays(n)
