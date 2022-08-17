@@ -1,14 +1,8 @@
 # TC - O(2^n)
 def solution1(n):
-    if n == 1:
-        return 0
-
-    elif n % 2 == 0:
-        return 1 + solution1(n // 2)
-    
-    else:
-        return 1 + min(solution1(n + 1), solution1(n - 1))
-
+    if n == 1: return 0
+    elif n % 2 == 0: return 1 + solution1(n // 2)
+    else: return 1 + min(solution1(n + 1), solution1(n - 1))
 # print(solution1(15))
 
 '''
@@ -23,21 +17,17 @@ def solution1(n):
     TC - O(log n)
 '''
 def solution2(n):
-    if n == 1:
-        return 0
+    if n == 1: return 0
 
     steps = 0
 
     while n > 1:
-        if n % 2 == 0:
-            n //= 2
+        if n % 2 == 0: n //= 2
+
         # n == 3 --> special case where we decrement by 1
-        elif n % 4 == 1 or n == 3:
-            n -= 1
-        else:
-            n += 1
+        elif n % 4 == 1 or n == 3: n -= 1
+        else: n += 1
         steps += 1
 
     return steps
 # print(solution2(7))
-
