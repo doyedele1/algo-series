@@ -7,14 +7,16 @@ Find the minimum number of steps required to reduce n to 1.
 Examples:
 1. Input: n = 15
 Output: 5
- 15 is odd 15+1=16    
- 16 is even 16/2=8     
- 8  is even 8/2=4 
- 4  is even 4/2=2     
- 2  is even 2/2=1     
+Explanation: 
+    15 is odd 15+1=16    
+    16 is even 16/2=8     
+    8  is even 8/2=4 
+    4  is even 4/2=2     
+    2  is even 2/2=1     
 
 2. Input: n = 7
 Output: 4
+Explanation:
     7->6    
     6->3 
     3->2    

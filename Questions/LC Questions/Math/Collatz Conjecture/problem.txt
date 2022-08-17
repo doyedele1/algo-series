@@ -1,0 +1,9 @@
+Given an int n. You can use only 2 operations:
+    -  If n is even then you can divide n by 2.
+    - If n is odd then you are allowed to perform (3n+1)
+
+Find the minimum number of steps required to reduce n to 1.
+
+Examples:
+1. 5 -> 16 -> 8 -> 4 -> 2 -> 1, Output = 5
+2. 10 -> 5 -> 16 -> 8 -> 4 -> 2 -> 1, Output = 6
