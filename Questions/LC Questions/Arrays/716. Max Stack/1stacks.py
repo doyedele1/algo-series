@@ -63,3 +63,11 @@ class MaxStack:
         while buffer:
             self.push(buffer.pop())
         return maxValue
+
+# Your MaxStack object will be instantiated and called as such:
+# obj = MaxStack()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.peekMax()
+# param_5 = obj.popMax()
