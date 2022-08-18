@@ -105,7 +105,7 @@ class MaxStack:
         node = self.list.add(x)        
         if x not in self.max: self.max[x] = []            
         self.max[x].append(node)
-     
+    
     def top(self) -> int: 
         return self.list.peek()
         
@@ -123,11 +123,3 @@ class MaxStack:
         self.list.unlink(addr.pop())        
         if not addr: del self.max[val]            
         return val
-
-# Your MaxStack object will be instantiated and called as such:
-# obj = MaxStack()
-# obj.push(x)
-# param_2 = obj.pop()
-# param_3 = obj.top()
-# param_4 = obj.peekMax()
-# param_5 = obj.popMax()
