@@ -1,6 +1,5 @@
 # Using two arrays. One for main array of 0s, and the other for flipped array
 class Bitset1:
-    
     def __init__(self, size: int):
         self.lookup = [0] * size
         self.flipped = [1] * size
