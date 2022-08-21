@@ -1,4 +1,41 @@
-class Bitset:
+# Using two arrays. One for main array of 0s, and the other for flipped array
+class Bitset1:
+    
+    def __init__(self, size: int):
+        self.lookup = [0] * size
+        self.flipped = [1] * size
+        self.ones = 0
+
+    def fix(self, idx: int) -> None:
+        if self.lookup[idx] == 0:
+            self.lookup[idx] = 1
+            self.ones += 1
+            self.flipped[idx] = 0
+
+    def unfix(self, idx: int) -> None:
+        if self.lookup[idx] == 1:
+            self.lookup[idx] = 0
+            self.ones -= 1
+            self.flipped[idx] = 1
+
+    def flip(self) -> None:
+        self.lookup, self.flipped = self.flipped, self.lookup
+        self.ones = len(self.lookup) - self.ones
+
+    def all(self) -> bool:
+        return len(self.lookup) == self.ones
+
+    def one(self) -> bool:
+        return self.ones >= 1
+
+    def count(self) -> int:
+        return self.ones
+
+    def toString(self) -> str:
+        return ''.join(str(i) for i in self.lookup)
+
+# Using one array of 0s and a boolean flag for the flipped bits
+class Bitset2:
     def __init__(self, size: int):
         self.lookup = [0] * size
         self.ones = 0
