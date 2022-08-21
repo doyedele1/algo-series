@@ -1,10 +1,3 @@
-'''
-    Explanation:
-        - Figure out what the flip function does
-'''
-
-from collections import defaultdict
-
 class Bitset:
     def __init__(self, size: int):
         self.lookup = [0] * size
@@ -45,8 +38,7 @@ class Bitset:
         return self.ones
 
     def toString(self) -> str:
-        if self.flipped:
-            return ''.join([str(0 if i else 1) for i in self.lookup])
+        if self.flipped: return ''.join([str(0 if i else 1) for i in self.lookup])
         else: return ''.join([str(i) for i in self.lookup])
 
 # Your Bitset object will be instantiated and called as such:
