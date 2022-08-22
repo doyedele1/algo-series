@@ -1,6 +1,5 @@
 '''
     Explanation: Work backwards (using modulo)
-    
             (2,5) to (19,12)
                     2,5
                     /\
@@ -52,7 +51,10 @@
             x = 3, y = 9. 9 % 3 = 0. 0 is not the right answer because we want to go from (3,9) to (3,6) or (3,3)
             
             - However, we want to do is:
-                - if tx = sx, for (3,3) and (3,9), we want to do 9-3 = 6 and check if 6 is divisible by 3. If it is, then we return true
+                - if tx = sx, for (3,3) and (3,9), we want to do 9-3 = 6 and check if 6 is divisible by tx which is 3. If it is, then we return true
+                
+        - TC: O(log(max(tx,ty))). We assume that the modulo operation can be done in O(1) time
+        - SC: O(1)
 '''
 
 class Solution:
@@ -61,14 +63,8 @@ class Solution:
             if tx == ty: break
             elif tx > ty:
                 if ty > sy: tx %= ty
-                else:
-                    if (tx - sx) % ty == 0: return True
-                    else: return False
+                else: return (tx - sx) % ty == 0
             else:
                 if tx > sx: ty %= tx
-                else:
-                    if (ty - sy) % tx == 0: return True
-                    else: return False
-
-        if tx == sx and ty == sy: return True
-        else: return False
+                else: return (ty - sy) % tx == 0
+        return tx == sx and ty == sy
