@@ -1,9 +1,12 @@
-# Create a hash map of the number and the resulting steps. {1: 0, 5: 5, 16: 4, 8: 3, 4: 2, 2: 1}
-# Store the resulting steps in an array
-# Pop the resulting steps from the end of the array and store the numbers as key of the hash map and increasing steps as value of the hash map
-# Return the value of the key passed which is the input number
+'''
+    Explanation: 
+        - Create a hash map of the number and the resulting steps. {1: 0, 5: 5, 16: 4, 8: 3, 4: 2, 2: 1}
+        - Store the resulting steps in an array
+        - Pop the resulting steps from the end of the array and store the numbers as key of the hash map and increasing steps as value of the hash map
+        - Return the value of the key passed which is the input number
+'''
 
-class CollatzConjecture:
+class CollatzConjecture1:
     def solution(n):
         cache = { 1: 0 } # n: steps
         start = n # 5
@@ -30,4 +33,19 @@ class CollatzConjecture:
 
         return cache[n]
 
-# print(CollatzConjecture.solution(100))
+# print(CollatzConjecture1.solution(100))
+
+
+class CollatzConjecture2:
+    def solution(n):
+        cache = { 0: 0, 1: 1 }
+        if n in cache: return cache[n]
+
+        if n % 2 == 0:
+            cache[n] = 1 + solution(n//2)
+        else:
+            cache[n] = 1 + solution((3*n) + 1)
+        
+        return cache[n]
+
+# print(CollatzConjecture2.solution(100))
