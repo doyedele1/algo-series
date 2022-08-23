@@ -6,46 +6,43 @@
         - Return the value of the key passed which is the input number
 '''
 
-class CollatzConjecture1:
-    def solution(n):
-        cache = { 1: 0 } # n: steps
-        start = n # 5
-        steps = [] # [5, 16, 8, 4, 2]
+# Iterative solution
+def solution1(n):
+    cache = { 1: 0 } # n: steps
+    start = n # 5
+    steps = [] # [5, 16, 8, 4, 2]
 
-        while start != 1:
-            if start in cache: break
+    while start != 1:
+        if start in cache: break
 
-            steps.append(start)
+        steps.append(start)
 
-            if (start % 2 == 0): start //= 2
+        if (start % 2 == 0): start //= 2
 
-            else: start = (3 * start) + 1
-        # print steps ==> [5, 16, 8, 4, 2]
+        else: start = (3 * start) + 1
+    # print steps ==> [5, 16, 8, 4, 2]
 
-        totalSteps = cache.get(start, 0) + 1
-        # print totalSteps ==> 1
+    totalSteps = cache.get(start, 0) + 1
+    # print totalSteps ==> 1
 
-        while steps:
-            curr = steps.pop()
-            cache[curr] = totalSteps
-            totalSteps += 1
-        # print cache => {1: 0, 2: 1, 4: 2, 8: 3, 16: 4, 5: 5}
+    while steps:
+        curr = steps.pop()
+        cache[curr] = totalSteps
+        totalSteps += 1
+    # print cache => {1: 0, 2: 1, 4: 2, 8: 3, 16: 4, 5: 5}
 
-        return cache[n]
+    return cache[n]
 
-# print(CollatzConjecture1.solution(100))
+# print(solution1(100))
 
 
-class CollatzConjecture2:
-    def solution(n):
-        cache = { 0: 0, 1: 1 }
-        if n in cache: return cache[n]
+# Recursive solution
+def solution2(n):
+    cache = { 0: 0, 1: 1 }
+    if n in cache: return cache[n]
 
-        if n % 2 == 0:
-            cache[n] = 1 + solution(n//2)
-        else:
-            cache[n] = 1 + solution((3*n) + 1)
-        
-        return cache[n]
+    if n % 2 == 0: cache[n] = 1 + solution2(n//2)
+    else: cache[n] = 1 + solution2((3*n) + 1)
+    return cache[n]
 
-# print(CollatzConjecture2.solution(100))
+# print(solution2(100))
