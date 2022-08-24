@@ -8,14 +8,15 @@
 
 # Recursive solution
 def solution1(n):
-    cache = { 0: 0, 1: 1 }
+    cache = { 0: 0, 1: 0 }
+    
     if n in cache: return cache[n]
 
     if n % 2 == 0: cache[n] = 1 + solution1(n//2)
     else: cache[n] = 1 + solution1((3*n) + 1)
     return cache[n]
 
-# print(solution1(100))
+# print("recursive solution", solution1(50000))
 
 # Iterative solution
 def solution2(n):
@@ -44,4 +45,4 @@ def solution2(n):
 
     return cache[n]
 
-# print(solution2(100))
+# print("iterative solution", solution2(50000))
