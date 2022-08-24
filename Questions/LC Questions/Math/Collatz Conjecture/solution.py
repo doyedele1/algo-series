@@ -6,8 +6,19 @@
         - Return the value of the key passed which is the input number
 '''
 
-# Iterative solution
+# Recursive solution
 def solution1(n):
+    cache = { 0: 0, 1: 1 }
+    if n in cache: return cache[n]
+
+    if n % 2 == 0: cache[n] = 1 + solution1(n//2)
+    else: cache[n] = 1 + solution1((3*n) + 1)
+    return cache[n]
+
+# print(solution1(100))
+
+# Iterative solution
+def solution2(n):
     cache = { 1: 0 } # n: steps
     start = n # 5
     steps = [] # [5, 16, 8, 4, 2]
@@ -31,18 +42,6 @@ def solution1(n):
         totalSteps += 1
     # print cache => {1: 0, 2: 1, 4: 2, 8: 3, 16: 4, 5: 5}
 
-    return cache[n]
-
-# print(solution1(100))
-
-
-# Recursive solution
-def solution2(n):
-    cache = { 0: 0, 1: 1 }
-    if n in cache: return cache[n]
-
-    if n % 2 == 0: cache[n] = 1 + solution2(n//2)
-    else: cache[n] = 1 + solution2((3*n) + 1)
     return cache[n]
 
 # print(solution2(100))
