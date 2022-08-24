@@ -12,15 +12,18 @@
             - Add value-index pair to the hashmap
 
         Delete operation
-        [1, 2, 3, 4, 5]. Task: remove 3
-        [1, 2, 5, 4, 5]. Then remove the last element which is the second 5 --> [1, 2, 5, 4]
+            [1, 2, 3, 4, 5]. Task: remove 3
+            [1, 2, 5, 4, 5]. Then remove the last element which is the second 5 --> [1, 2, 5, 4]
 
             - Get index of item to be deleted from the hashmap
             - Get the last item in the array
             - Move the last item in the hashmap to where the item to be deleted is
             - Remove the last item
 
-        TC - GetRandom function = O(1). Insert and Delete functions = O(1) on average and O(n) in the worst-case scenario when the operation exceeds the capacity of currently allocated array/hashmap and invokes space reallocation.
+        TC - GetRandom function = O(1). 
+            Insert and Delete functions = 
+                O(1) on average
+                O(n) in the worst-case scenario when the operation exceeds the capacity of currently allocated array/hashmap and invokes space reallocation.
         SC - O(n) to store the items
 '''
 
