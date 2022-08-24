@@ -44,6 +44,7 @@ class RandomizedSet:
     def remove(self, val: int) -> bool:
         if val not in self.hashMap: return False
         
+        
         index = self.hashMap[val]
         lastItem = self.arrayList[-1]
         
