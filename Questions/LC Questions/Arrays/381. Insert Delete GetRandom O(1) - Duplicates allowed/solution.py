@@ -13,15 +13,6 @@
 
             - If length of that set in the hashmap is equal to 1, then it means the value was not present in the hashmap before, so return true
 
-        Delete operation
-            [1, 2, 3, 4, 5]. Task: remove 3
-            [1, 2, 5, 4, 5]. Then remove the last element which is the second 5 --> [1, 2, 5, 4]
-
-            - Get index of item to be deleted from the hashmap
-            - Get the last item in the array
-            - Move the last item in the hashmap to where the item to be deleted is
-            - Remove the last item
-
         TC - GetRandom function = O(1). 
             Insert and Delete functions = 
                 O(1) on average
@@ -55,7 +46,7 @@ class RandomizedCollection:
         self.hashMap[lastItem].discard(len(self.arrayList) - 1)
         # the remove() method raises an error if the item to be removed does not exist; the discard() method does not
         self.arrayList.pop()
-        
+
         return True
 
     def getRandom(self) -> int:
