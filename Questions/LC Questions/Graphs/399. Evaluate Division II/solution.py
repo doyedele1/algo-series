@@ -6,7 +6,7 @@ def solution(start, end, rates):
     
     for rate in rates:
         graph[rate[0]].append([rate[1], rate[2]])
-        graph[rate[1]].append([rate[0], 1.0000/rate[2]])
+        graph[rate[1]].append([rate[0], 1/rate[2]])
         '''
             print(graph) returns
                 graph: {
@@ -17,7 +17,7 @@ def solution(start, end, rates):
                 }
         '''
 	
-    q = deque([(start, 1.0000)])
+    q = deque([(start, 1.0)])
     visited = set()
     visited.add(start)
     
