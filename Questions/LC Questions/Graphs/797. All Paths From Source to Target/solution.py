@@ -2,14 +2,14 @@ from typing import List
 
 class Solution:
     def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
-        end = len(graph) - 1
-        
-        def dfs(node, path, output):
-            if node == end: res.append(path)
-            
-            for nxt in graph[node]:
-                dfs(nxt, path + [nxt], res)
-        
+        target = len(graph) - 1
         res = []
-        dfs(0, [0], res)
+        
+        def dfs(currNode, path):
+            if currNode == target: res.append(path)
+            
+            for nextNode in graph[currNode]:
+                dfs(nextNode, path + [nextNode])
+        
+        dfs(0, [0])
         return res
