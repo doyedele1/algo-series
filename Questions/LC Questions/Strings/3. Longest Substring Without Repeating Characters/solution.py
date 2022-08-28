@@ -103,7 +103,7 @@
             seen = {a: 6, b: 13, c: 11, d: 9, e: 5, f: 7, g: 10}
         
         TC - O(n). index j will iterate n times
-        SC - O(min(m,n)) for the hashmap and O(m) for the table where m is the size of the charset
+        SC - O(min(m,n)) for the hashmap where m is the size of the charset and n is the size of the string
 '''
 
 class Solution2:
@@ -149,7 +149,7 @@ class Solution3:
         
         return res
         
-class Solution3:
+class Solution4:
     def lengthOfLongestSubstring(self, s: str) -> int:
         seen = dict() # to store the current index of a character
         res = i = 0
