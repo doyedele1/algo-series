@@ -1,56 +1,52 @@
 '''
-    Explanation: Using singly-linked list
-        - 
-        
-        - TC: O(1) for all methods
-        - SC: O(n) for the linked list we are forming
+    enqueue: add element to the end of the queue
+    dequeue: remove element from the front of the queue
+    Explanation II: Using a doubly-linked list
 '''
 
-class Node:
-    def __init__(self, value = None):
-        self.next = None
+class ListNode:
+    def __init__(self, value, nextNode, prevNode):
         self.value = value
+        self.nextNode =  nextNode
+        self.prevNode = prevNode
         
 class MyCircularQueue:
     def __init__(self, k: int):
-        self.head = None
-        self.tail = None
-        self.counter = 0
-        self.k = k
+        self.head = ListNode(0, None, None)
+        self.tail = ListNode(0, None, self.head)
+        self.head.nextNode = self.tail
+        self.space = k
 
     def enQueue(self, value: int) -> bool:
         if self.isFull(): return False
         
-        if self.counter == 0:
-            newNode = Node(value)
-            self.head, self.tail = newNode, newNode
-        else:
-            newNode = Node(value)
-            self.tail.next = newNode
-            self.tail = self.tail.next
-        self.counter += 1
+        newNode = ListNode(value, self.tail, self.tail.prevNode)
+        self.tail.prevNode.nextNode = newNode
+        self.tail.prevNode = newNode
+        self.space -= 1
         return True
 
     def deQueue(self) -> bool:
         if self.isEmpty(): return False
         
-        self.head = self.head.next
-        self.counter -= 1
+        self.head.nextNode = self.head.nextNode.nextNode
+        self.head.nextNode.prevNode = self.head
+        self.space += 1
         return True
 
     def Front(self) -> int:
-        if self.counter == 0: return -1
-        return self.head.value
+        if self.isEmpty(): return -1
+        return self.head.nextNode.value
 
     def Rear(self) -> int:
-        if self.counter == 0: return -1
-        return self.tail.value
+        if self.isEmpty(): return -1
+        return self.tail.prevNode.value
 
     def isEmpty(self) -> bool:
-        return self.counter == 0
+        return self.head.nextNode == self.tail
 
     def isFull(self) -> bool:
-        return self.counter == self.k
+        return self.space == 0
 
 # Your MyCircularQueue object will be instantiated and called as such:
 # obj = MyCircularQueue(k)
