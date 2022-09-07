@@ -12,21 +12,22 @@
 class MyCircularQueue1:
     def __init__(self, k: int):
         self.q = [None] * k
-        self.headIndex = 0
+        self.headIndex, self.tailIndex = 0, 0
         self.counter = 0
-        self.capacity = k
+        self.k = k
         
     def enQueue(self, value: int) -> bool:
         if self.isFull(): return False
         
-        self.q[(self.headIndex + self.counter) % self.capacity] = value
+        self.q[self.tailIndex] = value
+        self.tailIndex = (self.tailIndex + 1) % self.k
         self.counter += 1
         return True
     
     def deQueue(self) -> bool:
         if self.isEmpty(): return False
         
-        self.headIndex = (self.headIndex + 1) % self.capacity
+        self.headIndex = (self.headIndex + 1) % self.k
         self.counter -= 1
         return True
 
@@ -36,14 +37,13 @@ class MyCircularQueue1:
 
     def Rear(self) -> int:
         if self.isEmpty(): return -1
-        return self.q[(self.headIndex + self.counter - 1) % self.capacity]
+        return self.q[self.tailIndex - 1]
 
     def isEmpty(self) -> bool:
         return self.counter == 0
 
     def isFull(self) -> bool:
-        return self.counter == self.capacity
-
+        return self.counter == self.k
 
 # Your MyCircularQueue object will be instantiated and called as such:
 # obj = MyCircularQueue(k)
@@ -61,19 +61,18 @@ class ListNode1:
         
 class MyCircularQueue2:
     def __init__(self, k: int):
-        self.head = None
-        self.tail = None
-        self.capacity = k
+        self.head, self.tail = None, None
+        self.k = k
         self.counter = 0
 
     def enQueue(self, value: int) -> bool:
         if self.isFull(): return False
         
+        newNode = ListNode1(value)
         if self.counter == 0:
-            self.head = ListNode1(value)
+            self.head = newNode
             self.tail = self.head
         else:
-            newNode = ListNode1(value)
             self.tail.next = newNode
             self.tail = newNode
         self.counter += 1
@@ -97,7 +96,7 @@ class MyCircularQueue2:
         return self.counter == 0
 
     def isFull(self) -> bool:
-        return self.counter == self.capacity
+        return self.counter == self.k
 
 class ListNode2:
     def __init__(self, value, nxt, previous):
