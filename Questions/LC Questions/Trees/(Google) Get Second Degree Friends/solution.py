@@ -11,8 +11,7 @@ def get_second_degree_friends(graph, user):
     q = deque([(user, 0)])
 
     while q:
-        if done:
-            break
+        if done: break
 
         for user in range(len(q)):
             curr_user, curr_level = q.popleft()
@@ -25,7 +24,7 @@ def get_second_degree_friends(graph, user):
 
         children = new_graph[curr_user]
         for child in children:
-            q.append((child, curr_level+1))
+            q.append((child, curr_level + 1))
             # print(q)
 
     return output
