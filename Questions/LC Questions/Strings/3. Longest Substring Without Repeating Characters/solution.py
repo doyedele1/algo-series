@@ -152,13 +152,27 @@ class Solution3:
 class Solution4:
     def lengthOfLongestSubstring(self, s: str) -> int:
         seen = dict() # to store the current index of a character
-        res = i = 0
+        res = left = 0
         
-        for j in range(len(s)):
-            if s[j] in seen:
-                i = max(i, seen[s[j]])
+        for right in range(len(s)):
+            if s[right] in seen:
+                left = max(left, seen[s[right]])
                 
-            res = max(res, j - i + 1)
-            seen[s[j]] = j + 1
+            res = max(res, right - left + 1)
+            seen[s[right]] = right + 1
         
+        return res
+
+class Solution5:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        left = 0
+        res = 0
+        seen = set()
+        
+        for right in range(len(s)):
+            while s[right] in seen:
+                seen.remove(s[left])
+                left += 1
+            seen.add(s[right])
+            res = max(res, right - left + 1)
         return res
