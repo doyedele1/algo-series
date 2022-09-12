@@ -110,21 +110,19 @@ class Solution2:
     def lengthOfLongestSubstring(self, s: str) -> int:
         chars = [0] * 128
         
-        leftPointer = 0
-        rightPointer = 0
-        res = 0
+        left, right, res = 0, 0, 0
         
-        while rightPointer < len(s):
-            rightChar = s[rightPointer]
+        while right < len(s):
+            rightChar = s[right]
             chars[ord(rightChar)] += 1
             
             while chars[ord(rightChar)] > 1:
-                leftChar = s[leftPointer]
+                leftChar = s[left]
                 chars[ord(leftChar)] -= 1
-                leftPointer += 1
+                left += 1
                 
-            res = max(res, rightPointer - leftPointer + 1)
-            rightPointer += 1
+            res = max(res, right - left + 1)
+            right += 1
         
         return res
 
