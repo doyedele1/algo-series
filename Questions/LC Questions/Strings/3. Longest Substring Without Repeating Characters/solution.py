@@ -152,7 +152,7 @@ class Solution3:
 class Solution4:
     def lengthOfLongestSubstring(self, s: str) -> int:
         seen = dict() # to store the current index of a character
-        res = left = 0
+        res, left = 0, 0
         
         for right in range(len(s)):
             if s[right] in seen:
@@ -165,8 +165,7 @@ class Solution4:
 
 class Solution5:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        left = 0
-        res = 0
+        left, res = 0, 0
         seen = set()
         
         for right in range(len(s)):
