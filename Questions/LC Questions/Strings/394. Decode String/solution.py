@@ -20,7 +20,7 @@
         s = 20[a10[bc]], maxK = 20, countK = 2 as there are two nested K values (20 and 10). n = 2 as there are 2 encoded strings (a and bc).
         
         SC - O(sum(maxK ^ countK * n))) where maxK is the maximum value of K, countK is the count of nested K values and n is the maximum length of encoded string
-        max stack size = maxK[nmaxK[n]]
+        max stack size = sum of all decoded strings in the form -> maxK[nmaxK[n]]
 '''
 
 class Solution:
