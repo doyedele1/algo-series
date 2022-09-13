@@ -8,11 +8,11 @@
         - We will have to solve the inner brackets before the outer brackets --> recursive solution
         
         54[ab6[cd]]
-        stack = (5,4,[,a,b,6,[c,d
-                (54,[,a,b,6
-                We pop any integer after what we've popped 6 --> 6 * cd
-                (54,[,a,b,6*cd,
-                (54,
+        stack = 5, 4, [, a, b, 6, [, c, d
+                5, 4, [, a, b, 6
+                We pop any integer after what we've popped which is 6 --> 6 * cd
+                5, 4, [, a, b, 6*cd
+                54, ab, 6*cd
                 Take everything we pop and multiply by int before what we've popped --> 54 and add to the stack
                 Return the stack after everything
                 
