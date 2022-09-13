@@ -6,11 +6,9 @@
         - acc * 3 ==> accaccacc
         
         - We will have to solve the inner brackets before the outer brackets --> recursive solution
-        - The stack tells us explicitly once we are done with a subproblem, where to pop back up to
         
-        - Going char by char in the string and add to the stack
         54[ab6[cd]]
-        stack = (54,[,a,b,6,[c,d
+        stack = (5,4,[,a,b,6,[c,d
                 (54,[,a,b,6
                 We pop any integer after what we've popped 6 --> 6 * cd
                 (54,[,a,b,6*cd,
