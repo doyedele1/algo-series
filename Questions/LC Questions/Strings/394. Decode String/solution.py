@@ -28,12 +28,13 @@ class Solution:
         stack = []
         
         for i in range(len(s)):
-            if s[i] != "]":
-                stack.append(s[i])
+            if s[i] != "]": stack.append(s[i])
             else:
                 substr = ""
+                # we want to keep popping until we encounter an open square bracket
                 while stack[-1] != "[":
                     substr = stack.pop() + substr
+                # pop the open square bracket
                 stack.pop()
                 
                 k = ""
