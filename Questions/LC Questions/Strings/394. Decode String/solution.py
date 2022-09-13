@@ -5,10 +5,7 @@
         - 3 applies to everything in the bracket
         - acc * 3 ==> accaccacc
         
-        
-        - Nested brackets will make the solution tricky/complicated
         - We will have to solve the inner brackets before the outer brackets --> recursive solution
-        
         - The stack tells us explicitly once we are done with a subproblem, where to pop back up to
         
         - Going char by char in the string and add to the stack
