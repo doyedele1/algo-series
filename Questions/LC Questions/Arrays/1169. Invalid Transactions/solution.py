@@ -6,7 +6,7 @@
                 - Append that to the res array and convert the transaction to a string splitting each item by comma
         
         TC - O(n-squared)
-        SC - O(n)
+        SC - O(n)xs
 
     Explanation II: Optimal Solution
         - Store all transactions done at a particular time in a dictionary. key = time, value = object --> key = person_name, value = location
@@ -22,7 +22,7 @@
         SC - O(n)
 '''
 
-import collections
+from collections import defaultdict
 from typing import List
 
 class Solution1:
@@ -34,6 +34,7 @@ class Solution1:
             if int(amount1) > 1000:
                 res.append(trans1)
                 continue
+
             for j, trans2 in enumerate(transactions):
                 name2, time2, amount2, city2 = trans2.split(',')
                 if name1 == name2 and abs(int(time1) - int(time2)) <= 60 and city1 != city2:                
@@ -41,20 +42,18 @@ class Solution1:
                     break
         return res
 
-class Solution:
+class Solution2:
     def invalidTransactions(self, transactions: List[str]) -> List[str]:
         res = []
 
         # Store all transactions done at a particular time in a dictionary
-        transaction = collections.defaultdict(dict)
+        transaction = defaultdict(dict)
         for trans in transactions:
             name, str_time, amount, city = trans.split(",")
             time = int(str_time)
 
-            if name not in transaction[time]:
-                transaction[time][name] = {city, }
-            else:
-                transaction[time][name].add(city)
+            if name not in transaction[time]: transaction[time][name] = {city, }
+            else: transaction[time][name].add(city)
 
         for trans in transactions:
             name, str_time, amount, city = trans.split(",")
@@ -65,11 +64,9 @@ class Solution:
                 continue
             
             # Check within 60 minutes
-            for invalid_time in range(time-60, time+61):
-                if invalid_time not in transaction:
-                    continue
-                if name not in transaction[invalid_time]:
-                    continue
+            for invalid_time in range(time - 60, time + 61):
+                if invalid_time not in transaction: continue
+                if name not in transaction[invalid_time]: continue
 
                 trans_city = transaction[invalid_time][name]
 
