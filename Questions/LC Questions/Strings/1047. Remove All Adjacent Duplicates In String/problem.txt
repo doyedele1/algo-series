@@ -12,3 +12,7 @@ For example, in "abbaca" we could remove "bb" since the letters are adjacent and
 
 2. Input: s = "azxxzy"
 Output: "ay"
+
+Constraints:
+1 <= s.length <= 105
+s consists of lowercase English letters.
