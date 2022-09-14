@@ -14,14 +14,9 @@ class Solution:
         stack = []
         
         for char in s:
-            if stack and stack[-1][0] == char:
-                stack[-1][1] += 1
-                
-            else: 
-                stack.append([char, 1])
-                
-            if stack[-1][1] == k:
-                stack.pop()
+            if stack and stack[-1][0] == char: stack[-1][1] += 1
+            else: stack.append([char, 1])
+            if stack[-1][1] == k: stack.pop()
                 
         # char * num prints the char in num times
         return "".join([char * num for char, num in stack])
