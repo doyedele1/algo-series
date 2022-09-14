@@ -18,3 +18,8 @@ Finally delete "ddd", get "aa"
 
 3. Input: s = "pbbcggttciiippooaais", k = 2
 Output: "ps"
+
+Constraints:
+1 <= s.length <= 105
+2 <= k <= 104
+s only contains lowercase English letters.
