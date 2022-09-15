@@ -2,8 +2,7 @@ Given an integer x, return true if x is palindrome integer.
 
 An integer is a palindrome when it reads the same backward as forward. For example, 121 is palindrome while 123 is not.
 
-
-Examples: Given the following numbers...
+Examples:
 1. Input: x = 121
 Output: true
 
@@ -17,3 +16,6 @@ Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 
 4. Input: x = -101
 Output: false
+
+Constraints:
+-231 <= x <= 231 - 1
