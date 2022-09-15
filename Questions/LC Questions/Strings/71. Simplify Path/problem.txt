@@ -22,3 +22,8 @@ Explanation: Going one level up from the root directory is a no-op, as the root 
 3. Input: path = "/home//foo/"
 Output: "/home/foo"
 Explanation: In the canonical path, multiple consecutive slashes are replaced by a single one.
+
+Constraints:
+1 <= path.length <= 3000
+path consists of English letters, digits, period '.', slash '/' or '_'.
+path is a valid absolute Unix path.
