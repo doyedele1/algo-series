@@ -2,8 +2,13 @@ This question is asked by Apple and Facebook. Given two binary strings (strings 
 
 Note: Neither binary string will contain leading 0s unless the string itself is 0.
 
-Example: Given the following binary strings...
+Examples:
 
-"100" + "1", return "101"
-"11" + "1", return "100"
-"1" + "0", return  "1"
+1. "100" + "1", return "101"
+2. "11" + "1", return "100"
+3. "1" + "0", return  "1"
+
+Constraints:
+1 <= a.length, b.length <= 104
+a and b consist only of '0' or '1' characters.
+Each string does not contain leading zeros except for the zero itself.
