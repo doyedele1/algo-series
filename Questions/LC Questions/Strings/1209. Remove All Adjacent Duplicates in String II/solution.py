@@ -10,7 +10,7 @@
 
 class Solution:
     def removeDuplicates(self, s: str, k: int) -> str:
-        # create a stack with [character, count]
+        # stack = [character, count]
         stack = []
         
         for char in s:
