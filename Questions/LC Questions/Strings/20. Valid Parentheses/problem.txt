@@ -14,3 +14,7 @@ Examples: Given the following strings...
 5. "()[]{}", return true
 6. "(]", return false
 7. "([)]", return false
+
+Constraints:
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'
