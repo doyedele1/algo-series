@@ -33,27 +33,26 @@ class Solution1:
             name1, time1, amount1, city1 = trans1.split(',')
             if int(amount1) > 1000:
                 res.append(trans1)
-                continue
+                continue # stop the current iteration and move to the next iteration
 
             for trans2 in transactions:
                 name2, time2, amount2, city2 = trans2.split(',')
                 if name1 == name2 and abs(int(time1) - int(time2)) <= 60 and city1 != city2:                
                     res.append(trans1) # deals with duplicates by only appending t1
-                    break
+                    break # breaks the loop completely
         return res
 
 class Solution2:
     def invalidTransactions(self, transactions: List[str]) -> List[str]:
         res = []
+        transactionMap = defaultdict(dict)
 
-        # Store all transactions done at a particular time in a dictionary
-        transaction = defaultdict(dict)
         for trans in transactions:
             name, str_time, amount, city = trans.split(",")
             time = int(str_time)
 
-            if name not in transaction[time]: transaction[time][name] = {city, }
-            else: transaction[time][name].add(city)
+            if name not in transactionMap[time]: transactionMap[time][name] = {city, }
+            else: transactionMap[time][name].add(city)
 
         for trans in transactions:
             name, str_time, amount, city = trans.split(",")
@@ -65,14 +64,44 @@ class Solution2:
             
             # Check within 60 minutes
             for invalid_time in range(time - 60, time + 61):
-                if invalid_time not in transaction: continue
-                if name not in transaction[invalid_time]: continue
+                if invalid_time not in transactionMap: continue
+                if name not in transactionMap[invalid_time]: continue
 
-                trans_city = transaction[invalid_time][name]
+                trans_city = transactionMap[invalid_time][name]
 
                 # If transactions were done in a different city
                 if city not in trans_city or len(trans_city) > 1:
                     res.append(trans)
                     break
 
+        return res
+
+class Solution3:
+    def invalidTransactions(self, transactions: List[str]) -> List[str]:
+        res = []
+        transactionMap = {}
+
+        for trans in transactions:
+            name, time, amt, city = trans.split(",")
+            time = int(time)
+            if time in transactionMap:
+                if name in transactionMap[time]:
+                    transactionMap[time][name].add(city)
+                else:
+                    transactionMap[time][name] = {city}
+            else:
+                transactionMap[time] = {name:{city}}
+        
+        for trans in transactions:
+            name, time, amt, city = trans.split(",")
+            time = int(time)
+            
+            if int(amt) > 1000:
+                res.append(trans)
+            else:    
+                for t in range(time-60, time):
+                    if t in transactionMap and name in transactionMap[t]:
+                        if len(transactionMap[t][name]) > 1 or city not in transactionMap[t][name]:
+                            res.append(trans)
+                            break
         return res
