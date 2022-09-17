@@ -38,7 +38,7 @@ class Solution1:
             for trans2 in transactions:
                 name2, time2, amount2, city2 = trans2.split(',')
                 if name1 == name2 and abs(int(time1) - int(time2)) <= 60 and city1 != city2:                
-                    res.append(trans1) # deals with duplicates by only appending t1
+                    res.append(trans1)
                     break # breaks the loop completely
         return res
 
