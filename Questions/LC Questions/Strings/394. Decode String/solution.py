@@ -27,8 +27,8 @@ class Solution:
     def decodeString(self, s: str) -> str:
         stack = []
         
-        for i in range(len(s)):
-            if s[i] != "]": stack.append(s[i])
+        for char in s:
+            if char != "]": stack.append(char)
             else:
                 substr = ""
                 # we want to keep popping until we encounter an open square bracket
@@ -38,6 +38,7 @@ class Solution:
                 stack.pop()
                 
                 k = ""
+                # we need to check if we have something in the stack so we don't go out of range. We didn't have this for the substr because k will always be the last character left in the stack
                 while stack and stack[-1].isdigit():
                     k = stack.pop() + k
                 
