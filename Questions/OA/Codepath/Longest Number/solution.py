@@ -22,4 +22,4 @@ def partition(nums, l, r):
     nums[low], nums[r] = nums[r], nums[low]
     return low
 
-print(findLargest([10, 2]))
+print(findLargest([3, 30, 34, 5, 9]))
