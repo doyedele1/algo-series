@@ -1,19 +1,17 @@
 def maxPresentations(scheduleStart, scheduleEnd):
-    res = 0
-        
-    startArr = sorted(scheduleStart)
-    endArr = sorted(scheduleEnd)
-    
-    start, end = 0, 0
-    
-    while start < len(scheduleStart):
-        if startArr[start] >= endArr[end]:
-            res -= 1
-            end += 1
-        
-        res += 1
-        start += 1
-        
+    intervals = []
+
+    for i in range(len(scheduleStart)):
+        intervals.append([scheduleStart[i], scheduleEnd[i]])
+
+    intervals.sort(key = lambda x: x[1])
+
+    prev = float("-inf")
+    res = len(scheduleStart)
+
+    for interval in intervals:
+        if interval[0] >= prev: prev = interval[1]
+        else: res -= 1
     return res
 
-print(maxPresentations([1,1,2], [3,2,4]))
+print(maxPresentations([1,1,2,3], [2,3,3,4]))
