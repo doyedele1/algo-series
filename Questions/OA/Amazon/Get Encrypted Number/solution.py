@@ -12,3 +12,5 @@ def getEncryptedNumber(numbers):
         _sum = (numbers.pop(0) + numbers[0]) % 10
         numbers.append(_sum)
         count += 1
+
+print(getEncryptedNumber([4, 5, 6, 7]))
