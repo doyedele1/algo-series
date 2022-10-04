@@ -11,15 +11,15 @@
         
         
         capacity = 2
-        Put [1,1] to the cache --> {1: 1}
-        Put [2,2] to the cache --> {1: 1, 2: 2}
-        Get [1] from the cache --> {2:2, 1:1}
-        Put [3,3] to the cache --> {1:1, 3:3}
-        Get [2] from the cache --> -1
-        Put [4,4] to the cache --> {3:3, 4:4}
-        Get [1] from the cache --> -1
-        Get [3] from the cache --> 3
-        Get [4] from the cache --> 4
+            Put [1,1] to the cache --> {1: 1}
+            Put [2,2] to the cache --> {1: 1, 2: 2}
+            Get [1] from the cache --> {2:2, 1:1}
+            Put [3,3] to the cache --> {1:1, 3:3}
+            Get [2] from the cache --> -1
+            Put [4,4] to the cache --> {3:3, 4:4}
+            Get [1] from the cache --> -1
+            Get [3] from the cache --> 3
+            Get [4] from the cache --> 4
         
         TC - O(1) for both get and put operations
         SC - O(capacity) for the hashmap and doubly linked list which contain at most capacity + 1 elements
