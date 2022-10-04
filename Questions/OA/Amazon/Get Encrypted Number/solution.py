@@ -13,4 +13,4 @@ def getEncryptedNumber(numbers):
         numbers.append(_sum)
         count += 1
 
-print(getEncryptedNumber([4, 5, 6, 7]))
+# print(getEncryptedNumber([4, 5, 6, 7]))
