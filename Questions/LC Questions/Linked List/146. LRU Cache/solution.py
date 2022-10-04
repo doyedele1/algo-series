@@ -53,10 +53,9 @@ class LRUCache:
         next_node = self.right
         
         previous_node.next = node
-        next_node.previous = node
-        
-        node.next = next_node
         node.previous = previous_node
+        node.next = next_node
+        next_node.previous = node
         
     # Remove the node from linked list - O(1)
     def remove(self, node):
