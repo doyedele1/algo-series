@@ -1,21 +1,19 @@
 /* 
+    Hash tables or hash maps are used to store key-value pairs.
 
-Hash tables or hash maps are used to store key-value pairs.
+    They are like arrays, but the keys are not ordered.
 
-They are like arrays, but the keys are not ordered.
+    Unlike arrays, hash tables are fast for all of the following operations:
+        finding values,
+        adding new values,
+        removing values
 
-Unlike arrays, hash tables are fast for all of the following operations:
-    finding values,
-    adding new values,
-    removing values
+    Python has Dictionaries. JS has Objects and Maps, Java, Go & Scala have Maps, Ruby has Hashesx.
 
-Python has Dictionaries. JS has Objects and Maps, Java, Go & Scala have Maps, Ruby has Hashesx.
-
-What makes a good hash?
-- Fast (constant time)
-- Doesn't cluster outputs at specific indices, but distributes keys uniformly
-- Deterministic (same input yields same output)
-
+    What makes a good hash?
+    - Fast (constant time)
+    - Doesn't cluster outputs at specific indices, but distributes keys uniformly
+    - Deterministic (same input yields same output)
 */
 
 // HASH FUNCTION
@@ -46,14 +44,13 @@ function hash(key, arrayLen) {
     return total
 }
 
-/* DEALING WITH COLLISIONS
+/* 
+    DEALING WITH COLLISIONS
+        Separate Chaining - use a nested array or linked lists to store the values at each index in the array.
+        Here, we can store multiple key-value pair at each index.
 
-- Separate Chaining - use a nested array or linked lists to store the values at each index in the array.
-Here, we can store multiple key-value pair at each index.
-
-- Linear Probing - when we find a collision, we search through the array to find the next empty slot
-Here, we store a single key-value at each index.
-
+        Linear Probing - when we find a collision, we search through the array to find the next empty slot
+        Here, we store a single key-value at each index.
 */
 
 // A HASH TABLE CLASS
@@ -73,10 +70,11 @@ class HashTable {
         return total
     }
 
-    /* SET METHOD
-    - Accepts a key and a value
-    - Hashes the key
-    - Stores the key-value pair in the hash table array via separate chaining
+    /* 
+        SET METHOD
+            - Accepts a key and a value
+            - Hashes the key
+            - Stores the key-value pair in the hash table array via separate chaining
     */
     set(key, value) {
         let index = this._hash(key)
@@ -86,11 +84,12 @@ class HashTable {
         this.keyMap[index].push([key, value])
     }
 
-    /* GET METHOD
-    - Accepts a key
-    - Hashes the key
-    - Retrieves the key-value pair in the hash table
-    - If the key isn't found, return undefined
+    /* 
+        GET METHOD
+            - Accepts a key
+            - Hashes the key
+            - Retrieves the key-value pair in the hash table
+            - If the key isn't found, return undefined
     */
     get(key) {
         let index = this._hash(key)
@@ -104,8 +103,9 @@ class HashTable {
         return undefined
     }
 
-    /* KEYS METHOD
-    - Loops through the hash table array and returns an array of keys in the table
+    /* 
+        KEYS METHOD
+            - Loops through the hash table array and returns an array of keys in the table
     */
     keys() {
         let keysArr = []
@@ -121,8 +121,9 @@ class HashTable {
         return keysArr
     }
 
-    /* VALUES METHOD
-    - Loops through the hash table array and returns an array of values in the table
+    /* 
+        VALUES METHOD
+            - Loops through the hash table array and returns an array of values in the table
     */
     values() {
         let valuesArr = []
@@ -157,11 +158,12 @@ ht.get("olive")
 ht.values()
 ht.keys()
 
-/* BIG O of Hash Tables
-    Average case
-        - Insert: O(1)
-        - Deletion: O(1)
-        - Access: O(1)
-        - Searching for a key: 0(1)
-        - Searching for a value: 0(n)
+/* 
+    BIG O of Hash Tables
+        Average case
+            - Insert: O(1)
+            - Deletion: O(1)
+            - Access: O(1)
+            - Searching for a key: 0(1)
+            - Searching for a value: 0(n)
 */
