@@ -5,20 +5,14 @@
         - Can we see if we can send all candidates to city A?
         - Now, which of the candidates can we send to B? We will pick the candidate for which we gained the maximum (the most negative number)
         
-        10      +  30   +   400   +  30
-        +10     +170        -350     -10
-        
         --> (A-B) = cost saved on flying a particular candidate to city B instead of city A = money saved by sending candidate to B instead of A
         -10, -170, 350, 10
         Sorting returns (-170, -10, 10, 350)
         
         
         TC - O(nlogn) because of sorting the input array
-        SC - O(1) since it's a constant space solution
+        SC - O(1). It can also be O(n) or O(log n) depending on which sorting algorithm is used.
 '''
-
-
-from typing import List
 
 class Solution:
     def twoCitySchedCost(self, costs: List[List[int]]) -> int:
@@ -26,12 +20,12 @@ class Solution:
         # costs after sorting = [[30, 200], [10, 20], [30, 20], [400, 50]]
         
         n = len(costs)
-        cost = 0
-
+        res = 0
+        
         for c in costs[:int(n/2)]:
-            cost += c[0]
+            res += c[0]
             
         for c in costs[int(n/2):]:
-            cost += c[1]
+            res += c[1]
             
-        return cost
+        return res
