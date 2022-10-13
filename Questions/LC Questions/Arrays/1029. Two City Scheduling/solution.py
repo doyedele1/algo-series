@@ -12,7 +12,7 @@
         -10, -170, 350, 10
         Sorting returns (-170, -10, 10, 350)
         
-            
+        
         TC - O(nlogn) because of sorting the input array
         SC - O(1) since it's a constant space solution
 '''
@@ -27,7 +27,7 @@ class Solution:
         
         n = len(costs)
         cost = 0
-        
+
         for c in costs[:int(n/2)]:
             cost += c[0]
             
