@@ -27,14 +27,11 @@ class Solution:
         
         n = len(costs)
         cost = 0
-        # for i in range(int(len(costs)/2)):
+        
         for c in costs[:int(n/2)]:
-            # cost += costs[i][0]
             cost += c[0]
             
-        # for i in range(int(len(costs)/2), len(costs)):
         for c in costs[int(n/2):]:
-            # cost += costs[i][1]
             cost += c[1]
             
         return cost
