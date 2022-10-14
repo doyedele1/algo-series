@@ -61,7 +61,7 @@ class Solution1:
                 curr = curr.next
         return head     
 
-class Solution3:
+class Solution2:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
         # if head is there, i.e. the linked list is not empty
         if head: self.flattenHelper(head)
