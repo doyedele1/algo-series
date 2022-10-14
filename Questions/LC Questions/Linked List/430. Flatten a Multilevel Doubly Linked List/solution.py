@@ -1,9 +1,9 @@
 '''
-    Explanation I & II: Iterative Solution
+    Explanation I: Iterative Solution
         - TC: O(n)
         - SC: O(n). Space used by the stack data structure
     
-    Explanation III: Recursive Solution
+    Explanation II: Recursive Solution
         - We will have a recursive helper (flatten_helper) function that takes in the head pointer (curr = head, tail = head)
         - While curr is not null,
             - Here we can store curr, next and tail on the first node (head)
@@ -59,35 +59,7 @@ class Solution1:
             curr.next.prev = curr
             while curr and curr.next:
                 curr = curr.next
-        return head
-
-class Solution2:
-    def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        if not head: return head
-        
-        dummy = Node(0, None, None, None)
-        curr = dummy
-        stack = [head]
-        
-        while stack:
-            temp = stack.pop()
-
-            if temp.next: stack.append(temp.next)
-            if temp.child: stack.append(temp.child)
-            
-            # Establish the links between the prev and curr pointers
-            curr.next = temp
-            temp.prev = curr
-            
-            # Remove all child pointers. i.e. change to None
-            temp.child = None
-            
-            curr = temp
-            
-        # Remove the dummy head node from the result
-        dummy.next.prev = None
-        
-        return dummy.next        
+        return head     
 
 class Solution3:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
