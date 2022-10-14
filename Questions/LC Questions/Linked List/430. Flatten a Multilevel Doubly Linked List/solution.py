@@ -1,5 +1,9 @@
 '''
-    Explanation I: Recursive Solution
+    Explanation I & II: Iterative Solution
+        - TC: O(n)
+        - SC: O(n). Space used by the stack data structure
+    
+    Explanation III: Recursive Solution
         - We will have a recursive helper (flatten_helper) function that takes in the head pointer (curr = head, tail = head)
         - While curr is not null,
             - Here we can store curr, next and tail on the first node (head)
@@ -20,10 +24,6 @@
 
         TC - O(n) where n is the number of nodes in the list, we visit each node once from beginning to end
         SC - O(n), the recursion call stack which can be of the order of n - O(n). In the worst case, the nodes are chained with each other only with the child pointers. In this case, the recursive calls would pile up and take n space in the function call stack
-
-    Explanation II: Iterative Solution
-        - TC: O(n)
-        - SC: O(n). Space used by the stack data structure
 '''
 
 from typing import Optional
@@ -37,41 +37,6 @@ class Node:
         self.child = child
 
 class Solution1:
-    def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        # if head is there, i.e. the linked list is not empty
-        if head: self.flattenHelper(head)
-
-        return head
-    
-    def flattenHelper(self, head):
-        curr, tail = head, head
-
-        while curr:
-            child = curr.child
-            nxt = curr.next # so that we can return the next of child_tail as the next we stored
-            
-            if child:
-                child_tail = self.flattenHelper(child)
-                
-                child_tail.next = nxt
-                if nxt: nxt.prev = child_tail
-                    
-                curr.next = child
-                child.prev = curr
-                
-                curr.child = None
-                
-                curr = child_tail
-            
-            # if there is no child
-            else: curr = nxt
-                
-            if curr: tail = curr # tail cannot be null because tail will always be there because it is running when we have a child
-                
-        # return the tail of the flatten list
-        return tail
-
-class Solution2:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
         stack = []
         curr = head
@@ -95,7 +60,8 @@ class Solution2:
             while curr and curr.next:
                 curr = curr.next
         return head
-class Solution3:
+
+class Solution2:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
         if not head: return head
         
@@ -121,4 +87,38 @@ class Solution3:
         # Remove the dummy head node from the result
         dummy.next.prev = None
         
-        return dummy.next
+        return dummy.next        
+
+class Solution3:
+    def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        # if head is there, i.e. the linked list is not empty
+        if head: self.flattenHelper(head)
+        return head
+    
+    def flattenHelper(self, head):
+        curr, tail = head, head
+
+        while curr:
+            child = curr.child
+            nxt = curr.next # so that we can return the next of child_tail as the next we stored
+            
+            if child:
+                child_tail = self.flattenHelper(child)
+            
+                child_tail.next = nxt
+                if nxt: nxt.prev = child_tail
+                    
+                curr.next = child
+                child.prev = curr
+                
+                curr.child = None
+                
+                curr = child_tail
+            
+            # if there is no child
+            else: curr = nxt
+                
+            if curr: tail = curr # tail cannot be null because tail will always be there because it is running when we have a child
+                
+        # return the tail of the flatten list
+        return tail
