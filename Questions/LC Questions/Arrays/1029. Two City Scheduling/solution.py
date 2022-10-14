@@ -14,6 +14,8 @@
         SC - O(1). It can also be O(n) or O(log n) depending on which sorting algorithm is used.
 '''
 
+from typing import List
+
 class Solution:
     def twoCitySchedCost(self, costs: List[List[int]]) -> int:
         costs = sorted(costs, key = lambda x: x[0] - x[1])
