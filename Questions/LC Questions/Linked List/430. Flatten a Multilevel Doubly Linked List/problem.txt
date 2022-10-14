@@ -18,3 +18,7 @@ Explanation: The multilevel linked list in the input is shown.
 3. Input: head = []
 Output: []
 Explanation: There could be empty list in the input.
+
+Constraints:
+The number of Nodes will not exceed 1000.
+1 <= Node.val <= 105
