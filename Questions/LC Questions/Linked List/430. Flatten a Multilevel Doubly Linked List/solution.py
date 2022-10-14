@@ -39,6 +39,7 @@ class Solution1:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
         if head: # if head is there, i.e. the linked list is not empty
             self.flatten_helper(head)
+
         return head
     
     def flatten_helper(self, head):
@@ -68,35 +69,54 @@ class Solution1:
         # return the tail of the flatten list
         return tail
 
-
 class Solution2:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        if not head:  # Empty List
-            return
+        stack = []
+        curr = head
+        
+        while curr:
+            if curr.child:
+                if curr.next:
+                    stack.append(curr.next)
+                    curr.next.prev = None
+            
+                curr.next = curr.child
+                curr.child.prev = curr
+                curr.child = None
+            
+            if curr.next: curr = curr.next
+            else: break
+        
+        while stack:
+            curr.next = stack.pop()
+            curr.next.prev = curr
+            while curr and curr.next:
+                curr = curr.next
+        return head
+class Solution3:
+    def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        if not head: return head
         
         dummy = Node(0, None, None, None)
-        start = dummy
-        
+        curr = dummy
         stack = [head]
         
         while stack:
-            curr = stack.pop()
+            temp = stack.pop()
+
+            if temp.next: stack.append(temp.next)
+            if temp.child: stack.append(temp.child)
             
             # Establish the links between the prev and curr pointers
-            start.next = curr
-            curr.prev = start
+            curr.next = temp
+            temp.prev = curr
             
-            if curr.next:
-                stack.append(curr.next)
+            # Remove all child pointers. i.e. change to None
+            temp.child = None
             
-            if curr.child:
-                stack.append(curr.child)
-                # Remove all child pointers. i.e. change to None
-                curr.child = None
-            
-            start = curr
+            curr = temp
             
         # Remove the dummy head node from the result
         dummy.next.prev = None
         
-        return dummy.next        
+        return dummy.next
