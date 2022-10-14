@@ -27,6 +27,7 @@
 '''
 
 from typing import Optional
+
 # Definition for a Node.
 class Node:
     def __init__(self, val, prev, next, child):
@@ -37,8 +38,8 @@ class Node:
 
 class Solution1:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        if head: # if head is there, i.e. the linked list is not empty
-            self.flatten_helper(head)
+        # if head is there, i.e. the linked list is not empty
+        if head: self.flatten_helper(head)
 
         return head
     
@@ -61,8 +62,8 @@ class Solution1:
                 
                 curr = child_tail
             
-            else: # if there is no child
-                curr = nxt
+            # if there is no child
+            else: curr = nxt
                 
             if curr: tail = curr # tail cannot be null because tail will always be there because it is running when we have a child
                 
