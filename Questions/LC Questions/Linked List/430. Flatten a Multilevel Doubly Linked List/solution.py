@@ -39,18 +39,19 @@ class Node:
 class Solution1:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
         # if head is there, i.e. the linked list is not empty
-        if head: self.flatten_helper(head)
+        if head: self.flattenHelper(head)
 
         return head
     
-    def flatten_helper(self, head):
+    def flattenHelper(self, head):
         curr, tail = head, head
+
         while curr:
             child = curr.child
             nxt = curr.next # so that we can return the next of child_tail as the next we stored
             
-            if child: # if there is child
-                child_tail = self.flatten_helper(child)
+            if child:
+                child_tail = self.flattenHelper(child)
                 
                 child_tail.next = nxt
                 if nxt: nxt.prev = child_tail
