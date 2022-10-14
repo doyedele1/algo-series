@@ -71,7 +71,7 @@ class Solution1:
 
 class Solution2:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        if not head:  #Empty List
+        if not head:  # Empty List
             return
         
         dummy = Node(0, None, None, None)
