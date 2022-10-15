@@ -10,18 +10,19 @@
 
 class Solution:
     def removeDuplicates(self, s: str, k: int) -> str:
-        # stack = [character, count]
-        stack = []
+        if s == "": return ""
+        if k == 0 or k > len(s): return s
+
+        # stack --> [character, count]
+        stack = [[s[0], 1]]
         
-        res = ""
-        
-        for char in s:
+        for char in s[1:]:
             if stack and stack[-1][0] == char: stack[-1][1] += 1
             else: stack.append([char, 1])
             if stack[-1][1] == k: stack.pop()
                 
-        # char * num prints the char in num times
+        res = ""
         for char, num in stack:
             res += char * num
         return res
-        return "".join([char * num for char, num in stack])
+        # return "".join([char * num for char, num in stack])
