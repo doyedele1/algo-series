@@ -58,7 +58,6 @@ class Solution1:
             if i[0] >= heap[0]:
                 heapq.heappop(heap)
             heapq.heappush(heap, i[1])
-        
         return len(heap)
 
 
@@ -73,8 +72,6 @@ class Solution2:
             if startArr[start] >= endArr[end]:
                 res -= 1
                 end += 1
-            
             res += 1
             start += 1
-            
         return res
