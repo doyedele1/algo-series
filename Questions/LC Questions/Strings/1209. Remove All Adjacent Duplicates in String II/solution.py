@@ -4,7 +4,7 @@
         [[d,1], [e,3]]
         [[d,2]]
 
-        TC - O(2n) = O(n) where n is the size of the input string
+        TC - O(n) where n is the size of the input string
         SC - O(n)
 '''
 
