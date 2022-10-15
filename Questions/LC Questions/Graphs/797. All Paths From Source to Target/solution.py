@@ -1,5 +1,5 @@
 '''
-    Explanation:
+    Explanation I: DFS recursion
         Input: [[1,2],[3],[3],[]]
         Output: [[0,1,3],[0,2,3]]
     
@@ -15,7 +15,7 @@
 
 from typing import List
 
-class Solution:
+class Solution1:
     def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
         target = len(graph) - 1
         res = []
@@ -29,3 +29,23 @@ class Solution:
         
         dfs([], 0)
         return res
+
+class Solution2:
+    def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
+        if not graph: return []
+        
+        nodeMap = {}
+        for i in range(len(graph)):
+            nodeMap[i] = graph[i]
+        
+        res = []
+        stack = [(0, [0])]
+        
+        while stack:
+            node, path = stack.pop()
+            
+            if node == len(graph) - 1: res.append(path)
+            
+            for neighbors in nodeMap[node]:
+                stack.append((neighbors, path + [neighbors]))
+        return res        
