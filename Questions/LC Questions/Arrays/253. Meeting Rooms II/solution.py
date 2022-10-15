@@ -23,25 +23,25 @@
 
 
     Explanation II: Sorting, then Two Pointers
-    [[0,30],[5,10],[15,20]]
-    - Sort startArr = [0, 5, 15]
-    - Sort endArr = [30, 10, 20]
-    
-    [0, 5, 15]          [30, 10, 20]
-    s                     e
-    res = 0
-    - If startArr[s] >= endArr[e], then it means the room is free and we can move the end pointer and decrement our result
-    - If startArr[s] < endArr[e], then it means the room is not free and we can move the start pointer and increment our result
-    [0, 5, 15]          [30, 10, 20]
-        s                 e
-    res = 1
-    
-    [0, 5, 15]          [30, 10, 20]
-            s             e
-    res = 2
-    
-    - TC: O(nlogn) for sorting startArr and endArr
-    - SC: O(n) for the space taken by the startArr and endArr
+        [[0,30],[5,10],[15,20]]
+        - Sort startArr = [0, 5, 15]
+        - Sort endArr = [30, 10, 20]
+        
+        [0, 5, 15]          [30, 10, 20]
+        s                     e
+        res = 0
+        - If startArr[s] >= endArr[e], then it means the room is free and we can move the end pointer and decrement our result
+        - If startArr[s] < endArr[e], then it means the room is not free and we can move the start pointer and increment our result
+        [0, 5, 15]          [30, 10, 20]
+            s                 e
+        res = 1
+        
+        [0, 5, 15]          [30, 10, 20]
+                s             e
+        res = 2
+        
+        - TC: O(nlogn) for sorting startArr and endArr
+        - SC: O(n) for the space taken by the startArr and endArr
 '''
 
 from typing import List
