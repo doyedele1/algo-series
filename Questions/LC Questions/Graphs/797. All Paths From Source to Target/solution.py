@@ -47,7 +47,7 @@ class Solution2:
             node, path = stack.pop()
             
             if node == len(graph) - 1: res.append(path)
-                
+            
             for neighbors in nodeMap[node]:
                 stack.append((neighbors, path + [neighbors]))
                 '''
