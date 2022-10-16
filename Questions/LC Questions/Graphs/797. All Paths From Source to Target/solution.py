@@ -25,7 +25,6 @@ class Solution1:
         
         def dfs(path, currNode):
             if currNode == target: res.append(path + [currNode])
-            
             else:
                 for nextNode in graph[currNode]:
                     dfs(path + [currNode], nextNode)
@@ -51,4 +50,4 @@ class Solution2:
             
             for neighbors in nodeMap[node]:
                 stack.append((neighbors, path + [neighbors]))
-        return res        
+        return res
