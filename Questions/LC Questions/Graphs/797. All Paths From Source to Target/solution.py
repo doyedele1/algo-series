@@ -1,5 +1,5 @@
 '''
-    Explanation I: DFS recursion
+    Explanation I: DFS Recursion
         Input: [[1,2],[3],[3],[]]
         Output: [[0,1,3],[0,2,3]]
     
@@ -9,8 +9,11 @@
                         |              |
                     f(3,3)           f(3,3)
                     
-    - TC: O(n * 2^n)
-    - SC: O(n)
+        - TC: O(n * 2^n)
+        - SC: O(n)
+
+    Explanation II: DFS Iteration
+        - TC: O(E + K*V) where K is the number of paths (number of visits to the leaf/end node)
 '''
 
 from typing import List
