@@ -11,14 +11,17 @@
         The DP table:
             0   1   2   3   4   5   6   7   8   9
         0   0   0   0   0   0   0   0   0   0   0
-        1   1   1   1   1   1   1   1   1   1   1
-        2   2   2   2   2   3   0   3   2   2   2
-        .
+        1   1   1   1   1   1   1   1   1   1   1 = 10
+        2   2   2   2   2   3   0   3   2   2   2 = 20
+        3   6   5   4   5   6   0   6   5   4   5 = 46
         .
         .
         n
         
         We don't need a 2D array. A 1D array will do the job. dp[i] = number of steps, i itself will be the possible digits 0-9.
+
+        TC: O(n)
+        SC: O(1) - size of dp array is fixed as 10.
 '''
 
 class Solution:
@@ -29,7 +32,6 @@ class Solution:
         
         while n >= 2:
             temp = dp.copy()
-            
             dp[0] = temp[4] + temp[6]
             dp[1] = temp[6] + temp[8]
             dp[2] = temp[7] + temp[9]
@@ -41,5 +43,5 @@ class Solution:
             dp[8] = temp[1] + temp[3]
             dp[9] = temp[2] + temp[4]
             n -= 1
-            
+        
         return sum(dp) % self.MODULO
