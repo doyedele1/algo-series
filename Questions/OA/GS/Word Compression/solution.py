@@ -6,7 +6,7 @@ def compressWord(word, k):
             if stack and stack[-1][0] == char:
                 stack[-1][1] += 1
                 
-            else: 
+            else:
                 stack.append([char, 1])
                 
             if stack[-1][1] == k:
