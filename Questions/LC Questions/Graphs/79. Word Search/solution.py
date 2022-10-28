@@ -46,7 +46,7 @@ class Solution1:
                 if dfs(r, c, 0): return True
         return False
 
-# Using hash set to keep track of visited characters
+# Using hash set to keep track of visited characters - Doesn't submit sometimes on LC
 class Solution2:
     def exist(self, board: List[List[str]], word: str) -> bool:
         rows, cols = len(board), len(board[0])
