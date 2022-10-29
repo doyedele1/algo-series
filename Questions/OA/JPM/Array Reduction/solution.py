@@ -12,5 +12,5 @@ def reductionCost(num):
 
     return minTotalCost
 
-print(reductionCost([1,2,3])) # return 9
-print(reductionCost([5, 5, 5, 5])) # return 40
+# print(reductionCost([1,2,3])) # return 9
+# print(reductionCost([5, 5, 5, 5])) # return 40
