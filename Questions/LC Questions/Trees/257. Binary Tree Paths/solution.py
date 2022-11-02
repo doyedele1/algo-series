@@ -1,3 +1,9 @@
+'''
+    Explanation:
+        - TC: O(n) where n is the number of nodes; each node is visited exactly once
+        - SC: O(n)
+'''
+
 # Definition for a binary tree node.
 from typing import Optional, List
 
