@@ -24,8 +24,7 @@ def getMaxFreqDeviation(s):
                 
                 else: continue
 
-                if meetChar1 and meetChar2:
-                    res = max(currDiff - minDiff, maxDiff - currDiff, res)
+                if meetChar1 and meetChar2: res = max(currDiff - minDiff, maxDiff - currDiff, res)
             
             return res
 
