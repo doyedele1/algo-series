@@ -1,3 +1,10 @@
+'''
+    Explanation:
+        - TC: O(n)
+        - SC: O(n)
+'''
+
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -17,9 +24,10 @@ class Solution:
             inorder(root.right, nodes)
             
         def helper(nodes, start, end):
+            # base case
             if start > end: return None
             
-            middle = (start + end) // 2
+            middle = start + (end - start) // 2
             root = nodes[middle]
             
             root.left = helper(nodes, start, middle - 1)
