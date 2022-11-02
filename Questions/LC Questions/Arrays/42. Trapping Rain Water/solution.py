@@ -1,43 +1,32 @@
 '''
     Explanation:
-        height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
+        - maxLeft = height[left], maxRight = height[right]
         
-        l = 0, r = 11, lMax = 0, rMax = 0, res = 0
-        
-        first iteration:
-            l = 1, r = 11, lMax = 0, rMax = 0, res = 0
-        second iteration:
-            l = 1, r = 10, lMax = 0, rMax = 1, res = 0
-        third iteration:
-            l = 2, r = 10, lMax = 1, rMax = 1, res = 0
-        fourth iteration:
-            l = 3, r = 10, lMax = 1, rMax = 1, res = 1
-        3 9 1 2 1
-        3 8 1 2 2
-        3 7 1 2 2
-        4 7 2 2 2
-        5 7 2 2 3
-        6 7 2 2 5
-        7 7 2 2 6
+        - If maxLeft < maxRight:
+            - Move left pointer and update the maxLeft and res
+        - Else:
+            - Move right pointer and update the maxRight and res
+
+        TC: O(n) where n is the size of the height array
+        SC: O(1), no extra data structure is used
 '''
 
 from typing import List
 
 class Solution:
     def trap(self, height: List[int]) -> int:
-        l, r = 0, len(height) - 1
-        lMax, rMax = 0, 0
-        res = 0
+        if not height: return 0
         
-        while l < r:
-            # Get the lowest bounded height from the two pointers indexes
-            if height[l] < height[r]:
-                if height[l] >= lMax: lMax = height[l]
-                else: res += lMax - height[l]
-                l += 1
+        res, left, right = 0, 0, len(height) - 1
+        maxLeft, maxRight = height[left], height[right]
+        
+        while left < right:
+            if maxLeft < maxRight:
+                left += 1
+                maxLeft = max(maxLeft, height[left])
+                res += maxLeft - height[left]
             else:
-                if height[r] >= rMax: rMax = height[r]
-                else: res += rMax - height[r]
-                r -= 1
-        
+                right -= 1
+                maxRight = max(maxRight, height[right])
+                res += maxRight - height[right]
         return res
