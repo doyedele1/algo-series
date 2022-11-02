@@ -11,7 +11,7 @@
             We can just move to the next character b and enumerate to get its substrings. Also here bc has already been checked, so we can check bca instead.
         
         TC - O(n-cube) where n is the size of the input string
-        SC - O(m) where m is the size of the direct access table to check the substrings. m is 128, which is the possible problem's character set (digits, special characters, lowercases)
+        SC - O(min(n,m)) where n is the size of the input string and m is the size of the charset table
 '''
 
 '''
@@ -20,7 +20,7 @@
         left, right = 0, 0
         - abcabcbb
             - abca --> has repeating characters. We do not need to check the next substring, which is abcab because we already have duplicates from the previous iteration. We can just move to the next character b and enumerate to get its substrings
-        - We don't need to check for bc again since we already know it does not have repeating characters from the first step. Then we move to bca a dn then bcab. Since bcab has repeating characters, we can move on the next character which is c
+        - We don't need to check for bc again since we already know it does not have repeating characters from the first step. Then we move to bca and then bcab. Since bcab has repeating characters, we can move on the next character which is c
         
         - p     w       w       k       e      w
         l 0
@@ -48,20 +48,15 @@
         r                                      0
         
         TC - O(2n) --> depends on the number of times we extend and contract the window (e.g. aaaaaa). We need to extend the window once and contract once at the same time
-        SC - O(m) --> m is the size of the table. We need to maintain a window and check whether the substring in the window has duplicates. We use a direct access table to check the substrings. OR O(min(m,n)) where m = size of the charset table and n is the size of the string.
-'''
+        SC - O(m) where m is the size of the charset table
+    '''
 
 '''
-    Explanation III: Previous Sliding Window Solution slightly improved
-        pwwkew
+    Explanation III: Using hashmap to map the characters to its index
+    pwwkew
          * At the second w, when contracting, if we can record the index of previous w, the left pointer can directly jump the first w to the second w
         
-        TC - O(n)
-        SC - O(m) for the direct access table OR O(min(m,n))
-'''
-
-'''
-    Explanation IV: Using hashmap to map the characters to its index
+    Another example:
         abcdeafbdgcbb
             res = 1, i = 0, j = 0
             seen = {a: 1}
@@ -78,47 +73,51 @@
             res = 5, i = 0, j = 4
             seen = {a: 1, b: 2, c: 3, d: 4, e: 5}
             
-            res = 5, i = 1, j = 5
+            res = 5, i = 1, j = 5 -- there are duplicates of a
             seen = {a: 6, b: 2, c: 3, d: 4, e: 5}
             
             res = 6, i = 1, j = 6
             seen = {a: 6, b: 2, c: 3, d: 4, e: 5, f: 7}
             
-            res = 6, i = 2, j = 7
+            res = 6, i = 2, j = 7 - there are duplicates of b
             seen = {a: 6, b: 8, c: 3, d: 4, e: 5, f: 7}
             
-            res = 6, i = 4, j = 8
+            res = 6, i = 4, j = 8 - there are duplicates of d
             seen = {a: 6, b: 8, c: 3, d: 9, e: 5, f: 7}
             
             res = 6, i = 4, j = 9
             seen = {a: 6, b: 8, c: 3, d: 9, e: 5, f: 7, g: 10}
             
-            res = 7, i = 4, j = 10
+            res = 7, i = 4, j = 10 - there are duplicates of c
             seen = {a: 6, b: 8, c: 11, d: 9, e: 5, f: 7, g: 10}
             
-            res = 7, i = 8, j = 11
+            res = 7, i = 8, j = 11 - there are duplicates of b
             seen = {a: 6, b: 12, c: 11, d: 9, e: 5, f: 7, g: 10}
             
-            res = 7, i = 12, j = 12
+            res = 7, i = 12, j = 12 - there are duplicates of b
             seen = {a: 6, b: 13, c: 11, d: 9, e: 5, f: 7, g: 10}
         
         TC - O(n). index j will iterate n times
         SC - O(min(m,n)) for the hashmap where m is the size of the charset and n is the size of the string
 '''
 
-class Solution2:
+
+from collections import Counter
+
+# Using counter as the hashmap
+class Solution2a:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        chars = [0] * 128
+        chars = Counter()
         
         left, right, res = 0, 0, 0
         
         while right < len(s):
             rightChar = s[right]
-            chars[ord(rightChar)] += 1
+            chars[rightChar] += 1
             
-            while chars[ord(rightChar)] > 1:
+            while chars[rightChar] > 1:
                 leftChar = s[left]
-                chars[ord(leftChar)] -= 1
+                chars[leftChar] -= 1
                 left += 1
                 
             res = max(res, right - left + 1)
@@ -126,9 +125,10 @@ class Solution2:
         
         return res
 
-class Solution3:
+# Using a charset array table as the hashmap - faster solution than 2a
+class Solution2b:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        chars = [0] * 128
+        chars = [None] * 128
         
         left, right, res = 0, 0, 0
         
@@ -136,15 +136,16 @@ class Solution3:
             rightChar = s[right]
             index = chars[ord(rightChar)]
             
-            if index != None and index >= left and index < right: left = index + 1
-                
+            if index is not None and left <= index < right: left = index + 1
+            
             res = max(res, right - left + 1)
+            
             chars[ord(rightChar)] = right
             right += 1
         
         return res
-        
-class Solution4:
+
+class Solution3:
     def lengthOfLongestSubstring(self, s: str) -> int:
         seen = dict() # to store the current index of a character
         res, left = 0, 0
@@ -156,17 +157,4 @@ class Solution4:
             res = max(res, right - left + 1)
             seen[s[right]] = right + 1
         
-        return res
-
-class Solution5:
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        left, res = 0, 0
-        seen = set()
-        
-        for right in range(len(s)):
-            while s[right] in seen:
-                seen.remove(s[left])
-                left += 1
-            seen.add(s[right])
-            res = max(res, right - left + 1)
         return res
