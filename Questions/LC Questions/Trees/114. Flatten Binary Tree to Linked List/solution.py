@@ -1,5 +1,5 @@
 '''
-    Explanation:
+    Explanation I: Recursive DFS solution
                 5
         2               1
     6       23      11
@@ -18,6 +18,11 @@
         
         - TC: O(n)
         - SC: O(n)
+        
+    Explanation II
+
+        - TC: O(n)
+        - SC: O(1)
 '''
 
 from typing import Optional
