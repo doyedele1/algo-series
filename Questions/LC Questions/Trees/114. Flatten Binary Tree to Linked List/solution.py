@@ -16,7 +16,7 @@
             root.right = root.left
             root.left = None
         
-        - TC: O(n)
+        - TC: O(n)2
         - SC: O(n)
         
     Explanation II
