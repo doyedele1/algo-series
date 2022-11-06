@@ -1,9 +1,29 @@
+'''
+    Explanation:
+        - serialize()
+            Perform preorder traversal to serialize the binary tree
+                                1
+                2                           3
+            X       X                   4           5
+                                    X       X   X       X
+            res = "1, 2, X, X, 3, 4, 5, X, X, X, X". res has a delimeter of ","
+
+        - deserialize()
+            - Split the res encoded string into an array of strings
+            - Perform preorder traversal to construct the tree
+            - Keep track of the index you are on your splitted data
+
+        - TC: O(n) for both serialize and deserialize functions
+        - SC: O(n) for both functions for the recursive call stack
+'''
+
+
 # Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
 class Codec:
 
@@ -13,11 +33,12 @@ class Codec:
         :type root: TreeNode
         :rtype: str
         """
+        
         res = []
 
         def serializeHelper(node):
             if not node:
-                res.append("N")
+                res.append("X")
                 return
 
             res.append(str(node.val))
@@ -34,18 +55,20 @@ class Codec:
         :type data: str
         :rtype: TreeNode
         """
-        vals = data.split(",")
+
+        values = data.split(",")
         self.progress = 0
 
         def deserializeHelper():
-            if vals[self.progress] == "N":
+            if values[self.progress] == "X":
                 self.progress += 1
                 return None
 
-            node = TreeNode(int(vals[self.progress]))
+            node = TreeNode(int(values[self.progress]))
             self.progress += 1
             node.left = deserializeHelper()
             node.right = deserializeHelper()
+            
             return node
         return deserializeHelper()
 
