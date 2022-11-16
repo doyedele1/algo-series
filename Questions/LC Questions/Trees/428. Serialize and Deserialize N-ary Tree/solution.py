@@ -1,7 +1,11 @@
 '''
     Explanation:
         TC: 
-        SC: 
+            - Serialization: O(N)
+            - Deserialization: O(N)
+        SC:
+            - Serialization: O(N) - Recursion stack and the result string
+            - Deserialization: O(N) - Recursion stack and the queue
 '''
 
 from collections import deque
