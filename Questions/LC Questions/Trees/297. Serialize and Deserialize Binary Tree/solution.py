@@ -1,22 +1,18 @@
 '''
     Explanation:
-        - serialize()
+        serialize()
             Perform preorder traversal to serialize the binary tree
                                 1
-                2                           3
-            X       X                   4           5
-                                    X       X   X       X
-            res = "1, 2, X, X, 3, 4, 5, X, X, X, X". res has a delimeter of ","
+                   2                                3
+            None       None                4                 5
+                                    None       None   None       None
+            res = "1, 2, None, None, 3, 4, None, None, 5, None, None,". res has a delimeter of ","
 
-        - deserialize()
-            - Split the res encoded string into an array of strings
-            - Perform preorder traversal to construct the tree
-            - Keep track of the index you are on your splitted data
-
-        - TC: O(n) for both serialize and deserialize functions
-        - SC: O(n) for both functions for the recursive call stack
+        TC: O(N) for both serialize and deserialize functions
+        SC: O(N) for both functions for the recursive call stack
 '''
 
+from collections import deque
 
 # Definition for a binary tree node.
 class TreeNode(object):
@@ -35,20 +31,18 @@ class Codec:
             :rtype: str
         """
         
-        res = []
-
         def serializeHelper(node):
             if not node:
-                res.append("X")
+                self.res += "None,"
                 return
-
-            res.append(str(node.val))
-
+            
+            self.res += str(node.val) + ","
             serializeHelper(node.left)
             serializeHelper(node.right)
-        
+    
+        self.res = ""
         serializeHelper(root)
-        return ",".join(res)
+        return self.res[:-1]
 
     def deserialize(self, data):
         """
@@ -58,20 +52,20 @@ class Codec:
             :rtype: TreeNode
         """
 
-        values = data.split(",")
-        self.progress = 0
-
         def deserializeHelper():
-            if values[self.progress] == "X":
-                self.progress += 1
+            if not q: return None
+            if q[0] == "None":
+                q.popleft()
                 return None
 
-            node = TreeNode(int(values[self.progress]))
-            self.progress += 1
+            node = TreeNode(int(q[0]))
+            q.popleft()
             node.left = deserializeHelper()
             node.right = deserializeHelper()
-            
+
             return node
+        
+        q = deque(data.split(","))
         return deserializeHelper()
 
 # Your Codec object will be instantiated and called as such:
