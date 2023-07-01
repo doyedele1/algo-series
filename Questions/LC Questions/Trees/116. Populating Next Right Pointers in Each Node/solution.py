@@ -10,10 +10,11 @@
             level 2: queue = ([4,5,6,7]). 4.next = 5, 5.next = 6, 6.next = 7
     
         TC - O(n) where n is the total number of nodes
-        SC - O(n/2 + 1) --> O(n)
+        SC - O(n/2 + 1) -> O(n)
 '''
 # Definition for a Node.
 from collections import deque
+
 class Node:
     def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):
         self.val = val
@@ -31,6 +32,7 @@ class Solution1:
             length = len(q)
             for i in range(length):
                 curr = q.popleft()
+                # This condition ensures we don't establish next pointers beyond the end of a level
                 if i < length - 1: curr.next = q[0]
                 if curr.left != None: q.append(curr.left)
                 if curr.right != None: q.append(curr.right)
@@ -38,47 +40,29 @@ class Solution1:
 
 '''
     Explanation II:
-        When we already establish the next pointers of the nodes at the next level when we are currently on the current level, we can traverse the nodes as a linked list
-        So can we have access to the leftmost node at each level? Yes, we can. The leftmost node at each level will be our starting point. At node 1 level 0, the leftmost node is 1. The current node is 1, and the previous node is 2
-            current = used to traverse all the nodes on the current level starting from the leftmost node
-            previous = points to the leftmost node on the next level (no child, left and/or right children)
-        Processing the leftmost node, when we have set the previous pointer the first time, we can then set the leftmost node to the previous node.
-            
+        There are two connections we need to establish.
+            Connection 1: The two children nodes of a parent node can be connected together since they have a common parent
+                curr.left.next = curr.right
+
+            Connection 2: Nodes 5 and 6 need to be connected, but they have different parents. However, since we know that the next node of 2 is 3 from the previous level traversal, then we can create the connection we need
+                On levels 1 and 2: curr.right.next = curr.next.left
+                       curr 1
+                nxt 2				3
+               4		5		6		7
+        
         TC - O(n)
         SC - O(1)
 '''
 class Solution2:
-    def connect(self, root: 'Node') -> 'Node':
-        if root == None:
-            return root
-        
-        leftmostNode = root
-        
-        # to process the next level
-        while leftmostNode:
-            current = leftmostNode
-            previous = None
-            leftmostNode = None # to clear the leftmostNode so the while loop doesn't keep running
-            
-            while current:
-                if current.left:
-                    if not leftmostNode:
-                        leftmostNode = current.left
-                    
-                    if previous:
-                        previous.next = current.left
-                        
-                    previous = current.left
-                
-                if current.right:
-                    if not leftmostNode:
-                        leftmostNode = current.right
-                    
-                    if previous:
-                        previous.next = current.right
-                        
-                    previous = current.right
-                
-                current = current.next
+    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
+        curr, nxt = root, root.left if root else None
 
+        while curr and nxt:
+            curr.left.next = curr.right
+            if curr.next: curr.right.next = curr.next.left
+
+            curr = curr.next
+            if not curr:
+                curr = nxt
+                nxt = curr.left
         return root
