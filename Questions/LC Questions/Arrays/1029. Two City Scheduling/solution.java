@@ -1,4 +1,4 @@
-'''
+/*
     Explanation:
         - We have to pick equal number of cities A and B
         Initially,
@@ -13,20 +13,21 @@
 
         
         TC - O(nlogn) because of sorting the input array
-        SC - O(n). Timsort algorithm is used in Python; which is a combination of Merge Sort and Insertion Sort
-'''
+        SC - O(logn). Quick Sort algorithm is used in Java
+ */
 
-from typing import List
-
-class Solution:
-    def twoCitySchedCost(self, costs: List[List[int]]) -> int:
-        costs = sorted(costs, key = lambda x: x[0] - x[1])
-        # costs after sorting = [[30, 200], [10, 20], [30, 20], [400, 50]]
-        
-        res = 0
-        n = len(costs) // 2
-        
-        for i in range(n):
-            res += costs[i][0] + costs[i + n][1]
-            
-        return res
+class Solution {
+    public int twoCitySchedCost(int[][] costs) {
+      Arrays.sort(costs, new Comparator<int[]>() {
+        @Override
+        public int compare(int[] o1, int[] o2) {
+          return o1[0] - o1[1] - (o2[0] - o2[1]);
+        }
+      });
+  
+      int res = 0;
+      int n = costs.length / 2;
+      for (int i = 0; i < n; ++i) res += costs[i][0] + costs[i + n][1];
+      return res;
+    }
+}

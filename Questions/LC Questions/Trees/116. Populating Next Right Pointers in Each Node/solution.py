@@ -24,8 +24,8 @@ class Node:
 
 class Solution1:
     def connect(self, root: 'Node') -> 'Node':
-        if root == None:
-            return root
+        if not root: return root
+        
         q = deque([root])
 
         while q:
@@ -34,8 +34,8 @@ class Solution1:
                 curr = q.popleft()
                 # This condition ensures we don't establish next pointers beyond the end of a level
                 if i < length - 1: curr.next = q[0]
-                if curr.left != None: q.append(curr.left)
-                if curr.right != None: q.append(curr.right)
+                if curr.left: q.append(curr.left)
+                if curr.right: q.append(curr.right)
         return root
 
 '''
