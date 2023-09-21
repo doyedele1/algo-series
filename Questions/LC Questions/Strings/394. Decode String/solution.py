@@ -1,12 +1,7 @@
 '''
     Explanation:
-        3[a2[c]]
-        - Number in front of a character shows how many times that character will be multiplied
-        - 3 applies to everything in the bracket
-        - acc * 3 ==> accaccacc
-        
-        - We will have to solve the inner brackets before the outer brackets --> recursive solution
-        
+        - There is always guaranteed an integer right in front of an opening bracket
+            
         54[ab6[cd]]
         stack = 5, 4, [, a, b, 6, [, c, d
                 5, 4, [, a, b, 6
@@ -28,12 +23,14 @@ class Solution:
         stack = []
         
         for char in s:
-            if char != "]": stack.append(char)
+            if char != "]":
+                stack.append(char)
             else:
                 substr = ""
                 # we want to keep popping until we encounter an open square bracket
                 while stack[-1] != "[":
                     substr = stack.pop() + substr
+                
                 # pop the open square bracket
                 stack.pop()
                 
