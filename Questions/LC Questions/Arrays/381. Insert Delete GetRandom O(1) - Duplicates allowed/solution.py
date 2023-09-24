@@ -1,17 +1,17 @@
 '''
     Explanation:
-        - We can have two data structures. An array and a hashmap that maps to a set of values
+        - We can have two data structures. An array and a hashmap
             - With the array, we can easily choose a random number from it
             - With the hashmap, we can achieve an insertion and removal of O(1)
 
             hashmap --> key = value, value = set of indices
             array --> contains only the value
 
-        Insert operation
+        Insert function
             - Add value-indices pair to the hashmap
             - Append value to the end of the array
 
-        Remove operation
+        Remove function
             - Use the hashmap to find the index of the element to be removed & remove that index from the set
             - Use the array to find the last item
 
@@ -25,7 +25,7 @@
             arrayList = [1]
         
         insert(1)
-            hashMap = {1: {0, 1}}
+            hashMap = {1: {0,1}}
             arrayList = [1, 1]
 
         insert(2)

@@ -1,33 +1,55 @@
 '''
     Explanation:
         - We can have two data structures. An array and a hashmap
-        - With the array, we can easily choose a random number from it
-        - With the hashmap, we can achieve an insert and removal of O(1)
+            - With the array, we can easily choose a random number from it
+            - With the hashmap, we can achieve an insertion and removal of O(1)
 
-        hashmap --> key = value, value = index
-        array --> contains only the value
+            hashmap --> key = value, value = index
+            array --> contains only the value
 
-        Insert operation
+        Insert function
             - Append value to the end of the array
             - Add value-index pair to the hashmap
 
-        Delete operation
-            [1, 2, 3, 4, 5]. Task: remove 3
-            [1, 2, 5, 4, 5]. Then remove the last element which is the second 5 --> [1, 2, 5, 4]
+        Remove function
+            [1, 2, 3, 4, 5]
+            - Use the hashmap to find the index of the element to be removed
+            - Use the array to find the last item
 
-            - Get index of item to be deleted from the hashmap
-            - Get the last item in the array
-            - Move the last item in the hashmap to where the item to be deleted is
-            - Remove the last item
+            - In the array, set the value of the removed index to be the last item
+            - In the hashmap, set the value of the last item to be the removed index
 
-        TC - GetRandom function = O(1). 
-            Insert and Delete functions = 
-                O(1) on average
-                O(n) in the worst-case scenario when the operation exceeds the capacity of currently allocated array/hashmap and invokes space reallocation.
+            - Remove the last item in the array
+            - Remove the value to be removed from the hashmap
+
+         insert(1)
+            arrayList = [1]
+            hashMap = {1:0}
+
+        remove(2)
+            return False since 2 does not exist
+        
+        insert(2)
+            arrayList = [1, 2]
+            hashMap = {1:0, 2:1}
+        
+        remove(1)
+            index = 0, lastItem = 2
+
+            arrayList = [2, 2]
+            hashMap = {1:0, 2:0}
+
+            arrayList = [2]
+            hashMap = {2:0}
+        
+        insert(2)
+            return False since 2 is already in the set
+
+        TC - all functions: O(1)
         SC - O(n) to store the items
 '''
 
-from random import randint, choice
+from random import randint
 
 class RandomizedSet:
     def __init__(self):
@@ -44,14 +66,11 @@ class RandomizedSet:
     def remove(self, val: int) -> bool:
         if val not in self.hashMap: return False
         
-        
         index = self.hashMap[val]
         lastItem = self.arrayList[-1]
         
-        # Get the last item in the array list and copy the last item to the index
         self.arrayList[index], self.hashMap[lastItem] = lastItem, index
         
-        # Remove the last item in the arrayList and remove the entry containing the key equal to the value to be removed in the hashMap
         self.arrayList.pop()
         del self.hashMap[val]
         
