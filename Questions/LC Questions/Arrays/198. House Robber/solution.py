@@ -33,5 +33,4 @@ class Solution:
             curr = max(num + house_one, house_two)
             house_one = house_two
             house_two = curr
-
         return house_two
