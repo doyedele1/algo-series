@@ -21,6 +21,9 @@
         - Use DP to recursively run through the tree
             - dp(node, parent, shouldHalf)
             - Use memoization to cache your calculated values from the recursive function
+
+        - TC: O(N * T)
+        - SC: O(E + N) and E = N - 1
 '''
 
 
