@@ -6,6 +6,7 @@ Implement the OrderedStream class:
 
 OrderedStream(int n) Constructs the stream to take n values.
 String[] insert(int idKey, String value) Inserts the pair (idKey, value) into the stream, then returns the largest possible chunk of currently inserted values that appear next in the order.
+ 
 
 Example:
 1. Input
@@ -25,3 +26,15 @@ os.insert(4, "ddddd"); // Inserts (4, "ddddd"), returns ["ddddd", "eeeee"].
 // Concatentating all the chunks returned:
 // [] + ["aaaaa"] + ["bbbbb", "ccccc"] + [] + ["ddddd", "eeeee"] = ["aaaaa", "bbbbb", "ccccc", "ddddd", "eeeee"]
 // The resulting order is the same as the order above.
+ 
+
+
+
+
+Constraints:
+1 <= n <= 1000
+1 <= id <= n
+value.length == 5
+value consists only of lowercase letters.
+Each call to insert will have a unique id.
+Exactly n calls will be made to insert.
