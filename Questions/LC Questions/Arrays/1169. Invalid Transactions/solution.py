@@ -68,8 +68,10 @@ class Solution2:
             
             # Check within 60 minutes
             for invalid_time in range(time - 60, time + 61):
-                if invalid_time not in transactionMap: continue
-                if name not in transactionMap[invalid_time]: continue
+                if invalid_time not in transactionMap: 
+                    continue
+                if name not in transactionMap[invalid_time]: 
+                    continue
 
                 transaction_city = transactionMap[invalid_time][name]
 
