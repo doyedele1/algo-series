@@ -1,16 +1,13 @@
+''' 
+    TC: O(n)
+    SC: O(n)
 '''
-    Explanation:
-    
-
-'''
-
-
 from typing import List
 
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
         arrNums = [0] * (max(nums) + 1)
-        
+
         for num in nums:
             arrNums[num] += num
 
