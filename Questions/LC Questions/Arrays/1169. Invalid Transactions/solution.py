@@ -18,7 +18,7 @@
         - Go through the time (+-60), check a transaction (same name, different city), add it to the result
         
         TC - O(n)
-        SC - O(1)
+        SC - O(n) for the transactionMap dictionary
 '''
 
 from typing import List
