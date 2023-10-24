@@ -1,28 +1,26 @@
 '''
     Explanation I: Brute-force Solution
-        - Convert the transactions to individual item of the valid data types and store it in an array. index.e. alice = string, 20 = integer, 800 = integer and mtv = string
-        - Loop through the new array and find where amount > 1000. Append that to result array and convert the transaction to a string splitting each item by comma
+        - Loop through the array and find where amount > 1000. Append that to result array
             - Nested loop to check for same name, and if time difference is less than or equal to 60 and if different city,
                 - Append that to the res array and convert the transaction to a string splitting each item by comma
         
         TC - O(n-squared)
-        SC - O(n)xs
+        SC - O(n)
 
     Explanation II: Optimal Solution
-        - Store all transactions done at a particular time in a dictionary. key = time, value = object --> key = person_name, value = location
+        - Store all transactions done at a particular time in a dictionary. key = time, value = object --> key = name, value = city
         - ['alice,20,800,mtv', 'bob,50,1200,mtv', 'bob,20,100,beijing']
-        - {   
-            20: {'alice': {'mtv'}, 'bob': {'beijing'}}, 
-            50: {'bob': {'mtv'}}
+        { 
+            20: {'alice': ['mtv'], 'bob': ['beijing']},
+            50: {'bob': ['mtv']}
         }
         - Check if the amount is invalid, add it to the result
-        - Go through the time (+-60), check if a transaction(the same person, a different city), add it to the result
+        - Go through the time (+-60), check a transaction (same name, different city), add it to the result
         
         TC - O(n)
-        SC - O(n)
+        SC - O(1)
 '''
 
-from collections import defaultdict
 from typing import List
 
 class Solution1:
@@ -45,14 +43,20 @@ class Solution1:
 class Solution2:
     def invalidTransactions(self, transactions: List[str]) -> List[str]:
         res = []
-        transactionMap = defaultdict(dict)
+        transactionMap = {}
 
         for trans in transactions:
             name, str_time, amount, city = trans.split(",")
             time = int(str_time)
-
-            if name not in transactionMap[time]: transactionMap[time][name] = {city, }
-            else: transactionMap[time][name].add(city)
+            if time not in transactionMap:
+                transactionMap[time] = {
+                    name: [city]
+                }
+            else:
+                if name not in transactionMap[time]:
+                    transactionMap[time][name] = [city]
+                else:
+                    transactionMap[time][name].append(city)
 
         for trans in transactions:
             name, str_time, amount, city = trans.split(",")
@@ -67,10 +71,10 @@ class Solution2:
                 if invalid_time not in transactionMap: continue
                 if name not in transactionMap[invalid_time]: continue
 
-                trans_city = transactionMap[invalid_time][name]
+                transaction_city = transactionMap[invalid_time][name]
 
                 # If transactions were done in a different city
-                if city not in trans_city or len(trans_city) > 1:
+                if transaction_city[0] != city or len(transaction_city) > 1:
                     res.append(trans)
                     break
 
@@ -82,21 +86,23 @@ class Solution3:
         transactionMap = {}
 
         for trans in transactions:
-            name, time, amt, city = trans.split(",")
-            time = int(time)
-            if time in transactionMap:
-                if name in transactionMap[time]:
-                    transactionMap[time][name].add(city)
-                else:
-                    transactionMap[time][name] = {city}
+            name, str_time, amount, city = trans.split(",")
+            time = int(str_time)
+            if time not in transactionMap:
+                transactionMap[time] = {
+                    name: {city}
+                }
             else:
-                transactionMap[time] = {name:{city}}
+                if name not in transactionMap[time]:
+                    transactionMap[time][name] = {city}
+                else:
+                    transactionMap[time][name].add(city)
         
         for trans in transactions:
-            name, time, amt, city = trans.split(",")
+            name, time, amount, city = trans.split(",")
             time = int(time)
             
-            if int(amt) > 1000:
+            if int(amount) > 1000:
                 res.append(trans)
             else:    
                 for t in range(time-60, time):
