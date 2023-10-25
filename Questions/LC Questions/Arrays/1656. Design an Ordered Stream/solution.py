@@ -1,26 +1,26 @@
 '''
     Explanation I: Using an array of strings
-        * You move your pointer from a filled position to the next empty position
+        * The idea is to move pointer from a filled position to the next empty position
         
         insert, 3, cccc
             ["", "", "cccc", "", ""]
-            0                      return []
+             0                      return []
             
         insert, 1, aaaa
             ["aaaa", "", "cccc", "", ""]
-                    1                 return ["aaaa"]
+                     1                  return ["aaaa"]
         
         insert, 2, bbbb
-            ["aaaa", "bbbb", "cccc", "", ""], return ["bbbb", "cccc"]
-                                    4
+            ["aaaa", "bbbb", "cccc", "", ""]
+                                      4     return ["bbbb", "cccc"]
         
         insert, 5, eeee
-            ["aaaa", "bbbb", "cccc", "", "eeee"], return [""]
-                                    4
+            ["aaaa", "bbbb", "cccc", "", "eeee"]
+                                     4          return [""]
                                     
         insert, 4, dddd
-            ["aaaa", "bbbb", "cccc", "dddd", "eeee"], return ["dddd", "eeee"]
-                                                    outside
+            ["aaaa", "bbbb", "cccc", "dddd", "eeee"]
+                                                    outside        return ["dddd", "eeee"]
         
         TC: O(n)
         SC: O(n) for the list array
@@ -51,7 +51,7 @@ class OrderedStream1:
         idKey -= 1
         list[idKey] = value
         
-        while pointer < len(list) and list[pointer] != None:
+        while pointer < len(list) and list[pointer]:
             pointer += 1
         return list[idKey:pointer]
 
