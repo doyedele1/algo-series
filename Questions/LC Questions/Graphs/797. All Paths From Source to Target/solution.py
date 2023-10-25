@@ -1,35 +1,79 @@
 '''
-    Explanation I: DFS Recursion
+    Explanation I: DFS Recursion (Backtracking)
         Input: [[1,2],[3],[3],[]]
         Output: [[0,1,3],[0,2,3]]
     
                             f(0, 3)
                         /             \
                     f(1,3)          f(2,3)
-                        |              |
+                      |                |
                     f(3,3)           f(3,3)
                     
-        - TC: O(n * 2^n)
-        - SC: O(n)
+        graph = [[1,2],[3],[3],[]]
+        dfs(0, 3, [0])
+        path = [0,1]
+        dfs(1, 3, [0,1])
+        path = [0,1,3]
+        dfs(3, 3, [0,1,3])
+        res = [[0,1,3]]
+
+        path = [0]
+        dfs(0, 3, [0])
+        path = [0,2]
+        dfs(2, 3, [0,2])
+        path = [0,2,3]
+        dfs(3, 3, [0,2,3])
+        res = [[0,1,3], [0,2,3]]
+
+        TC: O(n * 2^n)
+        SC: O(n)
 
     Explanation II: DFS Iteration
-        - TC: O(E + K*V) where K is the number of paths (number of visits to the leaf/end node)
+        graph = [[1,2],[3],[3],[]]
+        nodeMap = {
+            0: [1,2]
+            1: [3]
+            2: [3]
+            3: []    
+        }
+
+        res = []
+        stack = [(0, [0])]
+
+        node = 0, path = [0]
+        stack = [(1, [0,1]), (2, [0,2])]
+
+        node = 2, path = [0,2]
+        stack = [(1, [0,1]), (3, [0,2,3])]
+
+        node = 3, path = [0,2,3]
+        stack = [(1, [0,1])]
+        res = [[0,2,3]]
+
+        node = 1, path = [0,1]
+        stack = [(3, [0,1,3])]
+        res = [[0,2,3], [0,1,3]]
+
+        TC: O(E + K*V) where K is the number of paths (number of visits to the leaf/end node)
+        SC: O(E + V)
 '''
 
 from typing import List
 
 class Solution1:
     def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
-        target = len(graph) - 1
+        n = len(graph)
         res = []
-        
-        def dfs(path, currNode):
-            if currNode == target: res.append(path + [currNode])
-            else:
-                for nextNode in graph[currNode]:
-                    dfs(path + [currNode], nextNode)
-        
-        dfs([], 0)
+
+        def dfs(node, end, path):
+            if node == end:
+                res.append(path.copy())
+            for neighbour in graph[node]:
+                path.append(neighbour)
+                dfs(neighbour, end, path)
+                path.pop()
+
+        dfs(0, n - 1, [0])
         return res
 
 class Solution2:
@@ -46,14 +90,9 @@ class Solution2:
         while stack:
             node, path = stack.pop()
             
-            if node == len(graph) - 1: res.append(path)
+            if node == len(graph) - 1: 
+                res.append(path)
             
             for neighbors in nodeMap[node]:
                 stack.append((neighbors, path + [neighbors]))
-                '''
-                    print(stack)   ==>  [(1, [0, 1])]
-                                        [(1, [0, 1]), (2, [0, 2])]
-                                        [(1, [0, 1]), (3, [0, 2, 3])]
-                                        [(3, [0, 1, 3])]
-                '''
         return res
