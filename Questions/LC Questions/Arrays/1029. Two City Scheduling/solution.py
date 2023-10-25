@@ -11,7 +11,7 @@
         costs after sorting = [[30, 200], [10, 20], [30, 20], [400, 50]]
 
         TC - O(nlogn) because of sorting the input array
-        SC - O(n). Timsort algorithm is used in Python; which is a combination of Merge Sort and Insertion Sort
+        SC - O(1)
 '''
 
 from typing import List
