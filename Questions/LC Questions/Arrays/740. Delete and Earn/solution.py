@@ -2,6 +2,7 @@
     TC: O(n)
     SC: O(n)
 '''
+
 from typing import List
 
 class Solution:
