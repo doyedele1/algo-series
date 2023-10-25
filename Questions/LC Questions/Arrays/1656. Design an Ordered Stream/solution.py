@@ -28,16 +28,45 @@
     Explanation II: Using a hashmap
         pointer = 1, seen = {}
     
-        seen = {3: "cccc"}, res = []
-        seen = {1: "aaaa", 3: "cccc"}, res = ["aaaa"], seen = {3: "cccc"}
-        seen = {2: "bbbb", 3: "cccc"}, res = ["bbbb", "cccc"], seen = {}
-        seen = {5: "eeee"}, res = []
-        seen = {4: "dddd", 5: "eeee"}, res = ["dddd", "eeee"], seen = {}
+        insert, 3, cccc
+            seen = {3:"cccc"}
+            res = []
+            pointer = 1
+
+        insert, 1, aaaa
+            seen = {1:"aaaa", 3:"cccc"}
+            res = ["aaaa"]
+            seen = {3: "cccc"}
+            pointer = 2
+
+        insert, 2, bbbb
+            seen = {2:"bbbb", 3:"cccc"}
+            res = ["bbbb"]
+            seen = {3:"cccc"}
+            pointer = 3
+
+            res = ["bbbb", "cccc"]
+            seen = {}
+            pointer = 4
+        
+        insert, 5, eeee
+            seen = {5:"eeee"}
+            res = []
+            pointer = 4
+        
+        insert, 4, dddd
+            seen = {4:"dddd", 5:"eeee"}
+            res = ["dddd"]
+            seen = {5:"eeee"}
+            pointer = 5
+
+            res = ["dddd", "eeee"]
+            seen = {}
+            pointer = 6
         
         TC: O(1)
         SC: O(n) for seen hashmap
 '''
-
 from typing import List
 
 class OrderedStream1:
