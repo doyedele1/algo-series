@@ -12,9 +12,8 @@
         
         TC - O(n-cube) where n is the size of the input string
         SC - O(min(n,m)) where n is the size of the input string and m is the size of the charset table
-'''
 
-'''
+        
     Explanation II: Sliding Window Solution
         - We need two pointers. left --> to contract the window and right --> to extend the window
         left, right = 0, 0
@@ -49,61 +48,77 @@
         
         TC - O(2n) --> depends on the number of times we extend and contract the window (e.g. aaaaaa). We need to extend the window once and contract once at the same time
         SC - O(m) where m is the size of the charset table
-    '''
 
-'''
+        
     Explanation III: Using hashmap to map the characters to its index
     pwwkew
          * At the second w, when contracting, if we can record the index of previous w, the left pointer can directly jump the first w to the second w
         
     Another example:
         abcdeafbdgcbb
-            res = 1, i = 0, j = 0
-            seen = {a: 1}
+            When res = 0, i = 0, j = 0, seen = {}
+            res = 1, i = 0, j = 0, seen = {a:1}
+
+            When res = 1, i = 0, j = 1, seen = {a:1}
+            res = 2, i = 0, j = 1, seen = {a:1, b:2}
+
+            When res = 2, i = 0, j = 2, seen = {a:1, b:2}
+            res = 3, i = 0, j = 2, seen = {a:1, b:2, c:3}
+
+            When res = 3, i = 0, j = 3, seen = {a:1, b:2, c:3}
+            res = 4, i = 0, j = 3, seen = {a:1, b:2, c:3, d:4}
             
-            res = 2, i = 0, j = 1
-            seen = {a: 1, b: 2}
+            When res = 4, i = 0, j = 4, seen = {a:1, b:2, c:3, d:4}
+            res = 5, i = 0, j = 4, seen = {a:1, b:2, c:3, d:4, e:5}
             
-            res = 3, i = 0, j = 2
-            seen = {a: 1, b: 2, c: 3}
+            When res = 5, i = 0, j = 5, seen = {a:1, b:2, c:3, d:4, e:5} -- there are duplicates of a
+            i = max(0,1) = 1, j = 5, res = 5, seen = {a:6, b:2, c:3, d:4, e:5}
             
-            res = 4, i = 0, j = 3
-            seen = {a: 1, b: 2, c: 3, d: 4}
+            When res = 5, i = 1, j = 6, seen = {a:6, b:2, c:3, d:4, e:5}
+            res = 6, i = 1, j = 6, seen = {a:6, b:2, c:3, d:4, e:5, f:7}
             
-            res = 5, i = 0, j = 4
-            seen = {a: 1, b: 2, c: 3, d: 4, e: 5}
-            
-            res = 5, i = 1, j = 5 -- there are duplicates of a
-            seen = {a: 6, b: 2, c: 3, d: 4, e: 5}
-            
-            res = 6, i = 1, j = 6
-            seen = {a: 6, b: 2, c: 3, d: 4, e: 5, f: 7}
-            
-            res = 6, i = 2, j = 7 - there are duplicates of b
-            seen = {a: 6, b: 8, c: 3, d: 4, e: 5, f: 7}
-            
-            res = 6, i = 4, j = 8 - there are duplicates of d
-            seen = {a: 6, b: 8, c: 3, d: 9, e: 5, f: 7}
-            
-            res = 6, i = 4, j = 9
-            seen = {a: 6, b: 8, c: 3, d: 9, e: 5, f: 7, g: 10}
-            
-            res = 7, i = 4, j = 10 - there are duplicates of c
-            seen = {a: 6, b: 8, c: 11, d: 9, e: 5, f: 7, g: 10}
-            
-            res = 7, i = 8, j = 11 - there are duplicates of b
-            seen = {a: 6, b: 12, c: 11, d: 9, e: 5, f: 7, g: 10}
-            
-            res = 7, i = 12, j = 12 - there are duplicates of b
-            seen = {a: 6, b: 13, c: 11, d: 9, e: 5, f: 7, g: 10}
+            When res = 6, i = 1, j = 7, seen = {a:6, b:2, c:3, d:4, e:5, f:7} -- there are duplicates of b
+            i = max(1,2) = 2, j = 7, res = 6, seen = {a:6, b:8, c:3, d:4, e:5, f:7}
+
+            When res = 6, i = 2, j = 8, seen = {a:6, b: 8, c:3, d:4, e:5, f:7} -- there are duplicates of d
+            i = max(2, 4) = 4, j = 8, res = max(6,5) = 6, seen = {a:6, b:8, c:3, d:9, e:5, f:7}
+
+            When res = 6, i = 4, j = 9, seen = {a:6, b:8, c:3, d:9, e:5, f:7}
+            res = 6, i = 4, j = 9, seen = {a:6, b:8, c:3, d:9, e:5, f:7, g:10}
+
+            When res = 6, i = 4, j = 10, seen = {a:6, b:8, c:3, d:9, e:5, f:7, g:10} -- there are duplicates of c
+            i = max(4,3) = 4, j = 10, res = 7, seen = {a:6, b:8, c:11, d:9, e:5, f:7, g:10}
+
+            When res = 7, i = 4, j = 11, seen = {a:6, b:8, c:11, d:9, e:5, f:7, g:10} -- there are duplicates of b
+            i = max(4,8) = 8, j = 11, res = max(7,4) = 7, seen = {a:6, b:12, c:11, d:9, e:5, f:7, g:10}
+
+            When res = 7, i = 8, j = 12, seen = {a:6, b:12, c:11, d:9, e:5, f:7, g:10} -- there are duplicates of b
+            i = max(8,12) = 12, j = 12, res = max(7,1) = 7, seen = {a:6, b:13, c:11, d:9, e:5, f:7, g:10}
         
         TC - O(n). index j will iterate n times
         SC - O(min(m,n)) for the hashmap where m is the size of the charset and n is the size of the string
 '''
+from collections import Counter, defaultdict
 
+class Solution1:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        def checkHelper(start, end):
+            chars = set()
+            for i in range(start, end + 1):
+                c = s[i]
+                if c in chars:
+                    return False
+                chars.add(c)
+            return True
 
-from collections import Counter
-
+        n = len(s)
+        res = 0
+        for i in range(n):
+            for j in range(i, n):
+                if checkHelper(i, j):
+                    res = max(res, j - i + 1)
+        return res
+    
 # Using counter as the hashmap
 class Solution2a:
     def lengthOfLongestSubstring(self, s: str) -> int:
@@ -148,13 +163,13 @@ class Solution2b:
 class Solution3:
     def lengthOfLongestSubstring(self, s: str) -> int:
         seen = dict() # to store the current index of a character
-        res, left = 0, 0
+        res, i = 0, 0
         
-        for right in range(len(s)):
-            if s[right] in seen:
-                left = max(left, seen[s[right]])
+        for j in range(len(s)):
+            if s[j] in seen:
+                i = max(i, seen[s[j]])
                 
-            res = max(res, right - left + 1)
-            seen[s[right]] = right + 1
+            res = max(res, j - i + 1)
+            seen[s[j]] = j + 1
         
         return res
