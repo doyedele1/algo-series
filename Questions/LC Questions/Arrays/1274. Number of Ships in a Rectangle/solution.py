@@ -1,3 +1,8 @@
+'''
+    TC: O(S(log2max(M,N)-log4S))
+    SC: O(log2max(M,N))
+'''
+
 # """
 # This is Sea's API interface.
 # You should not implement it, or speculate about its implementation
