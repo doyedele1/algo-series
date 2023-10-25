@@ -43,17 +43,17 @@ from typing import List
 class OrderedStream1:
     def __init__(self, n: int):
         self.pointer = 0
-        self.list = [None] * n
+        self.packet = [None] * n
 
     def insert(self, idKey: int, value: str) -> List[str]:
-        pointer, list = self.pointer, self.list
+        self.packet[idKey - 1] = value
 
-        idKey -= 1
-        list[idKey] = value
+        if idKey > self.pointer + 1:
+            return []
         
-        while pointer < len(list) and list[pointer]:
-            pointer += 1
-        return list[idKey:pointer]
+        while self.pointer < len(self.packet) and self.packet[self.pointer]:
+            self.pointer += 1
+        return self.packet[idKey - 1:self.pointer]
 
 class OrderedStream2:
     def __init__(self, n: int):
