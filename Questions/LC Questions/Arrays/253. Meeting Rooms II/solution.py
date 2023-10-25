@@ -1,5 +1,5 @@
 '''
-    Explanation: Min Heap Solution
+    Explanation I: Min Heap Solution
         [[0,30],[5,10],[15,20]]
 
         0-----------------------------------------------30
@@ -18,9 +18,8 @@
             - heap = [20, 30]
         - Return length of heap which is 2
         
-        - TC: O(nlogn). nlogn for sorting and another nlogn for n add operations to the heap
-        - SC: O(n) for the min heap we constructed
-
+        TC: O(nlogn). nlogn for sorting and another nlogn for n add operations to the heap
+        SC: O(n) for the min heap we constructed
 
     Explanation II: Sorting, then Two Pointers
         [[0,30],[5,10],[15,20]]
@@ -40,8 +39,8 @@
                 s             e
         res = 2
         
-        - TC: O(nlogn) for sorting startArr and endArr
-        - SC: O(n) for the space taken by the startArr and endArr
+        TC: O(nlogn) for sorting startArr and endArr
+        SC: O(n) for the space taken by the startArr and endArr
 '''
 
 from typing import List
