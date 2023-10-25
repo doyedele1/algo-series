@@ -1,7 +1,8 @@
-Given the time operation hours of different banks, you have to test whether a transaction is valid or not. For a transaction to be valid it has to fall between the operating hours of the bank.
+Given the time operation hours of different banks, you have to test whether a transaction is valid or not. 
+For a transaction to be valid it has to fall between the operating hours of the bank.
 
-Examples:
-1. 04:20 - 12:30
+Example 1:
+04:20 - 12:30
 19:00 - 21:45
 14:00 - 17:30
 12:30 - 14:00
@@ -9,8 +10,9 @@ Examples:
 Test - 11:00 - 17:30
 Output - true
 
-2. 10:00 - 11:00
-12:00 - 13:00 and you testing with 
+Example 2:
+10:00 - 11:00
+12:00 - 13:00
 
 Test - 10:00 - 13:00
 Output - false

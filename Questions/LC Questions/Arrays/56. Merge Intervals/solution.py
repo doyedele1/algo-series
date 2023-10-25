@@ -16,7 +16,6 @@
         TC - O(nlogn)
         SC - O(1)
 '''
-
 from typing import List
 
 class Solution:

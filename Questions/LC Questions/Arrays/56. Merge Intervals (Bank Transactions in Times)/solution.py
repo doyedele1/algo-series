@@ -10,10 +10,11 @@ def solution(operatingHours, transaction):
             start = operatingHours[i][0]
             end = operatingHours[i][1]
         
-        if transaction[0] >= start and transaction[1] <= end: return True
+        if transaction[0] >= start and transaction[1] <= end: 
+            return True
     return False
-print(solution([[600, 660], [720, 780]], [600, 780]))
 
+print(solution([[600, 660], [720, 780]], [600, 780]))
 
 
 # Doesn't work for some test cases --> Second Solution - Without Sorting. TC: O(n), SC: O(n)
@@ -43,4 +44,5 @@ def checkIfInIntervals(validTranStart, validTranEnd, transaction):
     startTransactionMinutes, endTransactionMinutes = convertToMinutes(transaction)
     if startTransactionMinutes >= validTranStart and endTransactionMinutes <= validTranEnd: return True
     else: return False
+
 print(solution(bankTransactionStartArr, bankTransactionEndArr, operatingHours, transaction))
