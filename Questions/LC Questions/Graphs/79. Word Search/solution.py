@@ -1,7 +1,9 @@
 '''
     Explanation: Recursive DFS (Backtracking) Solution
-        - TC: O(rc * dfs) = O(rc * 4 ^ len(word))
-        - SC: O(len(word))
+
+
+        TC: O(rc * dfs) = O(rc * 4 ^ len(word))
+        SC: O(len(word))
 '''
 
 from typing import List
