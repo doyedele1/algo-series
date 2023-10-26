@@ -1,14 +1,17 @@
 '''
     Explanation I: Naive Solution
-        - Enumerate the string and check all the substrings. Check the longest substring that have no repeating characters
+        - Enumerate the string and check all the substrings. Check the longest substring that have no repeating 
+        characters
         - Update the result to the count of the longest substring with no repeating characters
             abcabcbb
             - From a, we check the substring starting from a
             - From b, we check the substring starting from b
         
             abcabcbb
-            abca --> has repeating characters. We do not need to check the next substring, which is abcab because we already have duplicates from the previous iteration. 
-            We can just move to the next character b and enumerate to get its substrings. Also here bc has already been checked, so we can check bca instead.
+            abca --> has repeating characters. We do not need to check the next substring, which is abcab 
+            because we already have duplicates from the previous iteration. 
+            We can just move to the next character b and enumerate to get its substrings. Also here bc has already 
+            been checked, so we can check bca instead.
         
         TC - O(n-cube) where n is the size of the input string
         SC - O(min(n,m)) where n is the size of the input string and m is the size of the charset table
@@ -18,8 +21,12 @@
         - We need two pointers. left --> to contract the window and right --> to extend the window
         left, right = 0, 0
         - abcabcbb
-            - abca --> has repeating characters. We do not need to check the next substring, which is abcab because we already have duplicates from the previous iteration. We can just move to the next character b and enumerate to get its substrings
-        - We don't need to check for bc again since we already know it does not have repeating characters from the first step. Then we move to bca and then bcab. Since bcab has repeating characters, we can move on the next character which is c
+            - abca --> has repeating characters. We do not need to check the next substring, which is abcab 
+            because we already have duplicates from the previous iteration. We can just move to the next character b 
+            and enumerate to get its substrings
+        - We don't need to check for bc again since we already know it does not have repeating characters 
+        from the first step. Then we move to bca and then bcab. Since bcab has repeating characters, we can move 
+        on the next character which is c
         
         - p     w       w       k       e      w
         l 0
@@ -46,13 +53,15 @@
         l                       0
         r                                      0
         
-        TC - O(2n) --> depends on the number of times we extend and contract the window (e.g. aaaaaa). We need to extend the window once and contract once at the same time
+        TC - O(2n) --> depends on the number of times we extend and contract the window (e.g. aaaaaa). 
+        We need to extend the window once and contract once at the same time
         SC - O(m) where m is the size of the charset table
 
         
     Explanation III: Using hashmap to map the characters to its index
     pwwkew
-         * At the second w, when contracting, if we can record the index of previous w, the left pointer can directly jump the first w to the second w
+        * At the second w, when contracting, if we can record the index of previous w, the left pointer 
+        can directly jump the first w to the second w
         
     Another example:
         abcdeafbdgcbb
