@@ -10,7 +10,6 @@
             [1,1,1,1],
             [1,1,1,1]
         ]
-
         neighbors = [(0,0)]
         
         [
@@ -19,7 +18,6 @@
             [1,1,1,1],
             [1,1,1,1]
         ]
-
         neighbors = [(1,0), (0,1)]
         
         [
@@ -28,7 +26,6 @@
             [0,1,1,1],
             [1,1,1,1]
         ]
-
         neighbors = [(0,1), (2,0), (1,1)]
         
         [
@@ -37,7 +34,6 @@
             [0,1,1,1],
             [1,1,1,1]
         ]
-
         neighbors = [(2,0), (1,1), (0,2)]
         
         [
@@ -46,7 +42,6 @@
             [0,0,1,1],
             [0,1,1,1]
         ]
-
         neighbors = [(1,1), (0,2), (2,1), (3,0)]
         
         [
@@ -55,7 +50,6 @@
             [0,0,1,1],
             [0,1,1,1]
         ]
-
         neighbors = [(0,2), (2,1), (3,0), (1,2)]
         
         [
@@ -64,7 +58,6 @@
             [0,0,1,1],
             [0,1,1,1]
         ]
-
         neighbors = [(2,1), (3,0), (1,2), (0,3)] - this still continues
         
         TC: O(rows * cols)
@@ -134,7 +127,7 @@ class Solution1b:
 # Modifying input to a value of 0 for parent nodes and neighbors
 class Solution2a:
     def numIslands(self, grid: List[List[str]]) -> int:
-        if not grid: 
+        if not grid:
             return 0
 
         rows, cols = len(grid), len(grid[0])
