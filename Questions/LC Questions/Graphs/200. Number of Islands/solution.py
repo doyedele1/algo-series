@@ -84,7 +84,8 @@ class Solution1a:
             if col - 1 >= 0 and grid[row][col-1] == "1": dfs(grid, row, col - 1)
             if col + 1 < len(grid[0]) and grid[row][col+1] == "1": dfs(grid, row, col + 1)
         
-        if not grid: return 0
+        if not grid: 
+            return 0
 
         rows, cols = len(grid), len(grid[0])
         islands = 0
@@ -117,7 +118,8 @@ class Solution1b:
                 dfs(grid, row, col + 1)
                 visited.add((row, col + 1))
             
-        if not grid: return 0
+        if not grid: 
+            return 0
         
         rows, cols = len(grid), len(grid[0])
         islands = 0
@@ -132,7 +134,8 @@ class Solution1b:
 # Modifying input to a value of 0 for parent nodes and neighbors
 class Solution2a:
     def numIslands(self, grid: List[List[str]]) -> int:
-        if not grid: return 0
+        if not grid: 
+            return 0
 
         rows, cols = len(grid), len(grid[0])
         islands = 0
@@ -164,7 +167,8 @@ class Solution2a:
 # Using hash set to keep track of parent nodes and neighbors
 class Solution2b:
     def numIslands(self, grid: List[List[str]]) -> int:
-        if not grid: return 0
+        if not grid: 
+            return 0
 
         rows, cols = len(grid), len(grid[0])
         islands = 0
