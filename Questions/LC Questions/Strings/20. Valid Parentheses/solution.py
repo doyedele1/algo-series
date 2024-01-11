@@ -2,7 +2,7 @@
     Explanation:
         - Create an hash map that maps closed bracket to the open one
         - Create a stack to hold all open brackets
-        - Loop through the string, push current char into stack if it is not in map
+        - Loop through the string, push current char into stack if it is in map
         - Else check if current char maps is equal to char at the top of stack
             - Pop top off
         - Return false if it does not map
@@ -26,10 +26,10 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         mapping = {")": "(", "}": "{", "]": "["}
-        stack = [] # could also use collections.deque()
+        stack = []
 
         for char in s:
-            if char not in mapping:
+            if char in mapping.values():
                 stack.append(char)
             else:
                 if len(stack) > 0 and mapping[char] == stack[-1]:
