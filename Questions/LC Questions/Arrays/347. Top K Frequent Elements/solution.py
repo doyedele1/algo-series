@@ -63,17 +63,15 @@ class Solution2:
 
 class Solution3:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        countMap = {}
-        bucket = [[] for i in range(len(nums) + 1)] # + 1 so we don't go out of bound if input array = [1]
+        bucket = [[] for _ in range(len(nums) + 1)]
+        countMap = Counter(nums)
         
-        for num in nums:
-            countMap[num] = 1 + countMap.get(num, 0)
-        
-        for num, freq in countMap.items():
-            bucket[freq].append(num)
+        for num, count in countMap.items():
+            bucket[count].append(num)
         
         res = []
-        for i in range(len(bucket) - 1, 0, -1):
+        for i in range(len(bucket) - 1, -1, -1):
             for num in bucket[i]:
                 res.append(num)
-                if len(res) == k: return res
+                if len(res) == k: 
+                    return res
