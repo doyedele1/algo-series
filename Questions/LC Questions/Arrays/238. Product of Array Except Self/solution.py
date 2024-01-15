@@ -11,7 +11,7 @@
         - TC: O(n)
         - SC: O(n), space occupied by the left and right arrays
         
-    Explanation II:
+    Explanation III:
         - We could do the left and right arrays operation inside the output array
         - [1, 2, 3, 4]
         - At each iteration,
@@ -41,7 +41,35 @@ class Solution1:
             res[i] = left[i] * right[i]
         return res
 
-class Solution:
+class Solution2:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        # [1, 2, 3, 4, 5]
+        # [120, 60, 40, 30, 24]
+        # prefixProduct = [1, 2, 6, 24, 120]
+        # suffixProduct = [120, 120, 60, 20, 5]
+        lenNums = len(nums)
+        prefixProduct = [0 for i in range(lenNums)]
+        suffixProduct = [0 for i in range(lenNums)]
+        result = [0 for i in range(lenNums)]
+
+        for ind, num in enumerate(nums):
+            if ind == 0:
+                prefixProduct[ind] = num
+            else:
+                prefixProduct[ind] = prefixProduct[ind - 1] * num
+        for ind in range(lenNums - 1, -1, -1):
+            if ind == lenNums - 1:
+                suffixProduct[ind] = nums[ind]
+            else:
+                suffixProduct[ind] = nums[ind] * suffixProduct[ind + 1]
+        for ind, num in enumerate(nums):
+            left = prefixProduct[ind - 1] if ind > 0 else 1
+            right = suffixProduct[ind + 1] if ind < lenNums - 1 else 1
+            result[ind] = left * right
+
+        return result
+    
+class Solution3:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         res = [1] * len(nums)
         
