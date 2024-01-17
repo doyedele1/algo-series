@@ -16,7 +16,7 @@
 
 from typing import List
 
-class Solution3:
+class Solution2:
     def containsDuplicate(self, nums: List[int]) -> bool:
         numsSet = set()
         
