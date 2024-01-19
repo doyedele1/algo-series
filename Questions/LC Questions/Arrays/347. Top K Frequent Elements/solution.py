@@ -2,39 +2,40 @@
     Explanation I: Sorting
         [1, 1, 1, 2, 2, 3]
         - Count the frequency of each number and store in a hashmap - {1: 3, 2: 2, 3: 1}
-        - Create a new list where each element is a list of two values: frequency and number. [[1,3], [2,2], [3,1]]
-        - Sort the list based on frequencies which is nestedList[i][0]. [[3,1], [2,2], [1,3]]
+        - You can turn your hashmap to an array and sort based on the frequencies. [[3,1], [2,2], [1,3]] -> [[frequency, number]]
         - Get the first k numbers = [1,2]
         
-        - TC: O(nlog n)
-        - SC: O(n) for the hashmap and the nested lists
+        TC: O(nlog n)
+        SC: O(n) for the hashmap and the nested lists
         
         
     Explanation II: Heap (maxHeap)
-        - Count the frequency of each number and store in a hashmap
+        - Count the frequency of each number and store in a hashmap - {1: 3, 2: 2, 3: 1}
         - Add each pair to build a maxheap
-            - Key of the maxheap = number of occurences
+            - key of the maxheap = number of occurences
         - Pop from the heap exactly k times
         
-        - TC: O(klog n) -- building heap with heapify - O(n). Pop from heap - O(log n), exactly k times - O(klog n)
-        - SC: O(n + k). n for the hashmap, k for the heap
+        TC: O(klog n) - building heap with heapify - O(n). Pop from heap - O(log n); popping exactly k times - O(klog n)
+        SC: O(n + k). n for the hashmap, k for the heap
     
     
     Explanation III: Bucket Sort
-        - Count the frequency of each number and store in a hashmap
-        - Initially, we could do a bucket sort of the possible numbers in the input array as key and count as value, but the input array numbers are unbounded, so this wouldn't work efficiently and the bucket sort doesn't tell us where the top k elements are
+        - Count the frequency of each number and store in a hashmap - {1: 3, 2: 2, 100: 1}
+        - Initially, we could do a bucket sort: key -> the possible numbers in the input array and value -> count, i.e.
+            0 1 2 ........ 100
+              3 2           1
+            But the given input array are unbounded, so this wouldn't work efficiently and this bucket sort doesn't tell us exactly where the top k elements are
+        
         - The bucket sort we would use for this solution will be:
-            - key = frequency of each value
+            - key = count of each number
             - value = list of the numbers that have that particular count
             [1, 1, 1, 2, 2, 3]
-            key (freq)     0        1       2       3      4       5       6
+            key             0        1       2       3      4       5       6
             values                  [3]     [2]     [1]
-            - Why is key getting to 6? Length of the key will be the size of the input array, because in worst case, we could have [1,1,1,1,1,1] which is 6. So key will be from 0 to 6
         - We want the top k vlaues. So we can start from the end of the key list and add to the result array k times
     
-        - TC: O(n) because the maximum size k could be is the length of the input array
-            - If we have distinct values, [1,2,3,4,5,6], we will add the numbers to the key of 1 in O(6n) time
-        - SC: O(n) for the hashmap, bucket and result array
+        TC: O(n) because the maximum size k could be is the length of the input array. If we have distinct values, [1,2,3,4,5,6], we will add the numbers to the key of 1 in O(6n) time
+        SC: O(n) for the hashmap and bucket
 '''
 
 from collections import Counter
