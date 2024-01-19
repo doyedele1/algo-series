@@ -38,7 +38,6 @@
         SC: O(n) for the hashmap and bucket
 '''
 
-from collections import Counter
 import heapq
 from typing import List
 

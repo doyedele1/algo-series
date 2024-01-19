@@ -18,12 +18,12 @@ class Solution2:
         if len(s) != len(t):
             return False
         
-        dictS, dictT = {}, {}
+        dict_s, dict_t = {}, {}
         
         for i in range(len(s)):
-            dictS[s[i]] = 1 + dictS.get(s[i], 0) # If s[i] doesn't exist, we return value to be 0
-            dictT[t[i]] = 1 + dictT.get(t[i], 0) # If t[i] doesn't exist, we return value to be 0
-        return dictS == dictT
+            dict_s[s[i]] = 1 + dict_s.get(s[i], 0) # If s[i] doesn't exist, we return value to be 0
+            dict_t[t[i]] = 1 + dict_t.get(t[i], 0) # If t[i] doesn't exist, we return value to be 0
+        return dict_s == dict_t
 
 class Solution3:
     def isAnagram(self, s: str, t: str) -> bool:
