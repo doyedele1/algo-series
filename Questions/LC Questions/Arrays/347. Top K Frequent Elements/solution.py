@@ -27,8 +27,8 @@
             But the given input array are unbounded, so this wouldn't work efficiently and this bucket sort doesn't tell us exactly where the top k elements are
         
         - The bucket sort we would use for this solution will be:
-            - key = count of each number
-            - value = list of the numbers that have that particular count
+            key -> count of each number
+            value -> list of the numbers that have that particular count
             [1, 1, 1, 2, 2, 3]
             key             0        1       2       3      4       5       6
             values                  [3]     [2]     [1]
