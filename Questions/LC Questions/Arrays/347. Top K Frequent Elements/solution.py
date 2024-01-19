@@ -44,13 +44,13 @@ from typing import List
 class Solution2:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]: 
         heap = []
-        countMap = {}
+        count_map = {}
         res = []
 
         for num in nums:
-            countMap[num] = 1 + countMap.get(num, 0)
+            count_map[num] = 1 + count_map.get(num, 0)
 
-        for num, freq in countMap.items():
+        for num, freq in count_map.items():
             heap.append((-freq, num))
         heapq.heapify(heap)
         # heap here = [(-3, 1), (-2, 2), (-1, 3)]
@@ -63,13 +63,13 @@ class Solution2:
 
 class Solution3:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        countMap = {}
+        count_map = {}
         bucket = [[] for _ in range(len(nums) + 1)]
         
         for num in nums:
-            countMap[num] = 1 + countMap.get(num, 0)
+            count_map[num] = 1 + count_map.get(num, 0)
 
-        for num, count in countMap.items():
+        for num, count in count_map.items():
             bucket[count].append(num)
         
         res = []

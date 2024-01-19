@@ -18,9 +18,9 @@ from typing import List
 
 class Solution2:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        numsSet = set()
+        nums_set = set()
         
         for num in nums:
-            if num in numsSet: return True
-            numsSet.add(num)
+            if num in nums_set: return True
+            nums_set.add(num)
         return False
