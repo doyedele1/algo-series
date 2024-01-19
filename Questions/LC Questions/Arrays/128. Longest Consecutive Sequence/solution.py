@@ -11,7 +11,7 @@
         set = (100, 4, 200, 1 , 3, 2)
         For num 100,
             99 not in set, so that's the start of a sequence
-            Is 101 + 0 in set? No, res = 0
+            Is 100 + 0 in set? No, res = 0
         
         For num 4,
             3 in set, so 4 cannot start the sequence
