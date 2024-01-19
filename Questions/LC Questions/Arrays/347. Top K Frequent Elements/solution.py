@@ -32,7 +32,7 @@
             [1, 1, 1, 2, 2, 3]
             key             0        1       2       3      4       5       6
             values                  [3]     [2]     [1]
-        - We want the top k vlaues. So we can start from the end of the key list and add to the result array k times
+        - We want the top k values. So we can start from the end of the key list and add to the result array until length of result array is equal to k
     
         TC: O(n) because the maximum size k could be is the length of the input array. If we have distinct values, [1,2,3,4,5,6], we will add the numbers to the key of 1 in O(6n) time
         SC: O(n) for the hashmap and bucket
@@ -64,9 +64,12 @@ class Solution2:
 
 class Solution3:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        countMap = {}
         bucket = [[] for _ in range(len(nums) + 1)]
-        countMap = Counter(nums)
         
+        for num in nums:
+            countMap[num] = 1 + countMap.get(num, 0)
+
         for num, count in countMap.items():
             bucket[count].append(num)
         
