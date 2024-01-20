@@ -1,3 +1,11 @@
+'''
+    Explanation:
+
+    TC: O(n) where n is the total number of characters in the input string
+    SC: O(k) where k is the number of strings. For each word, we are using some space for the length and delimiter #
+'''
+
+
 from typing import List
 
 class Codec:
