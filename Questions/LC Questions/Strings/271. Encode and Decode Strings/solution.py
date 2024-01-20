@@ -1,10 +1,15 @@
 '''
     Explanation:
+        ["Hello", "World"]
+        encode: "5#Hello5#World"
+        decode:
+            - Get the length of each string with the delimiter
+                - We know the length comes first and then the #
+            - Add the string of that length to res array
 
-    TC: O(n) where n is the total number of characters in the input string
-    SC: O(k) where k is the number of strings. For each word, we are using some space for the length and delimiter #
+        TC: O(n) where n is the total number of characters in the input string
+        SC: O(k) where k is the number of strings. For each word, we are using some space for the length and delimiter #
 '''
-
 
 from typing import List
 
