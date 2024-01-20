@@ -2,19 +2,19 @@
     Explanation:
         [0,1,0,3,12]
         First Iteration --> [0, 1, 0, 3, 12]
-                            i
-                            j
+                             i
+                             j
         Second Iteration -->[1, 1, 0, 3, 12]
                                 i
-                            j
+                             j
         Third Iteration --> [1, 1, 0, 3, 12]
-                                    i
+                                   i
                                 j
         Fourth Iteration --> [1, 3, 0, 3, 12]
-                                        i
-                                j
+                                       i
+                                 j
         Fifth Iteration --> [1, 3, 12, 3, 12]
-                                            i
+                                           i
                                     j
 
         Another loop:
