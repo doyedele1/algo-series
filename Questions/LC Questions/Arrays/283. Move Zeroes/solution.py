@@ -40,5 +40,5 @@ class Solution:
         for i in range(j, len(nums)):
             nums[i] = 0
 
-        # One-line solution
-        # nums[:] = [x for x in nums if x != 0] + [0]*nums.count(0)
+# One-line solution
+# nums[:] = [x for x in nums if x != 0] + [0]*nums.count(0)
