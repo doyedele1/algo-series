@@ -33,6 +33,7 @@ class Codec:
                 
             length = int(s[i:j])
             res.append(s[j + 1 : j + 1 + length])
+            # Move the index to the start of the next length
             i = j + 1 + length
             
         return res
