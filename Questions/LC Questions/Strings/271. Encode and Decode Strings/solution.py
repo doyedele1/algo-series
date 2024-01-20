@@ -26,6 +26,7 @@ class Codec:
         i = 0
         
         while i < len(s):
+            # Use j to find the delimeter
             j = i
             while s[j] != '#':
                 j += 1
