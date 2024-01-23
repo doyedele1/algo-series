@@ -1,23 +1,20 @@
 '''
         Explanation:
-            - Edge case: Some nodes on the left/right subtree might not be blocked by nodes. In this case, we add those nodes into the result array
-            - For each level of the tree, we want the rightmost node
-
-            Add the root node to the next_level queue
-            Loop through the next_level queue while it’s not empty
-            Copy the content of the next_level to the curr_level
-            Empty the next_level
-            Loop through the curr_level while it’s not empty
-            Pop the first node in the curr_level queue
-            Add the children of the first node found to the empty next_level queue
-            When the curr_level is empty, the last popped node is the rightmost element.
-            We can append that node to the result array
-
+            - Initialize res array
+            - Add the root node to a queue
+            - While queue is not empty,
+                - Get the length of the current level which is the length of the queue
+                - Iterate over the queue,
+                    - Pop the current node
+                    - If index i is equal to length_of_each_level - 1, then we know that's the last node in the level
+                    - Add the child nodes to the queue
+            - Return res
 
             TC - O(n) where n is the number of nodes visited
-            SC - O(d) where d is the diameter of the tree. The last level could take up to n/2 tree nodes in the case of a complete binary tree
+            SC - O(d) for the queue, where d is the tree diameter. The last level could take up to n/2 tree nodes in the case of a complete binary tree
 '''
-import collections
+
+from collections import deque
 from typing import Optional, List
 
 # Definition for a binary tree node.
@@ -27,47 +24,24 @@ class TreeNode:
         self.left = left
         self.right = right
 
-class Solution1:
+class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        # BFS with Two Queues Approach
-        res = []
-        next_level = collections.deque([root])
-        
-        if root == None: return res
-        
-        while next_level:
-            # prepare for the next level
-            curr_level = next_level
-            next_level = collections.deque()
-            while curr_level:
-                node = curr_level.popleft()
-                # add the child nodes of the current level to the queue of the next level
-                if node.left:
-                    next_level.append(node.left)
-                if node.right:
-                    next_level.append(node.right)
+        if not root:
+            return root
 
-            # The current level is finished and its last element is the rightmost one
-            res.append(node.val)
-        return res
-    
-class Solution2:
-    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        # Another Optimal Solution with One Queue
+        q = deque([root])
         res = []
-        q = collections.deque([root])
-        
+
         while q:
-            right_side = None
-            q_len = len(q)
-            
-            for i in range(q_len):
+            length_of_each_level = len(q)
+
+            for i in range(len(q)):
                 node = q.popleft()
-                if node:
-                    right_side = node
+                if i == length_of_each_level - 1:
+                    res.append(node.val)
+                if node.left:
                     q.append(node.left)
+                if node.right:
                     q.append(node.right)
-            if right_side:
-                res.append(right_side.val)
-        
+
         return res
