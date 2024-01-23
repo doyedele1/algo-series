@@ -9,11 +9,12 @@
             count_of_each_level = [1, 2, 3]
         - Then with the two dictionaries, calculate the averages
 
-        TC: O(n) where n refers to the total number of nodes in a binary tree
-        SC: O(h) where h os the height of the tree. O(h) because sum_of_each_level and count_of_each_level are of size h
+        TC: O(n) where n is the total number of nodes in the binary tree
+        SC: O(h) where h is the height of the tree. O(h) because sum_of_each_level and count_of_each_level are of size h
 
     Explanation II: BFS
-        - 
+        TC: O(n) where n is the total number of nodes in the binary tree
+        SC: O(m) where m is the maximum number of nodes at any level in the binary tree which the size of the queue can grow up to
 '''
 from collections import defaultdict, deque
 from typing import List, Optional
@@ -48,21 +49,22 @@ class Solution2:
         res = []
         q = deque([root])
 
-        if root == None:
-            return res
+        if not root:
+            return []
 
         while q:
-            level_sum = 0
+            sum_of_each_level = 0
             len_q = len(q)
 
             for _ in range(len_q):
                 curr = q.popleft()
 
-                level_sum += curr.val
+                sum_of_each_level += curr.val
 
                 if curr.left:
                     q.append(curr.left)
                 if curr.right:
                     q.append(curr.right)
-            res.append(level_sum/len_q)
+            res.append(sum_of_each_level/len_q)
+
         return res
