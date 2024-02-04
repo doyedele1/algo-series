@@ -1,11 +1,12 @@
 '''
     Explanation:
-        - Create an hash map for mapping closed bracket to the open one
+        - Create an hash map that maps closed bracket to the open bracket
         - Create a stack to hold all open brackets
-        - Loop through the string, push current char into stack if it is in the mapping
+        - Loop through the string, push current char into stack if it is in map
         - Else,
-            - If current char equivalent is equal to char at the top of stack, pop top off
-            - Else, return false
+            - Check if current char maps is equal to char at the top of stack
+                - Pop top off if equal
+                - Return false if not equal
         - Once loop is done, return true if stack is empty, else false
 
         "()[]{}"
