@@ -1,9 +1,13 @@
 '''
     Explanation:
-        [-3, 3, 4, -3, 1, 2]
+    [-3, 3, 4, -3, 1, 2]
+    After sorting, [-3, -3, 1, 2, 3, 4]
 
-        TC: O(nlogn + n-squared) = O(n-squared)
-        SC: O(1)
+    [-3     -3      1       2       3       4]
+     i      l                               r
+
+    TC: O(nlogn + n-squared) = O(n-squared)
+    SC: O(1)
 '''
 
 from typing import List
@@ -28,6 +32,7 @@ class Solution:
                         l += 1
                     else:
                         res.append([nums[i], nums[l], nums[r]])
+                        # updating our l and r pointers -> [-2, -2, 0, 0, 2, 2]
                         l += 1
                         r -= 1
                         while l < r and nums[l] == nums[l - 1]:
