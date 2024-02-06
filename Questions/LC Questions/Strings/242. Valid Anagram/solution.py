@@ -35,12 +35,16 @@ class Solution4:
             return False
 
         dict = {}
+        # dict = [0] * 26
 
         for i in range(len(s)):
             dict[s[i]] = dict.get(s[i], 0) + 1
             dict[t[i]] = dict.get(t[i], 0) - 1
+            # dict[ord('a') - ord(s[i])] += 1
+            # dict[ord('a') - ord(t[i])] -= 1
 
         for key, freq in dict.items():
+        # for freq in dict:
             if freq != 0:
                 return False
         return True
