@@ -1,13 +1,13 @@
 '''
     Explanation:
-    [-3, 3, 4, -3, 1, 2]
-    After sorting, [-3, -3, 1, 2, 3, 4]
+        [-3, 3, 4, -3, 1, 2]
+        After sorting, [-3, -3, 1, 2, 3, 4]
 
-    [-3     -3      1       2       3       4]
-     i      l                               r
+        [-3     -3      1       2       3       4]
+        i      l                               r
 
-    TC: O(nlogn + n-squared) = O(n-squared)
-    SC: O(1)
+        TC: O(nlogn + n-squared) = O(n-squared)
+        SC: O(1)
 '''
 
 from typing import List
