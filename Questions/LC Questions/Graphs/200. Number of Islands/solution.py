@@ -72,23 +72,27 @@ class Solution1a:
         def dfs(grid, row, col):            
             grid[row][col] = "0"
             
-            if row - 1 >= 0 and grid[row-1][col] == "1": dfs(grid, row - 1, col)
-            if row + 1 < len(grid) and grid[row+1][col] == "1": dfs(grid, row + 1, col)
-            if col - 1 >= 0 and grid[row][col-1] == "1": dfs(grid, row, col - 1)
-            if col + 1 < len(grid[0]) and grid[row][col+1] == "1": dfs(grid, row, col + 1)
+            if row - 1 >= 0 and grid[row-1][col] == "1":
+                dfs(grid, row - 1, col)
+            if row + 1 < len(grid) and grid[row+1][col] == "1":
+                dfs(grid, row + 1, col)
+            if col - 1 >= 0 and grid[row][col-1] == "1":
+                dfs(grid, row, col - 1)
+            if col + 1 < len(grid[0]) and grid[row][col+1] == "1":
+                dfs(grid, row, col + 1)
         
         if not grid: 
             return 0
 
         rows, cols = len(grid), len(grid[0])
-        islands = 0
+        res = 0
         
         for r in range(rows):
             for c in range(cols):
                 if grid[r][c] == "1":
-                    islands += 1
-                    dfs(grid, r, c)    
-        return islands
+                    res += 1
+                    dfs(grid, r, c) 
+        return res
 
 # Using hash set to keep track of parent nodes and neighbors
 class Solution1b:
@@ -115,14 +119,14 @@ class Solution1b:
             return 0
         
         rows, cols = len(grid), len(grid[0])
-        islands = 0
+        res = 0
         
         for r in range(rows):
             for c in range(cols):
                 if grid[r][c] == "1" and (r, c) not in visited:
-                    islands += 1
+                    res += 1
                     dfs(grid, r, c)
-        return islands
+        return res
 
 # Modifying input to a value of 0 for parent nodes and neighbors
 class Solution2a:
@@ -131,7 +135,7 @@ class Solution2a:
             return 0
 
         rows, cols = len(grid), len(grid[0])
-        islands = 0
+        res = 0
         
         for r in range(rows):
             for c in range(cols):
@@ -153,9 +157,8 @@ class Solution2a:
                         if col + 1 < cols and grid[row][col+1] == "1":
                             neighbors.append((row, col+1))
                             grid[row][col+1] = "0"
-                    islands += 1
-                        
-        return islands
+                    res += 1
+        return res
 
 # Using hash set to keep track of parent nodes and neighbors
 class Solution2b:
@@ -164,7 +167,7 @@ class Solution2b:
             return 0
 
         rows, cols = len(grid), len(grid[0])
-        islands = 0
+        res = 0
         visited = set()
         
         for r in range(rows):
@@ -187,6 +190,5 @@ class Solution2b:
                         if col + 1 < cols and grid[row][col+1] == "1" and (row, col + 1) not in visited:
                             neighbors.append((row, col + 1))
                             visited.add((row, col + 1))
-                    islands += 1
-                        
-        return islands
+                    res += 1
+        return res
