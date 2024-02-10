@@ -1,19 +1,19 @@
 '''
     Explanation:
-    [[0,30],[5,10],[15,20]]
+    Example 1: [[0,30],[5,10],[15,20]]
     
     0-----------------------------------------------30
             5---------10
                                 15----------20
-    - When 30 > 5, i.e. there is an overlap. The person can't attend 0---30 meeting and 5---10 meeting.
+    - When 30 > 5, i.e. there is an overlap. The person can't attend 0---30 meeting and 5---10 meeting, so we return False.
     
-    [[7,10],[2,4]]
+    Example 2: [[7,10],[2,4]]
     2-----4
                 7---------10
     - There is no overlap here. So we return True
     
-    - TC: O(nlogn)
-    - SC: O(1)
+    TC: O(nlogn)
+    SC: O(1)
 '''
 
 from typing import List
