@@ -3,8 +3,8 @@
         [[1,3], [8, 10], [15, 18], [2,6]]
         1-----3
                         8------10
-                                                15--------18
-                    2------6
+                                        15--------18
+            2------6
         - Sort intervals based on the start times
         [[1,3], [2,6], [8, 10], [15, 18]]
         - Add the first interval to the res nested array
@@ -21,7 +21,6 @@ from typing import List
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         intervals.sort(key= lambda i: i[0])
-        
         res = [intervals[0]]
         
         for start, end in intervals[1:]:

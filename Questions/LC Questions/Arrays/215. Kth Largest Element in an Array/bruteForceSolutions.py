@@ -11,7 +11,9 @@
         - We need to sort the nums array - O(n logn). # quick sort, merge sort, O(n-squared) bubble sort, selection sort, insertion sort, radix
             - .sort() sorts list in ascending order by default --> [1, 2, 3, 4, 5, 6], k = 2
             - 2nd largest element? --> return nums[-k]
-            - TC: O(n logn), SC: O(1)
+            
+        TC: O(n logn)
+        SC: O(1)
             
     Explanation II & III: Using a heap
         Using heaps - min heap (stores large numbers) and max heap (stores small numbers)

@@ -1,26 +1,30 @@
 '''
-    Explanation I: Using hashmaps
-        - If we visit a node twice or more, we have a cycle
-        - Add to the hashmap if pointer doesn't exist in the hashmap
-        - If pointer exists, then return True since we've concluded we have a cycle
-        - TC: O(n), SC: O(n)
+    Explanation I: Using a hashset
+        - If we visit a node more than once, we have a cycle
+        - Add to the hashset if node doesn't exist in the hashmap
+        - If node exists, then return True since we have a cycle
+        
+        TC: O(n), SC: O(n)
         
     Explanation II: Floyd's Cycle Finding Algorithm (Tortoise and Hare)
-    - slow = one step
-    - fast = two steps
-    
-    traverse while fast != None and fast.next != None
-    - TC: case where linked list has no cycle O(n)
-        case where linked list has a cycle.
-            - The slow pointer is about to enter the cycle , O(n)
-            - Both pointers are in the cycle, it takes distance between the two runners/speed difference loops for the fast runner to catch up with the slow runner again. O(m)
-            worst case: O(n + m), where n = total # of nodes, m = # of nodes in cycle which is still O(n) if n = m
-    - SC: O(1)
+        - slow = one step
+        - fast = two steps
+        
+        Time Complexity Explanation: 
+            case where linked list has no cycle = O(n)
+            case where linked list has a cycle.
+                When both slow and fast pointers are inside the cycle,
+                                f
+                            s
+                    s to f = 1
+                    f to s = K
+                    Moving clockwise, for the fast pointer to catch up with the slow pointer, K + 1 - 2 = K - 1, so K iterations
+        TC: O(n + K) = O(n)
+        SC: O(1)
 '''
-
-# Definition for singly-linked list.
 from typing import Optional
 
+# Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -31,14 +35,16 @@ class Solution1:
         visited = set()
 
         while head:
-            if head in visited: return True
+            if head in visited: 
+                return True
             visited.add(head)
             head = head.next
         return False
     
 class Solution2:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        if head is None: return False
+        if not head:
+            return False
         slow = head
         fast = head
         
