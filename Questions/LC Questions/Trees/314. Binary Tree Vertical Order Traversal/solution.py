@@ -7,10 +7,12 @@
         - Initial queue = [(root, 0)]
        
         SC: O(n) where n is the number of nodes in the tree
-            Hash table: We used a hash table to group nodes on the same column. The values would consume O(n) memory and the space of the key in the worst is when each node has a unique column index and there are as many keys as the values.
-            Queue: In a full binary tree, the maximum number of nodes at a level is (n+1 / 2) and the queue can hold no more two levels. (n+1 / 2) * 2 = O(n+1), amortized is O(n)
+            Hash table: We used a hash table to group nodes on the same column. The values would consume O(n) memory
+            Queue: In a full binary tree where parent node has either two or no children, the maximum number of nodes at a level is (n+1)/2 and the queue can hold no more two levels of nodes
+                (n+1)/2 * 2 = O(n+1), amortized is O(n)
             Result: Reordering the hash table and creating an array from it is O(n)
 '''
+
 from typing import List, Optional
 from collections import defaultdict, deque
 
