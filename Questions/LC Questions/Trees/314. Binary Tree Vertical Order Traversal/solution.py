@@ -9,9 +9,8 @@
             Queue: In a full binary tree, the maximum number of nodes at a level is (n+1 / 2) and the queue can hold no more two levels. (n+1 / 2) * 2 = O(n+1), amortized is O(n)
             Result: Reordering the hash table and creating an array from it is O(n)
 '''
-
 from typing import List, Optional
-from collections import deque, defaultdict
+from collections import defaultdict, deque
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -20,7 +19,26 @@ class TreeNode:
         self.left = left
         self.right = right
 
-class Solution:
+class Solution1:
+    def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return []
+        
+        columnTable = defaultdict(list)
+        q = deque([(root, 0)])
+
+        while q:
+            node, column = q.popleft()
+
+            if node:
+                columnTable[column].append(node.val)
+
+                q.append((node.left, column - 1))
+                q.append((node.right, column + 1))
+        
+        return [columnTable[x] for x in sorted(columnTable.keys())]
+
+class Solution2:
     def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if root is None: return root
         
