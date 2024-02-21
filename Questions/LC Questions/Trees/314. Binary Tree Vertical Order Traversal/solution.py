@@ -1,5 +1,5 @@
 '''
-    Explanation II:
+    Explanation:
         - Hashmap of columnTable
             key = column
             value = list of node.value
@@ -43,7 +43,8 @@ class Solution1:
         
         return [columnTable[x] for x in sorted(columnTable.keys())]
 
-#  TC: O(n), SC: O(n)
+# This solution works because there won't be any missing column index in the given range of minColumn and maxColumn
+# TC: O(n), SC: O(n)
 class Solution2:
     def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root: 
