@@ -44,7 +44,22 @@ class NestedInteger:
 from collections import deque
 from typing import List
 
-class Solution:
+# DFS
+class Solution1:
+    def depthSum(self, nestedList: List[NestedInteger]) -> int:
+        def dfs(nested_list, depth):
+            res = 0
+            for item in nested_list:
+                if item.isInteger():
+                    res += item.getInteger() * depth
+                else:
+                    res += dfs(item.getList(), depth + 1)
+            return res
+        
+        return dfs(nestedList, 1)
+
+# BFS
+class Solution2:
     def depthSum(self, nestedList: List[NestedInteger]) -> int:
         q = deque(nestedList)
         res, depth = 0, 1
