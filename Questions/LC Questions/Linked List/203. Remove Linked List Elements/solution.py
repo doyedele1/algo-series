@@ -1,3 +1,5 @@
+from typing import Optional
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -5,13 +7,13 @@ class ListNode:
         self.next = next
 
 class Solution:
-    def removeElements(self, head: ListNode, val: int) -> ListNode:
+    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
         while head and head.val == val:
             head = head.next
         
         temp = head
-        while(temp != None and temp.next != None):
-            if(temp.next.val == val):
+        while temp and temp.next:
+            if temp.next.val == val:
                 temp.next = temp.next.next
             else: 
                 temp = temp.next
