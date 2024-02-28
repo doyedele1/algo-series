@@ -1,3 +1,5 @@
+from typing import Optional
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -6,7 +8,7 @@ class ListNode:
 
 # TC: O(n), SC: O(n)
 class Solution:
-    def isPalindrome(self, head: ListNode) -> bool:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
         nums = []
         
         while head:
@@ -24,7 +26,7 @@ class Solution:
 
 # TC: O(n), SC: O(1)
 class Solution2:
-    def isPalindrome(self, head: ListNode) -> bool:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
         slow = head
         fast = head
         
