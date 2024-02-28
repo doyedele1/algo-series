@@ -5,16 +5,16 @@
             - If the p value is greater than the root values and the q value is greater than the root values, then we need to recursively return the lca on the right subtree
             - Else, the lca is the root itself
         
-        - TC: O(log n) for balanced BST, but O(n) for skewed BST
-        - SC: O(1) for balanced BST, but O(n) for skewed BST
+        TC: O(log n) for balanced BST, but O(n) for skewed BST
+        SC: O(1) for balanced BST, but O(n) for skewed BST
         
     Explanation II: Iterative Solution
         - Same approach as the recursive solution
         - Here we initialize node as root and iterate while node is not null, perform the checks to run the left or right subtree
         - Else, return the node
         
-        - TC: O(log n) for balanced BST, but O(n) for skewed BST
-        - SC: O(1) since we are not using any extra data structure
+        TC: O(log n) for balanced BST, but O(n) for skewed BST
+        SC: O(1) since we are not using any extra data structure
 '''
 
 # Definition for a binary tree node.
@@ -34,6 +34,9 @@ class Solution1:
 
 class Solution2:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if not root:
+            return None
+        
         node = root
 
         while node:

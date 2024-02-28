@@ -3,11 +3,10 @@ class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
-        
+
+# TC: O(n), SC: O(n)
 class Solution:
-    # TC - O(n), SC - O(n)
     def isPalindrome(self, head: ListNode) -> bool:
-        
         nums = []
         
         while head:
@@ -23,7 +22,8 @@ class Solution:
             end -= 1
         return True
 
-    # TC - O(n), SC - O(1)
+# TC: O(n), SC: O(1)
+class Solution2:
     def isPalindrome(self, head: ListNode) -> bool:
         slow = head
         fast = head
@@ -31,7 +31,7 @@ class Solution:
         # 2 --> 3 --> 7 --> 3 --> 2
     
         # find middle element using the slow pointer
-        while(fast != None and fast.next != None):
+        while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
         # slow = node of 7
@@ -40,7 +40,7 @@ class Solution:
         # 2 --> 3 --> 2 --> 3 -- 7
         # reversing the second part of the linked list
         prev = None
-        while(slow != None):
+        while slow:
             nextNode = slow.next
             slow.next = prev
             prev = slow
@@ -51,10 +51,9 @@ class Solution:
         # check for palindrome
         left = head
         right = prev
-        while(right != None):
-            if(left.val != right.val):
+        while right:
+            if left.val != right.val:
                 return False
             left = left.next
             right = right.next
         return True
-            
