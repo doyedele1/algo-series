@@ -15,8 +15,8 @@ class Solution:
             
         start = 0
         end = len(nums) - 1
-        while(start < end):
-            if(nums[start] != nums[end]):
+        while start < end:
+            if nums[start] != nums[end]:
                 return False
             start += 1
             end -= 1
