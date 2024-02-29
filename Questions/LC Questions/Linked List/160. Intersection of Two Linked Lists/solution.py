@@ -16,12 +16,12 @@ class Solution:
         dummy_B = headB
         
         while dummy_A != dummy_B:
-            if dummy_A:
+            if not dummy_A:
                 dummy_A = headB
             else:
                 dummy_A = dummy_A.next
             
-            if dummy_B:
+            if not dummy_B:
                 dummy_B = headA
             else:
                 dummy_B = dummy_B.next
