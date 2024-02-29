@@ -28,7 +28,6 @@
         TC: O(mlogm + nlogn)
         SC: O(logm + logn) to O(m + n) depending on the sorting algorithm used
 '''
-
 from typing import List
 
 class Solution1:
