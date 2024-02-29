@@ -10,8 +10,8 @@
                 - Decrement count in freqCounter
         - Return first k elements of nums1
         
-        - TC: O(n + m)
-        - SC: O(min(m, n)) for the smaller array
+        TC: O(n + m)
+        SC: O(min(m, n)) for the smaller array
         
     Explanation II: Sorting and Two Pointers - when the input is sorted or when output needs to be sorted
         nums1 = [1,2,2,1], nums2 = [2,2]
@@ -25,31 +25,26 @@
         
         - return res
         
-        - TC: O(m logm + n logn)
-        - SC: O(log m + log n) to O(m + n) depending on the sorting algorithm used
+        TC: O(m logm + n logn)
+        SC: O(log m + log n) to O(m + n) depending on the sorting algorithm used
 '''
-
+from collections import Counter
+from typing import List
 
 class Solution1:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        if len(nums1) > len(nums2): return self.intersect(nums2, nums1)
+        if len(nums1) > len(nums2): 
+            return self.intersect(nums2, nums1)
         
-        freqCounter = {}
+        freqCounter = Counter(nums1)
         k = 0
-        for num in nums1:
-            if num in freqCounter: freqCounter[num] += 1
-            else: freqCounter[num] = 1
-        
+
         for num in nums2:
-            if num in freqCounter and freqCounter[num] > 0:
+            if freqCounter[num] > 0:
                 freqCounter[num] -= 1
                 nums1[k] = num
                 k += 1
-        
         return nums1[:k]
-
-
-from typing import List
 
 class Solution2:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
