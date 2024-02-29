@@ -53,8 +53,10 @@ class Solution2:
         i, j, k = 0, 0, 0
         
         while i < len(nums1) and j < len(nums2):
-            if nums1[i] > nums2[j]: j += 1
-            elif nums1[i] < nums2[j]: i += 1
+            if nums1[i] > nums2[j]: 
+                j += 1
+            elif nums1[i] < nums2[j]: 
+                i += 1
             else:
                 nums1[k] = nums1[i]
                 k += 1
