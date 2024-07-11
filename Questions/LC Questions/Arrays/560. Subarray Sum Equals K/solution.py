@@ -42,7 +42,26 @@
 '''
 
 from typing import List
+from collections import defaultdict
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        prefixSums = defaultdict(int)
+        prefixSums[0] = 1
 
+        res = 0
+        currSum = 0
+
+        for num in nums:
+            currSum += num
+            diff = currSum - k
+
+            if diff in prefixSums:
+                res += prefixSums[diff]
+
+            prefixSums[currSum] += 1
+        
+        return res
+    
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
         res = 0
@@ -53,7 +72,8 @@ class Solution:
             curr_sum += n
             diff = curr_sum - k
 
-            res += prefix_sum.get(diff, 0) # 0 is the custom default value if the key diff is not found
+            if diff in prefix_sum:
+                res += prefix_sum.get(diff, 0)
             prefix_sum[curr_sum] = prefix_sum.get(curr_sum, 0) + 1
 
         return res

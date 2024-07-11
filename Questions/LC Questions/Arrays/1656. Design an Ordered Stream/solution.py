@@ -1,6 +1,6 @@
 '''
     Explanation I: Using an array of strings
-        * The idea is to move pointer from a filled position to the next empty position
+        * The idea is to move the pointer from a filled position to the next empty position
         
         insert, 3, cccc
             ["", "", "cccc", "", ""]
