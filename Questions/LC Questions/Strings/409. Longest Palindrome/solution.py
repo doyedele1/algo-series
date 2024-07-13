@@ -1,3 +1,25 @@
+'''
+    Explanation:
+        abccccdd
+        a: 1
+        b: 1
+        c: 4
+        d: 2
+
+        a, count = {a:1}, res = 0
+        ab, count = {a:1, b:1}, res = 0
+        abc, count = {a:1, b:1, c:1}, res = 0
+        abcc, count = {a:1, b:1, c:2}, res = 2
+        abccc, count = {a:1, b:1, c:3}, res = 2
+        abcccc, count = {a:1, b:1, c:4}, res = 4
+        abccccd, count = {a:1, b:1, c:4, d:1}, res = 4
+        abccccdd, count = {a:1, b:1, c:4, d:2}, res = 6
+
+        There is at least one odd frequency of characters in the word, so just add 1 to res
+
+        TC: O(n), SC: O(1)
+'''
+
 from collections import defaultdict
 
 class Solution1:
