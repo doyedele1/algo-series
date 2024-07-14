@@ -1,7 +1,9 @@
 '''
     Explanation II: Counting Sort
 
+    TC: O(n + max(nums)), SC: O(n + max(nums))
 '''
+
 from collections import Counter
 from typing import List
 
