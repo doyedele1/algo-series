@@ -79,37 +79,4 @@ class Solution2:
                 if transaction_city[0] != city or len(transaction_city) > 1:
                     res.append(trans)
                     break
-
-        return res
-
-class Solution3:
-    def invalidTransactions(self, transactions: List[str]) -> List[str]:
-        res = []
-        transactionMap = {}
-
-        for trans in transactions:
-            name, str_time, amount, city = trans.split(",")
-            time = int(str_time)
-            if time not in transactionMap:
-                transactionMap[time] = {
-                    name: {city}
-                }
-            else:
-                if name not in transactionMap[time]:
-                    transactionMap[time][name] = {city}
-                else:
-                    transactionMap[time][name].add(city)
-        
-        for trans in transactions:
-            name, time, amount, city = trans.split(",")
-            time = int(time)
-            
-            if int(amount) > 1000:
-                res.append(trans)
-            else:    
-                for t in range(time-60, time):
-                    if t in transactionMap and name in transactionMap[t]:
-                        if len(transactionMap[t][name]) > 1 or city not in transactionMap[t][name]:
-                            res.append(trans)
-                            break
         return res
