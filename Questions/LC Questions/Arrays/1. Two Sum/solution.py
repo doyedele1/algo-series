@@ -1,11 +1,13 @@
 '''
     Explanation:
-        - Use a hashmap and map the value to its index
+        Use a hashmap and map the value to its index
         [2,7,11,15], target = 9
         nums_map = {}
         
-        - First iteration, diff = 7, nums_map = {2:0}
-        - Second iteration, diff = 2, diff is in nums_map, then return the indices
+        First iteration:
+            diff = 7, nums_map = {2:0}
+        Second iteration:
+            diff = 2, diff is in nums_map, then return the indices
 
         TC: O(n), SC: O(n)
 '''
