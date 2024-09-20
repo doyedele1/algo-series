@@ -1,6 +1,7 @@
 '''
     Explanation:
         Use a hashmap and map the value to its index
+        
         [2,7,11,15], target = 9
         nums_map = {}
         
