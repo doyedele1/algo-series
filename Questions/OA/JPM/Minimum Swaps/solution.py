@@ -25,5 +25,5 @@ def solution(arr):
     
     return swaps
 
-arr = [3, 4, 1, 2]
+arr = [3, 1, 2]
 print(solution(arr))
