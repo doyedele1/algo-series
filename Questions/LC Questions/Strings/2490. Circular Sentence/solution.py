@@ -1,3 +1,8 @@
+'''
+    TC: O(n)
+    SC: O(1)
+'''
+
 class Solution:
     def isCircularSentence(self, sentence: str) -> bool:
         n = len(sentence)
@@ -7,5 +12,4 @@ class Solution:
                 return False
             if sentence[0] != sentence[n - 1]:
                 return False
-
         return True
