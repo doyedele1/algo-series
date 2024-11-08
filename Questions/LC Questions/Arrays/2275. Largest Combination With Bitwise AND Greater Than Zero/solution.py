@@ -12,7 +12,7 @@
         Preserving 3rd bit = (6,4,7)
         Preserving 4th bit = ()
         
-        if (value & (1<<i) > 0) = to check if a certain bit is set
+        if (value & (1<<i) != 0) = to check if a certain bit is set
 
         Why are we looping through 32 bits, because the maximum of candidates[i] = 10 pow 7
         log2(10 pow 7) is 24, so we go with 32 bits instead of 16 bits

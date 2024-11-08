@@ -4,8 +4,8 @@
             - With the array, we can easily choose a random number from it
             - With the hashmap, we can achieve an insertion and removal of O(1)
 
-            hashmap --> key = value, value = index
-            array --> contains only the value
+            hashmap -> key = value, value = index
+            array -> contains only the value
 
         Insert function
             - Append value to the end of the array
