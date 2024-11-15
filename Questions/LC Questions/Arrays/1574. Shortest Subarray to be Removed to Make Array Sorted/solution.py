@@ -1,3 +1,10 @@
+'''
+    Explanation:
+        [4,5,7,13,6,4,3,1,1,2,5,6,4,3,2,7,7,7,9,12]
+
+'''
+
+
 from typing import List
 
 class Solution:
