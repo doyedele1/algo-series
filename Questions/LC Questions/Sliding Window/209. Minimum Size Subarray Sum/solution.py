@@ -1,13 +1,10 @@
 '''
     Explanation: Sliding Window
-        [2, 3, 1, 2, 4, 3], target = 7
+        [1, 3, 2, 2, 3], target = 7
+         l
+         r
 
-        [2, 3, 1, 2], current_sum = 8 which is greater than 7
-        Since the values in the array are positive, then we know that [2, 3, 1] wasn't going to give us a value greater than or equal to 7
-
-        [2, 3, 1, 2, 4, 3]
-         i  j
-        current_sum = 5
+         - Since we have positive integers, we know that the sum will keep increasing
 
         TC: O(n)
         SC: O(1)
