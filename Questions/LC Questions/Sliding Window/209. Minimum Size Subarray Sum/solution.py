@@ -7,7 +7,7 @@
         
         We do two things:
             - Keep moving r until sum >= target
-            - Then, compress the window by moving l until sum < target
+            - Then, compress the window by moving l until sum < target or sum >= target
         When you are done with this, then you can find the subarray len by doing (r - l + 2)
 
         [1, 3, 2, 2, 3], target = 7
