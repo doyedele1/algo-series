@@ -14,6 +14,7 @@
     TC: O(n^2). For each of the n people, we will walk through (up to) n-1 entries in their preferences
     SC: O(n^2). We will have n entries in the dictionary we create, and each one of those can have (up to) n-1 entries in the set
 '''
+
 from typing import List
 
 class Solution:
