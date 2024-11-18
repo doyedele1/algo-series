@@ -1,5 +1,5 @@
 '''
-    Explanation: Sliding Window
+    Sliding Window
         [1, 3, 2, 2, 3], target = 7
          l
          r

@@ -1,19 +1,18 @@
 '''
-    Explanation:
-        preferences = [[1, 2, 3], [3, 2, 0], [3, 1, 0], [1, 2, 0]]
-        pairs = [[0, 1], [2, 3]]
+    preferences = [[1, 2, 3], [3, 2, 0], [3, 1, 0], [1, 2, 0]]
+    pairs = [[0, 1], [2, 3]]
 
-        preferredDict = {
-            0: {},
-            1: {3,2},
-            2: {},
-            3: {1}
-        }
+    preferredDict = {
+        0: {},
+        1: {3,2},
+        2: {},
+        3: {1}
+    }
 
-        Then use the x prefers u over y and u prefers x over v for the nested loop
+    Then use the x prefers u over y and u prefers x over v for the nested loop
 
-        TC: O(n^2). For each of the n people, we will walk through (up to) n-1 entries in their preferences
-        SC: O(n^2). We will have n entries in the dictionary we create, and each one of those can have (up to) n-1 entries in the set
+    TC: O(n^2). For each of the n people, we will walk through (up to) n-1 entries in their preferences
+    SC: O(n^2). We will have n entries in the dictionary we create, and each one of those can have (up to) n-1 entries in the set
 '''
 from typing import List
 
