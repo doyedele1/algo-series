@@ -16,6 +16,7 @@
             
             Can we find the number of operations it will take us to divide each element in the nums array and we will get the mid value as the maximum value?
             Formula for that: ceil((element - mid) / mid) only when element > mid
+            Formula to find mid: mid = low + ((high - low) // 2) - to prevent overflow
             
             First iteration: nums = [8,3,5], low = 1, high = 8, res = infinity, mid = low + ((high - low) // 2) = 4
             noOfOperationsNeeded for element 8: element 8 >= mid 4, so ceil((8 - 4) / 4) = 1
