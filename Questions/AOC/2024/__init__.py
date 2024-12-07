@@ -1,1 +1,0 @@
-__all__ = ['read_from_file']
