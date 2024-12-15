@@ -25,6 +25,7 @@
         TC: O(log n)
         SC: O(log n)
 '''
+from typing import List
 
 class Solution:
     def minMaxGame(self, nums: List[int]) -> int:
