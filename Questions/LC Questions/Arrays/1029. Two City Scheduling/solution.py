@@ -4,7 +4,7 @@
         Can we see if we can send all candidates to city A?
         Now, which of the candidates can we send to city B?
 
-        How much cost will it take us if we go to city A rather than city B? It's costA - costB
+        How much will we benefit if we go to city A rather than city B? It's costB - costA
         [[10,20],[30,200],[400,50],[30,20]]
         -10, -170, 350, 10
         Sorting this, we get (-170, -10, 10, 350)
