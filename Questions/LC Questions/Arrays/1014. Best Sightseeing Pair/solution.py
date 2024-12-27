@@ -3,6 +3,7 @@
         TC: O(n)
         SC: O(1)
 '''
+from typing import List
 
 class Solution:
     def maxScoreSightseeingPair(self, values: List[int]) -> int:
