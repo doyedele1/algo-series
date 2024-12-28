@@ -1,5 +1,5 @@
 '''
-    Explanation I: Recursive DFS
+    Explanation I: Recursive DFS (Pre-order)
         Visit every node in the binary tree
         When we visit a parent node, swap the children
         Recursively run the invert function on the left subtree and right subtree
