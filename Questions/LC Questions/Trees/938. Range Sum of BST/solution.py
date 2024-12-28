@@ -1,4 +1,4 @@
-import collections
+from collections import deque
 from typing import Optional
 
 # Definition for a binary tree node.
@@ -9,23 +9,23 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
-        sum = 0
-        if root == None:
-            return sum
+    def range_sum_BST_bfs(self, root: Optional[TreeNode], low: int, high: int) -> int:
+        res = 0
+        if not root:
+            return 0
         
-        q = collections.deque([root])
+        q = deque([root])
         
         while q:
             curr = q.popleft()
             
             if low <= curr.val <= high:
-                sum += curr.val
+                res += curr.val
                 
-            if curr.left and low <= curr.val:
+            if curr.left and curr.val > low:
                 q.append(curr.left)
                 
-            if curr.right and high >= curr.val:
+            if curr.right and  curr.val < high:
                 q.append(curr.right)
                 
-        return sum
+        return res
