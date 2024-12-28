@@ -22,7 +22,7 @@ class TreeNode:
         self.right = right
         
 class Solution:
-    def invert_tree_dfs(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+    def invert_tree_dfs_recursive(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if not root:
             return None
 
@@ -32,7 +32,7 @@ class Solution:
         self.invert_tree(root.right)
         return root
     
-    def invert_tree_bfs(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+    def invert_tree_bfs_iterative(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if not root:
             return None
 
