@@ -1,14 +1,14 @@
 '''
-    Brute-force solution:
-        - Take every single node in the tree and consider it as the topmost node in that diameter.
-        - Find the max diameter running through each node in the tree
-        - T(C) - O(n-squared)
+    Brute-force:
+        Take every single node in the tree and consider it as the topmost node in that diameter.
+        Find the max diameter running through each node in the tree
+        T(C) - O(n-squared)
         
     Optimal solution: Bottom-up approach, to cut out the repeated work
-        - What we need --> Diameter, Height
-        - If no left or right node, left_height or right_height is -1
-            - Diameter = left_height + right_height + 2, running through the node
-            - Height = 1 + max(left_height, right_height), from the node and below
+        What we need --> Diameter, Height
+        - If no left or right node, left_height or right_height is 0
+            - Diameter = left_height + right_height, running through the node
+            - Height = max(left_height, right_height) + 1, from the node and below
         - T(C) - O(n)
 '''
 
