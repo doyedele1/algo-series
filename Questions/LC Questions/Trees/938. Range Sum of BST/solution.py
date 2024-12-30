@@ -9,7 +9,7 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def range_sum_BST_dfs_recursive(self, root: Optional[TreeNode], low: int, high: int) -> int:
+    def range_sum_bst_dfs_recursive(self, root: Optional[TreeNode], low: int, high: int) -> int:
         res = 0
 
         def dfs(node):
@@ -27,7 +27,7 @@ class Solution:
         dfs(root)
         return res
     
-    def range_sum_BST_dfs_iterative(self, root: Optional[TreeNode], low: int, high: int) -> int:
+    def range_sum_bst_dfs_iterative(self, root: Optional[TreeNode], low: int, high: int) -> int:
         res = 0
         stack = [root]
 
@@ -43,7 +43,7 @@ class Solution:
                     stack.append(curr.right)
         return res
     
-    def range_sum_BST_bfs_iterative(self, root: Optional[TreeNode], low: int, high: int) -> int:
+    def range_sum_bst_bfs_iterative(self, root: Optional[TreeNode], low: int, high: int) -> int:
         res = 0
         if not root:
             return 0

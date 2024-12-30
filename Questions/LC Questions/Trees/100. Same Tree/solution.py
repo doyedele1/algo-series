@@ -6,7 +6,7 @@
         - SC: O(log n) for completely balanced tree, O(n) for completely unbalanced tree
     
     Explanation II: Iterative BFS Solution
-        - Use a helper function to cop and save the nodes of p and q into an array
+        - Use a helper function to copy and save the nodes of p and q into an array
         - Call the helper function to check if the arrays are equal
     
     Explanation III: Improved Iterative BFS Solution
@@ -35,35 +35,44 @@ class Solution1:
         if (not p or not q) or (p.val != q.val): return False
         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 
-class Solution2:
-    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        def helper(root):
-            if not root: return 0
-            
-            q = deque([root])
-            res = [root.val]
-            
-            while q:
-                for i in range(len(q)):
-                    curr = q.popleft()
-                    if curr.left:
-                        q.append(curr.left)
-                        res.append(curr.left.val)
-                    else: res.append(None)
-                    if curr.right:
-                        q.append(curr.right)
-                        res.append(curr.right.val)
-                    else: res.append(None)
-            return res
+class BfsIterative:
+    def bfs(self, root):
+        if not root:
+            return 0
         
-        return helper(p) == helper(q)
+        q = deque([root])
+        arr = [root.val]
 
+        while q:
+            size = len(q)
+
+            for _ in range(size):
+                curr = q.popleft()
+
+                if curr.left:
+                    q.append(curr.left)
+                    arr.append(curr.left.val)
+                else:
+                    arr.append(None)
+                if curr.right:
+                    q.append(curr.right)
+                    arr.append(curr.right.val)
+                else:
+                    arr.append(None)
+        return arr
+
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        return self.bfs(p) == self.bfs(q)
+    
 class Solution3:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         def helper(p, q):
-            if not p and not q: return True
-            if (not p or not q) or (p.val != q.val): return False
-            return True
+            if not p and not q: 
+                return True
+            if (not p or not q) or (p.val != q.val): 
+                return False
+            else:
+                return True
             
         queue = deque([(p, q)])
         while queue:
