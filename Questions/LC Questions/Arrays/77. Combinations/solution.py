@@ -33,7 +33,8 @@ from typing import List
 
 class BacktrackSolution:
     def combine(self, n: int, k: int) -> List[List[int]]:
-        def backtrack(start, combination):
+        
+        def backtrack(start: int, combination: List[int]):
             if len(combination) == k:
                 res.append(combination[:]) # Make a copy of the combination
                 return
