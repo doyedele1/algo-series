@@ -30,8 +30,8 @@ class Solution:
     def get_modified_array(self, length: int, updates: List[List[int]]) -> List[int]:
         arr = [0] * (length + 1)
 
-        for tuple in updates:
-            start, end, inc = tuple[0], tuple[1], tuple[2]
+        for update in updates:
+            start, end, inc = update[0], update[1], update[2]
 
             arr[start] += inc
 
