@@ -1,3 +1,5 @@
+from typing import List
+
 class BruteForceSolution1:
     def count_prefix_suffix_pairs(self, words: List[str]) -> int:
         n = len(words)
@@ -34,12 +36,12 @@ class BruteForceSolution2:
                 return False
         return True
 
-    def countPrefixSuffixPairs(self, words: List[str]) -> int:
+    def count_prefix_suffix_pairs(self, words: List[str]) -> int:
         n = len(words)
         count = 0
 
         for i in range(n - 1):
             for j in range(i + 1, n):
-                if words[j].startswith(words[i]) and words[j].endswith(words[i]):
+                if self.is_prefix(words[i], words[j]) and self.is_suffix(words[i], words[j]):
                     count += 1
         return count
