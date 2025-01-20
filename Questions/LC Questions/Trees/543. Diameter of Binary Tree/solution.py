@@ -77,7 +77,7 @@ class Solution2:
             left_height = dfs(node.left)
             right_height = dfs(node.right)
             diameter = max(diameter, left_height + right_height)
-            height = 1 + max(left_height, right_height)
+            height = max(left_height, right_height) + 1
             return height
 
         dfs(root)
