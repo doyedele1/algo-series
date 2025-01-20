@@ -1,5 +1,4 @@
 '''
-
     TC: O(mn logmn)
     SC: O(mn) for the set and minheap
 '''
