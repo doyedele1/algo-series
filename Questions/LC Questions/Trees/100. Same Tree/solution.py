@@ -14,8 +14,8 @@
         - At each iteration, remove the current node from the deque and then run the checks in the base cases
         - If the checks are OK, push the child nodes
 
-        - TC: O(p + q) => O(n)
-        - SC: O(log n) for completely balanced tree, O(n) for completely unbalanced tree
+        TC: O(p + q) => O(n)
+        SC: O(log n) for completely balanced tree, O(n) for completely unbalanced tree
 '''
 
 from collections import deque
