@@ -8,9 +8,7 @@ Return the **lexicographically smallest array** that can be obtained by performi
 
 An array `a` is lexicographically smaller than an array `b` if in the first position where `a` and `b` differ, array `a` has an element that is less than the corresponding element in `b`. For example, the array `[2,10,3]` is lexicographically smaller than the array `[10,2,3]` because they differ at index 0 and `2 < 10`.
 
-### Examples
-
-#### Example 1:
+### Example 1:
 **Input:**
 ```plaintext
 nums = [1,5,3,9,8], limit = 2
@@ -25,7 +23,7 @@ nums = [1,5,3,9,8], limit = 2
 
 We cannot obtain a lexicographically smaller array by applying any more operations.
 
-#### Example 2:
+### Example 2:
 **Input:**
 ```plaintext
 nums = [1,7,6,18,2,1], limit = 3
@@ -41,7 +39,7 @@ nums = [1,7,6,18,2,1], limit = 3
 
 We cannot obtain a lexicographically smaller array by applying any more operations.
 
-#### Example 3:
+### Example 3:
 **Input:**
 ```plaintext
 nums = [1,7,28,19,10], limit = 3
