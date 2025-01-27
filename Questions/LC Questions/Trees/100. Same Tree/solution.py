@@ -1,21 +1,27 @@
 '''
     Explanation I: Recursive Solution
-        - If p and q nodes are not none and their values are equal, do the same for the child nodes recursively
+        If p and q nodes are empty or null, return True
+        If p is not empty, but q is empty, return False
+        If p and q values are not equal, return False
 
-        - TC: O(p + q) => O(n)
-        - SC: O(log n) for completely balanced tree, O(n) for completely unbalanced tree
+        Call isSameTree on the left subtree of p and left subtree of q
+        Call isSameTree on the right subtree of p and right subtree of q
+        Both must return True, so you can use 'and' for that
+
+        TC: O(p + q) => O(n)
+        SC: O(logn) for completely balanced tree, O(n) for completely unbalanced tree
     
     Explanation II: Iterative BFS Solution
-        - Use a helper function to copy and save the nodes of p and q into an array
-        - Call the helper function to check if the arrays are equal
+        - Use a helper BFS function to copy and save the nodes of p and q into an array
+        - Call the function to check if the arrays are equal
     
     Explanation III: Improved Iterative BFS Solution
-        - Use a queue which initially has the root
-        - At each iteration, remove the current node from the deque and then run the checks in the base cases
+        - Use a queue which initially has the root of both p and q
+        - At each iteration, remove the current node from the deque and then run the checks in the base cases in the recursive solution
         - If the checks are OK, push the child nodes
 
         TC: O(p + q) => O(n)
-        SC: O(log n) for completely balanced tree, O(n) for completely unbalanced tree
+        SC: O(logn) for completely balanced tree, O(n) for completely unbalanced tree
 '''
 
 from collections import deque
@@ -28,14 +34,15 @@ class TreeNode:
         self.left = left
         self.right = right
 
-class Solution1:
+class DfsSolution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        # base cases
-        if not p and not q: return True
-        if (not p or not q) or (p.val != q.val): return False
+        if not p and not q: 
+            return True
+        if (not p or not q) or (p.val != q.val): 
+            return False
         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 
-class BfsIterative:
+class BfsIterativeSolution:
     def bfs(self, root):
         if not root:
             return 0
@@ -64,7 +71,7 @@ class BfsIterative:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         return self.bfs(p) == self.bfs(q)
     
-class Solution3:
+class BfsImprovedIterativeSolution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         def helper(p, q):
             if not p and not q: 
@@ -74,11 +81,13 @@ class Solution3:
             else:
                 return True
             
-        queue = deque([(p, q)])
-        while queue:
-            nodeP, nodeQ = queue.popleft()
-            if not helper(nodeP, nodeQ): return False
+        q = deque([(p, q)])
+
+        while q:
+            nodeP, nodeQ = q.popleft()
+            if not helper(nodeP, nodeQ): 
+                return False
             if nodeP:
-                queue.append((nodeP.left, nodeQ.left))
-                queue.append((nodeP.right, nodeQ.right))
+                q.append((nodeP.left, nodeQ.left))
+                q.append((nodeP.right, nodeQ.right))
         return True
