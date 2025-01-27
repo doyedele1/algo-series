@@ -72,8 +72,7 @@ class BfsIterativeSolution:
         return self.bfs(p) == self.bfs(q)
     
 class BfsImprovedIterativeSolution:
-    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        def helper(p, q):
+    def helper(self, p, q):
             if not p and not q: 
                 return True
             if (not p or not q) or (p.val != q.val): 
@@ -81,11 +80,12 @@ class BfsImprovedIterativeSolution:
             else:
                 return True
             
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool: 
         q = deque([(p, q)])
 
         while q:
             nodeP, nodeQ = q.popleft()
-            if not helper(nodeP, nodeQ): 
+            if not self.helper(nodeP, nodeQ):
                 return False
             if nodeP:
                 q.append((nodeP.left, nodeQ.left))
