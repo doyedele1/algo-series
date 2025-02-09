@@ -12,27 +12,31 @@
         [8,1,5,2,6]
 
         First iteration:
+        Initially, first = values[j] + j = 8 + 0 = 8
         second = 1 - 1 = 0
-        res = 8
-        first = 8
+        res = max(0, 8 + 0) = 8
+        first = max(8, 1 + 1) = 8
 
         Second iteration:
-        second = 5 - 2 = 3
-        res = 11
         first = 8
+        second = 5 - 2 = 3
+        res = max(8, 8 + 3) = 11
+        first = max(8, 5 + 2) = 8
 
         Third iteration:
-        second = 2 - 3 = -1
-        res = 11
         first = 8
+        second = 2 - 3 = -1
+        res = max(11, 8 - 1) = 11
+        first = max(8, 2 + 3) = 8
 
         Fourth iteration:
+        first = 8
         second = 6 - 4 = 2
-        res = 11
-        first = 10
+        res = max(11, 6 + 4) = 11
+        first = max(8, 6 + 4) = 10
 
-    TC: O(n)
-    SC: O(1)
+        TC: O(n)
+        SC: O(1)
 '''
 from typing import List
 
