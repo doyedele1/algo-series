@@ -3,8 +3,14 @@
         values[i] + values[j] + i - j
         We can rearrange the above expression as (values[i] + i) + (values[j] - j)
         where first = values[i] + i and second = values[j] - j
-
+        
+        second = values[j] - j
+        res = max(res, first + second)
+        first = max(first, values[j] + j)
+        
+        Dry run:
         [8,1,5,2,6]
+
         First iteration:
         second = 1 - 1 = 0
         res = 8
