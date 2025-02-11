@@ -1,6 +1,6 @@
 '''
     Explanation I:
-        TC: O(n-squared), SC: O(n)
+        TC: O(m * n), SC: O(n)
 
     Explanation II:
     LPS: length of the longest prefix which is the same as suffix
