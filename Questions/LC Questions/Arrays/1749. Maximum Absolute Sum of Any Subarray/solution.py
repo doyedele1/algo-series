@@ -1,6 +1,6 @@
 from typing import List
 
-# TC: O(n), SC: O(1)
+# Two pass solution- TC: O(n), SC: O(1)
 class Solution1:
     def maxSubarrSum(self, nums: List[int]) -> int:
         n = len(nums)
@@ -19,7 +19,7 @@ class Solution1:
         minSubarrSum = self.maxSubarrSum([-num for num in nums])
         return max(maxSubarrSum, minSubarrSum)
     
-# TC: O(n), SC: O(1)
+# One pass solution- TC: O(n), SC: O(1)
 class Solution2:
     def maxAbsoluteSum(self, nums: List[int]) -> int:
         n = len(nums)
