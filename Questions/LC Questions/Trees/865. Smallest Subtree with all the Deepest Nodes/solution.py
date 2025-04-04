@@ -1,13 +1,28 @@
 '''
-    Explanation I: BFS + Lowest Common Ancestor
+    Explanation:
+        Observations
+        1. If we have only one deepest leaf, the LCA is that leaf
+        2. If we have multiple deepest leaves, we should assume the farthest two leaves
 
-        Find all deepest node by traversing the tree using BFS
-        Using the BFS, find the leftMost and rightMost nodes on every level
-        Find LCA of the last leftMost and rightMost nodes - this will be your answer
+        Solution 1: TC: O(n), SC: O(n)
+        - We can do a BFS to find all the nodes at the last level
+        - Then, we can run a LCA(p, q) to find the lowest common ancestor. LCA(p, q) is a solution from LeetCode 236
 
-    Explanation II: PostOrder DFS Traversal
-        TC: O(n)
-        SC:O(n)
+        Solution 2: TC: O(n), SC: O(n)
+        LSD -> Left Subtree Depth, RSD -> Right Subtree Depth
+        - If LSD = RSD, the current node is our LCA
+        - If LSD > RSD, the LCA is in the LSD
+        - If RSD > LSD, the LCA is in the RSD
+
+        Hence, we will go with the second solution
+        Step 1: Use DFS to precompute the depth
+        Step 2: Use DFS to find the LCA of the deepest leaves
+
+        But we can even do better and do just one DFS. By tracking the LCA values and depth values together
+
+        if LSD = RSD, return {currNode, 1 + LSD}
+        if LSD > RSD, return {LCA of the left subtree, 1 + LSD}
+        if RSD > LSD, return {LCA of the right subtree, 1 + RSD}
 '''
 from typing import Optional
 from collections import deque
