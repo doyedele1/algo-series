@@ -12,16 +12,18 @@ class TreeNode:
         
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        if not root:
+        if root.val == p.val or root.val == q.val:
+            return root
+            
+        # Case 1: If both left and right are null, return null
+        if not root.left and not root.right:
             return None
-        
-        if root == p or root == q:
-            return root
-        
-        l = self.lowestCommonAncestor(root.left, p, q)
-        r = self.lowestCommonAncestor(root.right, p, q)
 
-        if l and r:
+        left = self.lowestCommonAncestor(root.left, p, q) if root.left else None
+        right = self.lowestCommonAncestor(root.right, p, q) if root.right else None
+
+        # Case 2: If both left and right are not null, return root
+        if left and right:
             return root
-        else:
-            return l or r
+        # Case 3: If left is null and right is not null, return right, else otherwise
+        return right if left is None else left
