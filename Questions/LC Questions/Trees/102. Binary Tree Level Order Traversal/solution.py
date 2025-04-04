@@ -7,18 +7,19 @@ from collections import deque
 #         self.left = left
 #         self.right = right
 
+# TC: O(n), SC: O(n)
 class Solution:
     def levelOrder(self, root):
         res = []
         q = deque([root])
         
-        if root == None:
-            return res
+        if not root:
+            return []
         
         while q:
             level_elements = []
             
-            for i in range(len(q)):
+            for _ in range(len(q)):
                 curr = q.popleft()
                 level_elements.append(curr.val)
                 
@@ -26,7 +27,6 @@ class Solution:
                     q.append(curr.left)
                 if curr.right:
                     q.append(curr.right)
-                    
             res.append(level_elements)
             
         return res
