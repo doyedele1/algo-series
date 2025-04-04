@@ -21,17 +21,18 @@ class TreeNode:
 
 class BFSSolution:
     def lca(self, node, p, q):
-        if not node or node == p or node == q:
+        if node.val == p.val or node.val == q.val:
             return node
+
+        if not node.left and not node.right:
+            return None
         
-        left = self.lca(node.left, p, q)
-        right = self.lca(node.right, p, q)
+        left = self.lca(node.left, p, q) if node.left else None
+        right = self.lca(node.right, p, q) if node.right else None
 
         if left and right:
             return node
-        if left:
-            return left
-        return right
+        return right if left is None else left
 
     def subtreeWithAllDeepest(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         q = deque([root])
@@ -54,32 +55,20 @@ class BFSSolution:
         return self.lca(root, leftMost, rightMost)
     
 class DFSSolution:
-    def post_order(self, node, depth):
-        if not node:
-            return -1
+    def dfs(self, curr):
+        if not curr:
+            return (None, 0)
         
-        # If it's a leaf node
-        if not node.left and not node.right:
-            if depth > self.max_depth:
-                self.candidate = node
-                self.max_depth = depth
-            return depth
+        left_lca, left_depth = self.dfs(curr.left)
+        right_lca, right_depth = self.dfs(curr.right)
 
-        left = self.post_order(node.left, depth + 1)
-        right = self.post_order(node.right, depth + 1)
+        if left_depth == right_depth:
+            return (curr, left_depth + 1)
+        elif left_depth > right_depth:
+            return (left_lca, left_depth + 1)
+        else:
+            return (right_lca, right_depth + 1)
 
-        # We have our lca if the depth of the two children are the same and the depth is the maximum depth
-        if left == right == self.max_depth:
-            self.candidate = node
-        
-        return max(left, right)
-    
     def subtreeWithAllDeepest(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        if not root:
-            return None
-        
-        self.candidate = None
-        self.max_depth = -1
-
-        self.post_order(root, 0)
-        return self.candidate
+        lca, depth = self.dfs(root)
+        return lca
