@@ -38,10 +38,56 @@
         [5, 7, 9] is that subsequence!
 
         TC: O(n-squared), SC: O(n)
-'''
-from typing import List
 
-class Solution:
+    Explanation III: Binary Search
+        We need a list of list that represents the increasing subsequences of different lengths
+        We need a list that represents the longest increasing subsequence
+
+        - Then, we need to greedily append the new element to an increasing subsequence which will maximize the length of increasing subsequence
+        - If two lists turn out to be of the same length, we can discard the list with a higher end value
+
+        Dry run: [8, 10, 9, 4, 2, 6, 3, 5, 9, 5]
+        listOfList = [[8]]
+        lis = [8]
+
+        listOfList = [[8], [8, 10]]
+        lis = [8, 10]
+
+        listOfList = [[8], [8, 9]]
+        lis = [8, 9]
+
+        listOfList = [[4], [8, 9]]
+        lis = [4, 9]
+
+        listOfList = [[2], [8, 9]]
+        lis = [2, 9]
+
+        listOfList = [[2], [2, 6]]
+        lis = [2, 6]
+
+        listOfList = [[2], [2, 3]]
+        lis = [2, 3]
+
+        listOfList = [[2], [2, 3], [2, 3, 5]]
+        lis = [2, 3, 5]
+
+        listOfList = [[2], [2, 3], [2,3, 5], [2, 3, 5, 9]]
+        lis = [2, 3, 5, 9]
+
+        listOfList = [[2], [2, 3], [2, 3, 5], [2, 3, 5, 9]]
+        lis = [2, 3, 5, 9]
+
+        We can then return the length of lis
+
+        We are applying binary search lower_bound to find the index with the value greater than the number we want to append
+
+        TC: O(nlogn), SC: O(n)
+'''
+
+from typing import List
+from bisect import bisect_left
+
+class Solution2:
     def lengthOfLIS(self, nums: List[int]) -> int:
         n = len(nums)
         dp = [1] * n
@@ -51,3 +97,15 @@ class Solution:
                 if nums[i] > nums[j] and dp[i] <= dp[j]:
                     dp[i] = 1 + dp[j]
         return max(dp)
+    
+class Solution3:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        lis = []
+
+        for num in nums:
+            idx = bisect_left(lis, num)
+            if idx == len(lis):
+                lis.append(num)
+            else:
+                lis[idx] = num
+        return len(lis)
