@@ -20,7 +20,7 @@
     4: []
     ]
 
-    TC: O(n * t) where n is the number of attendees, t is the number of topics
+    TC: O(n * t) where n is the number of attendees, t is the number of topics/tags
     SC: O(n)
 '''
 
