@@ -1,3 +1,4 @@
+# TC: O(D), SC: O(D) where D is the number of digits in num
 class Solution:
     def maximum69Number (self, num: int) -> int:
         num_str = str(num)
