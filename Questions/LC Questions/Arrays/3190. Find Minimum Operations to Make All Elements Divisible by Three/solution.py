@@ -26,7 +26,9 @@ class Solution1:
         res = 0
 
         for num in nums:
-            res += min(num % 3, 3 - num % 3)
+            # If 3 is not the number in the question, we can generalize and replace 3 with k
+            remainder = num % 3
+            res += min(remainder, 3 - remainder)
         return res
     
 class Solution2:
