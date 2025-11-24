@@ -7,7 +7,7 @@
 
         TC: O(n), SC: O(1)
 
-    Explanation II:
+    Explanation II: Greedy
         [1, 2, 3, 4]
         For 1, we need one operation to make it 0 (subtract) which is divisible by 3
         For 2, we need one operation to make it 3 (add) which is divisible by 3
